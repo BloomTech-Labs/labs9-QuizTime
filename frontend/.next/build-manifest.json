@@ -1,0 +1,23 @@
+{
+  "devFiles": [
+    "static/development/dll/dll_e3972980dfdd135a5f1c.js"
+  ],
+  "pages": {
+    "/_app": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/settings": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/quizzes": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ]
+  }
+}
