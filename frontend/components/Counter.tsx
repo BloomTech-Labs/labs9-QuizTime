@@ -30,7 +30,7 @@ const Counter: React.FunctionComponent = () => {
 				<Box />
 				<Box />
 				<Box>
-					<Person id={1} firstName='Allen' lastName='Hai' />
+					<Person id={1} firstName='Ada' lastName='Lovelace' />
 					<Text fontFamily='sans' fontSize={4}>
 						{count}
 					</Text>
