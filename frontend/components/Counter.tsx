@@ -1,15 +1,39 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Button, Text, Flex, Box } from "@rebass/emotion";
 
-const Counter: React.SFC = () => {
-	const [count, setCount] = React.useState(0);
+export interface PersonProps {
+	id: number;
+	firstName: string;
+	lastName: string;
+	age?: number;
+}
+
+const Person: React.SFC<PersonProps> = ({ id, firstName, lastName }) => (
+	<div>
+		<Text fontFamily='mono' fontSize={0}>
+			{id}
+		</Text>
+		<Text fontFamily='sans' fontSize={3}>
+			{firstName}
+		</Text>
+		<Text fontFamily='mono' fontSize={7} color='green'>
+			{lastName}
+		</Text>
+	</div>
+);
+
+const Counter: React.FunctionComponent = () => {
+	const [count, setCount] = useState(0);
 	return (
 		<>
 			<Flex>
 				<Box />
 				<Box />
 				<Box>
-					<Text fontSize={4}>{count}</Text>
+					<Person id={1} firstName='Allen' lastName='Hai' />
+					<Text fontFamily='sans' fontSize={4}>
+						{count}
+					</Text>
 					<Button mx={1} bg='blue' onClick={() => setCount(count + 1)}>
 						+
 					</Button>

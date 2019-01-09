@@ -1,12 +1,14 @@
 import App, { Container } from "next/app";
-
+import { ThemeProvider } from "emotion-theming";
+import theme from "../utils/theme";
 class QuizTime extends App {
 	render() {
 		const { Component } = this.props;
 		return (
 			<Container>
-				<h1>Quizzer</h1>
-				<Component />
+				<ThemeProvider theme={theme}>
+					<Component />
+				</ThemeProvider>
 			</Container>
 		);
 	}
