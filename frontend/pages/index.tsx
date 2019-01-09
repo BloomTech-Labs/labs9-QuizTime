@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Counter from "../components/Counter";
+
 export default () => (
 	<div>
 		<Link href='/quizzes' prefetch>
@@ -13,5 +15,6 @@ export default () => (
 		<Link href='/settings' prefetch>
 			<a>settings</a>
 		</Link>
+		<Counter />
 	</div>
 );
