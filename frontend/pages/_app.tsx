@@ -10,7 +10,8 @@ import styled from "@emotion/styled";
 const Holder = styled.div`
 	display: flex;
 	flex-wrap: wrap; 
-	flex-direction: row; 
+	flex-direction: row;
+	justify-content: flex-end;
 `
 class QuizTime extends App {
 	render() {
@@ -22,8 +23,14 @@ class QuizTime extends App {
 				<SideBar />
 					<Holder>
 					<QuizBox />
-					<ClassBox />
-					<AddBox />
+					<QuizBox />
+					<QuizBox />
+					<QuizBox />
+					<QuizBox />
+					<QuizBox />
+					<QuizBox />
+					<QuizBox />
+					<QuizBox />
 					</Holder>
 				</ThemeProvider>
 			</Container>

@@ -3,10 +3,16 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import { Text, Box} from "@rebass/emotion";
 
-const SideBarHolder = styled(Box)`
-    border: 1px solid black; 
-    border-radius: 5px; 
-    width: 250px; 
+const SideBarObj = styled(Box)`
+    height: 100%;
+    width: 160px; 
+    position: fixed; 
+    z-index: 1;
+    top: 0; 
+    left: 0;
+    border: 1px solid grey;
+    overflow-x: hidden; 
+    padding-top: 20px;
 `;
 
 const BoxText = props => <Text {...props} fontFamily="sans" />;
@@ -14,7 +20,7 @@ const BoxText = props => <Text {...props} fontFamily="sans" />;
 const SideBar: React.SFC = () => {
     return (
         <>
-        <SideBarHolder>
+        <SideBarObj>
         <Link href='/quizzes' prefetch>
 			<BoxText>quizzes</BoxText>
 		</Link>
@@ -27,7 +33,7 @@ const SideBar: React.SFC = () => {
 		<Link href='/settings' prefetch>
 			<BoxText>settings</BoxText>
 		</Link>
-        </SideBarHolder>
+        </SideBarObj>
         </>
     )
 }
