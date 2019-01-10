@@ -13,6 +13,7 @@ const AddBoxHolder = styled(Box)`
   justify-content: center;
   align-items: center;
 `;
+
 const BoxText = props => <Text {...props} fontFamily="sans" />;
 
 const AddBox: React.SFC = () => {
