@@ -3,14 +3,14 @@ import styled from "@emotion/styled";
 import { Box, Text } from "@rebass/emotion";
 
 const AddBoxHolder = styled(Box)`
-  border: 1px black;
-  border-style: dashed; 
-  border-radius: 10px;
-  width: 200px;
+  border: 1px lightgrey;
+  border-style: dashed;
+  border-radius: 5px;
+  width: 250px;
   height: 200px;
   margin: 5px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 `;
 const BoxText = props => <Text {...props} fontFamily="sans" />;

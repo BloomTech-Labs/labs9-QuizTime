@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Counter from "../components/Counter";
-
 export default () => (
 	<div>
-		<Link href='/quizzes' prefetch>
+		{/* <Link href='/quizzes' prefetch>
 			<a>quizzes</a>
 		</Link>
 		<Link href='/classes' prefetch>
@@ -14,7 +13,7 @@ export default () => (
 		</Link>
 		<Link href='/settings' prefetch>
 			<a>settings</a>
-		</Link>
+		</Link> */}
 		<Counter />
 	</div>
 );
