@@ -9,11 +9,10 @@ const Holder = styled(Box)`
 `;
 
 const NavBarObj = styled(Box)`
-  height: 100px;
+  height: 50px;
   width: 85%;
   border: 1px solid grey;
   overflow-x: hidden;
-  padding-top: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
