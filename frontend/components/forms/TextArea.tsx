@@ -1,27 +1,49 @@
 import * as React from "react";
-import { Flex, Box, Text, Button } from "@rebass/emotion";
+import { Flex, Box, Text } from "@rebass/emotion";
 import styled from "@emotion/styled";
 
-const BoxHolder = styled(Box)`
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 600px;
-    height: 300px;
-    margin: 5px;
-`;
+const BoxHolder = props =>
+  <Box
+    {...props} 
+    // rebass primitive styles
+    m='10px' 
+    bg="blue"
+    // extensions from rebass 
+    css={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        border: '1px solid black',
+        borderRadius: '10px',
+    }}
+  />
 
-const TextContainer = styled(Box)`
-    margin: 20px;
+const FormText = props => 
+<Text {...props} 
+    fontFamily="mono"
+    fontSize={5} 
+    color="white"
+    p='10px'
+    />;
+
+const TextInputField = styled.textarea`
+    width: 80%;
+    height: 140px;
+    padding: 10px;
+    margin: 6%;
+    font-family: "mono";
+    font-size: 16px;
+    border: 1px solid 0077cc;
+    border-radius: 10px;
+    color: #0077cc;
+    &::-webkit-input-placeholder{
+        color: #0077cc;
+        font-size: 16px;
+        opacity: .7
+    }
 `
-
-const InputField = styled.textarea`
-    width: 500px;
-    height: 120px;
-    margin: 70px 50px 50px 50px;
-`
-
-const FormText = props => <Text {...props} fontFamily = "sans" />;
-
 const TextArea: React.SFC = () => {
 
     /* We will have a method to post new items to the IDBDatabase.  
@@ -29,24 +51,13 @@ const TextArea: React.SFC = () => {
     and new quiz answers. */
 
 	return (
-        <>     
-        <BoxHolder>       
-            <Flex 
-                flexDirection='column'
-                justifyContent='center'
-                alignItems='center'
-                flexWrap='wrap'
-            >  
-                <TextContainer> 
-                    <FormText>Please enter your quiz question</FormText>
-                </TextContainer>
+        <>           
+                <FormText>Please enter your quiz question</FormText>
                 <Box>
-                    <InputField 
-                        placeholder = "enter your text"
+                    <TextInputField 
+                        placeholder = "please enter your text"
                     />
                 </Box>
-            </Flex>
-        </BoxHolder>
         </>
 	);
 };
