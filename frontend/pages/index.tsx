@@ -3,6 +3,20 @@ import Counter from "../components/Counter";
 <<<<<<< HEAD
 =======
 import { Button } from "@rebass/emotion";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import StudentBar from "../components/Students/StudentBar";
+
+const ALL_STUDENTS_QUERY = gql`
+	query ALL_STUDENTS_QUERY {
+		student {
+			id
+			first_name
+			last_name
+			email
+		}
+	}
+`;
 
 >>>>>>> bd4f8655d5cad65818add7b5b4d47c18d335e678
 export default () => (
@@ -32,5 +46,14 @@ export default () => (
 		<Button variant='error' p={3}>
 			Error
 		</Button>
+		<Query query={ALL_STUDENTS_QUERY}>
+			{({ loading, error, data }) => {
+				if (error) return <p>{error.message}</p>;
+				if (loading) return <p>...loading</p>;
+				if (data) {
+					return data.student.map(student => <StudentBar student={student} />);
+				}
+			}}
+		</Query>
 	</div>
 );
