@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Box } from "@rebass/emotion";
 
 const SideBarObj = styled(Box)`
-  height: auto;
+  height: 360px;
   width: 160px;
   position: fixed;
   padding: 20px; 

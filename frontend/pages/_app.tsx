@@ -1,6 +1,6 @@
 import App, { Container } from "next/app";
 import { ThemeProvider } from "emotion-theming";
-import theme from "../utils/theme";
+import theme from "../utils/theme.ts";
 import NavBar from "../components/navbar/navbar";
 import SideBar from "../components/sidebar/sidebar";
 import AddBox from "../components/boxes/addBox/addBox";
