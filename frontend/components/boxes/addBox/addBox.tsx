@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
+import { Box, Text } from "@rebass/emotion";
 
-const AddBoxHolder = styled.div`
+const AddBoxHolder = styled(Box)`
   border: 1px black;
   border-style: dashed; 
   border-radius: 10px;
@@ -12,10 +13,8 @@ const AddBoxHolder = styled.div`
   justify-content: center; 
   align-items: center;
 `;
-const BoxText = styled.div`
-  font-size: 40px;
-  cursor: pointer; 
-`;
+const BoxText = props => <Text {...props} fontFamily="sans" />;
+
 const AddBox: React.SFC = () => {
   return (
     <>

@@ -9,6 +9,7 @@ class QuizTime extends App {
 			<Container>
 				<ThemeProvider theme={theme}>
 					<Component />
+
 				</ThemeProvider>
 			</Container>
 		);
