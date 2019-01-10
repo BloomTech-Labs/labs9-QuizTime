@@ -25,12 +25,7 @@ class QuizTime extends App {
             <QuizBox />
             <QuizBox />
             <QuizBox />
-            <QuizBox />
-            <QuizBox />
-            <QuizBox />
-            <QuizBox />
-            <QuizBox />
-            <QuizBox />
+            <AddBox />
           </Holder>
         </ThemeProvider>
       </Container>

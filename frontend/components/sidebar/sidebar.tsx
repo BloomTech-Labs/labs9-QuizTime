@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { Text, Box } from "@rebass/emotion";
+import { Box } from "@rebass/emotion";
 
 const SideBarObj = styled(Box)`
   height: 100%;
