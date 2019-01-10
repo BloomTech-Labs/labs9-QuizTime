@@ -26,5 +26,8 @@ export default () => (
 		<Button variant='success' p={3}>
 			Success
 		</Button>
+		<Button variant='error' p={3}>
+			Error
+		</Button>
 	</div>
 );
