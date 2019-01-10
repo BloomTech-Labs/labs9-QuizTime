@@ -34,7 +34,7 @@ const Counter: React.FunctionComponent = () => {
 					<Text fontFamily='sans' fontSize={4}>
 						{count}
 					</Text>
-					<Button mx={1} bg='blue' onClick={() => setCount(count + 1)}>
+					<Button mx={1} variant='primary' onClick={() => setCount(count + 1)}>
 						+
 					</Button>
 					<Button mx={1} bg='red' onClick={() => setCount(count - 1)}>
