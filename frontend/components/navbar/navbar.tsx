@@ -10,7 +10,7 @@ const Holder = styled(Box)`
 
 const NavBarObj = styled(Box)`
   height: 50px;
-  width: 85%;
+  width: 1150px;
   border: 1px solid grey;
   overflow-x: hidden;
   display: flex;

@@ -4,9 +4,10 @@ import Link from "next/link";
 import { Box } from "@rebass/emotion";
 
 const SideBarObj = styled(Box)`
-  height: 100%;
+  height: auto;
   width: 160px;
   position: fixed;
+  padding: 20px; 
   z-index: 1;
   top: 0;
   left: 0;

@@ -22,7 +22,7 @@ class QuizTime extends App {
           <NavBar />
           <SideBar />
           <Holder>
-            <QuizBox />
+            <ClassBox />
             <QuizBox />
             <QuizBox />
             <AddBox />
