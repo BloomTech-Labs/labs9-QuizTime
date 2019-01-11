@@ -31,7 +31,7 @@ transition: background-color 1s ease-out;
 
 const BoxText = styled.a`
   font-family: system-ui; 
-  padding: 20px;
+  padding: 15px;
 `;
 
 
