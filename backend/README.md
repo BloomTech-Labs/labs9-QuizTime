@@ -9,8 +9,8 @@ Hasura GraphQL Endpoint: https://quiztime-hasura.herokuapp.com/v1alpha1/graphql
 ### Tables
 
 #### teacher
-![teacher structure](https://www.dropbox.com/s/g23kqvg8fz8hj30/Screenshot%202019-01-11%2012.28.26.png?dl=0)
-Format: ![Alt Text](url)
+![teacher_structure](./img/teacher_structure.png)
+
 #### class
 
 #### quiz
