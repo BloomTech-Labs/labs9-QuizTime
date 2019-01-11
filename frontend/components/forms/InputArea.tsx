@@ -7,9 +7,9 @@ const InputField = styled.input`
     height: 20px;
     padding: 10px;
     margin: 4%;
-    font-family: "mono";
+    font-family: "system-ui";
     font-size: 14px;
-    border: 1px solid #0077cc;
+    border: 1px solid #4a9eda;
     border-radius: 5px;
     color: #0077cc;
     &::-webkit-input-placeholder{
@@ -27,9 +27,7 @@ const InputArea: React.SFC = () => {
 	return (
         <>           
             <Box>
-                <InputField 
-                    placeholder = "please enter your text"
-                />
+                <InputField placeholder = ". . ."/>
             </Box>
         </>
 	);
