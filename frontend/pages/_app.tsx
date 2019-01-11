@@ -1,32 +1,33 @@
 import App, { Container } from "next/app";
 import { ThemeProvider } from "emotion-theming";
 import { ApolloProvider } from "react-apollo";
-import { Global } from "@emotion/core";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 import theme from "../utils/theme";
 import withData from "../utils/withData";
 import QuizBox from "../components/boxes/quizBox/quizBox";
 import SideBar from "../components/sidebar/sidebar";
 import styled from "@emotion/styled";
 
+//#f4f4f4 light grey background
 const Page = styled.div`
-	background: #f4f4f4; 
-	width: 100%; 
-	height: 700px;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-`; 
+  background: #f4f4f4;
+  width: 100%;
+  height: 700px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+`;
 const CardHolder = styled.div`
-	display: flex; 
-	justify-content: flex-end;
-	
+  display: flex;
+  justify-content: flex-end;
 `;
 const Holder = styled.div`
   width: 1060px;
-  height: auto; 
+  height: auto;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: flex-end;
 `;
 class QuizTime extends App {
@@ -45,22 +46,14 @@ class QuizTime extends App {
       <Container>
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
-		  <Page>
-            <SideBar />
-			<Component />
-			<CardHolder>
-            <Holder>
-              <QuizBox />
-			  <QuizBox />
-			  <QuizBox />
-			  <QuizBox />
-			  <QuizBox />
-			  <QuizBox />
-			  <QuizBox />
-			  <QuizBox />
-            </Holder>
-			</CardHolder>
-			</Page>
+            <Page>
+              <SideBar />
+              <CardHolder>
+                <Holder>
+                 <QuizBox />
+                </Holder>
+              </CardHolder>
+            </Page>
           </ThemeProvider>
         </ApolloProvider>
       </Container>

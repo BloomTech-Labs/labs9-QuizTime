@@ -19,11 +19,11 @@ const BoxText = styled.a`
     font-family: "system-ui";
     padding:10px;
     cursor: pointer;
-    color:#e16973; 
+    color:#f4f4f4; 
     transition: background-color 1s ease-out;
       &:hover{
-        background-color: #e16973;
-        color: #152338; 
+        background-color: #f4f4f4;
+        color:#152338 ; 
       }
 `;
 

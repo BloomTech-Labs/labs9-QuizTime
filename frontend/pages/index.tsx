@@ -12,7 +12,7 @@ const ALL_STUDENTS_QUERY = gql`
 
 export default () => (
 	<div>
-		{/* <Query query={ALL_STUDENTS_QUERY}>
+		<Query query={ALL_STUDENTS_QUERY}>
 			{({ loading, error, data }) => {
 				if (error) return <p>{error.message}</p>;
 				if (loading) return <p>...loading</p>;
@@ -20,6 +20,6 @@ export default () => (
 					return data.quiz.map(quiz => <StudentBar quiz={quiz} />);
 				}
 			}}
-		</Query> */}
+		</Query>
 	</div>
 );
