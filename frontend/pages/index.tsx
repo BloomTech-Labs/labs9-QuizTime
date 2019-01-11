@@ -18,19 +18,7 @@ const ALL_STUDENTS_QUERY = gql`
 
 export default () => (
 	<div>
-		{/* <Counter />
-		<Button variant='primary' p={3}>
-			Hello
-		</Button>
-		<Button variant='primary-outline' p={3}>
-			World
-		</Button>
-		<Button variant='success' p={3}>
-			Success
-		</Button>
-		<Button variant='error' p={3}>
-			Error
-		</Button> */}
+		<SideBar />
 		<Query query={ALL_STUDENTS_QUERY}>
 			{({ loading, error, data }) => {
 				if (error) return <p>{error.message}</p>;
