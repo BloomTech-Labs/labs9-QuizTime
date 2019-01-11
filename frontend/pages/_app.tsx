@@ -7,19 +7,12 @@ import theme from "../utils/theme";
 import withData from "../utils/withData";
 import QuizBox from "../components/boxes/quizBox/quizBox";
 import SideBar from "../components/sidebar/sidebar";
+import NavBar from "../components/Navbar/NavBar.tsx";
 import styled from "@emotion/styled";
-import quizzes from "./quizzes";
+
 const ALL_QUIZZES_QUERY = gql`
 	query ALL_QUIZZES_QUERY {
 		quiz{
-			id
-			name
-		}
-	}
-`;
-const ALL_CLASSES_QUERY = gql`
-	query ALL_CLASSES_QUERY {
-		class{
 			id
 			name
 		}
@@ -63,6 +56,7 @@ class QuizTime extends App {
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
             <Page>
+              <NavBar />
               <SideBar />
               <CardHolder>
                 <Holder>
