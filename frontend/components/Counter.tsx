@@ -8,7 +8,7 @@ export interface PersonProps {
 	age?: number;
 }
 
-const Person: React.SFC<PersonProps> = ({ id, firstName, lastName }) => (
+const Person: React.SFC<PersonProps> = ({ id, firstName, lastName, age }) => (
 	<div>
 		<Text fontFamily='mono' fontSize={0}>
 			{id}
@@ -19,6 +19,11 @@ const Person: React.SFC<PersonProps> = ({ id, firstName, lastName }) => (
 		<Text fontFamily='mono' fontSize={7} color='green0'>
 			{lastName}
 		</Text>
+		{age && (
+			<Text fontFamily='mono' fontSize={3}>
+				{age}
+			</Text>
+		)}
 	</div>
 );
 

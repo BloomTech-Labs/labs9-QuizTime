@@ -1,12 +1,14 @@
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../components/Students/StudentBar";
-import QuizBox from "../components/boxes/quizBox/quizBox";
+
 const ALL_STUDENTS_QUERY = gql`
-	query ALL_QUIZZES_QUERY {
-		quiz{
+	query ALL_STUDENTS_QUERY {
+		student {
 			id
-			name
+			first_name
+			last_name
+			email
 		}
 	}
 `;
@@ -18,7 +20,7 @@ export default () => (
 				if (error) return <p>{error.message}</p>;
 				if (loading) return <p>...loading</p>;
 				if (data) {
-					return data.quiz.map(quiz => <QuizBox quiz={quiz} />);
+					return data.student.map(s => <StudentBar id={s.id} student={s} />);
 				}
 			}}
 		</Query>
