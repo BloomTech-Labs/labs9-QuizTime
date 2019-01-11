@@ -34,14 +34,12 @@ const BoxText = styled.a`
   padding: 15px;
 `;
 
-
+//to get the quizzes to map through all you need is the 
+//quiz prop from the app page.
 const QuizBox: React.SFC = ({quiz}) => {
   return (
     <>
       <BoxHolder>
-        {/* what we will want is for the title of the Quiz and also the 
-                number of classes that have this quiz assigned to be mapped
-                through the entries of the two text sections. */}
         <Emblem />
           <BoxText>{quiz.name}</BoxText>
       </BoxHolder>

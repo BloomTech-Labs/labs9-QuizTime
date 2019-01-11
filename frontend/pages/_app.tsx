@@ -6,9 +6,9 @@ import gql from "graphql-tag";
 import theme from "../utils/theme";
 import withData from "../utils/withData";
 import QuizBox from "../components/boxes/quizBox/quizBox";
-import ClassBox from "../components/boxes/classBox/classBox";
 import SideBar from "../components/sidebar/sidebar";
 import styled from "@emotion/styled";
+import quizzes from "./quizzes";
 const ALL_QUIZZES_QUERY = gql`
 	query ALL_QUIZZES_QUERY {
 		quiz{
@@ -51,7 +51,7 @@ class QuizTime extends App {
     let pageProps: any = {};
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
-    }
+	}
     // this exposes the query to the user
     pageProps.query = ctx.query;
     return { pageProps };
@@ -75,15 +75,6 @@ class QuizTime extends App {
                       }
                     }}
                   </Query>
-				  {/* <Query query={ALL_CLASSES_QUERY}>
-                    {({ loading, error, data }) => {
-                      if (error) return <p>{error.message}</p>;
-                      if (loading) return <p>...loading</p>;
-                      if (data) {
-                        return data.class.map(classes => <ClassBox class={classes} />);
-                      }
-                    }}
-                  </Query> */}
                 </Holder>
               </CardHolder>
             </Page>
