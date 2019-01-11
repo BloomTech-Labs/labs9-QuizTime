@@ -2,14 +2,13 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { Box, Text } from "@rebass/emotion";
 
-const BoxHolder = styled.div`
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 200px;
+const BoxHolder = styled(Box)`
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 250px;
   height: 200px;
   margin: 5px;
 `;
-
 const BoxTextHolder = styled(Box)`
   padding: 5px;
 `;

@@ -1,7 +1,7 @@
 import App, { Container } from "next/app";
 import { ThemeProvider } from "emotion-theming";
 import { ApolloProvider } from "react-apollo";
-import theme from "../utils/theme";
+import theme from "../utils/theme.ts";
 import withData from "../utils/withData";
 
 class QuizTime extends App {

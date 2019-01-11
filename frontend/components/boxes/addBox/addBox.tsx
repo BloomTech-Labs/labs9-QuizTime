@@ -1,21 +1,21 @@
 import * as React from "react";
 import styled from "@emotion/styled";
+import { Box, Text } from "@rebass/emotion";
 
-const AddBoxHolder = styled.div`
-  border: 1px black;
-  border-style: dashed; 
-  border-radius: 10px;
-  width: 200px;
+const AddBoxHolder = styled(Box)`
+  border: 1px lightgrey;
+  border-style: dashed;
+  border-radius: 5px;
+  width: 250px;
   height: 200px;
   margin: 5px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 `;
-const BoxText = styled.div`
-  font-size: 40px;
-  cursor: pointer; 
-`;
+
+const BoxText = props => <Text {...props} fontFamily="sans" />;
+
 const AddBox: React.SFC = () => {
   return (
     <>
