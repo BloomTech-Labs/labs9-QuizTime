@@ -6,7 +6,9 @@
 	"repository": "https://github.com/Lambda-School-Labs/labs9-quizzer",
 	"license": "MIT",
 	"scripts": {
-		"dev": "next"
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
 	},
 	"dependencies": {
 		"@emotion/core": "^10.0.6",
