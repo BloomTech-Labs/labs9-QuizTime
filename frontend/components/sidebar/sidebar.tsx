@@ -4,30 +4,34 @@ import Link from "next/link";
 import { Box } from "@rebass/emotion";
 
 const SideBarObj = styled(Box)`
-  height: 360px;
-  width: 160px;
+  height: 700px;
+  width: 100px;
+  background: #152338;
   position: fixed;
-  padding: 20px; 
   z-index: 1;
   top: 0;
   left: 0;
-  border: 1px solid grey;
-  overflow-x: hidden;
-  padding-top: 20px;
   display: flex; 
   flex-direction: column;
 `;
 
 const BoxText = styled.a`
     font-family: "system-ui";
-    padding: 5px;
+    padding:10px;
     cursor: pointer;
+    color:#f4f4f4; 
+    transition: background-color 1s ease-out;
+      &:hover{
+        background-color: #f4f4f4;
+        color:#152338 ; 
+      }
 `;
 
 const SideBar: React.SFC = () => {
   return (
     <>
       <SideBarObj>
+          <BoxText>QuizTime</BoxText>
         <Link href="/quizzes" prefetch>
           <BoxText>quizzes</BoxText>
         </Link>

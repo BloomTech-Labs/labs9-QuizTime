@@ -1,7 +1,5 @@
-export default ({ student }) => (
+export default ({ quiz }) => (
 	<div>
-		<p>{student.first_name}</p>
-		<p>{student.last_name}</p>
-		<p>{student.email}</p>
+		<p>{quiz.name}</p>
 	</div>
 );
