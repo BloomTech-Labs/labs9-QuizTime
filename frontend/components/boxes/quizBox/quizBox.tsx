@@ -35,7 +35,7 @@ const BoxText = styled.a`
 `;
 
 
-const QuizBox: React.SFC = () => {
+const QuizBox: React.SFC = ({quiz}) => {
   return (
     <>
       <BoxHolder>
@@ -43,7 +43,7 @@ const QuizBox: React.SFC = () => {
                 number of classes that have this quiz assigned to be mapped
                 through the entries of the two text sections. */}
         <Emblem />
-          <BoxText></BoxText>
+          <BoxText>{quiz.name}</BoxText>
       </BoxHolder>
     </>
   );

@@ -8,7 +8,14 @@ import withData from "../utils/withData";
 import QuizBox from "../components/boxes/quizBox/quizBox";
 import SideBar from "../components/sidebar/sidebar";
 import styled from "@emotion/styled";
-
+const ALL_QUIZZES_QUERY = gql`
+	query ALL_QUIZZES_QUERY {
+		quiz{
+			id
+			name
+		}
+	}
+`;
 //#f4f4f4 light grey background
 const Page = styled.div`
   background: #f4f4f4;
@@ -50,7 +57,15 @@ class QuizTime extends App {
               <SideBar />
               <CardHolder>
                 <Holder>
-                 <QuizBox />
+                  <Query query={ALL_QUIZZES_QUERY}>
+                    {({ loading, error, data }) => {
+                      if (error) return <p>{error.message}</p>;
+                      if (loading) return <p>...loading</p>;
+                      if (data) {
+                        return data.quiz.map(quiz => <QuizBox quiz={quiz} />);
+                      }
+                    }}
+                  </Query>
                 </Holder>
               </CardHolder>
             </Page>

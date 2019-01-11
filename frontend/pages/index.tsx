@@ -1,6 +1,7 @@
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../components/Students/StudentBar";
+import QuizBox from "../components/boxes/quizBox/quizBox";
 const ALL_STUDENTS_QUERY = gql`
 	query ALL_QUIZZES_QUERY {
 		quiz{
@@ -17,7 +18,7 @@ export default () => (
 				if (error) return <p>{error.message}</p>;
 				if (loading) return <p>...loading</p>;
 				if (data) {
-					return data.quiz.map(quiz => <StudentBar quiz={quiz} />);
+					return data.quiz.map(quiz => <QuizBox quiz={quiz} />);
 				}
 			}}
 		</Query>
