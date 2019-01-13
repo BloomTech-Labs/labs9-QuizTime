@@ -13,6 +13,7 @@ const BoxHolder = styled(Box)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 	transition: border-bottom-color 1s ease-out;
 	&:hover {
 		border-bottom: 10px solid #e16973;
