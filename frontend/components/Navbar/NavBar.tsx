@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import Link from "next/link";
-import { Box } from "@rebass/emotion";
+import { Box, Button } from "@rebass/emotion";
+
 const NavBarHolder = styled(Box)`
   display: flex;
   justify-content: flex-end;
@@ -27,15 +27,15 @@ const Avatar = styled.div`
   align-items: center;
 `;
 const NavBar: React.SFC = () => {
-  return (
-    <>
-      <NavBarHolder>
-        <NavBarItem>Sign Out</NavBarItem>
-        <Avatar>
-          <NavBarItem>K</NavBarItem>
-        </Avatar>
-      </NavBarHolder>
-    </>
-  );
+    return (
+        <>
+            <NavBarHolder>
+                <Button variant="primary">Sign Out</Button>
+                <Avatar>
+                    <NavBarItem>K</NavBarItem>
+                </Avatar>
+            </NavBarHolder>
+        </>
+    );
 };
 export default NavBar;
