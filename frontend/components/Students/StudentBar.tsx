@@ -1,15 +1,19 @@
+import { Text, Box } from "@rebass/emotion";
+
 export default ({ id, student }) => (
-	<div>
-		<h2>
-			{student.first_name} {student.last_name}
-		</h2>
-		<p>{student.email}</p>
-		<style jsx>
-			{`
-				div {
-					margin-left: 30%;
-				}
-			`}
-		</style>
-	</div>
+    <Box
+        m={5}
+        css={{
+            "&:hover": {
+                border: `1px solid lightgrey`
+            }
+        }}
+    >
+        <Text color="red1" py={2} fontWeight={700} fontFamily="sans">
+            {student.first_name} {student.last_name}
+        </Text>
+        <Text fontSize={0} fontFamily="mono">
+            {student.email}
+        </Text>
+    </Box>
 );
