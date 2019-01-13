@@ -6,7 +6,6 @@ import withData from "../utils/withData";
 import Layout from "../components/Layout";
 
 //#f4f4f4 light grey background
-
 class QuizTime extends App {
 	static async getInitialProps({ Component, ctx }) {
 		let pageProps: any = {};
