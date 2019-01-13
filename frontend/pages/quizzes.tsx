@@ -2,6 +2,8 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import QuizBox from "../components/boxes/quizBox/quizBox";
+import AddBox from "../components/boxes/addBox/addBox";
+
 
 const ALL_QUIZZES_QUERY = gql`
 	query ALL_QUIZZES_QUERY {
@@ -27,6 +29,7 @@ const Holder = styled.div`
 export default () => (
 	<CardHolder>
 		<Holder>
+			<AddBox />
 			<Query query={ALL_QUIZZES_QUERY}>
 				{({ loading, error, data }) => {
 					if (error) return <p>{error.message}</p>;

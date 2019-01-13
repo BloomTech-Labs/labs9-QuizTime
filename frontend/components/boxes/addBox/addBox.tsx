@@ -3,18 +3,30 @@ import styled from "@emotion/styled";
 import { Box, Text } from "@rebass/emotion";
 
 const AddBoxHolder = styled(Box)`
-  border: 1px lightgrey;
+  border: 10px lightgrey;
   border-style: dashed;
   border-radius: 5px;
-  width: 250px;
-  height: 200px;
+	width: 200px;
+	height: 200px;
   margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+`;
+const AddBtn = styled(Box)`
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  background: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: #f4f4f4;
+  font-size: 30px
 `;
 
-const BoxText = props => <Text {...props} fontFamily="sans" />;
+const BoxText = props => <Text {...props} fontFamily="sans" color="#f4f4f4" fontSize="30px"/>;
 
 const AddBox: React.SFC = () => {
   return (
@@ -22,7 +34,7 @@ const AddBox: React.SFC = () => {
       <AddBoxHolder>
         {/* what we will want is for the user to be able to click on the + and
         output a quiz or class box */}
-        <BoxText>+</BoxText>
+        <AddBtn><BoxText>+</BoxText></AddBtn>
       </AddBoxHolder>
     </>
   );
