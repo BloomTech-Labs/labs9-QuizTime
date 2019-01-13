@@ -8,7 +8,7 @@ export interface PersonProps {
 	age?: number;
 }
 
-const Person: React.SFC<PersonProps> = ({ id, firstName, lastName }) => (
+const Person: React.SFC<PersonProps> = ({ id, firstName, lastName, age }) => (
 	<div>
 		<Text fontFamily='mono' fontSize={0}>
 			{id}
@@ -16,9 +16,14 @@ const Person: React.SFC<PersonProps> = ({ id, firstName, lastName }) => (
 		<Text fontFamily='sans' fontSize={3}>
 			{firstName}
 		</Text>
-		<Text fontFamily='mono' fontSize={7} color='green'>
+		<Text fontFamily='mono' fontSize={7} color='green0'>
 			{lastName}
 		</Text>
+		{age && (
+			<Text fontFamily='mono' fontSize={3}>
+				{age}
+			</Text>
+		)}
 	</div>
 );
 
@@ -34,7 +39,7 @@ const Counter: React.FunctionComponent = () => {
 					<Text fontFamily='sans' fontSize={4}>
 						{count}
 					</Text>
-					<Button mx={1} bg='blue' onClick={() => setCount(count + 1)}>
+					<Button mx={1} variant='primary' onClick={() => setCount(count + 1)}>
 						+
 					</Button>
 					<Button mx={1} bg='red' onClick={() => setCount(count - 1)}>
