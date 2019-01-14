@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import NavBar from "./NavBar/NavBar";
 import SideBar from "./SideBar/SideBar";
+import Meta from '../components/Meta';
 
 const Page = styled.div`
 	background: #f4f4f4;
@@ -10,6 +11,7 @@ const Page = styled.div`
 
 const Layout = ({ children }) => (
   <Page>
+    <Meta />
     <NavBar />
     <SideBar />
     {children}
