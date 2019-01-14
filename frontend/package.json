@@ -1,33 +1,40 @@
 {
-	"name": "labs9-quiztime",
-	"version": "1.0.0",
-	"description": "a fun and easy way to make quizzes",
-	"main": "index.js",
-	"repository": "https://github.com/Lambda-School-Labs/labs9-quizzer",
-	"license": "MIT",
-	"scripts": {
-		"dev": "next"
-	},
-	"dependencies": {
-		"@emotion/core": "^10.0.6",
-		"@emotion/styled": "^10.0.6",
-		"@rebass/emotion": "^3.0.0",
-		"@zeit/next-typescript": "^1.1.2-canary.0",
-		"apollo-boost": "^0.1.23",
-		"emotion-theming": "^10.0.6",
-		"graphql": "^14.0.2",
-		"graphql-tag": "^2.10.0",
-		"next": "^8.0.0-canary.3",
-		"next-with-apollo": "^3.3.1",
-		"react": "^16.7.0-alpha.2",
-		"react-apollo": "^2.3.3",
-		"react-dom": "^16.7.0-alpha.2"
-	},
-	"devDependencies": {
-		"@types/next": "^7.0.6",
-		"@types/react": "^16.7.18",
-		"@types/react-dom": "^16.0.11",
-		"@types/rebass": "^0.3.3",
-		"typescript": "^3.2.2"
-	}
+  "name": "labs9-quiztime",
+  "version": "1.0.0",
+  "description": "a fun and easy way to make quizzes",
+  "main": "index.js",
+  "repository": "https://github.com/Lambda-School-Labs/labs9-quizzer",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "now-build": "next build"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.6",
+    "@emotion/styled": "^10.0.6",
+    "@rebass/emotion": "^3.0.0",
+    "apollo-boost": "^0.1.23",
+    "apollo-client": "^2.4.8",
+    "emotion-theming": "^10.0.6",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
+    "next": "^8.0.0-canary.6",
+    "next-with-apollo": "^3.3.1",
+    "react": "^16.7.0-alpha.2",
+    "react-apollo": "^2.3.3",
+    "react-dom": "^16.7.0-alpha.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@emotion/babel-preset-css-prop": "^10.0.6",
+    "@types/next": "^7.0.6",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "@types/rebass": "^0.3.3",
+    "@zeit/next-typescript": "^1.1.1",
+    "babel-plugin-emotion": "^10.0.6",
+    "typescript": "^3.2.2"
+  }
 }

@@ -1,6 +1,5 @@
 {
-	"alias": "quiztime.now.sh",
-	"version": 2,
-	"name": "quiztime",
-	"builds": [{ "src": "next.config.js", "use": "@now/next" }]
+  "alias": "quiztime.now.sh",
+  "version": 1,
+  "name": "quiztime"
 }
