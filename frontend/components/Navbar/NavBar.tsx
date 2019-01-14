@@ -28,14 +28,12 @@ const Avatar = styled.div`
 `;
 const NavBar: React.SFC = () => {
   return (
-    <>
-      <NavBarHolder>
-        <Button variant="primary">Sign Out</Button>
-        <Avatar>
-          <NavBarItem>K</NavBarItem>
-        </Avatar>
-      </NavBarHolder>
-    </>
+    <NavBarHolder>
+      <Button variant="primary">Sign Out</Button>
+      <Avatar>
+        <NavBarItem>K</NavBarItem>
+      </Avatar>
+    </NavBarHolder>
   );
 };
 export default NavBar;

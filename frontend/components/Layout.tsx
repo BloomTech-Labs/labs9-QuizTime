@@ -9,13 +9,11 @@ const Page = styled.div`
 `;
 
 const Layout = ({ children }) => (
-  <>
-    <Page>
-      <NavBar />
-      <SideBar />
-      {children}
-    </Page>
-  </>
+  <Page>
+    <NavBar />
+    <SideBar />
+    {children}
+  </Page>
 );
 
 export default Layout

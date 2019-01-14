@@ -29,25 +29,23 @@ const BoxText = styled.a`
 
 const SideBar: React.SFC = () => {
   return (
-    <>
-      <SideBarObj>
-        <Link href='/' prefetch>
-          <BoxText>QuizTime</BoxText>
-        </Link>
-        <Link href='/quizzes' prefetch>
-          <BoxText>quizzes</BoxText>
-        </Link>
-        <Link href='/classes' prefetch>
-          <BoxText>classes</BoxText>
-        </Link>
-        <Link href='/billing' prefetch>
-          <BoxText>billing</BoxText>
-        </Link>
-        <Link href='/settings' prefetch>
-          <BoxText>settings</BoxText>
-        </Link>
-      </SideBarObj>
-    </>
+    <SideBarObj>
+      <Link href='/' prefetch>
+        <BoxText>QuizTime</BoxText>
+      </Link>
+      <Link href='/quizzes' prefetch>
+        <BoxText>quizzes</BoxText>
+      </Link>
+      <Link href='/classes' prefetch>
+        <BoxText>classes</BoxText>
+      </Link>
+      <Link href='/billing' prefetch>
+        <BoxText>billing</BoxText>
+      </Link>
+      <Link href='/settings' prefetch>
+        <BoxText>settings</BoxText>
+      </Link>
+    </SideBarObj>
   );
 };
 export default SideBar;
