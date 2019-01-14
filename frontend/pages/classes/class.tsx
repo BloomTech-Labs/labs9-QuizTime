@@ -3,34 +3,46 @@ import gql from "graphql-tag";
 import StudentsList from "../../components/Students/StudentsList";
 import StudentBar from "../../components/Students/StudentBar";
 
-const ALL_STUDENTS_QUERY = gql`
+
+const ClassPage = ({title}) => {
+    const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
-    student {
+    class (where: {id: {_eq: ${title}}}){
       id
-      class_id
-      last_name
-      first_name
-      email
+      students {
+        id
+        class_id
+        last_name
+        first_name
+        email
+      }
     }
   }
 `;
 
-export default () => (
-    <div>
-        <Query query={ALL_STUDENTS_QUERY}>
-            {({ loading, error, data }) => {
-                if (error) return <p>{error.message}</p>;
-                if (loading) return <p>...loading</p>;
-                if (data) {
-                    return (
-                        <StudentsList>
-                            {data.student.map(s => (
-                                <StudentBar id={s.id} student={s} />
+  return (
+  <div>
+    <Query query={ALL_STUDENTS_QUERY}>
+      {({ loading, error, data }) => {
+        if (error) return <p>{error.message}</p>;
+        if (loading) return <p>...loading</p>;
+        if (data) {
+          console.log(data);
+          return (
+            <StudentsList>
+              {data.class[0].students.map(student => (
+                                <StudentBar id={student.id} student={student} />
                             ))}
-                        </StudentsList>
-                    );
-                }
-            }}
-        </Query>
-    </div>
-);
+            </StudentsList>
+          );
+        }
+      }}
+    </Query>
+  </div>
+  )
+};
+ClassPage.getInitialProps = async function(context) {
+  const { title } = context.query;
+  return { title };
+};
+export default ClassPage;
