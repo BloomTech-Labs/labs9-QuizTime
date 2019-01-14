@@ -7,10 +7,6 @@ const SideBarObj = styled(Box)`
   min-height: 100vh;
 	width: 100px;
 	background: #152338;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
 	display: flex;
 	flex-direction: column;
 `;

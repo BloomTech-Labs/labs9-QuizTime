@@ -7,14 +7,20 @@ const Page = styled.div`
 	background: #f4f4f4;
 	width: 100%;
   min-height: 100vh;
+  display: flex;
 `;
 
+const MainContent = styled.div`
+  width: 100%;
+`
 const Layout = ({ children }) => (
   <Page>
     <Meta />
-    <NavBar />
     <SideBar />
-    {children}
+    <MainContent>
+      <NavBar />
+      {children}
+    </MainContent>
   </Page>
 );
 

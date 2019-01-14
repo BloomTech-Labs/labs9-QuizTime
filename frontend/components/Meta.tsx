@@ -7,7 +7,7 @@ const Meta = () => (
       <meta charSet='utf-8' />
       <title>QuizTime</title>
     </Head>
-    <style jsx global>{`
+    <style jsx='true' global='true'>{`
     * { 
       box-sizing: border-box; 
       margin: 0; 

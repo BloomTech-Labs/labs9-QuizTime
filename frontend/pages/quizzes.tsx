@@ -19,7 +19,6 @@ const CardHolder = styled.div`
 `;
 
 const Holder = styled.div`
-	width: 1060px;
 	height: auto;
 	display: flex;
 	flex-wrap: wrap;
