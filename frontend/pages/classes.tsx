@@ -6,7 +6,7 @@ import AddBox from "../components/boxes/addBox/addBox";
 
 const ALL_CLASSES_QUERY = gql`
 	query ALL_CLASSES_QUERY {
-		class{
+		class {
 			id
 			name
 		}
@@ -33,7 +33,7 @@ const Classes = () => (
           if (error) return <p>{error.message}</p>;
           if (loading) return <p>...loading</p>;
           if (data) {
-            return data.class.map(className => <ClassBox className={className} />);
+            return data.class.map(c => <ClassBox key={c.id} className={c} />);
           }
         }}
       </Query>

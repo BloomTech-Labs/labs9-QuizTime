@@ -24,7 +24,7 @@ const Home = () => (
           return (
             <StudentsList>
               {data.student.map(s => (
-                <StudentBar id={s.id} student={s} />
+                <StudentBar id={s.id} key={s.id} student={s} />
               ))}
             </StudentsList>
           );

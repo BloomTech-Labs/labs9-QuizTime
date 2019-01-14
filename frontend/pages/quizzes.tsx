@@ -34,7 +34,7 @@ const Quizzes = () => (
           if (error) return <p>{error.message}</p>;
           if (loading) return <p>...loading</p>;
           if (data) {
-            return data.quiz.map(quiz => <QuizBox quiz={quiz} />);
+            return data.quiz.map(q => <QuizBox key={q.id} quiz={q} />);
           }
         }}
       </Query>
