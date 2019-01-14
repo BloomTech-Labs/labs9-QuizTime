@@ -14,22 +14,24 @@ const ALL_STUDENTS_QUERY = gql`
   }
 `;
 
-export default () => (
-    <div>
-        <Query query={ALL_STUDENTS_QUERY}>
-            {({ loading, error, data }) => {
-                if (error) return <p>{error.message}</p>;
-                if (loading) return <p>...loading</p>;
-                if (data) {
-                    return (
-                        <StudentsList>
-                            {data.student.map(s => (
-                                <StudentBar id={s.id} student={s} />
-                            ))}
-                        </StudentsList>
-                    );
-                }
-            }}
-        </Query>
-    </div>
+const Home = () => (
+  <div>
+    <Query query={ALL_STUDENTS_QUERY}>
+      {({ loading, error, data }) => {
+        if (error) return <p>{error.message}</p>;
+        if (loading) return <p>...loading</p>;
+        if (data) {
+          return (
+            <StudentsList>
+              {data.student.map(s => (
+                <StudentBar id={s.id} student={s} />
+              ))}
+            </StudentsList>
+          );
+        }
+      }}
+    </Query>
+  </div>
 );
+
+export default Home

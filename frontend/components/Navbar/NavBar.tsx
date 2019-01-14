@@ -20,22 +20,22 @@ const Avatar = styled.div`
   margin: 15px;
   width: 30px;
   height: 30px;
-  border-radius: 30px;
+  border-radius: 50%;
   background: #152338;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 const NavBar: React.SFC = () => {
-    return (
-        <>
-            <NavBarHolder>
-                <Button variant="primary">Sign Out</Button>
-                <Avatar>
-                    <NavBarItem>K</NavBarItem>
-                </Avatar>
-            </NavBarHolder>
-        </>
-    );
+  return (
+    <>
+      <NavBarHolder>
+        <Button variant="primary">Sign Out</Button>
+        <Avatar>
+          <NavBarItem>K</NavBarItem>
+        </Avatar>
+      </NavBarHolder>
+    </>
+  );
 };
 export default NavBar;
