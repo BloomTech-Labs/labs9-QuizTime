@@ -7,6 +7,7 @@ const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
     student {
       id
+      class_id
       last_name
       first_name
       email
