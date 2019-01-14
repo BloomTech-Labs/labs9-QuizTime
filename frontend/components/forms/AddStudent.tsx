@@ -1,82 +1,98 @@
-import * as React from "react";
-import { Box, Text, Button, Flex } from "@rebass/emotion";
-import styled from "@emotion/styled";
+import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 
-import InputArea from "./InputArea";
+const ADD_STUDENT_MUTATION = gql`
+  mutation ADD_STUDENT_MUTATION(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $classId: Int!
+  ) {
+    insert_student(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      classId: $classId
+    ) {
+      id
+    }
+  }
+`;
 
-const FormContainer = styled.div`
-    background: white;
-    width: 500px;
-    margin: 15px;
-    padding: 10px;
-    border: 1px solid #B4D7F0;
-    border-radius: 10px;
-    border-bottom: 10px solid #B4D7F0;
-`
+class AddStudent extends Component {
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+  };
 
-const InputDiv = styled.div`
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: space-evenly;
-  `
+  handleChange = e => {
+    const { name, type, value } = e.target;
+    const val = type === 'number' ? parseFloat(value) : value;
+    this.setState({ [name]: val });
+  };
 
-const HeaderText = props => 
-    <Text {...props} 
-    fontFamily="system-ui"
-    fontSize={3} 
-    color="blue0"
-    p='10px'
-    />;
+  render() {
+    return (
+      <Mutation mutation={ADD_STUDENT_MUTATION} 
+      variables={this.state}>
+        {(insert_student) => (
+          <form
+            onSubmit={async e => {
+              // Stop the form from submitting
+              e.preventDefault();
+              // call the mutation
+              const res = await insert_student();
+              console.log(res);
+            }}
+          >
+            <fieldset>
+              <label htmlFor="firstName">
+                First Name
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="First Name"
+                  required
+                  value={this.state.firstName}
+                  onChange={this.handleChange}
+                />
+              </label>
 
-const FormText = props => 
-    <Text {...props} 
-    fontFamily="system-ui"
-    fontSize={1} 
-    color="blue0"
-    p='10px'
-    />;
+              <label htmlFor="lastName">
+                Last Name
+                <input
+                  type="textr"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Last Name"
+                  required
+                  value={this.state.lastName}
+                  onChange={this.handleChange}
+                />
+              </label>
 
-const FormButton = props =>
-    <Button {...props}
-    />;
+              <label htmlFor="email">
+                Email
+                <textarea
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <button type="submit">Submit</button>
+            </fieldset>
+          </form>
+        )}
+      </Mutation>
+    );
+  }
+}
 
-    const AddStudent: React.SFC = () => {
-
-        return (
-            <>         
-                <FormContainer>
-                    <Box>   
-                        <HeaderText>Please Enter Student Information</HeaderText>
-                    </Box>
-                    <Flex
-                        justifyContent='left'
-                    >
-                        <InputDiv>
-                            <FormText>First Name</FormText>
-                            <FormText>Last Name</FormText>
-                            <FormText>Email</FormText>
-                        </InputDiv>
-                        <InputDiv>
-                            {/* input first name */}
-                            <InputArea /> 
-                            {/* input last name */}
-                            <InputArea />
-                            {/* input email */}
-                            <InputArea />
-                        </InputDiv>
-                    </Flex>
-                    <Flex
-                        justifyContent = 'flex-end'
-                    >
-                        <FormButton variant = 'primary'>
-                                Submit
-                        </FormButton>
-                    </Flex>
-                </FormContainer>
-            </>
-        );
-    };
-    
-    export default AddStudent;
+export default AddStudent;
+export { ADD_STUDENT_MUTATION };
