@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import NavBar from "./Navbar/NavBar";
-import SideBar from "./sidebar/sidebar";
+import NavBar from "./NavBar/NavBar";
+import SideBar from "./SideBar/SideBar";
 
 const Page = styled.div`
 	background: #f4f4f4;
@@ -8,7 +8,7 @@ const Page = styled.div`
   min-height: 100vh;
 `;
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <>
     <Page>
       <NavBar />
@@ -17,3 +17,5 @@ export default ({ children }) => (
     </Page>
   </>
 );
+
+export default Layout
