@@ -42,6 +42,6 @@ export const getUserFromServerCookie = (req) => {
   return jwtDecode(jwt)
 }
 
-export const getUserFromLocalCOokie = () => {
+export const getUserFromLocalCookie = () => {
   return Cookie.getJSON('user')
 }
