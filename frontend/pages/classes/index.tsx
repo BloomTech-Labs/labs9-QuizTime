@@ -34,7 +34,7 @@ export default () => (
 					if (error) return <p>{error.message}</p>;
 					if (loading) return <p>...loading</p>;
 					if (data) {
-						return data.class.map(className => <ClassBox className={className} />);
+						return data.class.map(c => <ClassBox key={c.id} className={c} />);
 					}
 				}}
 			</Query>
