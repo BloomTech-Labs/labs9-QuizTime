@@ -2,42 +2,67 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const ADD_STUDENT_MUTATION = gql`
-  mutation ADD_STUDENT_MUTATION(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $classId: Int!
-  ) {
-    insert_student(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      classId: $classId
-    ) {
-      id
-    }
-  }
-`;
+// const ADD_STUDENT_MUTATION = gql`
+// mutation insert_student {
+//     insert_student(
+//       objects:[
+//         {
+//           first_name: this.state.firstName,
+//           last_name: this.state.lastName,
+//           email: this.state.email,
+//           class_id: 1,
+//         }
+//       ]  
+//     ){
+//       returning{
+//         id
+//       }
+//     }
+//   }
+// `;
 
 class AddStudent extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    email: '',
+    firstName: "a",
+    lastName: "b",
+    email: "c",
+    classId: 1,
   };
 
   handleChange = e => {
     const { name, type, value } = e.target;
+    console.log(event.target)
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
 
+  generateMutation = () => {
+      return(
+        gql`
+        mutation insert_student {
+            insert_student(
+            objects:[
+                    {
+                    first_name: ${this.state.firstName},
+                    last_name: ${this.state.lastName},
+                    email: ${this.state.email},
+                    class_id: 1,
+                    }
+                ]  
+                ){
+                returning{
+                    id
+                }
+            }
+        }
+    `)
+}
+
   render() {
     return (
-      <Mutation mutation={ADD_STUDENT_MUTATION} 
-      variables={this.state}>
-        {(insert_student) => (
+      <Mutation mutation={this.generateMutation()}>
+        {(insert_student, { error, loading, data }) => (
+        <>
           <form
             onSubmit={async e => {
               // Stop the form from submitting
@@ -85,9 +110,26 @@ class AddStudent extends Component {
                   onChange={this.handleChange}
                 />
               </label>
+            
+              <label htmlFor="class">
+                Class
+                <textarea
+                  id="classId"
+                  name="classId"
+                  placeholder="Class Id"
+                  required
+                  value={this.state.classId}
+                  onChange={this.handleChange}
+                />
+              </label>
               <button type="submit">Submit</button>
             </fieldset>
           </form>
+            {/* render errors, loading, or data */}
+            {error && (<p> {error.message} </p>) }  
+            {loading && (<p> ...loading </p>) } 
+            {data && (<p> successfully created student with id of {data.id}</p>)}
+          </>
         )}
       </Mutation>
     );
@@ -95,4 +137,3 @@ class AddStudent extends Component {
 }
 
 export default AddStudent;
-export { ADD_STUDENT_MUTATION };
