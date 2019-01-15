@@ -7,7 +7,7 @@ class TakeMoney extends React.Component {
       method: 'POST',
       body: JSON.stringify(token),
     })
-    console.log('response',response)
+    console.log('response', response)
   };
 
 
