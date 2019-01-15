@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Box, Text } from "@rebass/emotion";
+import Link from "next/link";
 
 const BoxHolder = styled(Box)`
   border-bottom: 10px solid #ffe88c; 
@@ -42,7 +43,9 @@ const ClassBox: React.SFC<{ className: object }> = ({className }) => {
                 number of students in the class, the average grade of the class
                 and the number of quizzes the class has and will take */}
           <Emblem />
+          <Link href={`/classes/class?title=${className.id}`}>
           <BoxText>{className.name}</BoxText>
+          </Link>
       </BoxHolder>
     </>
   );

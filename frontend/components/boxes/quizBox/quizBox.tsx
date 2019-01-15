@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import { Box, Text } from "@rebass/emotion";
 
 const BoxHolder = styled(Box)`
@@ -42,7 +43,9 @@ const QuizBox: React.SFC<{ quiz: object }> = ({ quiz }) => {
 		<>
 			<BoxHolder>
 				<Emblem />
+				<Link href={`/quizzes/quiz?title=${quiz.id}`}>
 				<BoxText>{quiz.name}</BoxText>
+				</Link>
 			</BoxHolder>
 		</>
 	);

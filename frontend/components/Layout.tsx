@@ -9,7 +9,6 @@ const Page = styled.div`
   min-height: 100vh;
   display: flex;
 `;
-
 const MainContent = styled.div`
   width: 100%;
 `
