@@ -1,19 +1,27 @@
 import styled from "@emotion/styled";
-import NavBar from "./Navbar/NavBar";
-import SideBar from "./sidebar/sidebar";
+import NavBar from "./NavBar/NavBar";
+import SideBar from './SideBar/SideBar'
+import Meta from '../components/Meta';
 
 const Page = styled.div`
 	background: #f4f4f4;
 	width: 100%;
   min-height: 100vh;
+  display: flex;
 `;
 
-export default ({ children }) => (
-  <>
-    <Page>
+const MainContent = styled.div`
+  width: 100%;
+`
+const Layout = ({ children }) => (
+  <Page>
+    <Meta />
+    <SideBar />
+    <MainContent>
       <NavBar />
-      <SideBar />
       {children}
-    </Page>
-  </>
+    </MainContent>
+  </Page>
 );
+
+export default Layout
