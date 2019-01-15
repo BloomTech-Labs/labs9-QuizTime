@@ -3,7 +3,8 @@ import ApolloClient from "apollo-boost";
 
 function createClient() {
 	return new ApolloClient({
-		uri: "https://quiztime-hasura.herokuapp.com/v1alpha1/graphql"
+		uri: "https://quiztime-hasura.herokuapp.com/v1alpha1/graphql",
+    headers: { 'X-Hasura-Access-Key': 'lambdalabsquiztime' }
 	});
 }
 
