@@ -6,7 +6,7 @@ import AddBox from "../components/boxes/addBox/addBox";
 
 const ALL_CLASSES_QUERY = gql`
 	query ALL_CLASSES_QUERY {
-		class{
+		class {
 			id
 			name
 		}
@@ -18,26 +18,27 @@ const CardHolder = styled.div`
 `;
 
 const Holder = styled.div`
-	width: 1060px;
 	height: auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
 `;
 
-export default () => (
-	<CardHolder>
-		<Holder>
-			<AddBox />
-			<Query query={ALL_CLASSES_QUERY}>
-				{({ loading, error, data }) => {
-					if (error) return <p>{error.message}</p>;
-					if (loading) return <p>...loading</p>;
-					if (data) {
-						return data.class.map(className => <ClassBox className={className} />);
-					}
-				}}
-			</Query>
-		</Holder>
-	</CardHolder>
+const Classes = () => (
+  <CardHolder>
+    <Holder>
+      <AddBox />
+      <Query query={ALL_CLASSES_QUERY}>
+        {({ loading, error, data }) => {
+          if (error) return <p>{error.message}</p>;
+          if (loading) return <p>...loading</p>;
+          if (data) {
+            return data.class.map(c => <ClassBox key={c.id} className={c} />);
+          }
+        }}
+      </Query>
+    </Holder>
+  </CardHolder>
 );
+
+export default Classes

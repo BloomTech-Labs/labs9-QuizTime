@@ -7,10 +7,6 @@ const SideBarObj = styled(Box)`
   min-height: 100vh;
 	width: 100px;
 	background: #152338;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
 	display: flex;
 	flex-direction: column;
 `;
@@ -29,25 +25,26 @@ const BoxText = styled.a`
 
 const SideBar: React.SFC = () => {
   return (
-    <>
-      <SideBarObj>
-        <Link href='/' prefetch>
-          <BoxText>QuizTime</BoxText>
-        </Link>
-        <Link href='/quizzes' prefetch>
-          <BoxText>quizzes</BoxText>
-        </Link>
-        <Link href='/classes' prefetch>
-          <BoxText>classes</BoxText>
-        </Link>
-        <Link href='/billing' prefetch>
-          <BoxText>billing</BoxText>
-        </Link>
-        <Link href='/settings' prefetch>
-          <BoxText>settings</BoxText>
-        </Link>
-      </SideBarObj>
-    </>
+    <SideBarObj>
+      <Link href='/' prefetch>
+        <BoxText>QuizTime</BoxText>
+      </Link>
+      <Link href='/quizzes' prefetch>
+        <BoxText>quizzes</BoxText>
+      </Link>
+      <Link href='/classes' prefetch>
+        <BoxText>classes</BoxText>
+      </Link>
+      <Link href='/billing' prefetch>
+        <BoxText>billing</BoxText>
+      </Link>
+      <Link href='/settings' prefetch>
+        <BoxText>settings</BoxText>
+      </Link>
+	  <Link href='/testpage' prefetch>
+        <BoxText>testpage</BoxText>
+      </Link>
+    </SideBarObj>
   );
 };
 export default SideBar;

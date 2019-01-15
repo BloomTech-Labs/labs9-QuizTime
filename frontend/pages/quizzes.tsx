@@ -19,26 +19,27 @@ const CardHolder = styled.div`
 `;
 
 const Holder = styled.div`
-	width: 1060px;
 	height: auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
 `;
 
-export default () => (
-	<CardHolder>
-		<Holder>
-			<AddBox />
-			<Query query={ALL_QUIZZES_QUERY}>
-				{({ loading, error, data }) => {
-					if (error) return <p>{error.message}</p>;
-					if (loading) return <p>...loading</p>;
-					if (data) {
-						return data.quiz.map(quiz => <QuizBox quiz={quiz} />);
-					}
-				}}
-			</Query>
-		</Holder>
-	</CardHolder>
+const Quizzes = () => (
+  <CardHolder>
+    <Holder>
+      <AddBox />
+      <Query query={ALL_QUIZZES_QUERY}>
+        {({ loading, error, data }) => {
+          if (error) return <p>{error.message}</p>;
+          if (loading) return <p>...loading</p>;
+          if (data) {
+            return data.quiz.map(q => <QuizBox key={q.id} quiz={q} />);
+          }
+        }}
+      </Query>
+    </Holder>
+  </CardHolder>
 );
+
+export default Quizzes
