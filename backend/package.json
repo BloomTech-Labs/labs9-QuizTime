@@ -9,6 +9,8 @@
     "dotenv": "^6.2.0",
     "graphql-request": "^1.8.2",
     "micro": "^9.3.3",
+    "package.json": "^2.0.1",
+    "sendgrid": "^5.2.3",
     "stripe": "^6.20.0"
   }
 }
