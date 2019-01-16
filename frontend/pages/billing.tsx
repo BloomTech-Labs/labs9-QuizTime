@@ -3,6 +3,7 @@ import TakeMoney from '../components/Billing/TakeMoney'
 
 const BillingHolder = styled.div`
 	display: flex;
+  flex-direction: column;
   width: 100%
 `;
 
