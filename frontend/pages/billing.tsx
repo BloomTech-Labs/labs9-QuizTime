@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
+import TakeMoney from '../components/Billing/TakeMoney'
 
 const BillingHolder = styled.div`
 	display: flex;
+  flex-direction: column;
   width: 100%
 `;
 
 const Billing = () => (
   <BillingHolder>
-    <p>Where is this</p>
-    <p>why don't I this rendering</p>
-    billing
+    <TakeMoney />
   </BillingHolder>
 );
 

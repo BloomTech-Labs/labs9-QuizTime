@@ -1,4 +1,4 @@
-const { request } = require("graphql-request");
+const { request, GraphQLClient } = require('graphql-request')
 
 // grabs 5 students
 const query = `
@@ -9,7 +9,7 @@ const query = `
       email
     }
   }
-`;
+`
 
 // creates new teacher with the following attributes
 const mutation = `
@@ -24,17 +24,23 @@ const mutation = `
     }
   }
 }
-`;
+`
 
 // a single async function is exposed to @now/node
 // as a microservice.
 
 // https://zeit.co/docs/v2/deployments/official-builders/node-js-now-node/
 
+const client = new GraphQLClient(
+  'https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
+  {
+    headers: {
+      'X-Hasura-Access-Key': 'lambdaschoolquiztime'
+    }
+  }
+)
+
 module.exports = async (req, res) => {
-  const data = await request(
-    "https://quiztime-hasura.herokuapp.com/v1alpha1/graphql",
-    mutation
-  );
-  return data;
-};
+  const data = await client.request(query)
+  return data
+}

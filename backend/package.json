@@ -6,7 +6,9 @@
     "micro-dev": "^3.0.0"
   },
   "dependencies": {
+    "dotenv": "^6.2.0",
     "graphql-request": "^1.8.2",
-    "micro": "^9.3.3"
+    "micro": "^9.3.3",
+    "stripe": "^6.20.0"
   }
 }
