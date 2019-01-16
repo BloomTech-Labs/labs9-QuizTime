@@ -1,6 +1,8 @@
 {
+  "main": "index.js",
   "scripts": {
-    "dev": "micro-dev server.js"
+    "dev": "micro-dev server.js",
+    "start": "micro"
   },
   "devDependencies": {
     "micro-dev": "^3.0.0"
@@ -9,6 +11,7 @@
     "dotenv": "^6.2.0",
     "graphql-request": "^1.8.2",
     "micro": "^9.3.3",
+    "micro-cors": "^0.1.1",
     "stripe": "^6.20.0"
   }
 }
