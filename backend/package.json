@@ -6,6 +6,7 @@
     "micro-dev": "^3.0.0"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "dotenv": "^6.2.0",
     "graphql-request": "^1.8.2",
     "micro": "^9.3.3",
