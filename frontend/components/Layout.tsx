@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import NavBar from "./NavBar/NavBar";
-import SideBar from './SideBar/SideBar';
+import NavBar from "./Navbar/NavBar";
+import SideBar from './sidebar/sidebar';
 import Meta from '../components/Meta';
 
 const Page = styled.div`
