@@ -16,6 +16,22 @@ const queryTeacherCheck = `
     }
   }
 `
+const mutationTeacherAdd = `
+  mutation insert_teacher{
+    insert_teacher(
+      objects: [
+        {
+
+        }
+      ]
+    ) {
+      affected_rows
+      returning {
+        id
+      }
+    }
+  }
+`
 
 export default class SignedIn extends React.Component {
   componentDidMount() {
@@ -27,13 +43,25 @@ export default class SignedIn extends React.Component {
       }
 
       setToken(result.idToken, result.accessToken)
+
       const client = new GraphQLClient(endpoint, {
         headers: {
           'Authorization': `Bearer ${result.idToken}`
         }
       })
+
       console.log(client)
-      client.request(queryTeacherCheck).then(({ teacher }) => console.log(teacher))
+      client.request(queryTeacherCheck).then(({ teacher }) => {
+        if(teacher.length > 0){
+          Router.push('/home')
+        }else{
+          client.request(mutationTeacherAdd).then(({ id, affected_rows }) => {
+            console.log(id)
+            console.log(affected_rows)
+            Router.push('/home')
+          })
+        }
+      })
     })
 
 
