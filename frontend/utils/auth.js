@@ -45,3 +45,11 @@ export const getUserFromServerCookie = (req) => {
 export const getUserFromLocalCookie = () => {
   return Cookie.getJSON('user')
 }
+
+export const getAccessToken = () => {
+  return Cookie.get('accessToken')
+}
+
+export const getIdToken = () => {
+    return Cookie.get('idToken')
+}
