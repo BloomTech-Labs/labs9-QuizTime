@@ -21,13 +21,12 @@ import gql from 'graphql-tag';
 //   }
 // `;
 
-class AddStudent extends Component<{user_id: string}> {
+class AddStudent extends Component {
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    classId: 0,
-    user_id: this.props.user_id
+    classId: 0
   };
 
   handleChange = e => {
@@ -46,8 +45,7 @@ class AddStudent extends Component<{user_id: string}> {
                       first_name: "${this.state.firstName}",
                       last_name: "${this.state.lastName}",
                       email: "${this.state.email}",
-                      class_id: ${this.state.classId},
-                      user_id: "${this.state.user_id}"
+                      class_id: ${this.state.classId}
                     }
                 ]
                 ){
