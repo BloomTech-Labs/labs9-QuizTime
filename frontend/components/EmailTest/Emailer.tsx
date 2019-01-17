@@ -13,8 +13,10 @@ class Emailer extends Component {
 
   sendEmail = _ => {
     const { email } = this.state;
-    fetch(`http://10.0.0.128:50306?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`, {
-      method: 'GET',
+    fetch(`http://localhost:1234`, {
+      method: 'POST',
+      body: JSON.stringify(email),
+      headers:{"Content-Type": "application/json"}
     }) //query string url
       .catch(err => console.error(err))
   }
