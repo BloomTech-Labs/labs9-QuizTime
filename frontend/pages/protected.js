@@ -7,9 +7,9 @@ const Protected = ({ loggedUser }) => (
   <div>
     <div>You should only see this if signed in: {loggedUser.sub}</div>
     <h2>Add Class</h2>
-    <AddClass user_id={loggedUser.sub} />
+    <AddClass />
     <h3>Add Student</h3>
-    <AddStudent user_id={loggedUser.sub} />
+    <AddStudent />
   </div>
 )
 
