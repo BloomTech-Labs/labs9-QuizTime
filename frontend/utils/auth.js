@@ -18,6 +18,16 @@ export const setToken = (idToken, accessToken) => {
   Cookie.set('accessToken', accessToken)
 }
 
+// export const setToken = new Promise((resolve, reject) => {
+//   if(!process.browser) {
+//     return
+//   }
+//   Cookie.set('user', jwtDecode(idToken))
+//   Cookie.set('idToken', idToken)
+//   Cookie.set('accessToken', accessToken)
+//   resolve(idToken);
+// })
+
 export const unsetToken = () => {
   if(!process.browser) {
     return
@@ -44,4 +54,12 @@ export const getUserFromServerCookie = (req) => {
 
 export const getUserFromLocalCookie = () => {
   return Cookie.getJSON('user')
+}
+
+export const getAccessToken = () => {
+  return Cookie.get('accessToken')
+}
+
+export const getIdToken = () => {
+    return Cookie.get('idToken')
 }
