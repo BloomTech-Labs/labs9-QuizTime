@@ -2,14 +2,13 @@ require('dotenv').config()
 import micro, { json, send, sendError } from "micro";
 const sgMail = require('@sendgrid/mail');
 
-const emailed = require('../emailed')
+const post = require('../emailed')
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-module.exports = emailed(async(req, res) => {
+module.exports = post(async(req, res) => {
         //Get Variables from query string in the search bar
         const { recipient, sender, topic, text } = req.query;
-
         //Sendgrid Data Requirements
         const msg = {
             to: recipient, 
@@ -17,7 +16,7 @@ module.exports = emailed(async(req, res) => {
             subject: topic,
             text: text,
         }
-        
         sgMail.send(msg)
-        send(res, 200)
+        console.log(msg)
+        send(res, 200, msg)
 })

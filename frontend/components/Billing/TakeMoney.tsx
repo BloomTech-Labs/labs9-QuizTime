@@ -9,7 +9,7 @@ class TakeMoney extends React.Component {
     token.auth_email = this.props.loggedUser.email;
     console.log('\n token:', token);
     let response = await fetch('http://localhost:49249/api/stripe', {
-      method: 'POST',
+      method: 'GET',
       body: JSON.stringify(token),
     });
     let data = await response.json();

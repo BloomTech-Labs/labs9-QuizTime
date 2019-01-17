@@ -17,9 +17,13 @@ module.exports = exports = function (fn) {
     const { method } = req
     if (method === 'GET') {
       return {
-        message: 'Emailed sent',
-        timestamp: new Date().toISOString()
+        message: 'Email',
       }
     }
+    if (method === 'POST') {
+        return {
+          message: 'Emailed sent',
+        }
+      }
   }
 }

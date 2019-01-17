@@ -13,7 +13,9 @@ class Emailer extends Component {
 
   sendEmail = _ => {
     const { email } = this.state;
-    fetch(`http://10.0.0.128:50306?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
+    fetch(`http://10.0.0.128:50306?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`, {
+      method: 'GET',
+    }) //query string url
       .catch(err => console.error(err))
   }
 
