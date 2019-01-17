@@ -36,7 +36,7 @@ const client = new GraphQLClient(
   "https://quiztime-hasura.herokuapp.com/v1alpha1/graphql",
   {
     headers: {
-      "X-Hasura-Access-Key": "lambdaschoolquiztime"
+      "X-Hasura-Access-Key": "lambdalabsquiztime"
     }
   }
 );
