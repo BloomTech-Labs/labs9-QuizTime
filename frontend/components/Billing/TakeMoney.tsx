@@ -8,7 +8,7 @@ class TakeMoney extends React.Component {
     //* TEMPORARY until teacher table repopulated with GOOGLE_ID
     token.auth_email = this.props.loggedUser.email;
     console.log("\n token:", token);
-    let response = await fetch("/api/stripe", {
+    let response = await fetch("/api/add-credit", {
       method: "POST",
       body: JSON.stringify(token)
     });

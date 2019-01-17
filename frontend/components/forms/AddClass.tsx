@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
-class AddClass extends Component<{user_id: string}>{
+class AddClass extends Component {
   state = {
-    name: '',
-    user_id: this.props.user_id
+    name: ''
   };
 
   handleChange = e => {
@@ -20,8 +19,7 @@ class AddClass extends Component<{user_id: string}>{
             insert_class(
             objects:[
                     {
-                      name: "${this.state.name}",
-                      user_id: "${this.state.user_id}"
+                      name: "${this.state.name}"
                     }
                 ]
                 ){

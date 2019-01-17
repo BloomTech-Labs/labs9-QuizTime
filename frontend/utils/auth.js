@@ -18,6 +18,16 @@ export const setToken = (idToken, accessToken) => {
   Cookie.set('accessToken', accessToken)
 }
 
+// export const setToken = new Promise((resolve, reject) => {
+//   if(!process.browser) {
+//     return
+//   }
+//   Cookie.set('user', jwtDecode(idToken))
+//   Cookie.set('idToken', idToken)
+//   Cookie.set('accessToken', accessToken)
+//   resolve(idToken);
+// })
+
 export const unsetToken = () => {
   if(!process.browser) {
     return
