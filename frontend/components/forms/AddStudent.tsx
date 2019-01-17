@@ -12,7 +12,7 @@ import gql from 'graphql-tag';
 //           email: this.state.email,
 //           class_id: 1,
 //         }
-//       ]  
+//       ]
 //     ){
 //       returning{
 //         id
@@ -21,18 +21,18 @@ import gql from 'graphql-tag';
 //   }
 // `;
 
-class AddStudent extends Component {
+class AddStudent extends Component<{user_id: string}> {
   state = {
-    firstName: "a",
-    lastName: "b",
-    email: "c",
-    classId: 1,
+    firstName: "",
+    lastName: "",
+    email: "",
+    classId: 0,
+    user_id: this.props.user_id
   };
 
   handleChange = e => {
     const { name, type, value } = e.target;
-    console.log(event.target)
-    const val = type === 'number' ? parseFloat(value) : value;
+    const val = type === 'number' ? parseInt(value) : value;
     this.setState({ [name]: val });
   };
 
@@ -43,12 +43,13 @@ class AddStudent extends Component {
             insert_student(
             objects:[
                     {
-                    first_name: ${this.state.firstName},
-                    last_name: ${this.state.lastName},
-                    email: ${this.state.email},
-                    class_id: 1,
+                      first_name: "${this.state.firstName}",
+                      last_name: "${this.state.lastName}",
+                      email: "${this.state.email}",
+                      class_id: ${this.state.classId},
+                      user_id: "${this.state.user_id}"
                     }
-                ]  
+                ]
                 ){
                 returning{
                     id
@@ -89,7 +90,7 @@ class AddStudent extends Component {
               <label htmlFor="lastName">
                 Last Name
                 <input
-                  type="textr"
+                  type="text"
                   id="lastName"
                   name="lastName"
                   placeholder="Last Name"
@@ -101,7 +102,8 @@ class AddStudent extends Component {
 
               <label htmlFor="email">
                 Email
-                <textarea
+                <input
+                  type="text"
                   id="email"
                   name="email"
                   placeholder="Email"
@@ -110,10 +112,11 @@ class AddStudent extends Component {
                   onChange={this.handleChange}
                 />
               </label>
-            
+
               <label htmlFor="class">
                 Class
-                <textarea
+                <input
+                  type="number"
                   id="classId"
                   name="classId"
                   placeholder="Class Id"
@@ -126,9 +129,9 @@ class AddStudent extends Component {
             </fieldset>
           </form>
             {/* render errors, loading, or data */}
-            {error && (<p> {error.message} </p>) }  
-            {loading && (<p> ...loading </p>) } 
-            {data && (<p> successfully created student with id of {data.id}</p>)}
+            {error && (<p> {error.message} </p>) }
+            {loading && (<p> ...loading </p>) }
+            {data && (<p> successfully created student with id of {data.insert_student.returning[0].id}</p>)}
           </>
         )}
       </Mutation>
