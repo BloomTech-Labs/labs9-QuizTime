@@ -1,7 +1,8 @@
 import { getUserFromLocalCookie } from '../utils/auth'
 
 const Home = ({ query }) => {
-  return(<div>{ JSON.stringify(getUserFromLocalCookie()) }</div>)
+  const user = getUserFromLocalCookie()
+  return(<div>{ `Hello ${user.given_name} ${user.family_name}` }</div>)
 }
 
 Home.getInitialProps = async (context) => {
