@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "graphql-request": "^1.8.2",
+    "micro": "^9.3.3",
+    "stripe": "^6.20.1"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0"
+  }
+}
