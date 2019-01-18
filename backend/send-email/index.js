@@ -1,24 +1,31 @@
-require('dotenv').config()
 const { json, send, run } = require("micro");
-const sgMail = require('@sendgrid/mail');
-const cors = require("micro-cors"); 
+const nm = require("nodemailer");
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+const client = nm.createTransport({
+  service: "SendGrid",
+  auth: {
+    user: process.env.SENDGRID_USERNAME,
+    pass: process.env.SENDGRID_PASSWORD
+  }
+});
 
-const handler = async(req, res) => {
-        //Get Variables from query string in the search bar
-        const { recipient, sender, subject, text } = json(req);
+const handler = async (req, res) => {
+  //Get Variables from query string in the search bar
+  const { recipient, sender, subject, text } = await json(req);
 
-        //Sendgrid Data Requirements
-        const msg = {
-            to: recipient, 
-            from: sender,
-            subject: subject,
-            text: text,
-        }
-        console.log(msg);
-        sgMail.send(msg)
-        send(res, 200)
-}
-module.exports = (req, res) => run(req, res, cors(handler));
-
+  //Sendgrid Data Requirements
+  const msg = {
+    to: recipient,
+    from: sender,
+    subject: subject,
+    text: text
+  };
+  console.log(msg);
+  client.sendMail(msg, (err, info) => {
+    if (err) {
+      console.log("uh oh " + err);
+    }
+    send(res, 200, info);
+  });
+};
+module.exports = (req, res) => run(req, res, handler);

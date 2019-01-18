@@ -21,6 +21,7 @@
     "auth0-js": "^9.9.0",
     "emotion-theming": "^10.0.6",
     "graphql": "^14.0.2",
+    "graphql-request": "^1.8.2",
     "graphql-tag": "^2.10.0",
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
