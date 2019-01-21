@@ -12,6 +12,14 @@ export const Text = system{
     fontFamily: "sans",
     fontWeight: "300"
 */
+/* NAVIGATION COMPONENTS*/
+export const NavBarHolder = props => (
+  <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
+); 
+
+export const SideBarHolder = props => (
+  <F width="100px" bg="blue.2" flexDirection="column" css={{minHeight:"100vh"}} {...props} />
+);
 
 /* CONTAINERS */
 

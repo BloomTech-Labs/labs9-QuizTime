@@ -1,5 +1,9 @@
 import Emailer from "../components/EmailTest/Emailer";
+import Layout from "../components/Layout"; 
 
-const Settings = () => <div><Emailer/></div>;
+const Settings = () =>
+<Layout>
+<div><Emailer/></div>
+</Layout>;
 
 export default Settings
