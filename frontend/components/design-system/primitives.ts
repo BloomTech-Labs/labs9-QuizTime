@@ -5,6 +5,9 @@ import {
   Button as Butt
 } from "@rebass/emotion";
 
+import { space, width, borders, display, fontFamily, fontSize, fontWeight, color } from "styled-system";
+import styled from "@emotion/styled";
+
 /*
 export const Text = system{
     is: "p",
@@ -45,3 +48,35 @@ export const Button = props => <Butt variant="primary" {...props} />;
 export const Avatar = props => (
   <F justifyContent="center" alignItems="center" width="30px" bg="blue.2" m={3} color="white" fontFamily="sans" css={{height:"30px", borderRadius:"50%"}} {...props} />
 )
+
+/* Forms */
+export const StyledForm = styled.form`
+  ${space}
+  ${width}
+  ${borders}
+  ${color}
+`
+export const Form = props => <StyledForm bg="white" {...props} />;
+
+export const StyledInput = styled.input`
+  ${space}
+  ${width}
+  ${borders}
+  ${display}
+`
+export const Input = props => <StyledInput display="block" p={2} my={2} border="none" borderBottom="1px solid red" {...props} />;
+
+export const StyledTextArea = styled.textarea`
+  ${space}
+  ${width}
+  ${borders}
+`
+export const StyledLabel = styled.label`
+  ${space}
+  ${fontFamily}
+  ${fontSize}
+  ${fontWeight}
+`
+export const Label = props => <StyledLabel fontFamily="sans" fontWeight={6} fontSize={0} css={{textTransform: "uppercase"}} {...props} />
+
+// 
