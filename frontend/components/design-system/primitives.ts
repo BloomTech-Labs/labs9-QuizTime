@@ -19,6 +19,10 @@ export const Container = props => (
   <B mx="auto" css={{ maxWidth: "800px" }} {...props} />
 );
 
+export const FullScreenContainer = props => (
+  <F justifyContent="center" alignItems="center" flexDirection="column" width="100vw" css={{height:"100vh"}} {...props} />
+)
+
 /* TYPOGRAPHY */
 export const Text = props => <T fontSize={2} fontFamily="sans" {...props} />;
 
@@ -37,3 +41,7 @@ export const UpperCase = props => (
 );
 
 export const Button = props => <Butt variant="primary" {...props} />;
+
+export const Avatar = props => (
+  <F justifyContent="center" alignItems="center" width="30px" bg="blue.2" m={3} color="white" fontFamily="sans" css={{height:"30px", borderRadius:"50%"}} {...props} />
+)

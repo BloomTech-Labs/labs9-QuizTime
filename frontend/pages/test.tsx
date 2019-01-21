@@ -2,7 +2,7 @@ import {
   Text,
   BoldText,
   UpperCase,
-  Container
+  Container,
 } from "../components/design-system";
 
 import Layout from "../components/Layout";
