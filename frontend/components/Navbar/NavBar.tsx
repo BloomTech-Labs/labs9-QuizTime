@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { Box, Button } from "@rebass/emotion";
 import {Avatar, Text} from "../design-system/primitives";
+import {unsetToken} from "../../utils/auth";
+import {logout} from "../../utils/auth0"; 
 
 const NavBarHolder = styled(Box)`
   display: flex;
@@ -31,7 +33,12 @@ const NavBarItem = styled.a`
 const NavBar: React.SFC = () => {
   return (
     <NavBarHolder>
-      <Button variant="primary">Sign Out</Button>
+      <Button onClick={(event) => {
+        event.preventDefault()
+        unsetToken()
+        logout() 
+        }}
+         variant="primary">Sign Out</Button>
       <Avatar>
         <Text>K</Text>
       </Avatar>
