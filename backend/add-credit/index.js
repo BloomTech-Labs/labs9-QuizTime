@@ -41,6 +41,16 @@ module.exports = (req, res) =>
       })
 
       if (charge.status === 'succeeded') {
+        res.setHeader('Access-Control-Request-Method', 'POST')
+        res.setHeader('Access-Control-Allow-Credentials', 'true')
+        res.setHeader(
+          'Access-Control-Allow-Headers',
+          'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+        )
+        res.setHeader(
+          'Access-Control-Allow-Origin',
+          process.env.STRIPE_ALLOW_DOMAIN
+        )
         const data = await client.request(mutation)
         send(res, 200, data)
       } else {
