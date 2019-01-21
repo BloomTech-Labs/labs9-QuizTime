@@ -14,25 +14,9 @@ module.exports = (req, res) =>
             'X-Hasura-Access-Key': 'lambdalabsquiztime',
             'X-Hasura-Role': 'user',
             'X-Hasura-User-Id': `${token.sub}`
-            // 'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
         }
       )
-      // const mutation = `
-      //   mutation update_teacher {
-      //   update_teacher(
-      //   where: {id: {_eq: "${token.sub}"}},
-      //     _inc: {
-      //       credits: 10,
-      //     }
-      //   ) {
-      //     returning {
-      //       id
-      //       credits
-      //     }
-      //   }
-      // }
-      // `
 
       const mutation = `
         mutation update_teacher {
@@ -63,7 +47,6 @@ module.exports = (req, res) =>
         send(res, 400, { message: 'charge failed to complete' })
       }
     } catch (error) {
-      console.log('\n ERROR', error, '\n')
       send(res, 400, error)
     }
   })
