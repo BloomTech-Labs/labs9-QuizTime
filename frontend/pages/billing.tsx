@@ -10,7 +10,7 @@ const BillingHolder = styled.div`
 
 const Billing = (props) => (
   <BillingHolder>
-    <div>You should only see this if signed in: {props.loggedUser.email}</div>
+    <div>You should only see this if signed in: {props.loggedUser.sub}</div>
     <TakeMoney {...props} />
   </BillingHolder>
 );
