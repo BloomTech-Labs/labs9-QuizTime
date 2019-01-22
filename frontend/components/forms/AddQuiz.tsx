@@ -3,10 +3,10 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Form, Input, Button, Label, Text } from "../design-system";
 
-
-class AddClass extends Component {
+class AddQuiz extends Component {
   state = {
-    name: ''
+    name: '',
+    class_id: 0
   };
 
   handleChange = e => {
@@ -15,65 +15,65 @@ class AddClass extends Component {
   };
 
   generateMutation = () => {
-      return(
-        gql`
-        mutation insert_class {
-            insert_class(
-            objects:[
-                    {
-                      name: "${this.state.name}"
-                    }
-                ]
-                ){
-                returning{
-                    id
-                }
-            }
-        }
-    `)
-}
+    return(
+      gql`
+      mutation insert_quiz {
+          insert_quiz(
+          objects:[
+                  {
+                    name: "${this.state.name}"
+                  }
+              ]
+              ){
+              returning{
+                  id
+              }
+          }
+      }
+  `)
+}  
 
-  render() {
-    return (
-      <Mutation mutation={this.generateMutation()}>
-        {(insert_class, { error, loading, data }) => (
-        <>
-          <Form
+render() {
+    return(
+        <Mutation mutation = {this.generateMutation()}>
+        {(insert_quiz, { error, loading, data }) => (
+            <>
+            <Form
             onSubmit={async e => {
               // Stop the form from submitting
               e.preventDefault();
               // call the mutation
-              const res = await insert_class();
+              const res = await insert_quiz();
               console.log(res);
             }}
-          >
-          <Text>Add a Class</Text>
+            >
+            <Text>Add a Quiz</Text>
+
             <fieldset>
-              <Label htmlFor="name">
-                Class Title
+            <Label htmlFor="name">
+                Quiz Title
                 <Input
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Class Title"
+                  placeholder="Quiz Title"
                   required
                   value={this.state.name}
                   onChange={this.handleChange}
                 />
               </Label>
-
               <Button variant = "primary" type="submit">Submit</Button>
             </fieldset>
           </Form>
             {/* render errors, loading, or data */}
             {error && (<p> {error.message} </p>) }
             {loading && (<p> ...loading </p>) }
-            {data && (<p> successfully created class with id of {data.insert_class.returning[0].id}</p>)}
+            {data && (<p> successfully created quiz with id of {data.insert_quiz.returning[0].id}</p>)}
           </>
         )}
       </Mutation>
-    );
-  }
+        );
+    }
 }
 
-export default AddClass;
+export default AddQuiz;

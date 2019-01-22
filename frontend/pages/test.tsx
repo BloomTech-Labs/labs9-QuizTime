@@ -6,6 +6,9 @@ import {
 } from "../components/design-system";
 
 import Layout from "../components/Layout";
+import AddStudent from "../components/forms/AddStudent";
+import AddClass from "../components/forms/AddClass";
+import AddQuiz from "../components/forms/AddQuiz";
 
 const Test = props => (
   <Layout>
@@ -29,6 +32,9 @@ const Test = props => (
         this should be uppercase
       </UpperCase>
     </Container>
+    <AddStudent />
+    <AddClass />
+    <AddQuiz />
   </Layout>
 );
 

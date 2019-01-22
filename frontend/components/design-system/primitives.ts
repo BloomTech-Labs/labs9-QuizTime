@@ -77,6 +77,7 @@ export const Avatar = props => (
 
 /* Forms */
 export const StyledForm = styled.form`
+  ${display}
   ${space}
   ${width}
   ${borders}
@@ -124,5 +125,3 @@ export const Input = props => (
     {...props}
   />
 );
-
-//
