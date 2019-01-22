@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import StudentsList from "../../components/Students/StudentsList";
 import StudentBar from "../../components/Students/StudentBar";
 import Layout from "../../components/Layout";
+import AddStudent from "../../components/forms/AddStudent";
 
 const ClassPage = ({title}) => {
     const ALL_STUDENTS_QUERY = gql`
@@ -22,6 +23,7 @@ const ClassPage = ({title}) => {
 
   return (
   <Layout>
+    <AddStudent />
   <div>
     <Query query={ALL_STUDENTS_QUERY}>
       {({ loading, error, data }) => {
