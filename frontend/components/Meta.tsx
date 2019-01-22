@@ -5,7 +5,7 @@ const Meta = () => (
     <Head>
       <meta name='viewport' content='width=device-width initial-scale=1' />
       <meta charSet='utf-8' />
-      <script id="stripe-js" src="https://js.stripe.com/v3/" async></script>
+      <script id="stripe-js" src="https://js.stripe.com/v3/"></script>
       <title>QuizTime</title>
     </Head>
     <style jsx='true' global='true'>{`
