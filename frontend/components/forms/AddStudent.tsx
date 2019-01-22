@@ -53,8 +53,6 @@ class AddStudent extends Component {
               console.log(res);
             }}
           >
-            <Text>Add a Student</Text>
-            <fieldset>
               <Label htmlFor="firstName">
                 First Name
                 <Input
@@ -107,7 +105,6 @@ class AddStudent extends Component {
                 />
               </Label>
               <Button variant="primary" type="submit">Submit</Button>
-            </fieldset>
           </Form>
             {/* render errors, loading, or data */}
             {error && (<p> {error.message} </p>) }

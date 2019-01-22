@@ -43,7 +43,7 @@ const StyledText = styled.a`
 `;
 
 export const BoxText = props => (
-  <T StyledText css={{ cursor: "pointer" }} {...props} />
+  <T StyledText p={1} fontFamily="sans" css={{ cursor: "pointer" }} {...props} />
 );
 
 /* CONTAINERS */
@@ -77,6 +77,51 @@ export const BoxHolder = props => (
       borderRadius: "2px"
     }}
     {...props}
+  />
+);
+
+export const StudentElement = props => (
+  <F
+  width="400px"
+  flexDirection="row"
+  justifyContent="spaceEvenly"
+  alignItems="center"
+  p={3}
+  {...props}
+  />
+);
+/* Holders */
+export const SectionContainer = props => (
+  <F
+  justifyContent="center"
+  width="100%"
+  {...props}
+  />
+);
+
+
+export const StudentHolder = props =>(
+  <F
+  width="450px"
+  flexDirection="column"
+  justifyContent="center"
+  alignItems="center"
+  css={{
+    height:"auto"
+  }}
+  {...props}
+  />
+);
+
+export const QuizHolder = props => (
+  <F
+    width="80%"
+    flexWrap="wrap"
+    flexDirection="row"
+    css={{
+      height:"auto",
+      border:"1px solid black",
+    }}
   />
 );
 /*SMALLER COMPONENTS*/
@@ -154,11 +199,17 @@ export const StyledLabel = styled.label`
   ${fontWeight}
 `;
 
-export const Form = props => <StyledForm bg="white" {...props} />;
-
+export const Form = props => (
+  <StyledForm
+    display="flex"
+    flexDirection="row" 
+    justifyContent="spaceEvenly"
+    bg="white" 
+    {...props} 
+    />
+)
 export const Input = props => (
   <StyledInput
-    display="block"
     p={2}
     my={2}
     border="none"

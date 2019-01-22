@@ -1,19 +1,11 @@
-import { Text, Box } from "@rebass/emotion";
-
+import {StudentElement, BoxText} from "../design-system/primitives"; 
 export default ({ id, student }) => (
-    <Box
-        m={5}
-        css={{
-            "&:hover": {
-                border: `1px solid lightgrey`
-            }
-        }}
-    >
-        <Text color="red1" py={2} fontWeight={700} fontFamily="sans">
+    <StudentElement>
+        <BoxText>
             {student.first_name} {student.last_name}
-        </Text>
-        <Text fontSize={0} fontFamily="mono">
+        </BoxText>
+        <BoxText>
             {student.email}
-        </Text>
-    </Box>
+        </BoxText>
+    </StudentElement>
 );
