@@ -91,13 +91,14 @@ export const StudentElement = props => (
   />
 );
 /* Holders */
-export const StudentContainer = props => (
+export const SectionContainer = props => (
   <F
   justifyContent="center"
   width="100%"
   {...props}
   />
 );
+
 
 export const StudentHolder = props =>(
   <F
@@ -111,6 +112,19 @@ export const StudentHolder = props =>(
   {...props}
   />
 );
+
+export const QuizHolder = props => (
+  <F
+    width="80%"
+    flexWrap="wrap"
+    flexDirection="row"
+    css={{
+      height:"auto",
+      border:"1px solid black",
+    }}
+  />
+);
+
 /*SMALLER COMPONENTS*/
 
 export const Emblem = props => (
@@ -186,11 +200,17 @@ export const StyledLabel = styled.label`
   ${fontWeight}
 `;
 
-export const Form = props => <StyledForm bg="white" {...props} />;
-
+export const Form = props => (
+  <StyledForm
+    display="flex"
+    flexDirection="row" 
+    justifyContent="spaceEvenly"
+    bg="white" 
+    {...props} 
+    />
+)
 export const Input = props => (
   <StyledInput
-    display="block"
     p={2}
     my={2}
     border="none"
