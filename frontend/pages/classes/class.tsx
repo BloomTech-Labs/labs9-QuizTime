@@ -2,7 +2,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentsList from "../../components/Students/StudentsList";
 import StudentBar from "../../components/Students/StudentBar";
-
+import Layout from "../../components/Layout";
 
 const ClassPage = ({title}) => {
     const ALL_STUDENTS_QUERY = gql`
@@ -21,6 +21,7 @@ const ClassPage = ({title}) => {
 `;
 
   return (
+  <Layout>
   <div>
     <Query query={ALL_STUDENTS_QUERY}>
       {({ loading, error, data }) => {
@@ -39,6 +40,7 @@ const ClassPage = ({title}) => {
       }}
     </Query>
   </div>
+  </Layout>
   )
 };
 ClassPage.getInitialProps = async function(context) {

@@ -2,8 +2,8 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import ClassBox from "../../components/boxes/classBox/classBox";
-import AddBox from "../../components/boxes/addBox/addBox";
 import Layout from "../../components/Layout";
+import AddClass from "../../components/forms/AddClass";
 
 const ALL_CLASSES_QUERY = gql`
 	query ALL_CLASSES_QUERY {
@@ -27,9 +27,9 @@ const Holder = styled.div`
 
 const Classes = () => (
 <Layout>
+  <AddClass />
   <CardHolder>
     <Holder>
-      <AddBox />
       <Query query={ALL_CLASSES_QUERY} >
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
