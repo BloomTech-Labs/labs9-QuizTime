@@ -1,26 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Form, Input, Button, Label } from "../design-system";
-
-// const ADD_STUDENT_MUTATION = gql`
-// mutation insert_student {
-//     insert_student(
-//       objects:[
-//         {
-//           first_name: this.state.firstName,
-//           last_name: this.state.lastName,
-//           email: this.state.email,
-//           class_id: 1,
-//         }
-//       ]
-//     ){
-//       returning{
-//         id
-//       }
-//     }
-//   }
-// `;
+import { Form, Input, Button, Label, Text } from "../design-system";
 
 class AddStudent extends Component {
   state = {
@@ -72,6 +53,7 @@ class AddStudent extends Component {
               console.log(res);
             }}
           >
+            <Text>Add a Student</Text>
             <fieldset>
               <Label htmlFor="firstName">
                 First Name
