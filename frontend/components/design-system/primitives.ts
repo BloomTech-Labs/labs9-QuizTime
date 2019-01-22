@@ -24,6 +24,27 @@ export const Text = system{
     fontFamily: "sans",
     fontWeight: "300"
 */
+/* NAVIGATION COMPONENTS*/
+export const NavBarHolder = props => (
+  <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
+);
+
+export const SideBarHolder = props => (
+  <F
+    width="100px"
+    bg="blue.2"
+    flexDirection="column"
+    css={{ minHeight: "100vh" }}
+    {...props}
+  />
+);
+const StyledText = styled.a`
+  ${fontSize}
+`;
+
+export const BoxText = props => (
+  <T StyledText css={{ cursor: "pointer" }} {...props} />
+);
 
 /* CONTAINERS */
 
@@ -42,6 +63,36 @@ export const FullScreenContainer = props => (
   />
 );
 
+export const BoxHolder = props => (
+  <F
+    width="200px"
+    m={1}
+    justifyContent="center"
+    alignItems="center"
+    flexDirection="column"
+    bg="white"
+    css={{
+      height: "200px",
+      borderBottom: "10px solid red.1",
+      borderRadius: "2px"
+    }}
+    {...props}
+  />
+);
+/*SMALLER COMPONENTS*/
+
+export const Emblem = props => (
+  <F
+    justifyContent="center"
+    alignItems="center"
+    bg="#ffe88c"
+    width={70}
+    css={{
+      height: "70px",
+      clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)"
+    }}
+  />
+);
 /* TYPOGRAPHY */
 export const Text = props => <T fontSize={2} fontFamily="sans" {...props} />;
 
@@ -122,6 +173,16 @@ export const Input = props => (
     my={2}
     border="none"
     borderBottom="1px solid red"
+    {...props}
+  />
+);
+
+export const Label = props => (
+  <StyledLabel
+    fontFamily="sans"
+    fontWeight={6}
+    fontSize={0}
+    css={{ textTransform: "uppercase" }}
     {...props}
   />
 );
