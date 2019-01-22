@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Form, Input, Button, Label, Text } from "../design-system";
+
 
 class AddClass extends Component {
   state = {
@@ -36,7 +38,7 @@ class AddClass extends Component {
       <Mutation mutation={this.generateMutation()}>
         {(insert_class, { error, loading, data }) => (
         <>
-          <form
+          <Form
             onSubmit={async e => {
               // Stop the form from submitting
               e.preventDefault();
@@ -45,23 +47,24 @@ class AddClass extends Component {
               console.log(res);
             }}
           >
+          <Text>Add a Class</Text>
             <fieldset>
-              <label htmlFor="name">
-                First Name
-                <input
+              <Label htmlFor="name">
+                Class Title
+                <Input
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Class Name"
+                  placeholder="Class Title"
                   required
                   value={this.state.name}
                   onChange={this.handleChange}
                 />
-              </label>
+              </Label>
 
-              <button type="submit">Submit</button>
+              <Button variant = "primary" type="submit">Submit</Button>
             </fieldset>
-          </form>
+          </Form>
             {/* render errors, loading, or data */}
             {error && (<p> {error.message} </p>) }
             {loading && (<p> ...loading </p>) }

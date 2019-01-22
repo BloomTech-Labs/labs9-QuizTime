@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Form, Input, Button, Label } from "../design-system";
+import { Form, Input, Button, Label, Text } from "../design-system";
 
 class AddStudent extends Component {
   state = {
@@ -53,6 +53,7 @@ class AddStudent extends Component {
               console.log(res);
             }}
           >
+            <Text>Add a Student</Text>
             <fieldset>
               <Label htmlFor="firstName">
                 First Name
