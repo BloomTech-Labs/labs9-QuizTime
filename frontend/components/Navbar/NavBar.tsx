@@ -1,6 +1,9 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Box, Button } from "@rebass/emotion";
+import {Avatar, Text} from "../design-system/primitives";
+import {unsetToken} from "../../utils/auth";
+import {logout} from "../../utils/auth0"; 
 
 const NavBarHolder = styled(Box)`
   display: flex;
@@ -16,22 +19,28 @@ const NavBarItem = styled.a`
   font-family: "system-ui";
   color: white;
 `;
-const Avatar = styled.div`
-  margin: 15px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #152338;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+// const Avatar = styled.div`
+//   margin: 15px;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+//   background: #152338;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
 const NavBar: React.SFC = () => {
   return (
     <NavBarHolder>
-      <Button variant="primary">Sign Out</Button>
+      <Button onClick={(event) => {
+        event.preventDefault()
+        unsetToken()
+        logout() 
+        }}
+         variant="primary">Sign Out</Button>
       <Avatar>
-        <NavBarItem>K</NavBarItem>
+        <Text>K</Text>
       </Avatar>
     </NavBarHolder>
   );
