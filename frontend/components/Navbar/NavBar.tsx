@@ -1,18 +1,18 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Box, Button } from "@rebass/emotion";
-import {Avatar, Text} from "../design-system/primitives";
+import {Avatar, Text, NavBarHolder} from "../design-system/primitives";
 import {unsetToken} from "../../utils/auth";
 import {logout} from "../../utils/auth0"; 
 
-const NavBarHolder = styled(Box)`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background: #e16973;
-  margin-bottom: 5px;
-  border-bottom: 10px solid #ea969d;
-`;
+// const NavBarHolder = styled(Box)`
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+//   background: #e16973;
+//   margin-bottom: 5px; 
+//   border-bottom: 10px solid #ea969d;
+// `;
 const NavBarItem = styled.a`
   padding: 20px;
   cursor: pointer;
