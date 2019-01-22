@@ -38,14 +38,12 @@ export const SideBarHolder = props => (
     {...props}
   />
 );
+const StyledText = styled.a`
+  ${fontSize}
+`
 
-export const BoxText = props => (
-  <T
-    p={3}
-    fontFamily="sans"
-    {...props}
-  />
-)
+export const BoxText = props => <T StyledText css={{cursor:"pointer"}}{...props}/>
+
 /* CONTAINERS */
 
 export const Container = props => (
