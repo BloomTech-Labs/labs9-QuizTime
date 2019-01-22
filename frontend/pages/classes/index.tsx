@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import ClassBox from "../../components/boxes/classBox/classBox";
 import Layout from "../../components/Layout";
+import securePage from '../../hocs/securePage'
 import AddClass from "../../components/forms/AddClass";
 
 const ALL_CLASSES_QUERY = gql`
@@ -44,4 +45,4 @@ const Classes = () => (
 </Layout>
 );
 
-export default Classes
+export default securePage(Classes)

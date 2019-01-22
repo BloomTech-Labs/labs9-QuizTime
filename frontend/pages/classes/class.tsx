@@ -1,6 +1,7 @@
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
+import securePage from '../../hocs/securePage'
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
 import {StudentHolder, SectionContainer, Text, QuizHolder} from "../../components/design-system/primitives";
@@ -55,4 +56,4 @@ ClassPage.getInitialProps = async function(context) {
   const { title } = context.query;
   return { title };
 };
-export default ClassPage;
+export default securePage(ClassPage);
