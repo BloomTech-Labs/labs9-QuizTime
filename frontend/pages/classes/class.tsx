@@ -2,6 +2,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentsList from "../../components/Students/StudentsList";
 import StudentBar from "../../components/Students/StudentBar";
+import securePage from '../../hocs/securePage'
 
 
 const ClassPage = ({title}) => {
@@ -45,4 +46,4 @@ ClassPage.getInitialProps = async function(context) {
   const { title } = context.query;
   return { title };
 };
-export default ClassPage;
+export default securePage(ClassPage);
