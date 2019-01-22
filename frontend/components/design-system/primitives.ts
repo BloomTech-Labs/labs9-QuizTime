@@ -43,7 +43,7 @@ const StyledText = styled.a`
 `;
 
 export const BoxText = props => (
-  <T StyledText css={{ cursor: "pointer" }} {...props} />
+  <T StyledText p={1} fontFamily="sans" css={{ cursor: "pointer" }} {...props} />
 );
 
 /* CONTAINERS */
@@ -86,17 +86,28 @@ export const StudentElement = props => (
   flexDirection="row"
   justifyContent="spaceEvenly"
   alignItems="center"
+  p={3}
   {...props}
   />
 );
 /* Holders */
+export const StudentContainer = props => (
+  <F
+  justifyContent="center"
+  width="100%"
+  {...props}
+  />
+);
 
 export const StudentHolder = props =>(
   <F
   width="450px"
   flexDirection="column"
   justifyContent="center"
-  css={{height:"auto"}}
+  alignItems="center"
+  css={{
+    height:"auto"
+  }}
   {...props}
   />
 );
