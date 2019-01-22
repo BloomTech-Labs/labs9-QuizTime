@@ -156,16 +156,6 @@ export const StyledLabel = styled.label`
 
 export const Form = props => <StyledForm bg="white" {...props} />;
 
-export const Label = props => (
-  <StyledLabel
-    fontFamily="sans"
-    fontWeight={6}
-    fontSize={0}
-    css={{ textTransform: "uppercase" }}
-    {...props}
-  />
-);
-
 export const Input = props => (
   <StyledInput
     display="block"
