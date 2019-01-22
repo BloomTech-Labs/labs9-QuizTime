@@ -1,12 +1,13 @@
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
-import ClassBox from "../components/boxes/classBox/classBox";
-import AddBox from "../components/boxes/addBox/addBox";
+import QuizBox from "../../components/boxes/quizBox/quizBox";
+import AddBox from "../../components/boxes/addBox/addBox";
 
-const ALL_CLASSES_QUERY = gql`
-	query ALL_CLASSES_QUERY {
-		class {
+
+const ALL_QUIZZES_QUERY = gql`
+	query ALL_QUIZZES_QUERY {
+		quiz {
 			id
 			name
 		}
@@ -24,16 +25,16 @@ const Holder = styled.div`
 	justify-content: flex-end;
 `;
 
-const Classes = () => (
+const Quizzes = () => (
   <CardHolder>
     <Holder>
       <AddBox />
-      <Query query={ALL_CLASSES_QUERY}>
+      <Query query={ALL_QUIZZES_QUERY}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
           if (loading) return <p>...loading</p>;
           if (data) {
-            return data.class.map(c => <ClassBox key={c.id} className={c} />);
+            return data.quiz.map(q => <QuizBox key={q.id} quiz={q} />);
           }
         }}
       </Query>
@@ -41,4 +42,4 @@ const Classes = () => (
   </CardHolder>
 );
 
-export default Classes
+export default Quizzes

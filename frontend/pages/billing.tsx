@@ -1,16 +1,18 @@
 import styled from "@emotion/styled";
+import TakeMoney from '../components/Billing/TakeMoney'
+import securePage from '../hocs/securePage'
 
 const BillingHolder = styled.div`
 	display: flex;
+  flex-direction: column;
   width: 100%
 `;
 
-const Billing = () => (
+const Billing = (props) => (
   <BillingHolder>
-    <p>Where is this</p>
-    <p>why don't I this rendering</p>
-    billing
+    <div>You should only see this if signed in: {props.loggedUser.email}</div>
+    <TakeMoney {...props} />
   </BillingHolder>
 );
 
-export default Billing
+export default securePage(Billing)

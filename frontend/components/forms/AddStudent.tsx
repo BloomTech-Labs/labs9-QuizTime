@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Form, Input, Button, Label } from "../design-system";
 
 // const ADD_STUDENT_MUTATION = gql`
 // mutation insert_student {
@@ -12,7 +13,7 @@ import gql from 'graphql-tag';
 //           email: this.state.email,
 //           class_id: 1,
 //         }
-//       ]  
+//       ]
 //     ){
 //       returning{
 //         id
@@ -23,16 +24,15 @@ import gql from 'graphql-tag';
 
 class AddStudent extends Component {
   state = {
-    firstName: "a",
-    lastName: "b",
-    email: "c",
-    classId: 1,
+    firstName: "",
+    lastName: "",
+    email: "",
+    classId: 0
   };
 
   handleChange = e => {
     const { name, type, value } = e.target;
-    console.log(event.target)
-    const val = type === 'number' ? parseFloat(value) : value;
+    const val = type === 'number' ? parseInt(value) : value;
     this.setState({ [name]: val });
   };
 
@@ -43,12 +43,12 @@ class AddStudent extends Component {
             insert_student(
             objects:[
                     {
-                    first_name: ${this.state.firstName},
-                    last_name: ${this.state.lastName},
-                    email: ${this.state.email},
-                    class_id: 1,
+                      first_name: "${this.state.firstName}",
+                      last_name: "${this.state.lastName}",
+                      email: "${this.state.email}",
+                      class_id: ${this.state.classId}
                     }
-                ]  
+                ]
                 ){
                 returning{
                     id
@@ -63,7 +63,7 @@ class AddStudent extends Component {
       <Mutation mutation={this.generateMutation()}>
         {(insert_student, { error, loading, data }) => (
         <>
-          <form
+          <Form
             onSubmit={async e => {
               // Stop the form from submitting
               e.preventDefault();
@@ -73,9 +73,9 @@ class AddStudent extends Component {
             }}
           >
             <fieldset>
-              <label htmlFor="firstName">
+              <Label htmlFor="firstName">
                 First Name
-                <input
+                <Input
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -84,12 +84,12 @@ class AddStudent extends Component {
                   value={this.state.firstName}
                   onChange={this.handleChange}
                 />
-              </label>
+              </Label>
 
-              <label htmlFor="lastName">
+              <Label htmlFor="lastName">
                 Last Name
-                <input
-                  type="textr"
+                <Input
+                  type="text"
                   id="lastName"
                   name="lastName"
                   placeholder="Last Name"
@@ -97,11 +97,12 @@ class AddStudent extends Component {
                   value={this.state.lastName}
                   onChange={this.handleChange}
                 />
-              </label>
+              </Label>
 
-              <label htmlFor="email">
+              <Label htmlFor="email">
                 Email
-                <textarea
+                <Input
+                  type="text"
                   id="email"
                   name="email"
                   placeholder="Email"
@@ -109,11 +110,12 @@ class AddStudent extends Component {
                   value={this.state.email}
                   onChange={this.handleChange}
                 />
-              </label>
-            
-              <label htmlFor="class">
+              </Label>
+
+              <Label htmlFor="class">
                 Class
-                <textarea
+                <Input
+                  type="number"
                   id="classId"
                   name="classId"
                   placeholder="Class Id"
@@ -121,14 +123,14 @@ class AddStudent extends Component {
                   value={this.state.classId}
                   onChange={this.handleChange}
                 />
-              </label>
-              <button type="submit">Submit</button>
+              </Label>
+              <Button variant="primary" type="submit">Submit</Button>
             </fieldset>
-          </form>
+          </Form>
             {/* render errors, loading, or data */}
-            {error && (<p> {error.message} </p>) }  
-            {loading && (<p> ...loading </p>) } 
-            {data && (<p> successfully created student with id of {data.id}</p>)}
+            {error && (<p> {error.message} </p>) }
+            {loading && (<p> ...loading </p>) }
+            {data && (<p> successfully created student with id of {data.insert_student.returning[0].id}</p>)}
           </>
         )}
       </Mutation>
