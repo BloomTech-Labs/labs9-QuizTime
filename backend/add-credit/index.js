@@ -7,6 +7,7 @@ module.exports = (req, res) =>
   run(req, res, async (req, res) => {
     try {
       const token = await json(req)
+      console.log('\n SERVER TOKEN: ', token)
       const client = new GraphQLClient(
         'https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
         {
@@ -33,13 +34,14 @@ module.exports = (req, res) =>
         }
         }
       `
+      console.log('\n TOKEN ID', token.id)
       const charge = await stripe.charges.create({
         amount: 1000, //* can be extracted from token
         source: token.id, //* pending transaction id
         currency: 'usd', //* can be extracted from token
         description: 'quiztime charge'
       })
-
+      console.log('\n SERVER CHARGE: ', charge)
       if (charge.status === 'succeeded') {
         res.setHeader('Access-Control-Request-Method', 'POST')
         res.setHeader('Access-Control-Allow-Credentials', 'true')

@@ -9,7 +9,7 @@ class TakeMoney extends React.Component {
     let response = await fetch("http://localhost:57216/api/add-credit", {
       method: "POST",
       body: JSON.stringify(token),
-      credentials: 'include'
+      credentials: 'include',
     });
     //* Micro-service returns updated teacher record to frontend (id & credits)
     let teacher = await response.json();

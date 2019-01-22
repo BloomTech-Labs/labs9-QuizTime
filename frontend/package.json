@@ -15,6 +15,7 @@
     "@emotion/core": "^10.0.6",
     "@emotion/styled": "^10.0.6",
     "@rebass/emotion": "^3.0.0",
+    "@types/react-stripe-elements": "^1.1.10",
     "apollo-boost": "^0.1.23",
     "apollo-client": "^2.4.8",
     "apollo-link-context": "^1.0.12",
@@ -29,7 +30,8 @@
     "react": "^16.7.0-alpha.2",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.7.0-alpha.2",
-    "react-stripe-checkout": "^2.6.3"
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
