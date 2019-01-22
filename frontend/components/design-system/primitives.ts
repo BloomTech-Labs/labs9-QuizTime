@@ -124,7 +124,6 @@ export const QuizHolder = props => (
     }}
   />
 );
-
 /*SMALLER COMPONENTS*/
 
 export const Emblem = props => (
