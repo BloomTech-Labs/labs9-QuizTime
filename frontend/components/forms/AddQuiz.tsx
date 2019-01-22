@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import { Form, Input, Button, Label, Text } from "../design-system";
+import React, { Component } from "react";
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+import { Form, Input, Button, Label, Text, TextArea } from "../design-system";
 
 class AddQuiz extends Component {
   state = {
-    name: '',
-    class_id: 0
+    name: "",
+    questions: [
+      { id: 1, prompt: "", answers: [{ response: "", correct: false }] }
+    ]
   };
 
   handleChange = e => {
@@ -14,9 +16,23 @@ class AddQuiz extends Component {
     this.setState({ [name]: value });
   };
 
+  addQuestion = e => {
+    e.preventDefault();
+    this.setState(s => ({
+      ...s,
+      questions: [
+        ...s.questions,
+        {
+          id: s.questions[s.questions.length - 1]["id"] + 1,
+          prompt: "",
+          answers: [{ response: "", correct: false }]
+        }
+      ]
+    }));
+  };
+
   generateMutation = () => {
-    return(
-      gql`
+    return gql`
       mutation insert_quiz {
           insert_quiz(
           objects:[
@@ -30,50 +46,70 @@ class AddQuiz extends Component {
               }
           }
       }
-  `)
-}  
+  `;
+  };
 
-render() {
-    return(
-        <Mutation mutation = {this.generateMutation()}>
+  render() {
+    const { questions } = this.state;
+    return (
+      <Mutation mutation={this.generateMutation()}>
         {(insert_quiz, { error, loading, data }) => (
-            <>
+          <>
             <Form
-            onSubmit={async e => {
-              // Stop the form from submitting
-              e.preventDefault();
-              // call the mutation
-              const res = await insert_quiz();
-              console.log(res);
-            }}
+              onSubmit={async e => {
+                // Stop the form from submitting
+                e.preventDefault();
+                // call the mutation
+                const res = await insert_quiz();
+                console.log(res);
+              }}
             >
-            <Text>Add a Quiz</Text>
+              <Text>Add a Quiz</Text>
 
-            <fieldset>
-            <Label htmlFor="name">
-                Quiz Title
-                <Input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Quiz Title"
-                  required
-                  value={this.state.name}
-                  onChange={this.handleChange}
-                />
-              </Label>
-              <Button variant = "primary" type="submit">Submit</Button>
-            </fieldset>
-          </Form>
+              <fieldset>
+                <Label htmlFor="name">
+                  Quiz Title
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Quiz Title"
+                    required
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+                </Label>
+                {questions.map(q => (
+                  <div key={q.id}>
+                    <Label htmlFor={`major-question-${q.id}`}>
+                      Major Question {q.id}
+                    </Label>
+                    <TextArea id={`major-question-${q.id}`} />
+                  </div>
+                ))}
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+                <Button variant="success" onClick={this.addQuestion}>
+                  Add Major Question
+                </Button>
+              </fieldset>
+            </Form>
             {/* render errors, loading, or data */}
-            {error && (<p> {error.message} </p>) }
-            {loading && (<p> ...loading </p>) }
-            {data && (<p> successfully created quiz with id of {data.insert_quiz.returning[0].id}</p>)}
+            {error && <p> {error.message} </p>}
+            {loading && <p> ...loading </p>}
+            {data && (
+              <p>
+                {" "}
+                successfully created quiz with id of{" "}
+                {data.insert_quiz.returning[0].id}
+              </p>
+            )}
           </>
         )}
       </Mutation>
-        );
-    }
+    );
+  }
 }
 
 export default AddQuiz;
