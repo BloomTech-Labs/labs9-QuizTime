@@ -5,6 +5,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentsList from "../components/Students/StudentsList";
 import StudentBar from "../components/Students/StudentBar";
+import securePage from '../hocs/securePage'
 
 const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
@@ -41,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default securePage(Home);

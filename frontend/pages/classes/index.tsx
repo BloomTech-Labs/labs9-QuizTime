@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import ClassBox from "../../components/boxes/classBox/classBox";
 import AddBox from "../../components/boxes/addBox/addBox";
 import Layout from "../../components/Layout";
+import securePage from '../../hocs/securePage'
 
 const ALL_CLASSES_QUERY = gql`
 	query ALL_CLASSES_QUERY {
@@ -44,4 +45,4 @@ const Classes = () => (
 </Layout>
 );
 
-export default Classes
+export default securePage(Classes)
