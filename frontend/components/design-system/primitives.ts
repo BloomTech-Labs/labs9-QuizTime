@@ -51,12 +51,13 @@ export const Avatar = props => (
 
 /* Forms */
 export const StyledForm = styled.form`
+  ${display}
   ${space}
   ${width}
   ${borders}
   ${color}
 `
-export const Form = props => <StyledForm bg="white" {...props} />;
+export const Form = props => <StyledForm bg="white" mx={5} {...props} />;
 
 export const StyledInput = styled.input`
   ${space}
@@ -64,7 +65,7 @@ export const StyledInput = styled.input`
   ${borders}
   ${display}
 `
-export const Input = props => <StyledInput display="block" p={2} my={2} border="none" borderBottom="1px solid red" {...props} />;
+export const Input = props => <StyledInput display="block" p={2} m={2} border="none" borderBottom="1px solid black" {...props} />;
 
 export const StyledTextArea = styled.textarea`
   ${space}
