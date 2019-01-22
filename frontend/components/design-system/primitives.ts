@@ -79,6 +79,27 @@ export const BoxHolder = props => (
     {...props}
   />
 );
+
+export const StudentElement = props => (
+  <F
+  width="400px"
+  flexDirection="row"
+  justifyContent="spaceEvenly"
+  alignItems="center"
+  {...props}
+  />
+);
+/* Holders */
+
+export const StudentHolder = props =>(
+  <F
+  width="450px"
+  flexDirection="column"
+  justifyContent="center"
+  css={{height:"auto"}}
+  {...props}
+  />
+);
 /*SMALLER COMPONENTS*/
 
 export const Emblem = props => (

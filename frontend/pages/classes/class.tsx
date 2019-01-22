@@ -4,7 +4,7 @@ import StudentsList from "../../components/Students/StudentsList";
 import StudentBar from "../../components/Students/StudentBar";
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
-
+import StudentHolder from "../../components/design-system/primitives";
 const ClassPage = ({title}) => {
     const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
@@ -24,7 +24,6 @@ const ClassPage = ({title}) => {
   return (
   <Layout>
     <AddStudent />
-  <div>
     <Query query={ALL_STUDENTS_QUERY}>
       {({ loading, error, data }) => {
         if (error) return <p>{error.message}</p>;
@@ -41,7 +40,6 @@ const ClassPage = ({title}) => {
         }
       }}
     </Query>
-  </div>
   </Layout>
   )
 };
