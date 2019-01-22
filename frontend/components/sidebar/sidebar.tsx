@@ -2,14 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { Box } from "@rebass/emotion";
-
-const SideBarObj = styled(Box)`
-  min-height: 100vh;
-	width: 100px;
-	background: #152338;
-	display: flex;
-	flex-direction: column;
-`;
+import {SideBarHolder} from "../design-system/primitives";
 
 const BoxText = styled.a`
 	font-family: "system-ui";
@@ -25,7 +18,7 @@ const BoxText = styled.a`
 
 const SideBar: React.SFC = () => {
   return (
-    <SideBarObj>
+    <SideBarHolder>
       <Link href='/' prefetch>
         <BoxText>QuizTime</BoxText>
       </Link>
@@ -44,7 +37,7 @@ const SideBar: React.SFC = () => {
 	  <Link href='/testpage' prefetch>
         <BoxText>testpage</BoxText>
       </Link>
-    </SideBarObj>
+    </SideBarHolder>
   );
 };
 export default SideBar;
