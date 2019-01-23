@@ -126,6 +126,40 @@ export const QuizHolder = props => (
     }}
   />
 );
+
+export const QuizBox = props => (
+  <F
+  width="200px"
+  flexDirection="column"
+  css={{
+    height: "250px",
+    overflow:"scroll",
+    border:"1px solid black"
+  }}
+  />
+);
+export const QuizBar = props => (
+  <F
+  width="200px"
+  flexDirection="row"
+  css={{
+    height:"auto",
+    border:"1px solid red"
+  }}
+  />
+);
+export const QuizzesAvaliable = props => (
+  <F
+  width="500px"
+  flexDirection="row"
+  flexWrap="wrap"
+  css={{
+    border:"1px solid black",
+    height:"500px",
+    overflow: "scroll"
+  }}
+  />
+)
 /*SMALLER COMPONENTS*/
 
 export const Emblem = props => (
