@@ -89,7 +89,7 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    width="500px"
+    width="550px"
     flexDirection="row"
     justifyContent="spaceEvenly"
     alignItems="center"
@@ -132,7 +132,7 @@ export const QuizBox = props => (
   width="200px"
   flexDirection="column"
   css={{
-    height: "250px",
+    height: "500px",
     overflow:"scroll",
     border:"1px solid black"
   }}

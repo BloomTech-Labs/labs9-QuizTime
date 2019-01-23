@@ -58,6 +58,7 @@ const ClassPage = ({ query: { title } }) => {
             if (error) return <p>{error.message}</p>;
             if (loading) return <p>...loading</p>;
             if (data) {
+              console.log(data);
               return (
                 <StudentHolder>
                   {data.class[0].students.map(student => (
@@ -81,7 +82,6 @@ const ClassPage = ({ query: { title } }) => {
             if(data){
               console.log(data);
               return(
-                <QuizHolder>
                   <QuizBox>
                   {data.quiz.map(q => (
                     <QuizElement
@@ -91,13 +91,12 @@ const ClassPage = ({ query: { title } }) => {
                     />
                   ))}
                   </QuizBox>
-                  <QuizzesAvaliable>
-                  </QuizzesAvaliable>
-                </QuizHolder>
               )
             }
           }}
           </Query>
+          <QuizzesAvaliable>
+          </QuizzesAvaliable>
       </SectionContainer>
     </Layout>
   );
