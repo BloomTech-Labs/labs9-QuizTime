@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Form, Input, Button, Label, Text } from "../design-system";
 
 class AddStudent extends Component {
+
   state = {
     firstName: "",
     lastName: "",

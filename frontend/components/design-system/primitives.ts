@@ -82,8 +82,8 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-  width="550px"
-  flexDirection="row"
+  width="550px, 200px"
+  flexDirection="row, column"
   justifyContent="spaceEvenly"
   alignItems="center"
   p={3}
@@ -104,8 +104,7 @@ export const StudentHolder = props =>(
   <F
   width="600px"
   flexDirection="column"
-  justifyContent="center"
-  alignItems="center"
+  justifyContent="flexStart"
   css={{
     height:"auto"
   }}
