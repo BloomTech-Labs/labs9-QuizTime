@@ -1,28 +1,39 @@
 import React from 'react'
 import { CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement, injectStripe } from "react-stripe-elements";
+import { BillingText, Button, BoldText } from '../design-system'
 
 class SplitForm extends React.Component {
-  handleBlur = () => {
-    console.log('[blur]');
+
+  state = {
+    error: null,
+    cardNumber: false,
+    cardExpiry: false,
+    cardCvc: false,
+    postalCode: false,
+    teacher: null
+  }
+
+  handleReady = (el) => {
+    el.focus();
   };
-  handleChange = (change) => {
-    // console.log('[change]', change);
-  };
-  handleClick = () => {
-    console.log('[click]');
-  };
-  handleFocus = () => {
-    console.log('[focus]');
-  };
-  handleReady = () => {
-    console.log('[ready]');
-  };
+  handleChange = (el) => {
+    console.log(el)
+    this.setState({
+      [el.elementType]: el.complete
+    })
+    if (el.error) {
+      this.setState({ error: el.error.message })
+    } else {
+      this.setState({ error: null })
+    }
+  }
 
   createOptions = (fontSize, padding) => {
     return {
       style: {
         base: {
           fontSize,
+          fontWeight: 500,
           color: '#424770',
           letterSpacing: '0.025em',
           fontFamily: 'Source Code Pro, monospace',
@@ -32,8 +43,11 @@ class SplitForm extends React.Component {
           padding,
         },
         invalid: {
-          color: '#9e2146',
+          color: 'red',
         },
+        complete: {
+          color: 'green'
+        }
       },
     };
   };
@@ -42,67 +56,75 @@ class SplitForm extends React.Component {
     ev.preventDefault();
     if (this.props.stripe) {
       const { token } = await this.props.stripe.createToken();
-      token.sub = this.props.loggedUser.sub;
-      console.log('\nTOKEN: ', token)
-      // let response = await fetch("/api/add-credit", {
-      let response = await fetch("http://localhost:57216/api/add-credit", {
+      if (this.props.loggedUser) {
+        token.sub = this.props.loggedUser.sub;
+      }
+      console.log(token)
+
+      let response = await fetch("/api/add-credit", {
+        // let response = await fetch("http://localhost:57216/api/add-credit", {
         method: "POST",
         body: JSON.stringify(token),
       });
+
       //* Micro-service returns updated teacher record to frontend (id & credits)
       let teacher = await response.json();
-      console.log(teacher)
+      teacher = teacher.update_teacher.returning[0]
+      console.log('teacher', teacher)
+      this.setState({ teacher })
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
   };
 
   render() {
-    const { handleBlur, handleChange, handleClick, handleFocus, handleReady, createOptions } = this
+    const { handleChange, handleReady, handleSubmit, createOptions } = this
+    const { cardNumber, cardExpiry, cardCvc, postalCode, teacher } = this.state
+    let ready2Submit = cardNumber && cardExpiry && cardCvc && postalCode
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Card number
+      <>
+        <form onSubmit={handleSubmit}>
+          <BillingText>
+            Card Number
           <CardNumberElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <label>
-          Expiration date
+              onReady={handleReady}
+              onChange={handleChange}
+              {...createOptions(this.props.fontSize)}
+
+            />
+          </BillingText>
+          <BillingText>
+            Expiration Date
           <CardExpiryElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <label>
-          CVC
+              onChange={handleChange}
+              {...createOptions(this.props.fontSize)}
+
+            />
+          </BillingText>
+          <BillingText>
+            CVC
           <CardCVCElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <label>
-          Postal code
+              onChange={handleChange}
+              {...createOptions(this.props.fontSize)}
+
+            />
+          </BillingText>
+          <BillingText>
+            Postal Code
           <PostalCodeElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <button>Pay</button>
-      </form>
+              onChange={handleChange}
+              {...createOptions(this.props.fontSize)}
+            />
+          </BillingText >
+          <Button m={3} disabled={!ready2Submit}>Pay $10 for 10 Credits</Button>
+          <BoldText color='red' m={3}>
+            {this.state.error}
+          </BoldText>
+        </form>
+        <BoldText m={3}>
+          {teacher && `Teacher with id: ${teacher.id} has ${teacher.credits} credits!`}
+        </BoldText>
+      </>
     );
   }
 }
