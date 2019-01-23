@@ -7,7 +7,12 @@ import AddStudent from "../../components/forms/AddStudent";
 import {StudentHolder, SectionContainer, Text, QuizHolder} from "../../components/design-system/primitives";
 
 const ClassPage = ({ query: { title} }) =>{
+  this.state ={
+    average: 0,
+    testTaken: 0,
+  }
 
+  
     const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
     class (where: {id: {_eq: ${title}}}){

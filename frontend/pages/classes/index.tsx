@@ -27,6 +27,7 @@ const Holder = styled.div`
 `;
 
 const Classes = () => (
+
   <Layout>
     <AddClass />
     <CardHolder>
@@ -43,6 +44,6 @@ const Classes = () => (
       </Holder>
     </CardHolder>
   </Layout>
-);
+  );
 
 export default securePage(Classes);
