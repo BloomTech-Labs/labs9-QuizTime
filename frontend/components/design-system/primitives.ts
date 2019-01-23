@@ -146,6 +146,10 @@ export const BoldText = props => (
   <T fontSize= { 1} fontFamily = "sans" fontWeight = { 6} { ...props } />
 );
 
+export const BillingText = props => (
+  <BoldText m= { 3} fontSize = { 3} { ...props } />
+);
+
 export const UpperCase = props => (
   <T
     fontSize= { 1}
@@ -230,7 +234,7 @@ css = {{ textTransform: "uppercase" }}
 );
 
 //* IMAGE TAGS
-export const AvatarI = props => (
+export const AvatarImg = props => (
   <I
   width = "45px"
 height = "45px"
