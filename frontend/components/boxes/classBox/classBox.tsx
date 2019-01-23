@@ -47,7 +47,6 @@ const ClassBox: React.SFC<{ className: object }> = ({className }) => {
           <BoxText>{className.name}</BoxText>
           </Link>
           <BoxText>Students: 0</BoxText>
-          <BoxText>Average: 0</BoxText>
       </BoxHolder>
     </>
   );
