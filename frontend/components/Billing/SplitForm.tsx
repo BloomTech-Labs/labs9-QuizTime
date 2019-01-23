@@ -1,28 +1,27 @@
 import React from 'react'
 import { CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement, injectStripe } from "react-stripe-elements";
+import { BillingText, Button, BoldText } from '../design-system'
 
 class SplitForm extends React.Component {
-  handleBlur = () => {
-    console.log('[blur]');
+
+  state = { error: null }
+
+  handleReady = (el) => {
+    el.focus();
   };
-  handleChange = (change) => {
-    // console.log('[change]', change);
-  };
-  handleClick = () => {
-    console.log('[click]');
-  };
-  handleFocus = () => {
-    console.log('[focus]');
-  };
-  handleReady = () => {
-    console.log('[ready]');
-  };
+  handleChange = (el) => {
+    if (el.error) {
+      console.log(el.error.message)
+      this.setState({ error: el.error.message })
+    }
+  }
 
   createOptions = (fontSize, padding) => {
     return {
       style: {
         base: {
           fontSize,
+          fontWeight: 500,
           color: '#424770',
           letterSpacing: '0.025em',
           fontFamily: 'Source Code Pro, monospace',
@@ -32,8 +31,11 @@ class SplitForm extends React.Component {
           padding,
         },
         invalid: {
-          color: '#9e2146',
+          color: 'red',
         },
+        complete: {
+          color: 'green'
+        }
       },
     };
   };
@@ -42,13 +44,17 @@ class SplitForm extends React.Component {
     ev.preventDefault();
     if (this.props.stripe) {
       const { token } = await this.props.stripe.createToken();
-      token.sub = this.props.loggedUser.sub;
-      console.log('\nTOKEN: ', token)
+      if (this.props.loggedUser) {
+        token.sub = this.props.loggedUser.sub;
+      }
+      console.log(token)
+
       // let response = await fetch("/api/add-credit", {
       let response = await fetch("http://localhost:57216/api/add-credit", {
         method: "POST",
         body: JSON.stringify(token),
       });
+
       //* Micro-service returns updated teacher record to frontend (id & credits)
       let teacher = await response.json();
       console.log(teacher)
@@ -58,50 +64,45 @@ class SplitForm extends React.Component {
   };
 
   render() {
-    const { handleBlur, handleChange, handleClick, handleFocus, handleReady, createOptions } = this
+    const { handleChange, handleReady, handleSubmit, createOptions } = this
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Card number
+      <form onSubmit={handleSubmit}>
+        <BillingText>
+          Card Number
           <CardNumberElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
             onReady={handleReady}
+            onChange={handleChange}
             {...createOptions(this.props.fontSize)}
+
           />
-        </label>
-        <label>
-          Expiration date
+        </BillingText>
+        <BillingText>
+          Expiration Date
           <CardExpiryElement
-            onBlur={handleBlur}
             onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
             {...createOptions(this.props.fontSize)}
+
           />
-        </label>
-        <label>
+        </BillingText>
+        <BillingText>
           CVC
           <CardCVCElement
-            onBlur={handleBlur}
             onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
             {...createOptions(this.props.fontSize)}
+
           />
-        </label>
-        <label>
-          Postal code
+        </BillingText>
+        <BillingText>
+          Postal Code
           <PostalCodeElement
-            onBlur={handleBlur}
             onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
             {...createOptions(this.props.fontSize)}
           />
-        </label>
-        <button>Pay</button>
+        </BillingText >
+        <Button m={3}>Pay $10 for 10 Credits</Button>
+        <BoldText color='red' m={3}>
+          {this.state.error}
+        </BoldText>
       </form>
     );
   }

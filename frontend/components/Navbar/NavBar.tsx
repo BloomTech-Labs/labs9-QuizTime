@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { Box, Button, Image } from "@rebass/emotion";
-import { Avatar, Text, NavBarHolder, AvatarI } from "../design-system/primitives";
+import { Box, Button,  } from "@rebass/emotion";
+import { NavBarHolder, AvatarImg } from "../design-system/primitives";
 import { unsetToken, getUserFromLocalCookie } from "../../utils/auth";
 import { logout } from "../../utils/auth0";
 
@@ -42,7 +42,7 @@ const NavBar: React.SFC = () => {
       }}
         variant="primary">Sign Out
          </Button>
-      <AvatarI src={(user && user.picture) ? user.picture : null} alt='profile' />
+      <AvatarImg src={(user && user.picture) ? user.picture : null} alt='profile' />
       {/* <Text>K</Text> */}
     </NavBarHolder>
   );
