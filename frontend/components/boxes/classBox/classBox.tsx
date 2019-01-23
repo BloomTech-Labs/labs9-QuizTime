@@ -46,6 +46,10 @@ const ClassBox: React.SFC<{ className: object }> = ({className }) => {
           <Link href={`/classes/class?title=${className.id}`}>
           <BoxText>{className.name}</BoxText>
           </Link>
+          <BoxText>Students: </BoxText>
+          <BoxText>Average: </BoxText>
+          <BoxText>Quizzes: </BoxText>
+
       </BoxHolder>
     </>
   );

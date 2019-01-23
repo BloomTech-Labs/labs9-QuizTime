@@ -4,11 +4,12 @@ import gql from 'graphql-tag';
 import { Form, Input, Button, Label, Text } from "../design-system";
 
 class AddStudent extends Component {
+
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    classId: 0
+    classId: this.props.class
   };
 
   handleChange = e => {
@@ -92,18 +93,6 @@ class AddStudent extends Component {
                 />
               </Label>
 
-              <Label htmlFor="class">
-                Class
-                <Input
-                  type="number"
-                  id="classId"
-                  name="classId"
-                  placeholder="Class Id"
-                  required
-                  value={this.state.classId}
-                  onChange={this.handleChange}
-                />
-              </Label>
               <Button variant="primary" type="submit">Submit</Button>
           </Form>
             {/* render errors, loading, or data */}
