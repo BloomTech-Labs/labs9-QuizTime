@@ -3,6 +3,7 @@ import { StripeProvider } from "react-stripe-elements";
 import Checkout from "../components/Billing/Checkout";
 import securePage from "../hocs/securePage";
 import Layout from "../components/Layout";
+import { getUserFromServerCookie, getUserFromLocalCookie } from '../utils/auth.js'
 
 class Stripe extends Component {
   constructor(props) {
@@ -18,9 +19,13 @@ class Stripe extends Component {
   }
   render() {
     const { props } = this;
+    const { stripe } = this.state
+    console.log('\n local', getUserFromLocalCookie())
+    // console.log('\n server', getUserFromServerCookie())
+
     return (
       <Layout>
-        <StripeProvider stripe={this.state.stripe}>
+        <StripeProvider stripe={stripe}>
           <Checkout {...props} />
         </StripeProvider>
       </Layout>
