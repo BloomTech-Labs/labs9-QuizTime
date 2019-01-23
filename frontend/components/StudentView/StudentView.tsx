@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from "next/link";
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -21,15 +22,10 @@ class StudentView extends Component {
     render() {
         return(
     <>
-        <Container p={3} css={{ maxWidth: "880px" }}>
-            <BoxText><UpperCase>Name</UpperCase></BoxText>
-            <BoxText><UpperCase>Classes</UpperCase></BoxText>
-            <BoxText><UpperCase>Average Score</UpperCase></BoxText>
-            <BoxText><UpperCase>Quizzes</UpperCase></BoxText>
-
-            <Button variant = "primary" m={2}>Take Quiz</Button>
-            <Button variant = "success" m={2}>Email Teacher</Button>
-        </Container>
+        <BoxText><UpperCase>Name</UpperCase></BoxText>
+        <BoxText><UpperCase>Classes</UpperCase></BoxText>
+        <BoxText><UpperCase>Average Score</UpperCase></BoxText>
+        <BoxText><UpperCase>Quizzes</UpperCase></BoxText>
     </>
     )};
 };
