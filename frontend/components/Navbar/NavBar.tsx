@@ -42,7 +42,7 @@ const NavBar: React.SFC = () => {
       }}
         variant="primary">Sign Out
          </Button>
-      <AvatarI src={user.picture} alt='profile' />
+      <AvatarI src={(user && user.picture) ? user.picture : null} alt='profile' />
       {/* <Text>K</Text> */}
     </NavBarHolder>
   );
