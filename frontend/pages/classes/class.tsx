@@ -44,25 +44,8 @@ const ClassPage = ({ query: { title } }) => {
       <Text>Send Email</Text>
       
       <Text>Add a Student</Text>
-      {/* <Query query={SINGLE_CLASS_QUERY}>
-      {({loading, error, data}) => {
-        if(error) return <p>{error.message}</p>;
-        if(loading) return <p>...Loading</p>;
-        if(data){
-          return (
-            <div>
-            {data.class.map(classId => (
-              <AddStudent
-              id={classId.id}
-              />
-            ))}
-            </div>
-          )
-        }
-      }}
-      <AddStudent />
-      </Query> */}
-      <AddStudent />
+
+      <AddStudent class={title} />
       <SectionContainer>
         <Query query={ALL_STUDENTS_QUERY}>
           {({ loading, error, data }) => {
