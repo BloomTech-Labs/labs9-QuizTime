@@ -37,6 +37,9 @@ const SideBar: React.SFC = () => {
       <Link href="/test" prefetch>
         <BoxText>test</BoxText>
       </Link>
+      <Link href="/student" prefetch>
+        <BoxText>student</BoxText>
+      </Link>
     </SideBarHolder>
   );
 };
