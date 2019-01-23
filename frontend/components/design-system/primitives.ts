@@ -83,23 +83,13 @@ css = {{
 
 export const StudentElement = props => (
   <F
-<<<<<<< HEAD
-  width="550px, 200px"
-  flexDirection="row, column"
-  justifyContent="spaceEvenly"
-  alignItems="center"
-  p={3}
-  {...props}
-  />
-=======
-  width= "400px"
-flexDirection = "row"
-justifyContent = "spaceEvenly"
-alignItems = "center"
-p = { 3}
-{...props }
+  width= "500px"
+  flexDirection = "row"
+  justifyContent = "spaceEvenly"
+  alignItems = "center"
+  p = { 3}
+  {...props }
 />
->>>>>>> ae7dfc659cd8b6e2247ea51f6dc9f2866960d91a
 );
 /* Holders */
 export const SectionContainer = props => (
@@ -113,7 +103,7 @@ width = "100%"
 
 export const StudentHolder = props => (
   <F
-  width= "500px"
+  width= "600px"
   flexDirection = "column"
   justifyContent = "flexStart"
   alignItems = "center"
