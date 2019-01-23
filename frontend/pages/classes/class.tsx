@@ -1,36 +1,26 @@
 import { Query } from "react-apollo";
-import { useState } from 'react';
+import { useState } from "react";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
 import securePage from "../../hocs/securePage";
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
 import QuizElement from "../../components/boxes/QuizElement";
-
 import {
   StudentHolder,
   SectionContainer,
   Text,
   QuizHolder,
   QuizBox,
-  QuizBar,
-  QuizzesAvaliable,
+  QuizzesAvaliable
 } from "../../components/design-system/primitives";
 import { Component } from "../../node_modules/@types/react";
 
 const ClassPage = ({ query: { title } }) => {
   const [quizzes, setQuizzes] = useState([]);
   const [average, setAverage] = useState(0);
-  const [students, setStudents] = useState(0); 
+  const [students, setStudents] = useState(0);
 
-  const ALL_QUIZZES_QUERY = gql`
-    query ALL_QUIZZES_QUERY {
-      quiz{
-        id
-        name
-      }
-    }
-  `
   const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
     class (where: {id: {_eq: ${title}}}){
@@ -45,10 +35,19 @@ const ClassPage = ({ query: { title } }) => {
     }
   }
 `;
+
+const ALL_QUIZZES_QUERY = gql`
+query ALL_QUIZZES_QUERY {
+  quiz {
+    id
+    name
+  }
+}
+`;
   return (
     <Layout>
       <Text>Send Email</Text>
-      
+
       <Text>Add a Student</Text>
 
       <AddStudent class={title} />
@@ -58,7 +57,6 @@ const ClassPage = ({ query: { title } }) => {
             if (error) return <p>{error.message}</p>;
             if (loading) return <p>...loading</p>;
             if (data) {
-              console.log(data);
               return (
                 <StudentHolder>
                   {data.class[0].students.map(student => (
@@ -75,28 +73,19 @@ const ClassPage = ({ query: { title } }) => {
         </Query>
       </SectionContainer>
       <SectionContainer>
+        <QuizBox>
           <Query query={ALL_QUIZZES_QUERY}>
-          {({loading, error, data}) => {
-            if(error) return <p>{error.message}</p>;
-            if(loading) return <p>...loading</p>;
-            if(data){
-              console.log(data);
-              return(
-                  <QuizBox>
-                  {data.quiz.map(q => (
-                    <QuizElement
-                        id={q.id}
-                        key={q.id}
-                        quiz={q}
-                    />
-                  ))}
-                  </QuizBox>
-              )
-            }
-          }}
+            {({ loading, error, data }) => {
+              if (error) return <p>{error.message}</p>;
+              if (loading) return <p>...loading</p>;
+              if (data) {
+                console.log(data);
+                return data.quiz.map(q =>  <QuizElement key={q.id} quiz={q} />);
+              }
+            }}
           </Query>
-          <QuizzesAvaliable>
-          </QuizzesAvaliable>
+        </QuizBox>
+        <QuizzesAvaliable />
       </SectionContainer>
     </Layout>
   );
