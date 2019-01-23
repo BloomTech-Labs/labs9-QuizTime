@@ -82,7 +82,7 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-  width="400px"
+  width="550px"
   flexDirection="row"
   justifyContent="spaceEvenly"
   alignItems="center"
@@ -102,7 +102,7 @@ export const SectionContainer = props => (
 
 export const StudentHolder = props =>(
   <F
-  width="450px"
+  width="600px"
   flexDirection="column"
   justifyContent="center"
   alignItems="center"

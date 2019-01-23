@@ -6,7 +6,7 @@ import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
 import {StudentHolder, SectionContainer, Text, QuizHolder} from "../../components/design-system/primitives";
 
-const ClassPage = ({title}) => {
+const ClassPage = ({ query: { title} }) =>{
 
     const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
@@ -22,7 +22,6 @@ const ClassPage = ({title}) => {
     }
   }
 `;
-
   return (
   <Layout>
     <Text>Add a Student</Text>
