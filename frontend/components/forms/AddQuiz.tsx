@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
-import { Form, Input, Button, Label, Text, TextArea } from "../design-system";
+import {
+  Form,
+  Input,
+  Button,
+  Label,
+  Text,
+  TextArea,
+  Container
+} from "../design-system";
 import { Box, Flex } from "@rebass/emotion";
 
 class AddQuiz extends Component {
@@ -31,18 +39,11 @@ class AddQuiz extends Component {
         {
           id: s.majorQuestions[s.majorQuestions.length - 1]["id"] + 1,
           prompt: "",
-          answers: [{ response: "", correct: false }]
+          answers: [{ response: "", correct: false }],
+          minorQuestions: []
         }
       ]
     }));
-  };
-
-  deleteMajorQuestion = id => {
-    const { majorQuestions } = this.state;
-    const updatedQuestions = majorQuestions.filter(q => {
-      if (q.id != id || q.id == 1) return q;
-    });
-    this.setState(s => ({ ...s, majorQuestions: updatedQuestions }));
   };
 
   updateMajorQuestion = (id, e) => {
@@ -54,6 +55,44 @@ class AddQuiz extends Component {
       return q;
     });
     this.setState(s => ({ ...s, majorQuestions: updatedQuestions }));
+  };
+
+  deleteMajorQuestion = id => {
+    const { majorQuestions } = this.state;
+    const updatedQuestions = majorQuestions.filter(q => {
+      if (q.id != id || q.id == 1) return q;
+    });
+    this.setState(s => ({ ...s, majorQuestions: updatedQuestions }));
+  };
+
+  addMinorQuestion = (e, majorQID) => {
+    e.preventDefault();
+    const { majorQuestions } = this.state;
+    const newQuestions = majorQuestions.map(majorQuestion => {
+      if (majorQuestion.id == majorQID) {
+        if (majorQuestion.minorQuestions.length == 0) {
+          majorQuestion.minorQuestions = majorQuestion.minorQuestions.concat({
+            id: `${majorQID}a`,
+            prompt: "",
+            answers: []
+          });
+          return majorQuestion;
+        } else {
+          majorQuestion.minorQuestions = majorQuestion.minorQuestions.concat({
+            id: `${majorQID}${String.fromCharCode(
+              majorQuestion.minorQuestions[
+                majorQuestion.minorQuestions.length - 1
+              ]["id"].charCodeAt(1) + 1
+            )}`,
+            prompt: "",
+            answers: []
+          });
+          return majorQuestion;
+        }
+      }
+      return majorQuestion;
+    });
+    this.setState(s => ({ ...s, majorQuestions: newQuestions }));
   };
 
   generateMutation = () => {
@@ -167,13 +206,35 @@ class AddQuiz extends Component {
                         />
                       </Flex>
                     </Box>
+                    <Container width={3 / 4}>
+                      {q.minorQuestions.map(minorQ => (
+                        <Box>
+                          <Text>{minorQ.id}</Text>
+                          <TextArea />
+                          <Input />
+                          <Input />
+                          <Input />
+                          <Input />
+                        </Box>
+                      ))}
+                    </Container>
+                    <Flex justifyContent="center">
+                      <Button variant="success" onClick={this.addMajorQuestion}>
+                        Add Major Question
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={e => {
+                          this.addMinorQuestion(e, q.id);
+                        }}
+                      >
+                        Add Minor Question
+                      </Button>
+                    </Flex>
                   </Box>
                 ))}
                 <Button variant="primary" type="submit">
                   Submit
-                </Button>
-                <Button variant="success" onClick={this.addMajorQuestion}>
-                  Add Major Question
                 </Button>
               </fieldset>
             </Form>
