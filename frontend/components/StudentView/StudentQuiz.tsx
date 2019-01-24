@@ -48,10 +48,23 @@ let dummyData = {
 
 class StudentQuiz extends Component {
     //For development purposes.  Can remove later after retrieving data.
-    state = dummyData;
-    
+    state = {
+        dummyData,
+        questionCount: 0,
+        correctAnswers: 0,
+    };
+
+// function to calcualate score
+// getScore = 
+
+// function to check if answers are correct    
+// checkAnswers = 
+
+// function to submit responses 
+// submitAnswers = 
+
     render() {
-        const { majorQuestions } = this.state;
+        const { majorQuestions } = this.state.dummyData;
         return( 
 
             <>
@@ -63,8 +76,8 @@ class StudentQuiz extends Component {
             {console.log('first answer correct?', this.state.majorQuestions[0].answers[0].correct)}  */}
             <Box m={4} width={3/4}>
             {/* need to get class name from props? */}
-            <BoxText fontSize ><UpperCase>{this.state.name}</UpperCase></BoxText>
-            <BoxText>{this.state.details}</BoxText>
+            <BoxText><UpperCase>{this.state.dummyData.name}</UpperCase></BoxText>
+            <BoxText>{this.state.dummyData.details}</BoxText>
             </Box>
 
             {majorQuestions.map(q => (
@@ -75,7 +88,7 @@ class StudentQuiz extends Component {
                     <BoxText>
                        {q.prompt}
                     </BoxText>
-                    {console.log('q.answers', q.answers)}
+                    {/* {console.log('q.answers', q.answers)} */}
 
                     <Box>
                       <Flex>
@@ -122,8 +135,6 @@ class StudentQuiz extends Component {
                     </Flex>
                 </Box>
             ))}
-
-        
             </>
     )};
 };
