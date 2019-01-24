@@ -3,6 +3,7 @@ const { json, send, run } = require("micro");
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.TOKEN_SECRET;
+const CircularJSON = require('circular-json');
 
 const get_quiz_query = (student_id, quiz_id) => {
   return `
@@ -71,9 +72,9 @@ const handler = async (req, res) => {
       }else{
         //token was verified
         //figure out what needs to be posted to hasura and pass it
-        let dbPost = await craftPost(req, decodedToken);
-        console.log(dbPost);
         try{
+          let dbPost = await craftPost(req, decodedToken);
+
           let serverRes = await axios
             .post('https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
             dbPost,
@@ -83,8 +84,10 @@ const handler = async (req, res) => {
               }
             }
           );
+
+          send(res, 200, CircularJSON.stringify(serverRes.data))
         }catch(e){
-          console.log('err')
+          console.log(e)
         }
 
         //send response from hasura back to client
