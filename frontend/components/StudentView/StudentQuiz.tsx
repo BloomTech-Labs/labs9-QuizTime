@@ -7,6 +7,8 @@ import {
     BoldText,
     UpperCase,
     Container,
+    Label,
+    Input,
     BoxText,
     BoxHolder,
     Button
@@ -20,7 +22,7 @@ let dummyData = {
     majorQuestions: [
         {
             id: 1,
-            prompt: "Which of the following is not a daily requirement of Lambda School?",
+            prompt: "Which of the following is NOT a daily requirement of Lambda School?",
             answers: [
                 { label: "a", response: "airtable", correct: false },
                 { label: "b", response: "DM instructor", correct: true },
@@ -59,26 +61,65 @@ class StudentQuiz extends Component {
             {console.log('prompt', this.state.majorQuestions[0].prompt)}  
             {console.log('answers', this.state.majorQuestions[0].answers)} 
             {console.log('first answer correct?', this.state.majorQuestions[0].answers[0].correct)}  */}
-            <Box m={4}>
+            <Box m={4} width={3/4}>
             {/* need to get class name from props? */}
             <BoxText fontSize ><UpperCase>{this.state.name}</UpperCase></BoxText>
             <BoxText>{this.state.details}</BoxText>
             </Box>
 
             {majorQuestions.map(q => (
-                <Box m={4} key={q.id}>
+                <Box width={3/4} m={4} p={2} key={q.id}>
                     <BoxText htmlFor={`major-question-${q.id}`}>
                         <UpperCase>Question {q.id}</UpperCase>
                     </BoxText>
                     <BoxText>
-                       Prompt {q.prompt}
+                       {q.prompt}
                     </BoxText>
                     {console.log('q.answers', q.answers)}
-                    {q.answers.map(a => (
+
                     <Box>
-                        <BoxText>{a.label}. {a.response}</BoxText>
+                      <Flex>
+                      <Input
+                          type="radio"
+                          name={`major-question-${q.id}-major-answer`}
+                          value="1"
+                        />
+                        <BoxText>{q.answers[0].response}</BoxText>
+                      </Flex>
                     </Box>
-                    ))}
+                    <Box>
+                      <Flex>
+                      <Input
+                          type="radio"
+                          name={`major-question-${q.id}-major-answer`}
+                          value="2"
+                        />
+                        <BoxText>{q.answers[1].response}</BoxText>
+                      </Flex>
+                    </Box>
+                    <Box>
+                      <Flex>
+                      <Input
+                          type="radio"
+                          name={`major-question-${q.id}-major-answer`}
+                          value="3"
+                        />
+                        <BoxText>{q.answers[2].response}</BoxText>
+                      </Flex>
+                    </Box>
+                    <Box>
+                      <Flex>
+                      <Input
+                          type="radio"
+                          name={`major-question-${q.id}-major-answer`}
+                          value="4"
+                        />
+                        <BoxText>{q.answers[3].response}</BoxText>
+                      </Flex>
+                    </Box>
+                    <Flex justifyContent="flex-end">
+                        <Button mx={5} variant = "error">Submit</Button>
+                    </Flex>
                 </Box>
             ))}
 
