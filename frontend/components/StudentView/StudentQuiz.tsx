@@ -83,25 +83,34 @@ class StudentQuiz extends Component {
     //For development purposes.  Can remove later after retrieving data.
     state = {
         dummyData,
-        currentQuestion: 0,
+        currentQuestion: {
+            question_id: 1, 
+            answer_id: null
+        },
         questionCount: 0,
         correctAnswers: 0,
     };
 
-// function to calcualate score
-// getScore = 
 
-// function to check if answers are correct    
-// checkAnswers = 
-
-// function to submit responses 
-// submitAnswers = 
-
-nextQuestion = (e) => {
+//function to move to the next question
+nextQuestion = (e, id) => {
+    console.log('sending', this.state.currentQuestion)
     this.setState((c) => ({
         ...c, 
-        currentQuestion: c.currentQuestion+1
+        currentQuestion: {...c.currentQuestion, question_id: c.currentQuestion.question_id+1}
     }))
+}
+
+handleChange = (e, id) => {
+    console.log('radio input', e.target.value, id)
+
+    this.setState({
+        currentQuestion: {question_id: id, answer_id: e.target.value}
+    })
+    // this.setState((c) => ({
+    //     ...c, 
+    //     currentQuestion: {...c.currentQuestion, answer_id: e.target.value}
+    // }))
 }
 
     render() {
@@ -109,19 +118,14 @@ nextQuestion = (e) => {
         return( 
 
             <>
-            {/* we will need to pull in the quiz data from the database and render it as a quiz */}
-            {/* will need to map over the quiz questions and render a box for each */}   
-            {/* {console.log('state', this.state.name)}
-            {console.log('prompt', this.state.majorQuestions[0].prompt)}  
-            {console.log('answers', this.state.majorQuestions[0].answers)} 
-            {console.log('first answer correct?', this.state.majorQuestions[0].answers[0].correct)}  */}
             <Box m={4} width={3/4}>
             {/* need to get class name from props? */}
             <BoxText><UpperCase>{this.state.dummyData.name}</UpperCase></BoxText>
             <BoxText>{this.state.dummyData.details}</BoxText>
             </Box>
-
-            {majorQuestions.slice(0,this.state.currentQuestion+1).map(q => (
+            {/* {console.log('current question id', this.state.currentQuestion.question_id)} */}
+            {majorQuestions.slice(0,this.state.currentQuestion.question_id).map(q => (
+                
                 <Box width={3/4} m={4} p={2} key={q.id}>
                     <BoxText htmlFor={`major-question-${q.id}`}>
                         <UpperCase>Question {q.id}</UpperCase>
@@ -131,48 +135,21 @@ nextQuestion = (e) => {
                     </BoxText>
                     {/* {console.log('q.answers', q.answers)} */}
 
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="1"
-                        />
-                        <BoxText>{q.answers[0].response}</BoxText>
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="2"
-                        />
-                        <BoxText>{q.answers[1].response}</BoxText>
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="3"
-                        />
-                        <BoxText>{q.answers[2].response}</BoxText>
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="4"
-                        />
-                        <BoxText>{q.answers[3].response}</BoxText>
-                      </Flex>
-                    </Box>
+                    {q.answers.map((a, index) => (
+                            <Box key={index}>
+                                <Flex>
+                                <Input
+                                    onChange = {(e)=>this.handleChange(e, q.id)}
+                                    type="radio"
+                                    name={`major-question-${q.id}-major-answer`}
+                                    value={index + 1}
+                                />
+                                <BoxText>{a.response}</BoxText>
+                                </Flex>
+                            </Box>
+                            ))}
                     <Flex justifyContent="flex-end">
-                        <Button mx={5} variant = "error" onClick={this.nextQuestion}>Next</Button>
+                        <Button mx={5} variant = "error" onClick={(e) => this.nextQuestion(e, q.id)}>Submit and Next</Button>
                     </Flex>
                 </Box>
             ))}
