@@ -42,32 +42,90 @@ let dummyData = {
             ],
             minorQuestions: []
         },
+        {
+            id: 3,
+            prompt: "If you have a questions, who should you reach out to first?",
+            answers: [
+                { label: "a", response: "Instructor", correct: false },
+                { label: "b", response: "Austin", correct: false },
+                { label: "c", response: "Yer Mom", correct: false },
+                { label: "d", response: "Project Manager", correct: true  }
+            ],
+            minorQuestions: []
+        },
+        {
+            id: 4,
+            prompt: "If you have a questions, who should you reach out to first?",
+            answers: [
+                { label: "a", response: "Instructor", correct: false },
+                { label: "b", response: "Austin", correct: false },
+                { label: "c", response: "Yer Mom", correct: false },
+                { label: "d", response: "Project Manager", correct: true  }
+            ],
+            minorQuestions: []
+        },
+        {
+            id: 5,
+            prompt: "If you have a questions, who should you reach out to first?",
+            answers: [
+                { label: "a", response: "Instructor", correct: false },
+                { label: "b", response: "Austin", correct: false },
+                { label: "c", response: "Yer Mom", correct: false },
+                { label: "d", response: "Project Manager", correct: true  }
+            ],
+            minorQuestions: []
+        },
     ],
 };
 
 
 class StudentQuiz extends Component {
     //For development purposes.  Can remove later after retrieving data.
-    state = dummyData;
-    
+    state = {
+        dummyData,
+        currentQuestion: {
+            question_id: 1, 
+            answer_id: null
+        },
+        questionCount: 0,
+        correctAnswers: 0,
+    };
+
+
+//function to move to the next question
+nextQuestion = (e, id) => {
+    console.log('sending', this.state.currentQuestion)
+    this.setState((c) => ({
+        ...c, 
+        currentQuestion: {...c.currentQuestion, question_id: c.currentQuestion.question_id+1}
+    }))
+}
+
+handleChange = (e, id) => {
+    console.log('radio input', e.target.value, id)
+
+    this.setState({
+        currentQuestion: {question_id: id, answer_id: e.target.value}
+    })
+    // this.setState((c) => ({
+    //     ...c, 
+    //     currentQuestion: {...c.currentQuestion, answer_id: e.target.value}
+    // }))
+}
+
     render() {
-        const { majorQuestions } = this.state;
+        const { majorQuestions } = this.state.dummyData;
         return( 
 
             <>
-            {/* we will need to pull in the quiz data from the database and render it as a quiz */}
-            {/* will need to map over the quiz questions and render a box for each */}   
-            {/* {console.log('state', this.state.name)}
-            {console.log('prompt', this.state.majorQuestions[0].prompt)}  
-            {console.log('answers', this.state.majorQuestions[0].answers)} 
-            {console.log('first answer correct?', this.state.majorQuestions[0].answers[0].correct)}  */}
             <Box m={4} width={3/4}>
             {/* need to get class name from props? */}
-            <BoxText fontSize ><UpperCase>{this.state.name}</UpperCase></BoxText>
-            <BoxText>{this.state.details}</BoxText>
+            <BoxText><UpperCase>{this.state.dummyData.name}</UpperCase></BoxText>
+            <BoxText>{this.state.dummyData.details}</BoxText>
             </Box>
-
-            {majorQuestions.map(q => (
+            {/* {console.log('current question id', this.state.currentQuestion.question_id)} */}
+            {majorQuestions.slice(0,this.state.currentQuestion.question_id).map(q => (
+                
                 <Box width={3/4} m={4} p={2} key={q.id}>
                     <BoxText htmlFor={`major-question-${q.id}`}>
                         <UpperCase>Question {q.id}</UpperCase>
@@ -75,55 +133,26 @@ class StudentQuiz extends Component {
                     <BoxText>
                        {q.prompt}
                     </BoxText>
-                    {console.log('q.answers', q.answers)}
+                    {/* {console.log('q.answers', q.answers)} */}
 
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="1"
-                        />
-                        <BoxText>{q.answers[0].response}</BoxText>
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="2"
-                        />
-                        <BoxText>{q.answers[1].response}</BoxText>
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="3"
-                        />
-                        <BoxText>{q.answers[2].response}</BoxText>
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Flex>
-                      <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="4"
-                        />
-                        <BoxText>{q.answers[3].response}</BoxText>
-                      </Flex>
-                    </Box>
+                    {q.answers.map((a, index) => (
+                            <Box key={index}>
+                                <Flex>
+                                <Input
+                                    onChange = {(e)=>this.handleChange(e, q.id)}
+                                    type="radio"
+                                    name={`major-question-${q.id}-major-answer`}
+                                    value={index + 1}
+                                />
+                                <BoxText>{a.response}</BoxText>
+                                </Flex>
+                            </Box>
+                            ))}
                     <Flex justifyContent="flex-end">
-                        <Button mx={5} variant = "error">Submit</Button>
+                        <Button mx={5} variant = "error" onClick={(e) => this.nextQuestion(e, q.id)}>Submit and Next</Button>
                     </Flex>
                 </Box>
             ))}
-
-        
             </>
     )};
 };
