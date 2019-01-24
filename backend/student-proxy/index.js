@@ -43,8 +43,8 @@ const get_quiz_query = (student_id, quiz_id) => {
   `
 }
 
-const craftPost = async (req, dcToken) => {
-  let js = await json(req);
+const craftPost = async (js, dcToken) => {
+
   switch(js.type){
     case "get_quiz_query":
       return {"query": `${get_quiz_query(dcToken.student_id, dcToken.quiz_id)}`}
@@ -63,9 +63,9 @@ const craftPost = async (req, dcToken) => {
 }
 
 const handler = async (req, res) => {
-  const token = req.headers.authorization;
-  if(token){
-    jwt.verify(token, SECRET, async (err, decodedToken) => {
+  const js = await json(req);
+  if(js){
+    jwt.verify(req.headers.authorization, SECRET, async (err, decodedToken) => {
       if(err){
         //return an error message
         send(res, 400, {message: "Invalid Token"})
@@ -73,7 +73,7 @@ const handler = async (req, res) => {
         //token was verified
         //figure out what needs to be posted to hasura and pass it
         try{
-          let dbPost = await craftPost(req, decodedToken);
+          let dbPost = await craftPost(js, decodedToken);
 
           let serverRes = await axios
             .post('https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
@@ -87,7 +87,7 @@ const handler = async (req, res) => {
 
           send(res, 200, CircularJSON.stringify(serverRes.data))
         }catch(e){
-          console.log(e)
+          send(res, 500, {"error": e})
         }
 
         //send response from hasura back to client
