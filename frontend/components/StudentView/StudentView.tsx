@@ -16,13 +16,12 @@ import {
 class StudentView extends Component {
     state = {
       name: '',
-      class_id: 0
     };
 
     render() {
         return(
     <>
-        <BoxText><UpperCase>Name</UpperCase></BoxText>
+        <BoxText><UpperCase>Student Name</UpperCase></BoxText>
         <BoxText><UpperCase>Classes</UpperCase></BoxText>
         <BoxText><UpperCase>Average Score</UpperCase></BoxText>
         <BoxText><UpperCase>Quizzes</UpperCase></BoxText>

@@ -39,9 +39,15 @@ export const SideBarHolder = props => (
     {...props}
   />
 );
+
 const StyledText = styled.a`
   ${fontSize}
 `;
+
+export const StudentViewNav = props => (
+  <F  
+    justifyContent="flex-end" {...props} />
+);
 
 export const BoxText = props => (
   <T
@@ -97,6 +103,7 @@ export const StudentElement = props => (
     {...props}
   />
 );
+
 /* Holders */
 export const SectionContainer = props => (
   <F justifyContent="center" width="100%" {...props} />
@@ -126,6 +133,7 @@ export const QuizHolder = props => (
     }}
   />
 );
+
 /*SMALLER COMPONENTS*/
 
 export const Emblem = props => (
@@ -140,6 +148,7 @@ export const Emblem = props => (
     }}
   />
 );
+
 /* TYPOGRAPHY */
 export const Text = props => <T fontSize={2} fontFamily="sans" {...props} />;
 
