@@ -48,6 +48,14 @@ console.log(quizzesToClasses)
       id
       name
     }
+    class_quiz(where: {id: {_eq: ${id}}}){
+      id
+      class_id
+      quiz_id
+      quiz {
+        name
+      }
+    }
   }
 `;
 
@@ -76,10 +84,15 @@ console.log(quizzesToClasses)
       ...quizzesToClasses,
       { quiz_name: quiz_name, quiz_id: quiz_id, class_id: id }
     ]);
+    // for(let i = 0; i < quizzesToClasses.length; i++){
+    //   console.log(quizzesToClasses[i], quiz_id)
+    //  if(quizzesToClasses[i].quiz_id !== quiz_id){
+    //    console.log(quizzesToClasses[i])
+      return client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
+     }
     
-    client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
 
-  }
+  
 
   useEffect(
     () => {
@@ -123,7 +136,11 @@ console.log(quizzesToClasses)
                     ))}
                   </QuizBox>
                   <QuizzesAvaliable>
-                    <ClassQuizzes quizzes={quizzesToClasses} />
+                    {data.class_quiz[0].quiz.map(quizzes => (
+                    <ClassQuizzes
+                     quizzes={quizzes}
+                      />
+                      ))}
                   </QuizzesAvaliable>
                 </SectionContainer>
               </>
