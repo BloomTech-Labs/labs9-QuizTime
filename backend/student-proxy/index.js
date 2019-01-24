@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { json, send, run } = require("micro");
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
