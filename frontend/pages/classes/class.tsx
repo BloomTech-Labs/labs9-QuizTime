@@ -8,6 +8,8 @@ import AddStudent from "../../components/forms/AddStudent";
 import {getIdToken } from '../../utils/auth'
 import { GraphQLClient } from 'graphql-request'
 import QuizElement from "../../components/boxes/QuizElement";
+import ClassQuizzes from "../../components/boxes/ClassQuizzes"; 
+
 import {
   StudentHolder,
   SectionContainer,
@@ -24,11 +26,11 @@ const ClassPage = ({ query: { id } }) => {
 
 
 //similar to componentDidMount
-// const client = new GraphQLClient(endpoint, {
-//   headers: {
-//     'Authorization': `Bearer ${getIdToken()}`
-//   }
-// })
+const client = new GraphQLClient(endpoint, {
+  headers: {
+    'Authorization': `Bearer ${getIdToken()}`
+  }
+})
 
   const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
@@ -51,6 +53,7 @@ const ClassPage = ({ query: { id } }) => {
 
 function  addQuizToClass(quiz_id, quiz_name) {
   setQuizzesToClasses([...quizzesToClasses, {quiz_name: quiz_name, quiz_id: quiz_id, class_id: id} ])
+  // client.request(//pass in mutation)
 }
 useEffect(() => {
   console.log(quizzesToClasses)
@@ -95,6 +98,7 @@ useEffect(() => {
                         }
                     </QuizBox>
                     <QuizzesAvaliable>
+                    <ClassQuizzes quizzes={quizzesToClasses}/>
                     </QuizzesAvaliable>
                   </SectionContainer>
                 </>
