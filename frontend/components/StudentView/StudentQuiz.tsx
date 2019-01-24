@@ -42,6 +42,39 @@ let dummyData = {
             ],
             minorQuestions: []
         },
+        {
+            id: 3,
+            prompt: "If you have a questions, who should you reach out to first?",
+            answers: [
+                { label: "a", response: "Instructor", correct: false },
+                { label: "b", response: "Austin", correct: false },
+                { label: "c", response: "Yer Mom", correct: false },
+                { label: "d", response: "Project Manager", correct: true  }
+            ],
+            minorQuestions: []
+        },
+        {
+            id: 4,
+            prompt: "If you have a questions, who should you reach out to first?",
+            answers: [
+                { label: "a", response: "Instructor", correct: false },
+                { label: "b", response: "Austin", correct: false },
+                { label: "c", response: "Yer Mom", correct: false },
+                { label: "d", response: "Project Manager", correct: true  }
+            ],
+            minorQuestions: []
+        },
+        {
+            id: 5,
+            prompt: "If you have a questions, who should you reach out to first?",
+            answers: [
+                { label: "a", response: "Instructor", correct: false },
+                { label: "b", response: "Austin", correct: false },
+                { label: "c", response: "Yer Mom", correct: false },
+                { label: "d", response: "Project Manager", correct: true  }
+            ],
+            minorQuestions: []
+        },
     ],
 };
 
@@ -50,6 +83,7 @@ class StudentQuiz extends Component {
     //For development purposes.  Can remove later after retrieving data.
     state = {
         dummyData,
+        currentQuestion: 0,
         questionCount: 0,
         correctAnswers: 0,
     };
@@ -62,6 +96,13 @@ class StudentQuiz extends Component {
 
 // function to submit responses 
 // submitAnswers = 
+
+nextQuestion = (e) => {
+    this.setState((c) => ({
+        ...c, 
+        currentQuestion: c.currentQuestion+1
+    }))
+}
 
     render() {
         const { majorQuestions } = this.state.dummyData;
@@ -80,7 +121,7 @@ class StudentQuiz extends Component {
             <BoxText>{this.state.dummyData.details}</BoxText>
             </Box>
 
-            {majorQuestions.map(q => (
+            {majorQuestions.slice(0,this.state.currentQuestion+1).map(q => (
                 <Box width={3/4} m={4} p={2} key={q.id}>
                     <BoxText htmlFor={`major-question-${q.id}`}>
                         <UpperCase>Question {q.id}</UpperCase>
@@ -131,7 +172,7 @@ class StudentQuiz extends Component {
                       </Flex>
                     </Box>
                     <Flex justifyContent="flex-end">
-                        <Button mx={5} variant = "error">Submit</Button>
+                        <Button mx={5} variant = "error" onClick={this.nextQuestion}>Next</Button>
                     </Flex>
                 </Box>
             ))}
