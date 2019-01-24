@@ -4,6 +4,17 @@ const { GraphQLClient } = require('graphql-request');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.TOKEN_SECRET;
 
+let mailTimer;
+
+const generateToken = (email, quiz_id) => {
+  const payload = {email, quiz_id};
+  const options = {
+    expiresIn: '3d',
+    jwtid: '1234'
+  };
+  return jwt.sign(payload, SECRET, options);
+}
+
 const emailStudents = () => {
   const mailer = nm.createTransport({
     service: "SendGrid",
@@ -25,15 +36,6 @@ const emailStudents = () => {
       }
     }
   `
-
-  const generateToken = (email, quiz_id) => {
-    const payload = {email, quiz_id};
-    const options = {
-      expiresIn: '3d',
-      jwtid: '1234'
-    };
-    return jwt.sign(payload, SECRET, options);
-  }
 
   const client = new GraphQLClient(
     'https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
@@ -62,4 +64,23 @@ const emailStudents = () => {
   })
 }
 
-module.exports = () => setInterval(emailStudents, 86400000)
+const mailControl = async (req, res) => {
+  const js = await json(req)
+  switch(js.command){
+    case "start":
+      mailTimer = setInterval(emailStudents, 8600000)
+      break
+    case "stop":
+      clearInterval(mailTimer)
+      break
+    case "testRun":
+      emailStudents()
+      break
+    case "generateToken":
+      const token = generateToken('joseph.stossmeister@gmail.com', 12)
+      send(res, 200, token)
+
+  }
+}
+
+module.exports = (req, res) => run(req, res, mailControl)
