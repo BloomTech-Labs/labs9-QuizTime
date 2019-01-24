@@ -15,17 +15,19 @@ import {
 
 class StudentQuiz extends Component {
     state = {
-      
+      majorQuestions: [],
     };
 
     render() {
         return(
+            
     <>
     {/* we will need to pull in the quiz data from the database and render it as a quiz */}
-    {/* will need to map over the quiz questions and render a box for each */}
-        <BoxText><UpperCase>Question 1</UpperCase></BoxText>
-        <BoxText><UpperCase>Prompt</UpperCase></BoxText>
-        <BoxText><UpperCase>Answer Choices</UpperCase></BoxText>
+    {/* will need to map over the quiz questions and render a box for each */}        
+    <BoxText><UpperCase>Quiz Title</UpperCase></BoxText>
+    <BoxText><UpperCase>Question 1</UpperCase></BoxText>
+    <BoxText><UpperCase>Prompt</UpperCase></BoxText>
+    <BoxText><UpperCase>Answer Choices</UpperCase></BoxText>
     </>
     )};
 };
