@@ -1,7 +1,9 @@
 import {QuizBar, Text} from "../design-system/primitives"; 
-export default ({quiz}) => (
+import {Button} from "@rebass/emotion"; 
+
+export default ({quiz, addQuizToClass}) => (
     <QuizBar>
     <Text>{quiz.name}</Text>
-    <Button variant="Success">Add</Button>
+    <Button onClick={() => addQuizToClass(quiz.id, quiz.name)}>Add</Button>
     </QuizBar>
 )

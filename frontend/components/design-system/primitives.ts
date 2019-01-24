@@ -124,6 +124,7 @@ export const QuizHolder = props => (
       height: "auto",
       border: "1px solid black"
     }}
+    {...props}
   />
 );
 
@@ -136,6 +137,7 @@ export const QuizBox = props => (
     overflow:"scroll",
     border:"1px solid black"
   }}
+  {...props}
   />
 );
 export const QuizBar = props => (
@@ -146,6 +148,7 @@ export const QuizBar = props => (
     height:"auto",
     border:"1px solid red"
   }}
+  {...props}
   />
 );
 export const QuizzesAvaliable = props => (
@@ -158,6 +161,7 @@ export const QuizzesAvaliable = props => (
     height:"500px",
     overflow: "scroll"
   }}
+  {...props}
   />
 )
 /*SMALLER COMPONENTS*/

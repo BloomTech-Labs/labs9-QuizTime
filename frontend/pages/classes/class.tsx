@@ -1,10 +1,12 @@
 import { Query } from "react-apollo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
 import securePage from "../../hocs/securePage";
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
+import {getIdToken } from '../../utils/auth'
+import { GraphQLClient } from 'graphql-request'
 import QuizElement from "../../components/boxes/QuizElement";
 import {
   StudentHolder,
@@ -15,24 +17,22 @@ import {
   QuizzesAvaliable
 } from "../../components/design-system/primitives";
 import { Component } from "../../node_modules/@types/react";
+const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`
+
+const ClassPage = ({ query: { id } }) => {
+  const [quizzesToClasses, setQuizzesToClasses] = useState([]);
 
 
-const ClassPage = ({ query: { title } }) => {
-  const [quizzes, setQuizzes] = useState([]);
-  const [average, setAverage] = useState(0);
-  const [students, setStudents] = useState(0);
+//similar to componentDidMount
+// const client = new GraphQLClient(endpoint, {
+//   headers: {
+//     'Authorization': `Bearer ${getIdToken()}`
+//   }
+// })
 
-  const ALL_QUIZZES_QUERY = gql`
-  query ALL_QUIZZES_QUERY {
-    quiz{
-      id
-      name
-    }
-  }
-`;
   const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
-    class (where: {id: {_eq: ${title}}}){
+    class (where: {id: {_eq: ${id}}}){
       id
       students {
         id
@@ -42,23 +42,36 @@ const ClassPage = ({ query: { title } }) => {
         email
       }
     }
+    quiz{
+      id
+      name
+    }
   }
 `;
 
+function  addQuizToClass(quiz_id, quiz_name) {
+  setQuizzesToClasses([...quizzesToClasses, {quiz_name: quiz_name, quiz_id: quiz_id, class_id: id} ])
+}
+useEffect(() => {
+  console.log(quizzesToClasses)
+}, [quizzesToClasses])
+  
   return (
     <Layout>
       <Text>Send Email</Text>
 
       <Text>Add a Student</Text>
 
-      <AddStudent class={title} />
-      <SectionContainer>
+      <AddStudent class={id} />
         <Query query={ALL_STUDENTS_QUERY}>
           {({ loading, error, data }) => {
             if (error) return <p>{error.message}</p>;
             if (loading) return <p>...loading</p>;
             if (data) {
+              console.log(data)
               return (
+                <>
+                <SectionContainer>
                 <StudentHolder>
                   {data.class[0].students.map(student => (
                     <StudentBar
@@ -68,39 +81,32 @@ const ClassPage = ({ query: { title } }) => {
                     />
                   ))}
                 </StudentHolder>
+                </SectionContainer>
+                    <SectionContainer>
+                    <QuizBox>
+                              {data.quiz.map(q => (
+                                <QuizElement
+                                key={q.id}
+                                quiz={q}
+                                addQuizToClass={addQuizToClass}
+                                />
+                            )
+                          )
+                        }
+                    </QuizBox>
+                    <QuizzesAvaliable>
+                    </QuizzesAvaliable>
+                  </SectionContainer>
+                </>
               );
             }
           }}
         </Query>
-      </SectionContainer>
-      <SectionContainer>
-        <QuizBox>
-          <Query query={ALL_QUIZZES_QUERY}>
-            {({ loading, error, data }) => {
-              if (error) return <p>{error.message}</p>;
-              if (loading) return <p>...loading</p>;
-              if (data) {
-                return (
-                <div>
-                  {data.quiz.map(q => (
-                    <QuizElement
-                    key={q.id}
-                    quiz={q}
-                    />
-                  ))}
-                  </div>
-                );
-              }
-            }}
-          </Query>
-        </QuizBox>
-        <QuizzesAvaliable />
-      </SectionContainer>
     </Layout>
   );
 };
 ClassPage.getInitialProps = async function(context) {
-  const { title } = context.query;
-  return { title };
+  const { id } = context.query;
+  return { id };
 };
 export default securePage(ClassPage);
