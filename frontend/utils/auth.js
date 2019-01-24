@@ -18,6 +18,15 @@ export const setToken = (idToken, accessToken) => {
   Cookie.set('accessToken', accessToken)
 }
 
+export const setStudentToken = (token) => {
+  console.log(token);
+  if(!process.browser) {
+    return
+  }
+  // Cookie.set('student', jwtDecode(token))
+  Cookie.set('studentToken', token)
+}
+
 // export const setToken = new Promise((resolve, reject) => {
 //   if(!process.browser) {
 //     return
@@ -62,4 +71,8 @@ export const getAccessToken = () => {
 
 export const getIdToken = () => {
     return Cookie.get('idToken')
+}
+
+export const getStudentToken = () => {
+  return Cookie.get('studentToken')
 }
