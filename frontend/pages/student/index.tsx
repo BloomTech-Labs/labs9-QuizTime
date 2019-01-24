@@ -1,26 +1,19 @@
-import Link from "next/link";
+import React from 'react'
+import Router from 'next/router'
 
-import StudentView from "../../components/StudentView/StudentView";
+//import student auth functions here
+import { setStudentToken } from '../../utils/auth'
 
-import {
-    Button,
-    Container,
-    StudentViewNav,
-  } from "../../components/design-system";
-  
-  const Student = props => (
-        <>
-        <Container>
-            <StudentViewNav>
-                <Link href="student/studentquiz" prefetch>
-                    <Button variant = "primary" m={2}>Take Quiz</Button>
-                </Link>
-                <Button variant = "success" m={2}>Email Teacher</Button>
-            </StudentViewNav>
-            {/* StudentView is the imported component with student detail */}
-                <StudentView /> 
-        </Container>
-        </>
-  );
-  
-  export default Student;
+export default class StudentLanding extends React.Component {
+  static getInitialProps({query}){
+    return {query}
+  }
+  componentDidMount() {
+    setStudentToken(this.props.query.token);
+    Router.push('/student/studentquiz')
+  }
+
+  render(){
+    return null
+  }
+}
