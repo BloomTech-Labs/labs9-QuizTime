@@ -165,7 +165,6 @@ export const QuizzesAvaliable = props => (
   />
 )
 /*SMALLER COMPONENTS*/
-
 export const Emblem = props => (
   <F
     justifyContent="center"
