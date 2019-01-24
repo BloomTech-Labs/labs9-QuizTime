@@ -16,6 +16,7 @@ const emailStudents = () => {
   const query = `
     query {
       class_quiz(where: {due_date: {_eq: ${Date.now()} } } ) {
+        quiz_id
         class{
           students{
             email
@@ -25,8 +26,8 @@ const emailStudents = () => {
     }
   `
 
-  const generateToken = (email) => {
-    const payload = {email};
+  const generateToken = (email, quiz_id) => {
+    const payload = {email, quiz_id};
     const options = {
       expiresIn: '3d',
       jwtid: '1234'
@@ -44,20 +45,21 @@ const emailStudents = () => {
   )
 
   const data = await client.request(query);
-
-  data.class_quiz.class.students.forEach(student => {
-    const msg = {
-      to: student.email,
-      from:'', //add our email no-reply@something
-      subject: "You have a quiz available to take!",
-      text: '' //add link to student landing page with ?token=${generateToken(student.email)}
-    };
-    mailer.sendMail(msg, (err, info) => {
-      if(err) {
-        console.log('error: ', err)
-      }
-    });
-  });
+  data.class_quiz.forEach(quiz => {
+    quiz.class.students.forEach(student => {
+      const msg = {
+        to: student.email,
+        from:'', //add our email no-reply@something
+        subject: "You have a quiz available to take!",
+        text: `You have a quiz available, click <a href="https//quiztime.now.sh/student?token=${generateToken(student.email, quiz.quiz_id)} here to take it!`
+      };
+      mailer.sendMail(msg, (err, info) => {
+        if(err) {
+          console.log('error: ', err)
+        }
+      });
+    })
+  })
 }
 
 module.exports = () => setInterval(emailStudents, 86400000)
