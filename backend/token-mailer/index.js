@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { json, send, run } = require('micro');
 const nm = require("nodemailer");
 const { GraphQLClient } = require('graphql-request');
