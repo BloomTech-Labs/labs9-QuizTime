@@ -7,8 +7,8 @@ const SECRET = process.env.TOKEN_SECRET;
 
 let mailTimer;
 
-const generateToken = (email, quiz_id) => {
-  const payload = {email, quiz_id};
+const generateToken = (email, quiz_id, student_id) => {
+  const payload = {email, quiz_id, student_id};
   const options = {
     expiresIn: '3d',
     jwtid: '1234'
@@ -31,6 +31,7 @@ const emailStudents = async () => {
         quiz_id
         class{
           students{
+            id
             email
           }
         }
@@ -54,7 +55,7 @@ const emailStudents = async () => {
         to: student.email,
         from:'', //add our email no-reply@something
         subject: "You have a quiz available to take!",
-        text: `You have a quiz available, click <a href="https//quiztime.now.sh/student?token=${generateToken(student.email, quiz.quiz_id)} here to take it!`
+        text: `You have a quiz available, click <a href="https//quiztime.now.sh/student?token=${generateToken(student.email, quiz.quiz_id, student.id)} here to take it!`
       };
       mailer.sendMail(msg, (err, info) => {
         if(err) {
@@ -79,7 +80,7 @@ const mailControl = async (req, res) => {
       break
     case "generateToken":
       const js = await json(req)
-      const token = generateToken(js.email, js.quiz_id)
+      const token = generateToken(js.email, js.quiz_id, js.student_id)
       send(res, 200, token)
 
   }
