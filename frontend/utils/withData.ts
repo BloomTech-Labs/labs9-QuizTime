@@ -20,16 +20,16 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token? `Bearer ${token}` : "",
+      authorization: token ? `Bearer ${token}` : "",
     }
   }
 })
 
 function createClient() {
-	return new ApolloClient({
-		link: authLink.concat(httpLink),
+  return new ApolloClient({
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache()
-	});
+  });
 }
 
 export default withApollo(createClient);
