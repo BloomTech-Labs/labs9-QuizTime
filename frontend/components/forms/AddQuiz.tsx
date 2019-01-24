@@ -19,7 +19,12 @@ class AddQuiz extends Component {
       {
         id: 1,
         prompt: "",
-        answers: [{ response: "", correct: false }],
+        answers: [
+          { id: 1, response: "", correct: false },
+          { id: 2, response: "", correct: false },
+          { id: 3, response: "", correct: false },
+          { id: 4, response: "", correct: false }
+        ],
         minorQuestions: []
       }
     ]
@@ -28,6 +33,35 @@ class AddQuiz extends Component {
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  };
+
+  handleMajorAnswerChange = (e, id) => {
+    const { majorQuestions } = this.state;
+    const newQuestions = majorQuestions.map(q => {
+      if (q.id == id) {
+        if (e.target.type == "radio") {
+          console.log("type is radio, mapping over answers");
+          q.answers = q.answers.map(a => {
+            if (a.id == e.target.value) {
+              a.correct = true;
+            } else {
+              a.correct = false;
+            }
+            return a;
+          });
+        } else {
+          q.answers = q.answers.map(a => {});
+        }
+      }
+      return q;
+    });
+
+    console.log(e.target.type);
+    console.log("MAJOR ANSWER CHANGE:", e.target.value);
+    this.setState(
+      s => ({ ...s, majorQuestions: newQuestions }),
+      () => console.log(this.state)
+    );
   };
 
   addMajorQuestion = e => {
@@ -74,7 +108,12 @@ class AddQuiz extends Component {
           majorQuestion.minorQuestions = majorQuestion.minorQuestions.concat({
             id: `${majorQID}a`,
             prompt: "",
-            answers: []
+            answers: [
+              { id: 1, response: "", correct: false },
+              { id: 2, response: "", correct: false },
+              { id: 3, response: "", correct: false },
+              { id: 4, response: "", correct: false }
+            ]
           });
           return majorQuestion;
         } else {
@@ -85,7 +124,12 @@ class AddQuiz extends Component {
               ]["id"].charCodeAt(1) + 1
             )}`,
             prompt: "",
-            answers: []
+            answers: [
+              { id: 1, response: "", correct: false },
+              { id: 2, response: "", correct: false },
+              { id: 3, response: "", correct: false },
+              { id: 4, response: "", correct: false }
+            ]
           });
           return majorQuestion;
         }
@@ -165,44 +209,68 @@ class AddQuiz extends Component {
                     <Box>
                       <Label>Answer 1</Label>
                       <Flex>
-                        <Input my={3} width={1 / 2} />
+                        <Input
+                          my={3}
+                          width={1 / 2}
+                          name="major-answer-1"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                        />
                         <Input
                           type="radio"
                           name={`major-question-${q.id}-major-answer`}
                           value="1"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
                         />
                       </Flex>
                     </Box>
                     <Box>
                       <Label>Answer 2</Label>
                       <Flex>
-                        <Input my={3} width={1 / 2} />
+                        <Input
+                          my={3}
+                          width={1 / 2}
+                          name="major-answer-2"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                        />
                         <Input
                           type="radio"
                           name={`major-question-${q.id}-major-answer`}
                           value="2"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
                         />
                       </Flex>
                     </Box>
                     <Box>
                       <Label>Answer 3</Label>
                       <Flex>
-                        <Input my={3} width={1 / 2} />
+                        <Input
+                          my={3}
+                          width={1 / 2}
+                          name="major-answer-3"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                        />
                         <Input
                           type="radio"
                           name={`major-question-${q.id}-major-answer`}
                           value="3"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
                         />
                       </Flex>
                     </Box>
                     <Box>
                       <Label>Answer 4</Label>
                       <Flex>
-                        <Input my={3} width={1 / 2} />
+                        <Input
+                          my={3}
+                          width={1 / 2}
+                          name="major-answer-4"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                        />
                         <Input
                           type="radio"
                           name={`major-question-${q.id}-major-answer`}
                           value="4"
+                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
                         />
                       </Flex>
                     </Box>
