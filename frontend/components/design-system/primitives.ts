@@ -104,24 +104,27 @@ export const StudentElement = props => (
 /* Holders */
 export const SectionContainer = props => (
   <F
-   justifyContent="center"
-    width={[1/2,1]} 
+    flexWrap="wrap"
+    justifyContent="center"
+    width={[1]} 
+    m={2}
     css={{
-      overflow:"hidden"
+      height:"auto"
     }}
     {...props} />
 );
 
 export const StudentHolder = props => (
   <F
-    width={[1/4,1/2,1]}
+    m={2}
+    width={[1,1,1/2]}
     flexDirection="column"
     justifyContent="flexStart"
     alignItems="center"
     css={{
       height:"300px",
-      overflowY:"scroll"
-
+      overflowY:"scroll",
+      border:"1px solid black"
     }}
     {...props}
   />
@@ -129,6 +132,7 @@ export const StudentHolder = props => (
 
 export const QuizHolder = props => (
   <F
+    m={2}
     width="80%"
     flexWrap="wrap"
     flexDirection="row"
@@ -142,11 +146,12 @@ export const QuizHolder = props => (
 
 export const QuizBox = props => (
   <F
-  width="230px"
+  m={2}
+  width={[1,1,1/6]}
   flexDirection="column"
   alignItems="center"
   css={{
-    height: "500px",
+    height:"300px",
     border:"1px solid black",
   }}
   {...props}
@@ -154,7 +159,7 @@ export const QuizBox = props => (
 );
 export const QuizBar = props => (
   <F
-  width="200px"
+  width={[1]}
   p={1}
   mt={1}
   mb={1}
@@ -171,12 +176,13 @@ export const QuizBar = props => (
 );
 export const QuizzesAvaliable = props => (
   <F
-  width="500px"
+  m={2}
+  width={[1,1,1/4]}
   flexDirection="row"
   flexWrap="wrap"
   css={{
     border:"1px solid black",
-    height:"500px",
+    height:"300px",
   }}
   {...props}
   />

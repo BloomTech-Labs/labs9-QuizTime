@@ -111,8 +111,6 @@ const ClassPage = ({ query: { id } }) => {
                       />
                     ))}
                   </StudentHolder>
-                </SectionContainer>
-                <SectionContainer>
                   <QuizBox>
                     {data.quiz.map(q => (
                       <QuizElement
