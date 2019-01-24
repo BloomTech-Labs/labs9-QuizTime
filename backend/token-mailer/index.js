@@ -68,16 +68,17 @@ const mailControl = async (req, res) => {
   const js = await json(req)
   switch(js.command){
     case "start":
-      mailTimer = setInterval(emailStudents, 8600000)
+      // mailTimer = setInterval(emailStudents, 8600000)
       break
     case "stop":
-      clearInterval(mailTimer)
+      // clearInterval(mailTimer)
       break
     case "testRun":
-      emailStudents()
+      // emailStudents()
       break
     case "generateToken":
-      const token = generateToken('joseph.stossmeister@gmail.com', 12)
+      const js = await json(req)
+      const token = generateToken(js.email, js.quiz_id)
       send(res, 200, token)
 
   }
