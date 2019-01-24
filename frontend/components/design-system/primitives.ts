@@ -89,7 +89,7 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    width="550px"
+    width={[1/4,1/2,1]}
     flexDirection="row"
     justifyContent="spaceEvenly"
     alignItems="center"
@@ -99,7 +99,7 @@ export const StudentElement = props => (
 );
 /* Holders */
 export const SectionContainer = props => (
-  <F justifyContent="center" width="100%" {...props} />
+  <F justifyContent="center" width={[1/2,1]} {...props} />
 );
 
 export const StudentHolder = props => (
