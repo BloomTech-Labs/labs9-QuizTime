@@ -4,19 +4,22 @@ import StudentView from "../../components/StudentView/StudentView";
 
 import {
     Button,
-    Container
+    Container,
+    StudentViewNav,
   } from "../../components/design-system";
   
   const Student = props => (
         <>
-            <Container p={3} css={{ maxWidth: "880px" }}>
-                <StudentView />
+        <Container>
+            <StudentViewNav>
                 <Link href="student/studentquiz" prefetch>
                     <Button variant = "primary" m={2}>Take Quiz</Button>
                 </Link>
                 <Button variant = "success" m={2}>Email Teacher</Button>
-
-            </Container>
+            </StudentViewNav>
+            {/* StudentView is the imported component with student detail */}
+                <StudentView /> 
+        </Container>
         </>
   );
   
