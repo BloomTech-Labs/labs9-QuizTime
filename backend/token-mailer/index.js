@@ -16,7 +16,7 @@ const generateToken = (email, quiz_id) => {
   return jwt.sign(payload, SECRET, options);
 }
 
-const emailStudents = () => {
+const emailStudents = async () => {
   const mailer = nm.createTransport({
     service: "SendGrid",
     auth: {
