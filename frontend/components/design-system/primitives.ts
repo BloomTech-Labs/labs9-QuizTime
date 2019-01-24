@@ -48,7 +48,9 @@ export const BoxText = props => (
     StyledText
     p={1}
     fontFamily="sans"
-    css={{ cursor: "pointer" }}
+    css={{
+       cursor: "pointer",
+       }}
     {...props}
   />
 );
@@ -89,27 +91,37 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    width={[1/4,1/2,1]}
+    m={1}
+    width={[1]}
     flexDirection="row"
-    justifyContent="spaceEvenly"
+    justifyContent="space-between"
     alignItems="center"
     p={3}
+    bg="white"
     {...props}
   />
 );
 /* Holders */
 export const SectionContainer = props => (
-  <F justifyContent="center" width={[1/2,1]} {...props} />
+  <F
+   justifyContent="center"
+    width={[1/2,1]} 
+    css={{
+      overflow:"hidden"
+    }}
+    {...props} />
 );
 
 export const StudentHolder = props => (
   <F
-    width="600px"
+    width={[1/4,1/2,1]}
     flexDirection="column"
     justifyContent="flexStart"
     alignItems="center"
     css={{
-      height: "auto"
+      height:"300px",
+      overflowY:"scroll"
+
     }}
     {...props}
   />
@@ -122,7 +134,7 @@ export const QuizHolder = props => (
     flexDirection="row"
     css={{
       height: "auto",
-      border: "1px solid black"
+      border: "1px solid black",
     }}
     {...props}
   />
@@ -130,12 +142,12 @@ export const QuizHolder = props => (
 
 export const QuizBox = props => (
   <F
-  width="200px"
+  width="230px"
   flexDirection="column"
+  alignItems="center"
   css={{
     height: "500px",
-    overflow:"scroll",
-    border:"1px solid black"
+    border:"1px solid black",
   }}
   {...props}
   />
@@ -143,10 +155,16 @@ export const QuizBox = props => (
 export const QuizBar = props => (
   <F
   width="200px"
+  p={1}
+  mt={1}
+  mb={1}
+  justifyContent="space-between"
+  alignItems="center"
   flexDirection="row"
+  bg="white"
   css={{
     height:"auto",
-    border:"1px solid red"
+    borderRadius:"5px"
   }}
   {...props}
   />
@@ -159,7 +177,6 @@ export const QuizzesAvaliable = props => (
   css={{
     border:"1px solid black",
     height:"500px",
-    overflow: "scroll"
   }}
   {...props}
   />
