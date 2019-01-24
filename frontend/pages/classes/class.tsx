@@ -24,7 +24,7 @@ const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
 const ClassPage = ({ query: { id } }) => {
   const [quizzesToClasses, setQuizzesToClasses] = useState([]);
-
+console.log(quizzesToClasses)
   //similar to componentDidMount
   const client = new GraphQLClient(endpoint, {
     headers: {
@@ -76,7 +76,9 @@ const ClassPage = ({ query: { id } }) => {
       ...quizzesToClasses,
       { quiz_name: quiz_name, quiz_id: quiz_id, class_id: id }
     ]);
+    
     client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
+
   }
 
   useEffect(
