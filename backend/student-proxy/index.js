@@ -6,11 +6,11 @@ const SECRET = process.env.TOKEN_SECRET;
 
 const get_quiz_query = (student_id, quiz_id) => {
   return `
-    {
-    quiz(where: {id: {_eq: ${quiz_id}}}){
+    query {
+    quiz(where: {id: {_eq: ${parseInt(quiz_id, 10)}}}){
       id
       major_questions{
-        student_answers(where: {student_id: {_eq: ${student_id}}}){
+        student_answers(where: {student_id: {_eq: ${parseInt(student_id, 10)}}}){
           id
           correct
           student_answer
@@ -23,7 +23,7 @@ const get_quiz_query = (student_id, quiz_id) => {
           response
         }
         minor_questions{
-          student_answers(where: {student_id: {_eq: ${student_id}}}){
+          student_answers(where: {student_id: {_eq: ${parseInt(student_id, 10)}}}){
             id
             correct
             student_answer
@@ -61,31 +61,36 @@ const craftPost = async (req, dcToken) => {
   }
 }
 
-module.exports = async (req, res) => {
+const handler = async (req, res) => {
   const token = req.headers.authorization;
   if(token){
-    jwt.verify(token, SECRET, (err, decodedToken) => {
+    jwt.verify(token, SECRET, async (err, decodedToken) => {
       if(err){
         //return an error message
         send(res, 400, {message: "Invalid Token"})
       }else{
         //token was verified
         //figure out what needs to be posted to hasura and pass it
-        let dbPost = craftPost(req, decodedToken);
-
-        const serverRes = await axios
-          .post('https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
-          dbPost,
-          {
-            headers: {
-              'X-Hasura-Access-Key': process.env.ACCESS_KEY
+        let dbPost = await craftPost(req, decodedToken);
+        console.log(dbPost);
+        try{
+          let serverRes = await axios
+            .post('https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
+            dbPost,
+            {
+              headers: {
+                'X-Hasura-Access-Key': process.env.ACCESS_KEY
+              }
             }
-          }
-        );
+          );
+        }catch(e){
+          console.log('err')
+        }
 
         //send response from hasura back to client
-        send(res, 200, serverRes);
       }
     })
   }
 }
+
+module.exports = (req, res) => run(req, res, handler);
