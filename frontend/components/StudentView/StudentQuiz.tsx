@@ -469,7 +469,7 @@ class StudentQuiz extends Component {
                 </Flex>
               </Box>
             ))}
-            {!this.state.majorCorrect[idx] && majorQuestions[this.state.majorIndex].minor_questions.slice(0, this.state.minorIndex[idx]).map((q, index) => (
+            {!this.state.majorCorrect[idx] && majorQuestions[idx].minor_questions.slice(0, this.state.minorIndex[idx]).map((q, index) => (
               <Box width={3 / 4} m={4} p={2} key={q.id}>
                 <BoxText htmlFor={`minor-question-${q.id}`}>
                   <UpperCase>Minor Question {index + 1}</UpperCase>
