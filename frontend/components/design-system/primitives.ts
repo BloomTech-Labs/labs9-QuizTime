@@ -94,7 +94,7 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    width="500px"
+    width={[1/4,1/2,1]}
     flexDirection="row"
     justifyContent="spaceEvenly"
     alignItems="center"
@@ -104,7 +104,7 @@ export const StudentElement = props => (
 );
 /* Holders */
 export const SectionContainer = props => (
-  <F justifyContent="center" width="100%" {...props} />
+  <F justifyContent="center" width={[1/2,1]} {...props} />
 );
 
 export const StudentHolder = props => (
@@ -129,10 +129,47 @@ export const QuizHolder = props => (
       height: "auto",
       border: "1px solid black"
     }}
+    {...props}
   />
 );
-/*SMALLER COMPONENTS*/
 
+export const QuizBox = props => (
+  <F
+  width="200px"
+  flexDirection="column"
+  css={{
+    height: "500px",
+    overflow:"scroll",
+    border:"1px solid black"
+  }}
+  {...props}
+  />
+);
+export const QuizBar = props => (
+  <F
+  width="200px"
+  flexDirection="row"
+  css={{
+    height:"auto",
+    border:"1px solid red"
+  }}
+  {...props}
+  />
+);
+export const QuizzesAvaliable = props => (
+  <F
+  width="500px"
+  flexDirection="row"
+  flexWrap="wrap"
+  css={{
+    border:"1px solid black",
+    height:"500px",
+    overflow: "scroll"
+  }}
+  {...props}
+  />
+)
+/*SMALLER COMPONENTS*/
 export const Emblem = props => (
   <F
     justifyContent="center"

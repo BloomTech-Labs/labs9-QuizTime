@@ -1,13 +1,16 @@
 {
   "version": 2,
   "name": "quiztime",
+  "public": true,
   "alias": ["quiztime.now.sh"],
   "builds": [
     { "src": "frontend/next.config.js", "use": "@now/next" },
     { "src": "backend/add-credit/index.js", "use": "@now/node" },
     { "src": "backend/hasura-test/index.js", "use": "@now/node" },
     { "src": "backend/hello-lambda/index.js", "use": "@now/node" },
-    { "src": "backend/send-email/index.js", "use": "@now/node" }
+    { "src": "backend/send-email/index.js", "use": "@now/node" },
+    { "src": "backend/student-proxy/index.js", "use": "@now/node" },
+    { "src": "backend/token-mailer/index.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/$1" },
@@ -18,6 +21,7 @@
     "STRIPE_ALLOW_DOMAIN": "quiztime.now.sh",
     "X_HASURA_ACCESS_KEY": "@hasura-access-key",
     "SENDGRID_USERNAME": "@sendgrid-username",
-    "SENDGRID_PASSWORD": "@sendgrid-password"
+    "SENDGRID_PASSWORD": "@sendgrid-password",
+    "TOKEN_SECRET": "@token-secret"
   }
 }

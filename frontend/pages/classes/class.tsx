@@ -1,33 +1,40 @@
 import { Query } from "react-apollo";
+import { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
 import securePage from "../../hocs/securePage";
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
+import { getIdToken } from "../../utils/auth";
+import { GraphQLClient } from "graphql-request";
+import QuizElement from "../../components/boxes/QuizElement";
+import ClassQuizzes from "../../components/boxes/ClassQuizzes";
+import { Mutation } from "react-apollo";
+
 import {
   StudentHolder,
   SectionContainer,
   Text,
-  QuizHolder
+  QuizHolder,
+  QuizBox,
+  QuizzesAvaliable
 } from "../../components/design-system/primitives";
+import { Component } from "../../node_modules/@types/react";
+const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
-const ClassPage = ({ query: { title } }) => {
-  // this.state ={
-  //   average: 0, adding all of the students scores up and dividing by the number of students in class
-  //   quizzesTaken: 0, tracks how many quizzes have been handed in
-  //   connectedQuizzes: [], quizzes will be put into this array as they are connected to the specitic class
-  // }
-  const SINGLE_CLASS_QUERY = gql`
-  query SINGLE_CLASS_QUERY {
-    class{
-      id
-      name
+const ClassPage = ({ query: { id } }) => {
+  const [quizzesToClasses, setQuizzesToClasses] = useState([]);
+
+  //similar to componentDidMount
+  const client = new GraphQLClient(endpoint, {
+    headers: {
+      Authorization: `Bearer ${getIdToken()}`
     }
-  }
-  `
+  });
+
   const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
-    class (where: {id: {_eq: ${title}}}){
+    class (where: {id: {_eq: ${id}}}){
       id
       students {
         id
@@ -37,45 +44,98 @@ const ClassPage = ({ query: { title } }) => {
         email
       }
     }
+    quiz{
+      id
+      name
+    }
   }
 `;
+
+  const generateMutation = (quiz_id, class_id) => {
+    return `
+    mutation add_quiz_to_class{
+      insert_class_quiz(
+        objects:[
+          {
+            class_id:${class_id},
+            quiz_id:${quiz_id}
+          }
+        ]
+      ){
+        returning{
+          id
+        }
+      }
+    }
+    `;
+  };
+
+
+  function addQuizToClass(quiz_id, quiz_name) {
+    setQuizzesToClasses([
+      ...quizzesToClasses,
+      { quiz_name: quiz_name, quiz_id: quiz_id, class_id: id }
+    ]);
+    client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
+  }
+
+  useEffect(
+    () => {
+      console.log(quizzesToClasses);
+    },
+    [quizzesToClasses]
+  );
+
   return (
     <Layout>
       <Text>Send Email</Text>
-      
+
       <Text>Add a Student</Text>
 
-      <AddStudent class={title} />
-      <SectionContainer>
-        <Query query={ALL_STUDENTS_QUERY}>
-          {({ loading, error, data }) => {
-            if (error) return <p>{error.message}</p>;
-            if (loading) return <p>...loading</p>;
-            if (data) {
-              console.log(data);
-              return (
-                <StudentHolder>
-                  {data.class[0].students.map(student => (
-                    <StudentBar
-                      id={student.id}
-                      key={student.id}
-                      student={student}
-                    />
-                  ))}
-                </StudentHolder>
-              );
-            }
-          }}
-        </Query>
-      </SectionContainer>
-      <SectionContainer>
-        <QuizHolder />
-      </SectionContainer>
+      <AddStudent class={id} />
+      <Query query={ALL_STUDENTS_QUERY}>
+        {({ loading, error, data }) => {
+          if (error) return <p>{error.message}</p>;
+          if (loading) return <p>...loading</p>;
+          if (data) {
+            console.log(data);
+            return (
+              <>
+                <SectionContainer>
+                  <StudentHolder>
+                    {data.class[0].students.map(student => (
+                      <StudentBar
+                        id={student.id}
+                        key={student.id}
+                        student={student}
+                      />
+                    ))}
+                  </StudentHolder>
+                </SectionContainer>
+                <SectionContainer>
+                  <QuizBox>
+                    {data.quiz.map(q => (
+                      <QuizElement
+                        key={q.id}
+                        quiz={q}
+                        addQuizToClass={addQuizToClass}
+                      />
+                    ))}
+                  </QuizBox>
+                  <QuizzesAvaliable>
+                    <ClassQuizzes quizzes={quizzesToClasses} />
+                  </QuizzesAvaliable>
+                </SectionContainer>
+              </>
+            );
+          }
+        }}
+      </Query>
     </Layout>
   );
 };
 ClassPage.getInitialProps = async function(context) {
-  const { title } = context.query;
-  return { title };
+  const { id } = context.query;
+  return { id };
 };
 export default securePage(ClassPage);

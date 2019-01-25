@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "dotenv": "^6.2.0"
+  },
+  "dependencies": {
+    "graphql-request": "^1.8.2",
+    "jsonwebtoken": "^8.4.0",
+    "micro": "^9.3.3",
+    "nodemailer": "^5.1.1"
+  }
+}

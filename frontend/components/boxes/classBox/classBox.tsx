@@ -43,7 +43,7 @@ const ClassBox: React.SFC<{ className: object }> = ({className }) => {
                 number of students in the class, the average grade of the class
                 and the number of quizzes the class has and will take */}
           <Emblem />
-          <Link href={`/classes/class?title=${className.id}`}>
+          <Link href={`/classes/class?id=${className.id}`}>
           <BoxText>{className.name}</BoxText>
           </Link>
           <BoxText>Students: </BoxText>
