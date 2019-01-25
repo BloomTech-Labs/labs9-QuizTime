@@ -43,6 +43,11 @@ const StyledText = styled.a`
   ${fontSize}
 `;
 
+export const StudentViewNav = props => (
+  <F  
+    justifyContent="flex-end" {...props} />
+);
+
 export const BoxText = props => (
   <T
     StyledText
