@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "dotenv": "^6.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "circular-json": "^0.5.9",
+    "jsonwebtoken": "^8.4.0",
+    "micro": "^9.3.3"
+  }
+}
