@@ -27,15 +27,15 @@ export const Text = system{
 */
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
-  <F justifyContent= "flex-end" alignItems = "center" bg = "red.1" { ...props } />
+  <F justifyContent= "flex-end" alignItems ="center" bg="red.1" { ...props } />
 );
 
 export const SideBarHolder = props => (
   <F
-    width= "100px"
-bg = "blue.2"
-flexDirection = "column"
-css = {{ minHeight: "100vh" }}
+  width="100px"
+  bg="blue.2"
+  flexDirection="column"
+  css={{ minHeight: "100vh" }}
 {...props }
 />
 );
@@ -122,53 +122,53 @@ export const StudentViewNav = props => (
 
 export const QuizHolder = props => (
   <F
-    width="80%"
-    flexWrap="wrap"
-    flexDirection="row"
-    css={{
-      height: "auto",
-      border: "1px solid black"
-    }}
-    {...props}
-  />
+    width= "80%"
+flexWrap = "wrap"
+flexDirection = "row"
+css = {{
+  height: "auto",
+    border: "1px solid black"
+}}
+{...props }
+/>
 );
 
 export const QuizBox = props => (
   <F
 
-  width="200px"
-  flexDirection="column"
-  css={{
-    height: "500px",
-    overflow:"scroll",
-    border:"1px solid black"
-  }}
-  {...props}
-  />
+  width= "200px"
+flexDirection = "column"
+css = {{
+  height: "500px",
+    overflow: "scroll",
+      border: "1px solid black"
+}}
+{...props }
+/>
 );
 export const QuizBar = props => (
   <F
-  width="200px"
-  flexDirection="row"
-  css={{
-    height:"auto",
-    border:"1px solid red"
-  }}
-  {...props}
-  />
+  width= "200px"
+flexDirection = "row"
+css = {{
+  height: "auto",
+    border: "1px solid red"
+}}
+{...props }
+/>
 );
 export const QuizzesAvaliable = props => (
   <F
-  width="500px"
-  flexDirection="row"
-  flexWrap="wrap"
-  css={{
-    border:"1px solid black",
-    height:"500px",
-    overflow: "scroll"
-  }}
-  {...props}
-  />
+  width= "500px"
+flexDirection = "row"
+flexWrap = "wrap"
+css = {{
+  border: "1px solid black",
+    height: "500px",
+      overflow: "scroll"
+}}
+{...props }
+/>
 )
 /*SMALLER COMPONENTS*/
 export const Emblem = props => (

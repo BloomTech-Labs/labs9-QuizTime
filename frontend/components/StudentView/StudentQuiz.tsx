@@ -366,7 +366,11 @@ class StudentQuiz extends Component {
   // }
 
   nextQuestion = (e, q) => {
-    console.log('sending', this.state.currentMajorQuestion)
+    if (this.state.isMajor) {
+      console.log('sending current major', this.state.currentMajorQuestion)
+    } else {
+      console.log('sending current minor', this.state.currentMinorQuestion)
+    }
 
     if (this.state.isMajor) {
       let majorCorrect = this.state.majorCorrect
