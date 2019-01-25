@@ -1,61 +1,64 @@
-const { send, json, run } = require("micro");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const { GraphQLClient } = require("graphql-request");
-
-const client = new GraphQLClient(
-  "https://quiztime-hasura.herokuapp.com/v1alpha1/graphql",
-  {
-    headers: {
-      "X-Hasura-Access-Key": "lambdalabsquiztime"
-    }
-  }
-);
-
-//* query hardcoded to id: 1 until frontend provides current_user id
+require('dotenv').config()
+const { send, json, run } = require('micro')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const { GraphQLClient } = require('graphql-request')
 
 module.exports = (req, res) =>
   run(req, res, async (req, res) => {
     try {
-      const token = await json(req);
+      const token = await json(req)
+      console.log('\n SERVER TOKEN: ', token)
+      const client = new GraphQLClient(
+        'https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
+        {
+          headers: {
+            'X-Hasura-Access-Key': 'lambdalabsquiztime',
+            'X-Hasura-Role': 'user',
+            'X-Hasura-User-Id': `${token.sub}`
+          }
+        }
+      )
 
-      const query = `
-    query {
-      teacher(where: {email: {_eq: "${token.auth_email}"}}) {
-        credits
-      }
-    }
-    `;
       const mutation = `
-  mutation update_teacher {
-  update_teacher(
-    where: {email: {_eq: "${token.auth_email}"}},
-   _inc: {
-      credits: 10,
-    }
-  ) {
-    returning {
-      id
-      credits
-    }
-  }
-}
-`;
+        mutation update_teacher {
+        update_teacher(
+          where: {id: {_eq: "${token.sub}"}},
+          _inc: {
+            credits: 10,
+          })
+        {
+          returning {
+            id
+            credits
+          }
+        }
+        }
+      `
+      console.log('\n TOKEN ID', token.id)
       const charge = await stripe.charges.create({
         amount: 1000, //* can be extracted from token
         source: token.id, //* pending transaction id
-        currency: "usd", //* can be extracted from token
-        description: "quiztime charge"
-      });
-      // console.log('\n CHARGE OBJECT: ', charge, '\n')
-      // const data = await client.request(query)
-      if (charge.status === "succeeded") {
-        const data = await client.request(mutation);
-        send(res, 200, data);
+        currency: 'usd', //* can be extracted from token
+        description: 'quiztime charge'
+      })
+      console.log('\n SERVER CHARGE: ', charge)
+      if (charge.status === 'succeeded') {
+        res.setHeader('Access-Control-Request-Method', 'POST')
+        res.setHeader('Access-Control-Allow-Credentials', 'true')
+        res.setHeader(
+          'Access-Control-Allow-Headers',
+          'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+        )
+        res.setHeader(
+          'Access-Control-Allow-Origin',
+          process.env.STRIPE_ALLOW_DOMAIN
+        )
+        const data = await client.request(mutation)
+        send(res, 200, data)
       } else {
-        send(res, 400, { message: "charge failed to complete" });
+        send(res, 400, { message: 'charge failed to complete' })
       }
     } catch (error) {
-      console.log("\n ERROR", error, "\n");
-      send(res, 400, error);
+      send(res, 400, error)
     }
-  });
+  })

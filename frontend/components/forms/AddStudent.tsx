@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-
-// const ADD_STUDENT_MUTATION = gql`
-// mutation insert_student {
-//     insert_student(
-//       objects:[
-//         {
-//           first_name: this.state.firstName,
-//           last_name: this.state.lastName,
-//           email: this.state.email,
-//           class_id: 1,
-//         }
-//       ]
-//     ){
-//       returning{
-//         id
-//       }
-//     }
-//   }
-// `;
+import { Form, Input, Button, Label, Text } from "../design-system";
 
 class AddStudent extends Component {
+
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    classId: 0
+    classId: this.props.class
   };
 
   handleChange = e => {
@@ -62,7 +45,7 @@ class AddStudent extends Component {
       <Mutation mutation={this.generateMutation()}>
         {(insert_student, { error, loading, data }) => (
         <>
-          <form
+          <Form
             onSubmit={async e => {
               // Stop the form from submitting
               e.preventDefault();
@@ -71,10 +54,9 @@ class AddStudent extends Component {
               console.log(res);
             }}
           >
-            <fieldset>
-              <label htmlFor="firstName">
+              <Label htmlFor="firstName">
                 First Name
-                <input
+                <Input
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -83,11 +65,11 @@ class AddStudent extends Component {
                   value={this.state.firstName}
                   onChange={this.handleChange}
                 />
-              </label>
+              </Label>
 
-              <label htmlFor="lastName">
+              <Label htmlFor="lastName">
                 Last Name
-                <input
+                <Input
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -96,11 +78,11 @@ class AddStudent extends Component {
                   value={this.state.lastName}
                   onChange={this.handleChange}
                 />
-              </label>
+              </Label>
 
-              <label htmlFor="email">
+              <Label htmlFor="email">
                 Email
-                <input
+                <Input
                   type="text"
                   id="email"
                   name="email"
@@ -109,23 +91,10 @@ class AddStudent extends Component {
                   value={this.state.email}
                   onChange={this.handleChange}
                 />
-              </label>
+              </Label>
 
-              <label htmlFor="class">
-                Class
-                <input
-                  type="number"
-                  id="classId"
-                  name="classId"
-                  placeholder="Class Id"
-                  required
-                  value={this.state.classId}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <button type="submit">Submit</button>
-            </fieldset>
-          </form>
+              <Button variant="primary" type="submit">Submit</Button>
+          </Form>
             {/* render errors, loading, or data */}
             {error && (<p> {error.message} </p>) }
             {loading && (<p> ...loading </p>) }

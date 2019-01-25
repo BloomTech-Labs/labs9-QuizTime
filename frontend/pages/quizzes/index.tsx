@@ -3,7 +3,8 @@ import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import QuizBox from "../../components/boxes/quizBox/quizBox";
 import AddBox from "../../components/boxes/addBox/addBox";
-
+import Layout from "../../components/Layout";
+import securePage from '../../hocs/securePage'
 
 const ALL_QUIZZES_QUERY = gql`
 	query ALL_QUIZZES_QUERY {
@@ -26,6 +27,7 @@ const Holder = styled.div`
 `;
 
 const Quizzes = () => (
+<Layout>
   <CardHolder>
     <Holder>
       <AddBox />
@@ -40,6 +42,7 @@ const Quizzes = () => (
       </Query>
     </Holder>
   </CardHolder>
+</Layout>
 );
 
-export default Quizzes
+export default securePage(Quizzes)
