@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import axios from 'axios';
+
+import { getStudentToken } from "../../utils/auth";
 
 import {
   Text,
@@ -351,7 +354,8 @@ class StudentQuiz extends Component {
       correct: false,
     },
     questionCount: 0,
-    correctAnswers: 0,
+    majorCorrectAnswers: 0,
+    minorCorrectAnswers: 0,
     isAnswered: false,
     isMajor: true
   };
@@ -365,11 +369,28 @@ class StudentQuiz extends Component {
   //   }))
   // }
 
+  // we are getting denied -- need to adjust backend
+  componentDidMount(){
+    console.log('get student token', getStudentToken());
+    axios.post('https://quiztime.now.sh/api/student-proxy', 
+    {"type": "get_quiz_query"},
+    {headers:{
+      "Access-Control-Allow-Origin": "*",
+      "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtZWppYUBnbWFpbC5jb20iLCJxdWl6X2lkIjoiMTIiLCJzdHVkZW50X2lkIjoiMzYiLCJpYXQiOjE1NDg0NTA3NjMsImV4cCI6MTU0ODcwOTk2MywianRpIjoiMTIzNCJ9.vn5NBuu5_ThGQwK3fgSxJgZxSNXoV_ddL5FAtCOmBJw"}})
+    .then(response=>console.log(response.data)) 
+  };
+
   nextQuestion = (e, q) => {
     if (this.state.isMajor) {
       console.log('sending current major', this.state.currentMajorQuestion)
+      if(this.state.currentMajorQuestion.correct){
+        this.setState({majorCorrectAnswer: this.state.majorCorrectAnswers++});
+      }
     } else {
       console.log('sending current minor', this.state.currentMinorQuestion)
+      if(this.state.currentMinorQuestion.correct){
+        this.setState({minorCorrectAnswer: this.state.minorCorrectAnswers++});
+      }
     }
 
     if (this.state.isMajor) {
@@ -380,7 +401,8 @@ class StudentQuiz extends Component {
 
     if (this.state.currentMajorQuestion.correct) {
       if (this.state.majorIndex === this.state.modelData.major_questions.length - 1) {
-        return alert(`score is ${this.state.correctAnswers}`)
+        const score = this.calculateScore()
+        return alert(`score is ${score}`)
       }
 
       let minorIndex = this.state.minorIndex
@@ -434,6 +456,12 @@ class StudentQuiz extends Component {
     })
   }
 
+  calculateScore = () => {
+    const { majorCorrectAnswers, minorCorrectAnswers } = this.state;
+    const score = majorCorrectAnswers*10 + minorCorrectAnswers*2;
+
+    return score;
+  }
 
   render() {
     // const { majorQuestions } = this.state.dummyData;
