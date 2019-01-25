@@ -167,6 +167,17 @@ const handler = async (req, res) => {
             }
           );
 
+          res.setHeader('Access-Control-Request-Method', 'POST')
+          res.setHeader('Access-Control-Allow-Credentials', 'true')
+          res.setHeader(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+          )
+          res.setHeader(
+            'Access-Control-Allow-Origin',
+            process.env.STRIPE_ALLOW_DOMAIN
+          )
+
           send(res, 200, serverRes.data);
         } catch (e) {
           console.log(e.message || e.error);
