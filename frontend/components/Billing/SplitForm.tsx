@@ -83,6 +83,7 @@ class SplitForm extends React.Component {
     let ready2Submit = cardNumber && cardExpiry && cardCvc && postalCode
     return (
       <>
+        <BoldText fontSize={5} m={2}>Billing Information</BoldText>
         <form onSubmit={handleSubmit}>
           <BillingText>
             Card Number

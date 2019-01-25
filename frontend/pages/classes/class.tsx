@@ -20,6 +20,7 @@ import {
   QuizzesAvaliable
 } from "../../components/design-system/primitives";
 import { Component } from "../../node_modules/@types/react";
+
 const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
 const ClassPage = ({ query: { id } }) => {
@@ -51,6 +52,7 @@ const ClassPage = ({ query: { id } }) => {
   }
 `;
 
+
   const generateMutation = (quiz_id, class_id) => {
     return `
     mutation add_quiz_to_class{
@@ -69,7 +71,6 @@ const ClassPage = ({ query: { id } }) => {
     }
     `;
   };
-
 
   function addQuizToClass(quiz_id, quiz_name) {
     setQuizzesToClasses([
@@ -93,6 +94,7 @@ const ClassPage = ({ query: { id } }) => {
       <Text>Add a Student</Text>
 
       <AddStudent class={id} />
+    
       <Query query={ALL_STUDENTS_QUERY}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
