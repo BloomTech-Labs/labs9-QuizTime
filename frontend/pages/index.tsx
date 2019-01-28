@@ -8,16 +8,15 @@ import Footer from '../components/LandingPage/Footer';
 
 const Index = () => (
   <FullScreenContainer>
-    <BoldText>Hello, Welcome to QuizTime! Login Below</BoldText>
+    <BoldText p={3}>Hello, Welcome to QuizTime! Login Below</BoldText>
     {/* header */}
     {/* CTA */}
+    <Button onClick={authorize}>Login</Button>
     {/* how it works */}
     {/* testimonials */}
     {/* get started */}
     <GetStarted />
     {/* footer */}
-    <Button onClick={authorize}>Login</Button>
-    
   </FullScreenContainer>
 );
 
