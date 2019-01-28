@@ -9,13 +9,11 @@ import { getIdToken } from "../../utils/auth";
 import { GraphQLClient } from "graphql-request";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
-import { Mutation } from "react-apollo";
 
 import {
   StudentHolder,
   SectionContainer,
   Text,
-  QuizHolder,
   QuizBox,
   QuizzesAvaliable
 } from "../../components/design-system/primitives";
@@ -25,7 +23,7 @@ const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
 const ClassPage = ({ query: { id } }) => {
   const [quizzesToClasses, setQuizzesToClasses] = useState([]);
-
+console.log(quizzesToClasses)
   //similar to componentDidMount
   const client = new GraphQLClient(endpoint, {
     headers: {
@@ -35,14 +33,23 @@ const ClassPage = ({ query: { id } }) => {
 
   const ALL_STUDENTS_QUERY = gql`
   query ALL_STUDENTS_QUERY {
-    class (where: {id: {_eq: ${id}}}){
+    class(where: {id: {_eq: ${id}}}){
       id
-      students {
+      name
+      students{
         id
-        class_id
-        last_name
         first_name
+        last_name
+        class_id
         email
+      }
+      quizzes{
+        id
+        due_date
+        quiz{
+          id
+          name
+        }
       }
     }
     quiz{
@@ -77,8 +84,15 @@ const ClassPage = ({ query: { id } }) => {
       ...quizzesToClasses,
       { quiz_name: quiz_name, quiz_id: quiz_id, class_id: id }
     ]);
-    client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
-  }
+    // for(let i = 0; i < quizzesToClasses.length; i++){
+    //   console.log(quizzesToClasses[i], quiz_id)
+    //  if(quizzesToClasses[i].quiz_id !== quiz_id){
+    //    console.log(quizzesToClasses[i])
+      return client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
+     }
+    
+
+  
 
   useEffect(
     () => {
@@ -113,8 +127,6 @@ const ClassPage = ({ query: { id } }) => {
                       />
                     ))}
                   </StudentHolder>
-                </SectionContainer>
-                <SectionContainer>
                   <QuizBox>
                     {data.quiz.map(q => (
                       <QuizElement
@@ -125,7 +137,12 @@ const ClassPage = ({ query: { id } }) => {
                     ))}
                   </QuizBox>
                   <QuizzesAvaliable>
-                    <ClassQuizzes quizzes={quizzesToClasses} />
+                    {data.class[0].quizzes.map(quizzes => (
+                    <ClassQuizzes
+                     quizzes={quizzes}
+                    //  quizzes={quizzesToClasses}
+                      />
+                       ))} 
                   </QuizzesAvaliable>
                 </SectionContainer>
               </>
