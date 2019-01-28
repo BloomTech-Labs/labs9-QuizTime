@@ -7,17 +7,16 @@ import GetStarted from '../components/LandingPage/GetStarted';
 import Footer from '../components/LandingPage/Footer';
 
 const Index = () => (
-  <FullScreenContainer>
+  <Container>
     <BoldText p={3}>Hello, Welcome to QuizTime! Login Below</BoldText>
     {/* header */}
     {/* CTA */}
     <Button onClick={authorize}>Login</Button>
     {/* how it works */}
-    {/* testimonials */}
-    {/* get started */}
+    <Testimonials />
     <GetStarted />
-    {/* footer */}
-  </FullScreenContainer>
+    <Footer />
+  </Container>
 );
 
 export default Index;
