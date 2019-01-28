@@ -263,22 +263,15 @@ export const StyledLabel = styled.label`
   ${fontSize}
   ${fontWeight}
 `;
+export const Form = props => <StyledForm width="80%" m="auto" {...props} />;
 
-export const Form = props => (
-  <StyledForm
-    display="flex"
-    flexDirection="row"
-    justifyContent="spaceEvenly"
-    bg="white"
-    {...props}
-  />
-);
 export const Input = props => (
   <StyledInput
     p={2}
     my={2}
     border="none"
     borderBottom="1px solid red"
+    css={{ display: "block" }}
     {...props}
   />
 );
@@ -291,6 +284,10 @@ export const Label = props => (
     css={{ textTransform: "uppercase" }}
     {...props}
   />
+);
+
+export const TextArea = props => (
+  <StyledTextArea width={1} css={{ height: "200px" }} {...props} />
 );
 
 //* IMAGE TAGS
