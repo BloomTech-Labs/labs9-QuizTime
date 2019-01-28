@@ -174,137 +174,139 @@ class AddQuiz extends Component {
             >
               <Text>Add a Quiz</Text>
 
-              <fieldset>
-                <Label htmlFor="name">
-                  Quiz Title
-                  <Input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Quiz Title"
-                    required
-                    value={this.state.name}
-                    onChange={this.handleChange}
+              <Label htmlFor="name">
+                Quiz Title
+                <Input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Quiz Title"
+                  required
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
+              </Label>
+              {majorQuestions.map(q => (
+                <Box key={q.id} my={4}>
+                  <Flex justifyContent="space-around">
+                    <Label htmlFor={`major-question-${q.id}`}>
+                      Major Question {q.id}
+                    </Label>
+                    <Button
+                      variant="error"
+                      p={0}
+                      fontSize={0}
+                      onClick={e => this.deleteMajorQuestion(q.id)}
+                    >
+                      Delete
+                    </Button>
+                  </Flex>
+                  <TextArea
+                    id={`major-question-${q.id}`}
+                    onChange={e => this.updateMajorQuestion(q.id, e)}
                   />
-                </Label>
-                {majorQuestions.map(q => (
-                  <Box key={q.id} my={4}>
-                    <Flex justifyContent="space-around">
-                      <Label htmlFor={`major-question-${q.id}`}>
-                        Major Question {q.id}
-                      </Label>
-                      <Button
-                        variant="error"
-                        p={0}
-                        fontSize={0}
-                        onClick={e => this.deleteMajorQuestion(q.id)}
-                      >
-                        Delete
-                      </Button>
-                    </Flex>
-                    <TextArea
-                      id={`major-question-${q.id}`}
-                      onChange={e => this.updateMajorQuestion(q.id, e)}
-                    />
-                    <Box>
-                      <Label>Answer 1</Label>
-                      <Flex>
-                        <Input
-                          my={3}
-                          width={1 / 2}
-                          name="major-answer-1"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                        <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="1"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Label>Answer 2</Label>
-                      <Flex>
-                        <Input
-                          my={3}
-                          width={1 / 2}
-                          name="major-answer-2"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                        <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="2"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Label>Answer 3</Label>
-                      <Flex>
-                        <Input
-                          my={3}
-                          width={1 / 2}
-                          name="major-answer-3"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                        <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="3"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                      </Flex>
-                    </Box>
-                    <Box>
-                      <Label>Answer 4</Label>
-                      <Flex>
-                        <Input
-                          my={3}
-                          width={1 / 2}
-                          name="major-answer-4"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                        <Input
-                          type="radio"
-                          name={`major-question-${q.id}-major-answer`}
-                          value="4"
-                          onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                        />
-                      </Flex>
-                    </Box>
-                    <Container width={3 / 4}>
-                      {q.minorQuestions.map(minorQ => (
-                        <Box>
-                          <Text>{minorQ.id}</Text>
-                          <TextArea />
-                          <Input />
-                          <Input />
-                          <Input />
-                          <Input />
-                        </Box>
-                      ))}
-                    </Container>
-                    <Flex justifyContent="center">
-                      <Button variant="success" onClick={this.addMajorQuestion}>
-                        Add Major Question
-                      </Button>
-                      <Button
-                        variant="primary"
-                        onClick={e => {
-                          this.addMinorQuestion(e, q.id);
-                        }}
-                      >
-                        Add Minor Question
-                      </Button>
+                  <Box>
+                    <Label>Answer 1</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-1"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="1"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
                     </Flex>
                   </Box>
-                ))}
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </fieldset>
+                  <Box>
+                    <Label>Answer 2</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-2"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="2"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Box>
+                    <Label>Answer 3</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-3"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="3"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Box>
+                    <Label>Answer 4</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-4"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="4"
+                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Container width={3 / 4}>
+                    {q.minorQuestions.map(minorQ => (
+                      <Box>
+                        <Text>{minorQ.id}</Text>
+                        <TextArea />
+                        <Label>Answer 1</Label>
+                        <Input />
+                        <Label>Answer 2</Label>
+                        <Input />
+                        <Label>Answer 3</Label>
+                        <Input />
+                        <Label>Answer 4</Label>
+                        <Input />
+                      </Box>
+                    ))}
+                  </Container>
+                  <Flex justifyContent="center">
+                    <Button variant="success" onClick={this.addMajorQuestion}>
+                      Add Major Question
+                    </Button>
+                    <Button
+                      variant="primary"
+                      onClick={e => {
+                        this.addMinorQuestion(e, q.id);
+                      }}
+                    >
+                      Add Minor Question
+                    </Button>
+                  </Flex>
+                </Box>
+              ))}
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
             </Form>
             {/* render errors, loading, or data */}
             {error && <p> {error.message} </p>}

@@ -4,6 +4,8 @@ import styled from "@emotion/styled";
 import QuizBox from "../../components/boxes/quizBox/quizBox";
 import AddBox from "../../components/boxes/addBox/addBox";
 import Link from "next/link";
+import Layout from "../../components/Layout";
+import securePage from "../../hocs/securePage";
 
 const ALL_QUIZZES_QUERY = gql`
   query ALL_QUIZZES_QUERY {
@@ -26,22 +28,26 @@ const Holder = styled.div`
 `;
 
 const Quizzes = () => (
-  <CardHolder>
-    <Holder>
-      <Link href="/quizzes/add-quiz">
-        <AddBox />
-      </Link>
-      <Query query={ALL_QUIZZES_QUERY}>
-        {({ loading, error, data }) => {
-          if (error) return <p>{error.message}</p>;
-          if (loading) return <p>...loading</p>;
-          if (data) {
-            return data.quiz.map(q => <QuizBox key={q.id} quiz={q} />);
-          }
-        }}
-      </Query>
-    </Holder>
-  </CardHolder>
+  <Layout>
+    <CardHolder>
+      <Holder>
+        <Link href="/quizzes/add-quiz">
+          <a>
+            <AddBox />
+          </a>
+        </Link>
+        <Query query={ALL_QUIZZES_QUERY}>
+          {({ loading, error, data }) => {
+            if (error) return <p>{error.message}</p>;
+            if (loading) return <p>...loading</p>;
+            if (data) {
+              return data.quiz.map(q => <QuizBox key={q.id} quiz={q} />);
+            }
+          }}
+        </Query>
+      </Holder>
+    </CardHolder>
+  </Layout>
 );
 
-export default Quizzes;
+export default securePage(Quizzes);

@@ -1,4 +1,5 @@
 import React from 'react'
+import Router from 'next/router'
 
 import { getUserFromServerCookie, getUserFromLocalCookie} from '../utils/auth'
 
@@ -22,6 +23,9 @@ const securePageHoc = Page => class SecurePage extends React.Component {
 
   componentDidMount() {
     window.addEventListener('storage', this.logout, false)
+    if(!this.props.isAuthenticated){
+      Router.push('/')
+    }
   }
 
   componentWillUnmount() {
@@ -29,8 +33,8 @@ const securePageHoc = Page => class SecurePage extends React.Component {
   }
 
   render() {
-    if(!this.props.isAuthenticated){
-      return <div>Not Authorized</div>
+    if(!this.props.isAuthenticated) {
+      return null
     }
     return <Page {...this.props} />
   }

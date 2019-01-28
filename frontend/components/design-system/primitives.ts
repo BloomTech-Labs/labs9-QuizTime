@@ -2,7 +2,8 @@ import {
   Box as B,
   Text as T,
   Flex as F,
-  Button as Butt
+  Button as Butt,
+  Image as I
 } from "@rebass/emotion";
 
 import {
@@ -24,6 +25,35 @@ export const Text = system{
     fontFamily: "sans",
     fontWeight: "300"
 */
+/* NAVIGATION COMPONENTS*/
+export const NavBarHolder = props => (
+  <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
+);
+
+export const SideBarHolder = props => (
+  <F
+    width="100px"
+    bg="blue.2"
+    flexDirection="column"
+    css={{ minHeight: "100vh" }}
+    {...props}
+  />
+);
+const StyledText = styled.a`
+  ${fontSize}
+`;
+
+export const BoxText = props => (
+  <T
+    StyledText
+    p={1}
+    fontFamily="sans"
+    css={{
+      cursor: "pointer"
+    }}
+    {...props}
+  />
+);
 
 /* CONTAINERS */
 
@@ -42,12 +72,143 @@ export const FullScreenContainer = props => (
   />
 );
 
+export const BoxHolder = props => (
+  <F
+    width="200px"
+    m={1}
+    justifyContent="center"
+    alignItems="center"
+    flexDirection="column"
+    bg="white"
+    css={{
+      height: "200px",
+      borderBottom: "10px solid red.1",
+      borderRadius: "2px"
+    }}
+    {...props}
+  />
+);
+
+export const StudentElement = props => (
+  <F
+    m={1}
+    width={[1]}
+    flexDirection="row"
+    justifyContent="space-between"
+    alignItems="center"
+    p={3}
+    bg="white"
+    {...props}
+  />
+);
+
+export const SectionContainer = props => (
+  <F
+    flexWrap="wrap"
+    justifyContent="center"
+    width={[1]}
+    m={2}
+    css={{
+      height: "auto"
+    }}
+    {...props}
+  />
+);
+
+export const StudentHolder = props => (
+  <F
+    m={2}
+    width={[1, 1, 1 / 2]}
+    flexDirection="column"
+    justifyContent="flexStart"
+    alignItems="center"
+    css={{
+      height: "300px",
+      overflowY: "scroll",
+      border: "1px solid black"
+    }}
+    {...props}
+  />
+);
+
+export const QuizHolder = props => (
+  <F
+    m={2}
+    width="80%"
+    flexWrap="wrap"
+    flexDirection="row"
+    css={{
+      height: "auto",
+      border: "1px solid black"
+    }}
+    {...props}
+  />
+);
+
+export const QuizBox = props => (
+  <F
+    m={2}
+    width={[1, 1, 1 / 6]}
+    flexDirection="column"
+    alignItems="center"
+    css={{
+      height: "300px",
+      border: "1px solid black"
+    }}
+    {...props}
+  />
+);
+export const QuizBar = props => (
+  <F
+    width={[1]}
+    p={1}
+    mt={1}
+    mb={1}
+    justifyContent="space-between"
+    alignItems="center"
+    flexDirection="row"
+    bg="white"
+    css={{
+      height: "auto",
+      borderRadius: "5px"
+    }}
+    {...props}
+  />
+);
+export const QuizzesAvaliable = props => (
+  <F
+    m={2}
+    width={[1, 1, 1 / 4]}
+    flexDirection="row"
+    flexWrap="wrap"
+    css={{
+      border: "1px solid black",
+      height: "300px"
+    }}
+    {...props}
+  />
+);
+/*SMALLER COMPONENTS*/
+export const Emblem = props => (
+  <F
+    justifyContent="center"
+    alignItems="center"
+    bg="#ffe88c"
+    width={70}
+    css={{
+      height: "70px",
+      clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)"
+    }}
+  />
+);
 /* TYPOGRAPHY */
 export const Text = props => <T fontSize={2} fontFamily="sans" {...props} />;
 
 export const BoldText = props => (
   <T fontSize={1} fontFamily="sans" fontWeight={6} {...props} />
 );
+
+export const BillingText = props => <BoldText m={3} fontSize={3} {...props} />;
 
 export const UpperCase = props => (
   <T
@@ -102,7 +263,18 @@ export const StyledLabel = styled.label`
   ${fontSize}
   ${fontWeight}
 `;
-export const Form = props => <StyledForm bg="white" mx={5} {...props} />;
+export const Form = props => <StyledForm width="80%" m="auto" {...props} />;
+
+export const Input = props => (
+  <StyledInput
+    p={2}
+    my={2}
+    border="none"
+    borderBottom="1px solid red"
+    css={{ display: "block" }}
+    {...props}
+  />
+);
 
 export const Label = props => (
   <StyledLabel
@@ -114,23 +286,11 @@ export const Label = props => (
   />
 );
 
-export const Input = props => (
-  <StyledInput
-    display="block"
-    p={2}
-    m={2}
-    border="none"
-    borderBottom="1px solid black"
-    {...props}
-  />
+export const TextArea = props => (
+  <StyledTextArea width={1} css={{ height: "200px" }} {...props} />
 );
 
-export const TextArea = props => (
-  <StyledTextArea
-    width={1}
-    border="1px solid red"
-    css={{ height: "256px" }}
-    {...props}
-  />
+//* IMAGE TAGS
+export const AvatarImg = props => (
+  <I width="45px" height="45px" borderRadius="50%" m={2} {...props} />
 );
-//
