@@ -45,32 +45,9 @@ class StudentQuiz extends Component {
   }
 
   nextQuestion = (e, q) => {
-    const {
-      majorCorrect,
-      currentMajorQuestion,
-      currentMinorQuestion,
-      isMajor,
-    } = this.state;
-
-    if (currentMajorQuestion.correct) {
-      this.setState(s => ({ majorCorrectAnswers: s.majorCorrectAnswers + 1 }));
-    } else {
-      if (currentMinorQuestion.correct) {
-        this.setState(s => ({
-          minorCorrectAnswers: s.minorCorrectAnswers + 1,
-        }));
-      }
-    }
-
-    if (isMajor) {
-      this.submitMajorAnswer()
-      majorCorrect.push(currentMajorQuestion.correct);
-      this.setState({ majorCorrect });
-    } else {
-      this.submitMinorAnswer()
-    }
-
-    this.majorMinorOrDone()
+    this.keepScore();
+    this.submitAnswer();
+    this.majorMinorOrDone();
   };
 
   render() {
@@ -140,7 +117,7 @@ class StudentQuiz extends Component {
                       disabled={!isAnswered}
                       mx={5}
                       variant='error'
-                      onClick={e => this.nextQuestion(e, q)}
+                      onClick={this.nextQuestion}
                     >
                       Submit Answer
                     </ButtonLink>
@@ -156,6 +133,29 @@ class StudentQuiz extends Component {
     );
   }
 
+  keepScore = () => {
+    const { currentMajorQuestion, currentMinorQuestion } = this.state;
+    if (currentMajorQuestion.correct) {
+      this.setState(s => ({ majorCorrectAnswers: s.majorCorrectAnswers + 1 }));
+    } else {
+      if (currentMinorQuestion.correct) {
+        this.setState(s => ({
+          minorCorrectAnswers: s.minorCorrectAnswers + 1,
+        }));
+      }
+    }
+  };
+
+  submitAnswer = () => {
+    const { isMajor, majorCorrect, currentMajorQuestion } = this.state;
+    if (isMajor) {
+      this.submitMajorAnswer();
+      majorCorrect.push(currentMajorQuestion.correct);
+      this.setState({ majorCorrect });
+    } else {
+      this.submitMinorAnswer();
+    }
+  };
   majorMinorOrDone = () => {
     const { currentMajorQuestion, majorIndex, quiz, minorIndex } = this.state;
     //* Did the student get the current Major Question correct?
