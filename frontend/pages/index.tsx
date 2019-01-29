@@ -8,5 +8,4 @@ const Index = () => (
   </FullScreenContainer>
 
 );
-
 export default Index;
