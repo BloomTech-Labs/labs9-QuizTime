@@ -26,6 +26,16 @@ export const Text = system{
     fontFamily: "sans",
     fontWeight: "300"
 */
+
+export const LandingText = props => (
+  <T
+  fontSize={3}
+  fontWeight={1}
+  fontFamily="sans"
+  color="black"
+  {...props}
+  />
+)
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
@@ -68,7 +78,6 @@ export const LandingBarItems = props => (
     {...props}
   />
 )
-
 export const HeaderImage = props => (
   <I
     width="500px"
@@ -91,7 +100,6 @@ export const CallToActionSection = props => (
   {...props}
   />
 );
-
 export const HeaderObj = props => (
   <B
   width="100vw"
@@ -147,7 +155,6 @@ export const LrgText = props => (
   {...props}
   />
 )
-
 export const HowItWorksSection = props =>(
   <B
   width={[1]}
@@ -168,6 +175,24 @@ export const InfoSectionImage = props =>(
     position:"absolute",
     right:"400px",
     bg:"blue.1",
+  }}
+  />
+)
+export const TestimonialStudentImage = props =>(
+  <I
+  src="https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?cs=srgb&dl=beautiful-blur-casual-935756.jpg&fm=jpg"
+  css={{
+    width: "500px",
+    filter: "grayscale(100%)"
+  }}
+  />
+)
+export const TestimonialTeacherImage = props =>(
+  <I
+  src="https://images.pexels.com/photos/1350615/pexels-photo-1350615.jpeg?cs=srgb&dl=adult-blank-board-1350615.jpg&fm=jpg"
+  css={{
+    width: "500px",
+    filter: "grayscale(100%)"
   }}
   />
 )
@@ -494,6 +519,8 @@ export const Label = props => (
     {...props}
   />
 );
+
+/* Quotation Marks */
 
 //* IMAGE TAGS
 export const AvatarImg = props => (

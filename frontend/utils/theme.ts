@@ -4,6 +4,7 @@ const red0 = "#ea969d";
 const red1 = "#e16973";
 const green0 = "#B5FFD0";
 const green1 = "#70e89d";
+const gray0 = "#EDEDED";
 
 export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
@@ -11,7 +12,8 @@ export default {
   colors: {
     blue: ["#7981FF", "#323fcb"],
     red: ["#ea969d", "#e16973"],
-    green: ["#B5FFD0", "#70e89d"]
+    green: ["#B5FFD0", "#70e89d"],
+    gray: ["#EDEDED"]
   },
   borders: [0, "1px solid red"],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
