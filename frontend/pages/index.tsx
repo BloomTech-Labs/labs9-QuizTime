@@ -6,6 +6,5 @@ const Index = () => (
   <FullScreenContainer>
     <TopLanding />
   </FullScreenContainer>
-
 );
 export default Index;

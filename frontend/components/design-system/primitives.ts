@@ -149,7 +149,8 @@ export const LrgText = props => (
 )
 
 export const HowItWorksSection = props =>(
-  <B
+  <F
+  flexDirection="row"
   width={[1]}
   mt={1}
   mb={1}
@@ -162,19 +163,19 @@ export const HowItWorksSection = props =>(
 )
 export const InfoSectionImage = props =>(
   <I
-  width="250px"
+  width={[1/4]}
   src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
   css={{
-    position:"absolute",
-    right:"400px",
-    bg:"blue.1",
+    height:"350px"
   }}
   />
 )
 export const InfoSection = props => (
   <F
-  width={[1]}
+  width={[1/2]}
   justifyContent="center"
+  flexDirection="column"
+  alignItems="flex-end"
   mt={3}
   mb={3}
   css={{
@@ -184,24 +185,28 @@ export const InfoSection = props => (
     {...props}
   />
 )
-export const InfoSectionMid = props => (
+
+export const InfoSectionRight = props => (
   <F
-  width={[1]}
+  width={[1/2]}
   justifyContent="center"
+  flexDirection="column"
+  alignItems="flex-start"
   mt={3}
   mb={3}
   css={{
     height:"auto",
-    border:"1px solid red"
+    border:"1px solid blue",
   }}
-  {...props}
+    {...props}
   />
 )
 
 export const InfoBox = props => (
   <B
-  width={1/4}
+  width={[1/2]}
   bg="green.0"
+  m={3}
   css={{
     height:"350px",
   }}
@@ -211,17 +216,28 @@ export const InfoBox = props => (
 
 export const InfoTextBox = props =>(
   <B
-  width="300px"
+  width={[1/2]}
   bg="blue.1"
-  mt={6}
-  ml={7}
   css={{
-    height:"150px",
-    position:"absolute",
+    height:"250px"
   }}
   {...props}
   />
 )
+
+export const InfoTextBoxRight = props =>(
+  <B
+  width="200px"
+  bg="blue.1"
+  css={{
+    height:"250px",
+    position:"absolute", 
+    right:"100px"
+  }}
+  {...props}
+  />
+)
+
 export const SideBarHolder = props => (
   <F
     width="100px"
