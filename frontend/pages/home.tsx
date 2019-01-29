@@ -18,11 +18,10 @@ const ALL_STUDENTS_QUERY = gql`
   }
 `;
 
-const Home = () => {
-  const user = getUserFromLocalCookie();
+const Home = ({ loggedUser }) => {
   return (
     <Layout>
-      <Text>{`Hello ${user.given_name} ${user.family_name}`}</Text>
+      <Text>{`Hello ${loggedUser.given_name} ${loggedUser.family_name}`}</Text>
       <Query query={ALL_STUDENTS_QUERY}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;

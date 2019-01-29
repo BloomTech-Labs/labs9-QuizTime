@@ -1,5 +1,6 @@
 import { Container, BoldText, Button, FullScreenContainer } from "../components/design-system";
 import { authorize } from "../utils/auth0";
+import unsecurePage from '../hocs/unsecurePage';
 
 const Index = () => (
   <FullScreenContainer>
@@ -8,4 +9,4 @@ const Index = () => (
   </FullScreenContainer>
 );
 
-export default Index;
+export default unsecurePage(Index);
