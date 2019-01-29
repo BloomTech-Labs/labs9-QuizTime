@@ -10,11 +10,13 @@ import {
   HeaderInfoText,
   HowItWorksSection,
   InfoBox,
+  InfoBoxTwo,
+  InfoBoxThree,
   InfoSection,
-  InfoSectionMid,
   InfoSectionImage,
+  InfoSectionRight,
   InfoTextBox,
-  BgBlock,
+  BgBlock
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
 
@@ -26,24 +28,25 @@ const TopLanding = () => {
         <LandingBarItems onClick={authorize}>Sign Up</LandingBarItems>
       </LandingBar>
       <CallToActionSection>
-      <HeaderObj />
-          <HeaderText>QuizTime</HeaderText>
-          <HeaderInfoText>Quiz creating made simple.</HeaderInfoText>
-    </CallToActionSection>
-    <HowItWorksSection>
+        <HeaderObj />
+        <HeaderText>QuizTime</HeaderText>
+        <HeaderInfoText>
+          "Quickly assess understanding of content, while giving each student a
+          unique, adaptive learning experience.."
+        </HeaderInfoText>
+      </CallToActionSection>
+      <HowItWorksSection>
         <InfoSection>
-            <InfoBox />
-                <InfoTextBox />
+          <InfoTextBox />
+          <InfoBox />
+          <InfoTextBox />
         </InfoSection>
-        <InfoSectionMid>
-            <InfoBox />
-                <InfoTextBox />
-        </InfoSectionMid>
-        <InfoSection>
-            <InfoBox />
-                <InfoTextBox />
-        </InfoSection>
-    </HowItWorksSection>
+        <InfoSectionRight>
+          <InfoBoxTwo />
+          <InfoTextBox />
+          <InfoBoxThree />
+        </InfoSectionRight>
+      </HowItWorksSection>
     </div>
   );
 };

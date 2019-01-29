@@ -12,6 +12,5 @@ const Index = () => (
     <GetStarted />
     <Footer />
   </FullScreenContainer>
-
 );
 export default Index;

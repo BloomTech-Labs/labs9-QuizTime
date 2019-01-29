@@ -28,39 +28,33 @@ export const Text = system{
 */
 
 export const LandingText = props => (
-  <T
-  fontSize={3}
-  fontWeight={1}
-  fontFamily="sans"
-  color="black"
-  {...props}
-  />
-)
+  <T fontSize={3} fontWeight={1} fontFamily="sans" color="black" {...props} />
+);
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
-  <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
+  <F justifyContent="flex-end" alignItems="center" bg="green.1" {...props} />
 );
 export const Line = props => (
   <B
     css={{
-      height:"150px",
-      borderLeft:"3px solid #383838",
-      position:"absolute",
-      bottom:"100px",
-      left:"500px"
+      height: "150px",
+      borderLeft: "3px solid #383838",
+      position: "absolute",
+      bottom: "100px",
+      left: "500px"
     }}
     {...props}
   />
-)
+);
 export const LandingBar = props => (
   <F
-  width={[1]}
-  justifyContent="flex-end"
-  alignItems="center"
-  css={{
-    height:"50px",
-  }}
-  {...props}
+    width={[1]}
+    justifyContent="flex-end"
+    alignItems="center"
+    css={{
+      height: "50px"
+    }}
+    {...props}
   />
 );
 export const LandingBarItems = props => (
@@ -70,187 +64,215 @@ export const LandingBarItems = props => (
     fontFamily="sans"
     css={{
       cursor: "pointer",
-      transition:"color .5s ease-out",
-      '&:hover':{
-        color:"#70e89d"
+      transition: "color .5s ease-out",
+      "&:hover": {
+        color: "#70e89d"
       }
     }}
     {...props}
   />
-)
+);
 export const HeaderImage = props => (
   <I
     width="500px"
-    src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
     css={{
-      position:"absolute",
-      left:"50px",
+      position: "absolute",
+      left: "50px",
       filter: "grayscale(100%)"
-
     }}
     {...props}
   />
-)
+);
 export const CallToActionSection = props => (
   <F
-  width={[1]}
-  css={{
-    height:"auto",
-  }}
-  {...props}
+    width={[1]}
+    css={{
+      height: "auto"
+    }}
+    {...props}
   />
 );
 export const HeaderObj = props => (
   <B
-  width="100vw"
-  bg="green.1"
-  css={{
-    height:"500px",
-    clipPath:"polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
-  }}
-  {...props}
+    width="100vw"
+    bg="green.1"
+    css={{
+      height: "500px",
+      clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
+    }}
+    {...props}
   />
-)
+);
 export const HeaderText = props => (
   <T
-  p={4}
-  fontSize={7}
-  fontWeight={0}
-  fontFamily="sans"
-  color="black"
-  m={5}
-  css={{
-    position:"absolute",
-    right:"260px",
-  }}
-  {...props}
+    p={4}
+    fontSize={7}
+    fontWeight={0}
+    fontFamily="sans"
+    color="black"
+    m={5}
+    css={{
+      position: "absolute",
+      right: "260px"
+    }}
+    {...props}
   />
 );
 export const HeaderInfoText = props => (
   <T
-  p={3}
-  fontSize={4}
-  fontWeight={1}
-  fontFamily="sans"
-  color="black"
-  m={5}
-  css={{
-    position:"absolute",
-    right:"220px",
-    top:"150px"
-  }}
-  {...props}
-  />
-)
-export const LrgText = props => (
-  <T
-  fontSize={700}
-  fontFamily="sans"
-  color="green.1"
-  css={{
-    position: "absolute",
-    top:"10px",
-    opacity:".5"
-  }}
-  {...props}
-  />
-)
-export const HowItWorksSection = props =>(
-  <B
-  width={[1]}
-  mt={1}
-  mb={1}
-  css={{
-    height:"auto",
-    border:"1px solid black"
-  }}
-  {...props}
-  />
-)
-export const InfoSectionImage = props =>(
-  <I
-  width="250px"
-  src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
-  css={{
-    position:"absolute",
-    right:"400px",
-    bg:"blue.1",
-  }}
-  />
-)
-export const TestimonialStudentImage = props =>(
-  <I
-  src="https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?cs=srgb&dl=beautiful-blur-casual-935756.jpg&fm=jpg"
-  css={{
-    width: "500px",
-    filter: "grayscale(100%)"
-  }}
-  />
-)
-export const TestimonialTeacherImage = props =>(
-  <I
-  src="https://images.pexels.com/photos/1350615/pexels-photo-1350615.jpeg?cs=srgb&dl=adult-blank-board-1350615.jpg&fm=jpg"
-  css={{
-    width: "500px",
-    filter: "grayscale(100%)"
-  }}
-  />
-)
-export const InfoSection = props => (
-  <F
-  width={[1]}
-  justifyContent="center"
-  mt={3}
-  mb={3}
-  css={{
-    height:"auto",
-    border:"1px solid blue",
-  }}
+    width={1 / 3}
+    p={3}
+    fontSize={4}
+    fontWeight={1}
+    fontFamily="sans"
+    color="black"
+    m={5}
+    css={{
+      position: "absolute",
+      right: "100px",
+      top: "150px"
+    }}
     {...props}
   />
-)
-export const InfoSectionMid = props => (
-  <F
-  width={[1]}
-  justifyContent="center"
-  mt={3}
-  mb={3}
-  css={{
-    height:"auto",
-    border:"1px solid red"
-  }}
-  {...props}
+);
+export const LrgText = props => (
+  <T
+    fontSize={700}
+    fontFamily="sans"
+    color="green.1"
+    css={{
+      position: "absolute",
+      top: "10px",
+      opacity: ".5"
+    }}
+    {...props}
   />
-)
-
-export const InfoBox = props => (
-  <B
-  width={1/4}
-  bg="green.0"
-  css={{
-    height:"350px",
-  }}
-  {...props}
+);
+export const HowItWorksSection = props => (
+  <F
+    flexDirection="row"
+    width={[1]}
+    mt={1}
+    mb={1}
+    css={{
+      height: "auto"
+    }}
+    {...props}
+  />
+);
+export const InfoSectionImage = props => (
+  <I
+    width={[1 / 4]}
+    src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
+    css={{
+      height: "350px"
+    }}
+  />
+);
+export const TestimonialStudentImage = props => (
+  <I
+    src="https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?cs=srgb&dl=beautiful-blur-casual-935756.jpg&fm=jpg"
+    css={{
+      width: "500px",
+      filter: "grayscale(100%)"
+    }}
+  />
+);
+export const TestimonialTeacherImage = props => (
+  <I
+    src="https://images.pexels.com/photos/1350615/pexels-photo-1350615.jpeg?cs=srgb&dl=adult-blank-board-1350615.jpg&fm=jpg"
+    css={{
+      width: "500px",
+      filter: "grayscale(100%)"
+    }}
+  />
+);
+export const InfoSection = props => (
+  <F
+    width={[1 / 2]}
+    justifyContent="center"
+    flexDirection="column"
+    alignItems="flex-end"
+    mt={3}
+    mb={3}
+    css={{
+      height: "auto"
+    }}
+    {...props}
   />
 );
 
-export const InfoTextBox = props =>(
-  <B
-  width="300px"
-  bg="blue.1"
-  mt={6}
-  ml={7}
-  css={{
-    height:"150px",
-    position:"absolute",
-  }}
-  {...props}
+export const InfoSectionRight = props => (
+  <F
+    width={[1 / 2]}
+    justifyContent="center"
+    flexDirection="column"
+    alignItems="flex-start"
+    mt={3}
+    mb={3}
+    css={{
+      height: "auto"
+    }}
+    {...props}
   />
-)
+);
+
+export const InfoBox = props => (
+  <I
+    width="400px"
+    src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
+    m={3}
+    css={{
+      height: "350px",
+      filter: "grayscale(100%)"
+    }}
+    {...props}
+  />
+);
+
+export const InfoBoxTwo = props => (
+  <I
+    width="400px"
+    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+    m={3}
+    css={{
+      height: "350px",
+      filter: "grayscale(100%)"
+    }}
+    {...props}
+  />
+);
+
+export const InfoBoxThree = props => (
+  <I
+    width="550px"
+    src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    m={3}
+    css={{
+      height: "350px",
+      filter: "grayscale(100%)"
+    }}
+    {...props}
+  />
+);
+
+export const InfoTextBox = props => (
+  <B
+    width="350px"
+    bg="blue.1"
+    m={3}
+    css={{
+      height: "200px"
+    }}
+    {...props}
+  />
+);
+
 export const SideBarHolder = props => (
   <F
     width="100px"
-    bg="blue.2"
+    bg="blue.1"
     flexDirection="column"
     css={{ minHeight: "100vh" }}
     {...props}
@@ -277,12 +299,12 @@ export const BgBlock = props => (
     width="100vw"
     bg="f4f4f4"
     css={{
-      height:"400px",
-      postion:"relative"
+      height: "400px",
+      postion: "relative"
     }}
     {...props}
   />
-)
+);
 /* CONTAINERS */
 
 export const Container = props => (
@@ -294,7 +316,7 @@ export const FullScreenContainer = props => (
     justifyContent="center"
     flexDirection="column"
     width="100%"
-    css={{ height:"auto" }}
+    css={{ height: "auto" }}
     {...props}
   />
 );
