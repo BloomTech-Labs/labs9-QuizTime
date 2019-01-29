@@ -1,8 +1,10 @@
 import {
   LandingBar,
+  Line,
   LandingBarItems,
   CallToActionSection,
   HeaderObj,
+  HeaderImage,
   LrgText,
   HeaderText,
   HeaderInfoText,
@@ -10,6 +12,7 @@ import {
   InfoBox,
   InfoSection,
   InfoSectionMid,
+  InfoSectionImage,
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
 
@@ -21,19 +24,16 @@ const TopLanding = () => {
         <LandingBarItems onClick={authorize}>Sign Up</LandingBarItems>
       </LandingBar>
       <CallToActionSection>
-          <HeaderObj />
+      <HeaderObj />
           <HeaderText>QuizTime</HeaderText>
-          <HeaderInfoText>Quiz creating made simple</HeaderInfoText>
+          <HeaderInfoText>Quiz creating made simple.</HeaderInfoText>
     </CallToActionSection>
     <HowItWorksSection>
         <InfoSection>
-        <InfoBox />
         </InfoSection>
         <InfoSectionMid>
-        <InfoBox />
         </InfoSectionMid>
         <InfoSection>
-        <InfoBox />
         </InfoSection>
     </HowItWorksSection>
     </div>

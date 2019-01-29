@@ -30,7 +30,18 @@ export const Text = system{
 export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
 );
-
+export const Line = props => (
+  <B
+    css={{
+      height:"150px",
+      borderLeft:"3px solid #383838",
+      position:"absolute",
+      bottom:"100px",
+      left:"500px"
+    }}
+    {...props}
+  />
+)
 export const LandingBar = props => (
   <F
   width={[1]}
@@ -57,6 +68,20 @@ export const LandingBarItems = props => (
     {...props}
   />
 )
+
+export const HeaderImage = props => (
+  <I
+    width="500px"
+    src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+    css={{
+      position:"absolute",
+      left:"50px",
+      filter: "grayscale(100%)"
+
+    }}
+    {...props}
+  />
+)
 export const CallToActionSection = props => (
   <F
   width={[1]}
@@ -67,16 +92,13 @@ export const CallToActionSection = props => (
   />
 );
 
-
-
 export const HeaderObj = props => (
   <B
-  width="550px"
+  width="100vw"
   bg="green.1"
-  m={5}
   css={{
-    height:"300px",
-    position: "relative"
+    height:"500px",
+    clipPath:"polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
   }}
   {...props}
   />
@@ -91,7 +113,7 @@ export const HeaderText = props => (
   m={5}
   css={{
     position:"absolute",
-    right:"122px",
+    right:"260px",
   }}
   {...props}
   />
@@ -106,7 +128,7 @@ export const HeaderInfoText = props => (
   m={5}
   css={{
     position:"absolute",
-    right:"77px",
+    right:"220px",
     top:"150px"
   }}
   {...props}
@@ -114,13 +136,13 @@ export const HeaderInfoText = props => (
 )
 export const LrgText = props => (
   <T
-  fontSize={250}
-  fontFamily="sans.3"
+  fontSize={700}
+  fontFamily="sans"
   color="green.1"
   css={{
     position: "absolute",
-    top:"25px",
-    left: "60px",
+    top:"10px",
+    opacity:".5"
   }}
   {...props}
   />
@@ -138,10 +160,21 @@ export const HowItWorksSection = props =>(
   {...props}
   />
 )
+export const InfoSectionImage = props =>(
+  <I
+  width="250px"
+  src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
+  css={{
+    position:"absolute",
+    right:"400px",
+    bg:"blue.1",
+  }}
+  />
+)
 export const InfoSection = props => (
   <F
   width={[1]}
-  justifyContent="flex-start"
+  justifyContent="flex-end"
   mt={3}
   mb={3}
   css={{
@@ -154,7 +187,7 @@ export const InfoSection = props => (
 export const InfoSectionMid = props => (
   <F
   width={[1]}
-  justifyContent="flex-end"
+  justifyContent="flex-start"
   mt={3}
   mb={3}
   css={{
@@ -164,18 +197,7 @@ export const InfoSectionMid = props => (
   {...props}
   />
 )
-export const InfoBox = props => (
-  <B
-  width="400px"
-  m={4}
-  css={{
-    border:"1px solid black",
-    height:"250px",
 
-  }}
-  {...props}
-  />
-)
 export const SideBarHolder = props => (
   <F
     width="100px"
