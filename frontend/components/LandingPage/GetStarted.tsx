@@ -7,6 +7,7 @@ import {
     QuizBox, 
     UpperCase,
     InfoSection,
+    FlexColumns,
     LandingText,
     BoxText } from '../../components/design-system';
 
@@ -14,11 +15,7 @@ const GetStarted = (props) => {
     return(
         <>
             <Box my={5}>
-            <InfoSection css={{
-                display: "flex",
-                flexWrap: "wrap",
-                border: "1px solid white",
-            }}>
+            <FlexColumns>
                 <Box my={3} mx={5} p={4} bg="green.0" width="360px" 
                 css={{
                      border: "1px solid white", 
@@ -48,7 +45,7 @@ const GetStarted = (props) => {
                         Get unlimited quizzes for a low monthly fee of $9.95.
                     </LandingText>
                 </Box>
-                </InfoSection>
+                </FlexColumns>
             </Box>
         </>
     )
