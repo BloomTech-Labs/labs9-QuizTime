@@ -11,15 +11,7 @@ import {
 const GetStarted = (props) => {
     return(
         <>
-            <Box m={2} p={4} width={[1, 1, 3/4]}
-            css={{border: "1px solid black" }} 
-            >
-            <BoxText css={{textAlign: "center"}}>Getting Started with QuizTime</BoxText>
-            <Flex
-                flexDirection="column" 
-                alignItems="center"
-                justifyContent="space-between"
-            >
+            <Container>
                 <Box m={3} p={3} width={[1, 1/2, 1/2]}
                 css={{
                      border: "1px solid black", 
@@ -38,8 +30,7 @@ const GetStarted = (props) => {
                         Experience the full power of QuizTime with our professional version, which includes unlimited quizzes for a monthly fee of $9.95.
                     </BoxText>
                 </Box>
-            </Flex>
-            </Box>
+            </Container>
         </>
     )
 }
