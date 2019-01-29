@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getStudentToken } from "../../utils/auth";
+import { getStudentToken } from '../../utils/auth';
 import {
   Text,
   BoldText,
@@ -9,11 +9,11 @@ import {
   Input,
   BoxText,
   BoxHolder,
-  ButtonLink
-} from "../design-system";
+  ButtonLink,
+} from '../design-system';
 
-import { Box, Flex } from "@rebass/emotion";
-const url = 'http://localhost:51444/api/student-proxy'
+import { Box, Flex } from '@rebass/emotion';
+const url = 'http://localhost:51444/api/student-proxy';
 
 class StudentQuiz extends Component {
   //For development purposes.  Can remove later after retrieving data.
@@ -21,7 +21,7 @@ class StudentQuiz extends Component {
     quiz: null,
     majorIndex: 0,
     minorIndex: [0],
-    majorCorrect: [],
+    majorCorrect: [], //* determines whether minor question map is rendered or not
     currentMajorQuestion: {
       major_question_id: null,
       student_answer: null,
@@ -32,216 +32,251 @@ class StudentQuiz extends Component {
       student_answer: null,
       correct: false,
     },
-    questionCount: 0,
+    majorQuestionCount: 0,
+    minorQuestionCount: 0,
     majorCorrectAnswers: 0,
     minorCorrectAnswers: 0,
     isAnswered: false,
-    isMajor: true
+    isMajor: true,
   };
 
   componentDidMount() {
-    this.getQuiz()
+    this.getQuiz();
+  }
+
+  nextQuestion = (e, q) => {
+    const {
+      majorCorrect,
+      currentMajorQuestion,
+      currentMinorQuestion,
+      isMajor,
+    } = this.state;
+
+    if (currentMajorQuestion.correct) {
+      this.setState(s => ({ majorCorrectAnswers: s.majorCorrectAnswers + 1 }));
+    } else {
+      if (currentMinorQuestion.correct) {
+        this.setState(s => ({
+          minorCorrectAnswers: s.minorCorrectAnswers + 1,
+        }));
+      }
+    }
+
+    if (isMajor) {
+      this.submitMajorAnswer()
+      majorCorrect.push(currentMajorQuestion.correct);
+      this.setState({ majorCorrect });
+    } else {
+      this.submitMinorAnswer()
+    }
+
+    this.majorMinorOrDone()
   };
 
+  render() {
+    const {
+      isAnswered,
+      quiz,
+      majorIndex,
+      majorCorrect,
+      minorIndex,
+    } = this.state;
+    return (
+      <div>
+        {quiz ? (
+          <>
+            <Box m={4} width={3 / 4}>
+              <BoxText>
+                <UpperCase>{quiz.name}</UpperCase>
+              </BoxText>
+              <BoxText>Quiz description ...</BoxText>
+            </Box>
+            <div>
+              {quiz.major_questions.slice(0, majorIndex + 1).map((q, idx) => (
+                <Box width={3 / 4} m={4} p={2} key={q.id}>
+                  <BoxText htmlFor={`major-question-${q.id}`}>
+                    <UpperCase>Question {idx + 1}</UpperCase>
+                  </BoxText>
+                  <BoxText>{q.prompt}</BoxText>
+                  {q.answers.map((a, index) => (
+                    <Box key={index}>
+                      <Flex>
+                        <Input
+                          onChange={e => this.handleMajorChange(e, q, a)}
+                          type='radio'
+                          name={`major-question-${q.id}-major-answer`}
+                          value={index + 1}
+                        />
+                        <BoxText>{a.response}</BoxText>
+                      </Flex>
+                    </Box>
+                  ))}
+                  {!majorCorrect[idx] &&
+                    quiz.major_questions[idx].minor_questions
+                      .slice(0, minorIndex[idx])
+                      .map((q, index) => (
+                        <Box width={3 / 4} m={4} p={2} key={q.id}>
+                          <BoxText htmlFor={`minor-question-${q.id}`}>
+                            <UpperCase>Minor Question {index + 1}</UpperCase>
+                          </BoxText>
+                          <BoxText>{q.prompt}</BoxText>
+                          {q.answers.map((a, index) => (
+                            <Box key={index}>
+                              <Flex>
+                                <Input
+                                  onChange={e => this.handleMiniChange(e, q, a)}
+                                  type='radio'
+                                  name={`mini-question-${q.id}-mini-answer`}
+                                  value={index + 1}
+                                />
+                                <BoxText>{a.response}</BoxText>
+                              </Flex>
+                            </Box>
+                          ))}
+                        </Box>
+                      ))}
+                  <Flex justifyContent='flex-end'>
+                    <ButtonLink
+                      disabled={!isAnswered}
+                      mx={5}
+                      variant='error'
+                      onClick={e => this.nextQuestion(e, q)}
+                    >
+                      Submit Answer
+                    </ButtonLink>
+                  </Flex>
+                </Box>
+              ))}
+            </div>
+          </>
+        ) : (
+          <Box>Loading ...</Box>
+        )}
+      </div>
+    );
+  }
+
+  majorMinorOrDone = () => {
+    const { currentMajorQuestion, majorIndex, quiz, minorIndex } = this.state;
+    //* Did the student get the current Major Question correct?
+    //* Yes => next major question (if exist)
+    //* No => next minor question (if exist)
+    if (currentMajorQuestion.correct) {
+      //* Is the current Major Question the last Major Question?
+      //* Yes => calculate score.
+      if (majorIndex === quiz.major_questions.length - 1) {
+        const score = this.calculateScore();
+        return alert(`score is ${score}`);
+      }
+
+      //* Major question correct, so don't render minor question.
+      minorIndex.push(0);
+
+      //* Advance majorIndex to display next Major Question
+      this.setState(s => ({
+        majorIndex: s.majorIndex + 1,
+        isMajor: true,
+        minorIndex,
+      }));
+      //* MajorQuestion answer was wrong.
+      //* Did we reach the end of Minor Questions for current wrong Major Question?
+    } else if (
+      minorIndex[majorIndex] ===
+      quiz.major_questions[majorIndex].minor_questions.length
+    ) {
+      //* If yes, move on to next Major Question (if there is one. otherwise display score). If no, display next Minor Question.
+      minorIndex.push(0);
+      if (majorIndex === quiz.major_questions.length - 1) {
+        const score = this.calculateScore();
+        return alert(`score is ${score}`);
+      } else {
+        this.setState(s => ({
+          majorIndex: s.majorIndex + 1,
+          isMajor: true,
+          minorIndex,
+        }));
+      }
+      //* Display next Minor Question for current wrong Major Question.
+    } else {
+      minorIndex[majorIndex] = minorIndex[majorIndex] + 1;
+      this.setState({
+        minorIndex,
+        isMajor: false,
+      });
+    }
+  };
   getQuiz = () => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        type: "get_quiz_query",
-        token: getStudentToken()
+        type: 'get_quiz_query',
+        token: getStudentToken(),
       }),
-    }
+    };
 
     fetch(url, options)
       .then(res => res.json())
       .then(({ data }) => this.setState({ quiz: data.quiz[0] }))
-      .catch(error => console.log(error))
-  }
+      .catch(error => console.log(error));
+  };
 
   submitMajorAnswer = () => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        type: "insert_student_major_answer",
+        type: 'insert_student_major_answer',
         token: getStudentToken(),
-        ...this.state.currentMajorQuestion
-      })
-    }
+        ...this.state.currentMajorQuestion,
+      }),
+    };
     fetch(url, options)
       .then(res => res.json())
       .then(({ data }) => console.log(data))
-      .catch(error => console.log(error))
-  }
+      .catch(error => console.log(error));
+  };
 
   submitMinorAnswer = () => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        type: "insert_student_minor_answer",
+        type: 'insert_student_minor_answer',
         token: getStudentToken(),
-        ...this.state.currentMinorQuestion
-      })
-    }
+        ...this.state.currentMinorQuestion,
+      }),
+    };
     fetch(url, options)
       .then(res => res.json())
       .then(({ data }) => console.log(data))
-      .catch(error => console.log(error))
-  }
+      .catch(error => console.log(error));
+  };
 
-  nextQuestion = (e, q) => {
-    if (this.state.currentMajorQuestion.correct) {
-      this.submitMajorAnswer()
-      this.setState({ majorCorrectAnswer: this.state.majorCorrectAnswers++ });
-    } else {
-      this.submitMinorAnswer()
-      if (this.state.currentMinorQuestion.correct) {
-        this.setState({ minorCorrectAnswer: this.state.minorCorrectAnswers++ });
-      }
-    }
-
-    if (this.state.isMajor) {
-      let majorCorrect = this.state.majorCorrect
-      majorCorrect.push(this.state.currentMajorQuestion.correct)
-      this.setState({ majorCorrect })
-    }
-
-    if (this.state.currentMajorQuestion.correct) {
-      if (this.state.majorIndex === this.state.quiz.major_questions.length - 1) {
-        const score = this.calculateScore()
-        return alert(`score is ${score}`)
-      }
-
-      let minorIndex = this.state.minorIndex
-      minorIndex.push(0)
-      this.setState(s => (
-        {
-          majorIndex: ++s.majorIndex,
-          isMajor: true,
-          minorIndex
-        }))
-    }
-    else if (this.state.minorIndex[this.state.majorIndex] === this.state.quiz.major_questions[this.state.majorIndex].minor_questions.length) {
-      let minorIndex = this.state.minorIndex
-      minorIndex.push(0)
-      if (this.state.majorIndex === this.state.quiz.major_questions.length - 1) {
-        return alert(`score is ${this.state.correctAnswers}`)
-      } else {
-        this.setState(s => (
-          {
-            majorIndex: ++s.majorIndex,
-            isMajor: true,
-            minorIndex
-          })
-        )
-      }
-    } else {
-      let minorIndex = this.state.minorIndex
-      minorIndex[this.state.majorIndex] = minorIndex[this.state.majorIndex] + 1
-      this.setState({
-        minorIndex,
-        isMajor: false
-      })
-    }
-  }
-
-  handleChange = (e, q, a) => {
-
+  handleMajorChange = (e, q, a) => {
     this.setState({
       currentMajorQuestion: {
         major_question_id: q.id,
         student_answer: a.id,
-        correct: a.correct_answer
+        correct: a.correct_answer,
       },
-      isAnswered: true
-    })
-  }
+      isAnswered: true,
+    });
+  };
 
   handleMiniChange = (e, q, a) => {
     this.setState({
       currentMinorQuestion: {
         minor_question_id: q.id,
         student_answer: a.id,
-        correct: a.correct_answer
+        correct: a.correct_answer,
       },
-      isAnswered: true
-    })
-  }
+      isAnswered: true,
+    });
+  };
 
   calculateScore = () => {
     const { majorCorrectAnswers, minorCorrectAnswers } = this.state;
     const score = majorCorrectAnswers * 10 + minorCorrectAnswers * 2;
-
     return score;
-  }
-
-  render() {
-    const { isAnswered } = this.state
-    return (
-      <div>
-        {
-          this.state.quiz ? (
-            <>
-              <Box m={4} width={3 / 4}>
-                <BoxText><UpperCase>{this.state.quiz.name}</UpperCase></BoxText>
-                <BoxText>Quiz description ...</BoxText>
-              </Box>
-              <div>
-                {this.state.quiz.major_questions.slice(0, this.state.majorIndex + 1).map((q, idx) => (
-                  <Box width={3 / 4} m={4} p={2} key={q.id}>
-                    <BoxText htmlFor={`major-question-${q.id}`}>
-                      <UpperCase>Question {idx + 1}</UpperCase>
-                    </BoxText>
-                    <BoxText>
-                      {q.prompt}
-                    </BoxText>
-                    {q.answers.map((a, index) => (
-                      <Box key={index}>
-                        <Flex>
-                          <Input
-                            onChange={(e) => this.handleChange(e, q, a)}
-                            type="radio"
-                            name={`major-question-${q.id}-major-answer`}
-                            value={index + 1}
-                          />
-                          <BoxText>{a.response}</BoxText>
-                        </Flex>
-                      </Box>
-                    ))}
-                    {!this.state.majorCorrect[idx] && this.state.quiz.major_questions[idx].minor_questions.slice(0, this.state.minorIndex[idx]).map((q, index) => (
-                      <Box width={3 / 4} m={4} p={2} key={q.id}>
-                        <BoxText htmlFor={`minor-question-${q.id}`}>
-                          <UpperCase>Minor Question {index + 1}</UpperCase>
-                        </BoxText>
-                        <BoxText>
-                          {q.prompt}
-                        </BoxText>
-                        {q.answers.map((a, index) => (
-                          <Box key={index}>
-                            <Flex>
-                              <Input
-                                onChange={(e) => this.handleMiniChange(e, q, a)}
-                                type="radio"
-                                name={`mini-question-${q.id}-mini-answer`}
-                                value={index + 1}
-                              />
-                              <BoxText>{a.response}</BoxText>
-                            </Flex>
-                          </Box>
-                        ))}
-                      </Box>
-                    ))}
-                    <Flex justifyContent="flex-end">
-                      <ButtonLink disabled={!isAnswered} mx={5} variant="error" onClick={(e) => this.nextQuestion(e, q)}>Submit and Next</ButtonLink>
-                    </Flex>
-                  </Box>
-                ))}</div></>
-          ) : (
-              <div>Loading ...</div>
-            )
-        }
-      </div>
-    )
   };
-};
+}
 
 export default StudentQuiz;
