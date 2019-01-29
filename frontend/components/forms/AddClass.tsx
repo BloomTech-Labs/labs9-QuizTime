@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Form, Input, Button, Label, Text } from "../design-system";
+import { ALL_CLASSES_QUERY } from '../../queries'
 
 
 class AddClass extends Component {
@@ -27,6 +28,7 @@ class AddClass extends Component {
                 ){
                 returning{
                     id
+                    name
                 }
             }
         }
@@ -35,7 +37,17 @@ class AddClass extends Component {
 
   render() {
     return (
-      <Mutation mutation={this.generateMutation()}>
+      <Mutation
+        mutation={this.generateMutation()}
+        update={(cache, { data: insert_class }) => {
+          //rename during destructure, class reserved keyword
+          const { class: classes } = cache.readQuery({ query: ALL_CLASSES_QUERY });
+          cache.writeQuery({
+            query: ALL_CLASSES_QUERY,
+            data: { class: classes.concat(insert_class.insert_class.returning) }
+          })
+        }}
+      >
         {(insert_class, { error, loading, data }) => (
         <>
           <Form
@@ -68,7 +80,6 @@ class AddClass extends Component {
             {/* render errors, loading, or data */}
             {error && (<p> {error.message} </p>) }
             {loading && (<p> ...loading </p>) }
-            {data && (<p> successfully created class with id of {data.insert_class.returning[0].id}</p>)}
           </>
         )}
       </Mutation>
