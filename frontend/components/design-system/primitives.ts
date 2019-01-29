@@ -17,6 +17,7 @@ import {
   color
 } from "styled-system";
 import styled from "@emotion/styled";
+import { isAbsolute } from "path";
 
 /*
 export const Text = system{
@@ -30,6 +31,151 @@ export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
 );
 
+export const LandingBar = props => (
+  <F
+  width={[1]}
+  justifyContent="flex-end"
+  alignItems="center"
+  css={{
+    height:"50px",
+  }}
+  {...props}
+  />
+);
+export const LandingBarItems = props => (
+  <T
+    StyledText
+    p={3}
+    fontFamily="sans"
+    css={{
+      cursor: "pointer",
+      transition:"color .5s ease-out",
+      '&:hover':{
+        color:"#70e89d"
+      }
+    }}
+    {...props}
+  />
+)
+export const CallToActionSection = props => (
+  <F
+  width={[1]}
+  css={{
+    height:"auto",
+  }}
+  {...props}
+  />
+);
+
+
+
+export const HeaderObj = props => (
+  <B
+  width="550px"
+  bg="green.1"
+  m={5}
+  css={{
+    height:"300px",
+    position: "relative"
+  }}
+  {...props}
+  />
+)
+export const HeaderText = props => (
+  <T
+  p={4}
+  fontSize={7}
+  fontWeight={1}
+  fontFamily="sans"
+  color="black"
+  m={5}
+  css={{
+    position:"absolute",
+    right:"122px",
+  }}
+  {...props}
+  />
+);
+export const HeaderInfoText = props => (
+  <T
+  p={3}
+  fontSize={4}
+  fontWeight={1}
+  fontFamily="sans"
+  color="black"
+  m={5}
+  css={{
+    position:"absolute",
+    right:"77px",
+    top:"150px"
+  }}
+  {...props}
+  />
+)
+export const LrgText = props => (
+  <T
+  fontSize={250}
+  fontFamily="sans.3"
+  color="green.1"
+  css={{
+    position: "absolute",
+    top:"25px",
+    left: "60px",
+  }}
+  {...props}
+  />
+)
+
+export const HowItWorksSection = props =>(
+  <B
+  width={[1]}
+  mt={1}
+  mb={1}
+  css={{
+    height:"auto",
+    border:"1px solid black"
+  }}
+  {...props}
+  />
+)
+export const InfoSection = props => (
+  <F
+  width={[1]}
+  justifyContent="flex-start"
+  mt={3}
+  mb={3}
+  css={{
+    height:"auto",
+    border:"1px solid blue",
+  }}
+    {...props}
+  />
+)
+export const InfoSectionMid = props => (
+  <F
+  width={[1]}
+  justifyContent="flex-end"
+  mt={3}
+  mb={3}
+  css={{
+    height:"auto",
+    border:"1px solid red"
+  }}
+  {...props}
+  />
+)
+export const InfoBox = props => (
+  <B
+  width="400px"
+  m={4}
+  css={{
+    border:"1px solid black",
+    height:"250px",
+
+  }}
+  {...props}
+  />
+)
 export const SideBarHolder = props => (
   <F
     width="100px"
@@ -64,10 +210,9 @@ export const Container = props => (
 export const FullScreenContainer = props => (
   <F
     justifyContent="center"
-    alignItems="center"
     flexDirection="column"
-    width="100vw"
-    css={{ height: "100vh" }}
+    width="100%"
+    css={{ height:"auto" }}
     {...props}
   />
 );
@@ -76,7 +221,7 @@ export const BoxHolder = props => (
   <F
     width="200px"
     m={1}
-    justifyContent="center"
+    justifyContent="space-around"
     alignItems="center"
     flexDirection="column"
     bg="white"
@@ -193,7 +338,7 @@ export const Emblem = props => (
   <F
     justifyContent="center"
     alignItems="center"
-    bg="#ffe88c"
+    bg="green.1"
     width={70}
     css={{
       height: "70px",

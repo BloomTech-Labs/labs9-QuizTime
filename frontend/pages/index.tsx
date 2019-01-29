@@ -1,11 +1,11 @@
 import { Container, BoldText, Button, FullScreenContainer } from "../components/design-system";
 import { authorize } from "../utils/auth0";
-
+import TopLanding from "../components/landingPage-top/topLandingPage";
 const Index = () => (
   <FullScreenContainer>
-    <BoldText>Hello, Welcome to QuizTime! Login Below</BoldText>
-    <Button onClick={authorize}>Login</Button>
+    <TopLanding />
   </FullScreenContainer>
+
 );
 
 export default Index;
