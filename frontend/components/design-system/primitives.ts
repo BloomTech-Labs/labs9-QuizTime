@@ -17,6 +17,7 @@ import {
   color
 } from "styled-system";
 import styled from "@emotion/styled";
+import { isAbsolute } from "path";
 
 /*
 export const Text = system{
@@ -29,7 +30,198 @@ export const Text = system{
 export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
 );
+export const Line = props => (
+  <B
+    css={{
+      height:"150px",
+      borderLeft:"3px solid #383838",
+      position:"absolute",
+      bottom:"100px",
+      left:"500px"
+    }}
+    {...props}
+  />
+)
+export const LandingBar = props => (
+  <F
+  width={[1]}
+  justifyContent="flex-end"
+  alignItems="center"
+  css={{
+    height:"50px",
+  }}
+  {...props}
+  />
+);
+export const LandingBarItems = props => (
+  <T
+    StyledText
+    p={3}
+    fontFamily="sans"
+    css={{
+      cursor: "pointer",
+      transition:"color .5s ease-out",
+      '&:hover':{
+        color:"#70e89d"
+      }
+    }}
+    {...props}
+  />
+)
 
+export const HeaderImage = props => (
+  <I
+    width="500px"
+    src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+    css={{
+      position:"absolute",
+      left:"50px",
+      filter: "grayscale(100%)"
+
+    }}
+    {...props}
+  />
+)
+export const CallToActionSection = props => (
+  <F
+  width={[1]}
+  css={{
+    height:"auto",
+  }}
+  {...props}
+  />
+);
+
+export const HeaderObj = props => (
+  <B
+  width="100vw"
+  bg="green.1"
+  css={{
+    height:"500px",
+    clipPath:"polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
+  }}
+  {...props}
+  />
+)
+export const HeaderText = props => (
+  <T
+  p={4}
+  fontSize={7}
+  fontWeight={0}
+  fontFamily="sans"
+  color="black"
+  m={5}
+  css={{
+    position:"absolute",
+    right:"260px",
+  }}
+  {...props}
+  />
+);
+export const HeaderInfoText = props => (
+  <T
+  p={3}
+  fontSize={4}
+  fontWeight={1}
+  fontFamily="sans"
+  color="black"
+  m={5}
+  css={{
+    position:"absolute",
+    right:"220px",
+    top:"150px"
+  }}
+  {...props}
+  />
+)
+export const LrgText = props => (
+  <T
+  fontSize={700}
+  fontFamily="sans"
+  color="green.1"
+  css={{
+    position: "absolute",
+    top:"10px",
+    opacity:".5"
+  }}
+  {...props}
+  />
+)
+
+export const HowItWorksSection = props =>(
+  <B
+  width={[1]}
+  mt={1}
+  mb={1}
+  css={{
+    height:"auto",
+    border:"1px solid black"
+  }}
+  {...props}
+  />
+)
+export const InfoSectionImage = props =>(
+  <I
+  width="250px"
+  src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
+  css={{
+    position:"absolute",
+    right:"400px",
+    bg:"blue.1",
+  }}
+  />
+)
+export const InfoSection = props => (
+  <F
+  width={[1]}
+  justifyContent="center"
+  mt={3}
+  mb={3}
+  css={{
+    height:"auto",
+    border:"1px solid blue",
+  }}
+    {...props}
+  />
+)
+export const InfoSectionMid = props => (
+  <F
+  width={[1]}
+  justifyContent="center"
+  mt={3}
+  mb={3}
+  css={{
+    height:"auto",
+    border:"1px solid red"
+  }}
+  {...props}
+  />
+)
+
+export const InfoBox = props => (
+  <B
+  width={1/4}
+  bg="green.0"
+  css={{
+    height:"350px",
+  }}
+  {...props}
+  />
+);
+
+export const InfoTextBox = props =>(
+  <B
+  width="300px"
+  bg="blue.1"
+  mt={6}
+  ml={7}
+  css={{
+    height:"150px",
+    position:"absolute",
+  }}
+  {...props}
+  />
+)
 export const SideBarHolder = props => (
   <F
     width="100px"
@@ -55,6 +247,17 @@ export const BoxText = props => (
   />
 );
 
+export const BgBlock = props => (
+  <B
+    width="100vw"
+    bg="f4f4f4"
+    css={{
+      height:"400px",
+      postion:"relative"
+    }}
+    {...props}
+  />
+)
 /* CONTAINERS */
 
 export const Container = props => (
@@ -64,10 +267,9 @@ export const Container = props => (
 export const FullScreenContainer = props => (
   <F
     justifyContent="center"
-    alignItems="center"
     flexDirection="column"
-    width="100vw"
-    css={{ height: "100vh" }}
+    width="100%"
+    css={{ height:"auto" }}
     {...props}
   />
 );
@@ -76,7 +278,7 @@ export const BoxHolder = props => (
   <F
     width="200px"
     m={1}
-    justifyContent="center"
+    justifyContent="space-around"
     alignItems="center"
     flexDirection="column"
     bg="white"
@@ -193,7 +395,7 @@ export const Emblem = props => (
   <F
     justifyContent="center"
     alignItems="center"
-    bg="#ffe88c"
+    bg="green.1"
     width={70}
     css={{
       height: "70px",
