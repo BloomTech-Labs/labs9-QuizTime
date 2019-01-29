@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import {
-  Button,
+  ButtonLink,
   Container,
 } from "../../components/design-system";
 
@@ -11,9 +11,9 @@ import StudentQuiz from "../../components/StudentView/StudentQuiz";
 const TakeQuiz = props => (
   <Container>
     <Link href="/student" prefetch>
-      <Button variant="primary" m={2}>Back to Profile</Button>
+      <ButtonLink variant="primary" m={2}>Back to Profile</ButtonLink>
     </Link>
-    <Button variant="success" m={2}>Email Teacher</Button>
+    <ButtonLink variant="success" m={2}>Email Teacher</ButtonLink>
     <StudentQuiz />
   </Container>
 );

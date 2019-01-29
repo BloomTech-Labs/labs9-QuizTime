@@ -5,18 +5,16 @@ import Router from 'next/router'
 import { setStudentToken } from '../../utils/auth'
 
 export default class StudentLanding extends React.Component {
-  static getInitialProps({query}){
-    console.log(query)
-    return {query}
+  static getInitialProps({ query }) {
+    return { query }
 
   }
   componentDidMount() {
-    console.log('token', this.props.query.token) 
     setStudentToken(this.props.query.token);
     Router.push('/student/studentquiz')
   }
 
-  render(){
+  render() {
     return null
   }
 }

@@ -21,7 +21,6 @@
     "apollo-client": "^2.4.8",
     "apollo-link-context": "^1.0.12",
     "auth0-js": "^9.9.0",
-    "axios": "^0.18.0",
     "design-system": "^2.5.0",
     "emotion-theming": "^10.0.6",
     "graphql": "^14.0.2",

@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import axios from 'axios';
-
 import { getStudentToken } from "../../utils/auth";
-
 import {
   Text,
   BoldText,
@@ -14,10 +9,11 @@ import {
   Input,
   BoxText,
   BoxHolder,
-  Button
+  ButtonLink
 } from "../design-system";
 
 import { Box, Flex } from "@rebass/emotion";
+const url = 'http://localhost:51444/api/student-proxy'
 
 class StudentQuiz extends Component {
   //For development purposes.  Can remove later after retrieving data.
@@ -44,45 +40,60 @@ class StudentQuiz extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:51444/api/student-proxy',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          type: "get_quiz_query",
-          token: getStudentToken()
-        }),
-      })
-      .then(res => res.json())
-      .then(data => this.setState({ quiz: data.data.quiz[0] }))
+    this.getQuiz()
   };
 
-  nextQuestion = (e, q) => {
-    if (this.state.isMajor) {
-      console.log('sending current major', this.state.currentMajorQuestion)
-      fetch('http://localhost:51444/api/student-proxy',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            type: "insert_student_major_answer",
-            token: getStudentToken(),
-            ...this.state.currentMajorQuestion
-          })
-        })
+  getQuiz = () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        type: "get_quiz_query",
+        token: getStudentToken()
+      }),
+    }
 
-      if (this.state.currentMajorQuestion.correct) {
-        this.setState({ majorCorrectAnswer: this.state.majorCorrectAnswers++ });
-      }
+    fetch(url, options)
+      .then(res => res.json())
+      .then(({ data }) => this.setState({ quiz: data.quiz[0] }))
+      .catch(error => console.log(error))
+  }
+
+  submitMajorAnswer = () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        type: "insert_student_major_answer",
+        token: getStudentToken(),
+        ...this.state.currentMajorQuestion
+      })
+    }
+    fetch(url, options)
+      .then(res => res.json())
+      .then(({ data }) => console.log(data))
+      .catch(error => console.log(error))
+  }
+
+  submitMinorAnswer = () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        type: "insert_student_minor_answer",
+        token: getStudentToken(),
+        ...this.state.currentMinorQuestion
+      })
+    }
+    fetch(url, options)
+      .then(res => res.json())
+      .then(({ data }) => console.log(data))
+      .catch(error => console.log(error))
+  }
+
+  nextQuestion = (e, q) => {
+    if (this.state.currentMajorQuestion.correct) {
+      this.submitMajorAnswer()
+      this.setState({ majorCorrectAnswer: this.state.majorCorrectAnswers++ });
     } else {
-      console.log('sending current minor', this.state.currentMinorQuestion)
-      fetch('http://localhost:51444/api/student-proxy',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            type: "insert_student_minor_answer",
-            token: getStudentToken(),
-            ...this.state.currentMinorQuestion
-          })
-        })
+      this.submitMinorAnswer()
       if (this.state.currentMinorQuestion.correct) {
         this.setState({ minorCorrectAnswer: this.state.minorCorrectAnswers++ });
       }
@@ -134,19 +145,24 @@ class StudentQuiz extends Component {
   }
 
   handleChange = (e, q, a) => {
-    console.log('radio input', e.target.value, q.id, a.id, a.correct_answer)
 
     this.setState({
-      currentMajorQuestion: { major_question_id: q.id, student_answer: a.id, correct: a.correct_answer },
+      currentMajorQuestion: {
+        major_question_id: q.id,
+        student_answer: a.id,
+        correct: a.correct_answer
+      },
       isAnswered: true
     })
   }
 
   handleMiniChange = (e, q, a) => {
-    console.log('radio input', e.target.value, q.id, a.id, a.correct_answer)
-
     this.setState({
-      currentMinorQuestion: { minor_question_id: q.id, student_answer: a.id, correct: a.correct_answer },
+      currentMinorQuestion: {
+        minor_question_id: q.id,
+        student_answer: a.id,
+        correct: a.correct_answer
+      },
       isAnswered: true
     })
   }
@@ -215,7 +231,7 @@ class StudentQuiz extends Component {
                       </Box>
                     ))}
                     <Flex justifyContent="flex-end">
-                      <Button disabled={!isAnswered} mx={5} variant="error" onClick={(e) => this.nextQuestion(e, q)}>Submit and Next</Button>
+                      <ButtonLink disabled={!isAnswered} mx={5} variant="error" onClick={(e) => this.nextQuestion(e, q)}>Submit and Next</ButtonLink>
                     </Flex>
                   </Box>
                 ))}</div></>
