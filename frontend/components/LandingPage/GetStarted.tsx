@@ -6,39 +6,49 @@ import {
     Text,
     QuizBox, 
     UpperCase,
+    InfoSection,
+    LandingText,
     BoxText } from '../../components/design-system';
 
 const GetStarted = (props) => {
     return(
         <>
-            <Box m={2} p={4} width={[1, 1, 3/4]}
-            css={{border: "1px solid black" }} 
-            >
-            <BoxText css={{textAlign: "center"}}>Getting Started with QuizTime</BoxText>
-            <Flex
-                flexDirection="column" 
-                alignItems="center"
-                justifyContent="space-between"
-            >
-                <Box m={3} p={3} width={[1, 1/2, 1/2]}
+            <Box my={5}>
+            <InfoSection css={{
+                display: "flex",
+                flexWrap: "wrap",
+                border: "1px solid white",
+            }}>
+                <Box my={3} mx={5} p={4} bg="green.0" width="360px" 
                 css={{
-                     border: "1px solid black", 
-                     borderRadius: "6px" }} >
-                    <BoxText><UpperCase>Free</UpperCase></BoxText>
-                    <BoxText>Users can sign up and make ten quizzes for free!</BoxText>
+                     border: "1px solid white", 
+                     borderRadius: "100%",
+                     height: "360px", 
+                     display: "flex",
+                     flexDirection: "column",
+                     justifyContent: "center",
+                     alignItems: "center"
+                     }} >
+                    <LandingText fontWeight = {3} color="blue.1" fontSize={5} p={2}>Free Plan</LandingText>
+                    <LandingText fontWeight = {3} fontSize ={4} color="blue.1" lineHeight = {1.5} p={4}>
+                    Sign up now and make ten quizzes for free!</LandingText>
                 </Box>
-                <Box m={3} p={3} width={[1, 1/2, 1/2]}
+                <Box my={3} mx={5} p={4} bg="green.0" width="360px" 
                 css={{
-                    border: "1px solid black", 
-                    borderRadius: "6px" }} >
-                    <BoxText>
-                        <UpperCase>Professional</UpperCase>
-                    </BoxText>
-                    <BoxText>
-                        Experience the full power of QuizTime with our professional version, which includes unlimited quizzes for a monthly fee of $9.95.
-                    </BoxText>
+                    border: "1px solid white", 
+                    borderRadius: "100%",
+                    height: "360px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center"
+                     }} >
+                    <LandingText fontWeight = {3} color="blue.1" fontSize={5} p={2}>Pro Plan</LandingText>
+                    <LandingText fontWeight = {3} fontSize ={4} color="blue.1" lineHeight = {1.5} p={4}>
+                        Get unlimited quizzes for a low monthly fee of $9.95.
+                    </LandingText>
                 </Box>
-            </Flex>
+                </InfoSection>
             </Box>
         </>
     )

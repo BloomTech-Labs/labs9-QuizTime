@@ -1,5 +1,4 @@
 //carey
-//carey
 import React from 'react';
 import {Box, Flex} from '@rebass/emotion';
 import { 
@@ -7,31 +6,68 @@ import {
     Text,
     QuizBox, 
     UpperCase,
+    BoxHolder,
+    InfoSection,
+    InfoBox,
+    InfoTextBox,
+    LrgText,
+    HeaderInfoText,
+    LandingText,
+    TestimonialStudentImage,
+    TestimonialTeacherImage,
     BoxText } from '../../components/design-system';
+
+//import studentLaptop from '../../img/studentLaptop.jpg';
 
 const Testimonials = (props) => {
     return(
         <>
-            <Box m={2} p={4} width={1, 1, 3/4}
-            css={{border: "1px solid black" }} 
-            >
-            <BoxText css={{textAlign: "center"}}>Testimonials</BoxText>
-            <Flex 
-                flexDirection="column" 
-                  >
-                <Box m={3} p={3}
-                css={{border: "1px solid black", borderRadius: "6px" }} >
-                    <BoxText>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    </BoxText>
+            <Box my={4}>
+            <LandingText fontSize = {5} css={{textAlign: "center"}}>Testimonials</LandingText>
+            <InfoSection css={{
+                display: "flex",
+                flexWrap: "wrap",
+                border: "1px solid white"   
+            }}>
+                <Box m={3} p={3} width="400px">
+                    <LandingText lineHeight = {1.5}>
+                    "As a 12-year veteran teacher, I have seen a multitude of digital assessment technologies come and go.
+                    From a practical standpoint, I like that QuizTime is easy and intuitive to use.
+                    From a pedagocial perspective, I appreciate Quiztime's built in adaptivity giving each student a unique learning experience.
+                    QuizTime is a revolution in formative assessment in that it supports differentation of content based on student ability."
+                    </LandingText>
+                    <br />
+                    <LandingText lineHeight = {1.5}>
+                        ~ Mrs. Schaffer, Atlanta, GA
+                    </LandingText>
+                    </Box>
+                <Box m={3} p={3} width="550px">
+                    <TestimonialTeacherImage />
                 </Box>
-                <Box m={3} p={3}
-                css={{border: "1px solid black", borderRadius: "6px" }} >
-                    <BoxText>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    </BoxText>
+            </InfoSection>
+            <InfoSection
+                css={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    border: "1px solid white" 
+                }}>
+                <Box m={3} p={3} width="550px">
+                    <TestimonialStudentImage />
                 </Box>
-            </Flex>
+                 <Box m={3} p={3} width="400px">
+                    <LandingText lineHeight = {1.5}>
+                    "The thing I like best about QuizTime is that it helps me figure out the small parts of a concept that I don't understand.  
+                    The quizzes have big and little questions.  
+                    If I get a big question wrong, I can still try to figure it out by trying the little questions on the same concept.
+                    I can also make up my points with the little questions and I like that."
+                    </LandingText>
+                    <br />
+                    <LandingText lineHeight = {1.5}>
+                        ~ Sara, Grade 8, Bellevue, WA
+                    </LandingText>
+                </Box>
+ 
+                </InfoSection>
             </Box>
         </>
     )
