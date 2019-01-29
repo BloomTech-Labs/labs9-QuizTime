@@ -16,7 +16,7 @@ export default {
   borders: [0, "1px solid red"],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    sans: ["Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"],
+    sans: ["Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"],
     mono: ["Menlo, monospace"]
   },
   shadows: {

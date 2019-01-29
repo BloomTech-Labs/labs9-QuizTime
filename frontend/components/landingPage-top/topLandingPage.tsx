@@ -13,6 +13,8 @@ import {
   InfoSection,
   InfoSectionMid,
   InfoSectionImage,
+  InfoTextBox,
+  BgBlock,
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
 
@@ -30,10 +32,16 @@ const TopLanding = () => {
     </CallToActionSection>
     <HowItWorksSection>
         <InfoSection>
+            <InfoBox />
+                <InfoTextBox />
         </InfoSection>
         <InfoSectionMid>
+            <InfoBox />
+                <InfoTextBox />
         </InfoSectionMid>
         <InfoSection>
+            <InfoBox />
+                <InfoTextBox />
         </InfoSection>
     </HowItWorksSection>
     </div>

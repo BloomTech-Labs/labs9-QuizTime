@@ -107,7 +107,7 @@ export const HeaderText = props => (
   <T
   p={4}
   fontSize={7}
-  fontWeight={1}
+  fontWeight={0}
   fontFamily="sans"
   color="black"
   m={5}
@@ -174,7 +174,7 @@ export const InfoSectionImage = props =>(
 export const InfoSection = props => (
   <F
   width={[1]}
-  justifyContent="flex-end"
+  justifyContent="center"
   mt={3}
   mb={3}
   css={{
@@ -187,7 +187,7 @@ export const InfoSection = props => (
 export const InfoSectionMid = props => (
   <F
   width={[1]}
-  justifyContent="flex-start"
+  justifyContent="center"
   mt={3}
   mb={3}
   css={{
@@ -198,6 +198,30 @@ export const InfoSectionMid = props => (
   />
 )
 
+export const InfoBox = props => (
+  <B
+  width={1/4}
+  bg="green.0"
+  css={{
+    height:"350px",
+  }}
+  {...props}
+  />
+);
+
+export const InfoTextBox = props =>(
+  <B
+  width="300px"
+  bg="blue.1"
+  mt={6}
+  ml={7}
+  css={{
+    height:"150px",
+    position:"absolute",
+  }}
+  {...props}
+  />
+)
 export const SideBarHolder = props => (
   <F
     width="100px"
@@ -223,6 +247,17 @@ export const BoxText = props => (
   />
 );
 
+export const BgBlock = props => (
+  <B
+    width="100vw"
+    bg="f4f4f4"
+    css={{
+      height:"400px",
+      postion:"relative"
+    }}
+    {...props}
+  />
+)
 /* CONTAINERS */
 
 export const Container = props => (
