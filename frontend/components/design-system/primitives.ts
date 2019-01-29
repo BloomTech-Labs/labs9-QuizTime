@@ -36,7 +36,6 @@ export const LandingText = props => (
   {...props}
   />
 )
-
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
@@ -79,7 +78,6 @@ export const LandingBarItems = props => (
     {...props}
   />
 )
-
 export const HeaderImage = props => (
   <I
     width="500px"
@@ -102,7 +100,6 @@ export const CallToActionSection = props => (
   {...props}
   />
 );
-
 export const HeaderObj = props => (
   <B
   width="100vw"
@@ -158,7 +155,6 @@ export const LrgText = props => (
   {...props}
   />
 )
-
 export const HowItWorksSection = props =>(
   <B
   width={[1]}
@@ -200,7 +196,6 @@ export const TestimonialTeacherImage = props =>(
   }}
   />
 )
-
 export const InfoSection = props => (
   <F
   width={[1]}
@@ -524,6 +519,8 @@ export const Label = props => (
     {...props}
   />
 );
+
+/* Quotation Marks */
 
 //* IMAGE TAGS
 export const AvatarImg = props => (

@@ -22,11 +22,12 @@ import {
 const Testimonials = (props) => {
     return(
         <>
-            <Box>
-            <LandingText fontSize = {4} css={{textAlign: "center"}}>Testimonials</LandingText>
+            <Box my={4}>
+            <LandingText fontSize = {5} css={{textAlign: "center"}}>Testimonials</LandingText>
             <InfoSection css={{
                 display: "flex",
-                flexWrap: "wrap"
+                flexWrap: "wrap",
+                border: "1px solid white"   
             }}>
                 <Box m={3} p={3} width="400px">
                     <LandingText>
@@ -40,16 +41,17 @@ const Testimonials = (props) => {
                         ~ Mrs. Schaffer, Atlanta, GA
                     </LandingText>
                     </Box>
-                <Box m={3} p={3} width="400px">
+                <Box m={3} p={3} width="550px">
                     <TestimonialTeacherImage />
                 </Box>
             </InfoSection>
             <InfoSection
                 css={{
                     display: "flex",
-                    flexWrap: "wrap"
+                    flexWrap: "wrap",
+                    border: "1px solid white" 
                 }}>
-                <Box m={3} p={3} width="400px">
+                <Box m={3} p={3} width="550px">
                     <TestimonialStudentImage />
                 </Box>
                  <Box m={3} p={3} width="400px">
