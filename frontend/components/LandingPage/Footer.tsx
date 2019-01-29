@@ -20,7 +20,8 @@ const Footer = (props) => {
             <InfoSection my={4}
             css={{
                 display: "flex",
-                flexWrap: "wrap",   
+                flexWrap: "wrap",
+                border: "3px solid white"   
             }}
             >
                 <Box m={4} p={3} width="280px">
