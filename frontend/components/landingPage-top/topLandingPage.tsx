@@ -31,21 +31,21 @@ const TopLanding = () => {
         <HeaderObj />
         <HeaderText>QuizTime</HeaderText>
         <HeaderInfoText>
-          "Quickly assess understanding of content,
-          while giving each student a unique, adaptive learning experience.."
-          </HeaderInfoText>
+          "Quickly assess understanding of content, while giving each student a
+          unique, adaptive learning experience.."
+        </HeaderInfoText>
       </CallToActionSection>
       <HowItWorksSection>
-          <InfoSection>
-            <InfoTextBox />
-              <InfoBox />
-              <InfoTextBox />
-            </InfoSection>
-            <InfoSectionRight>
-            <InfoBoxTwo />
-              <InfoTextBox />
-            <InfoBoxThree />
-            </InfoSectionRight>
+        <InfoSection>
+          <InfoTextBox />
+          <InfoBox />
+          <InfoTextBox />
+        </InfoSection>
+        <InfoSectionRight>
+          <InfoBoxTwo />
+          <InfoTextBox />
+          <InfoBoxThree />
+        </InfoSectionRight>
       </HowItWorksSection>
     </div>
   );
