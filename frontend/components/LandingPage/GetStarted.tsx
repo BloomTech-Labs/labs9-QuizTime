@@ -15,6 +15,7 @@ const GetStarted = (props) => {
     return(
         <>
             <Box my={5}>
+            <LandingText color="blue.1" fontSize = {6} css={{textAlign: "center"}}>Getting Started</LandingText>
             <FlexColumns>
                 <Box my={3} mx={5} p={4} bg="green.0" width="360px" 
                 css={{
