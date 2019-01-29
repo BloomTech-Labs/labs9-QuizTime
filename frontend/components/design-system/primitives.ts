@@ -222,6 +222,8 @@ export const UpperCase = props => (
 
 export const Button = props => <Butt variant="primary" {...props} />;
 
+export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
+
 export const Avatar = props => (
   <F
     justifyContent="center"
