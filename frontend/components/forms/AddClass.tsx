@@ -56,7 +56,6 @@ class AddClass extends Component {
               e.preventDefault();
               // call the mutation
               const res = await insert_class();
-              console.log(res);
             }}
           >
           <Text>Add a Class</Text>

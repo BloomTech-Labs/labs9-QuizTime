@@ -1,14 +1,12 @@
 import { Query } from "react-apollo";
-import { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
 import securePage from "../../hocs/securePage";
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
-import { getIdToken } from "../../utils/auth";
-import { GraphQLClient } from "graphql-request";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
+import {ALL_STUDENTS_QUERY} from '../../queries';
 
 import {
   StudentHolder,
@@ -17,48 +15,9 @@ import {
   QuizBox,
   QuizzesAvaliable
 } from "../../components/design-system/primitives";
-import { Component } from "../../node_modules/@types/react";
 
-const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
 const ClassPage = ({ query: { id } }) => {
-  const [quizzesToClasses, setQuizzesToClasses] = useState([]);
-console.log(quizzesToClasses)
-  //similar to componentDidMount
-  const client = new GraphQLClient(endpoint, {
-    headers: {
-      Authorization: `Bearer ${getIdToken()}`
-    }
-  });
-
-  const ALL_STUDENTS_QUERY = gql`
-  query ALL_STUDENTS_QUERY {
-    class(where: {id: {_eq: ${id}}}){
-      id
-      name
-      students{
-        id
-        first_name
-        last_name
-        class_id
-        email
-      }
-      quizzes{
-        id
-        due_date
-        quiz{
-          id
-          name
-        }
-      }
-    }
-    quiz{
-      id
-      name
-    }
-  }
-`;
-
 
   const generateMutation = (quiz_id, class_id) => {
     return `
@@ -79,42 +38,19 @@ console.log(quizzesToClasses)
     `;
   };
 
-  function addQuizToClass(quiz_id, quiz_name) {
-    setQuizzesToClasses([
-      ...quizzesToClasses,
-      { quiz_name: quiz_name, quiz_id: quiz_id, class_id: id }
-    ]);
-    // for(let i = 0; i < quizzesToClasses.length; i++){
-    //   console.log(quizzesToClasses[i], quiz_id)
-    //  if(quizzesToClasses[i].quiz_id !== quiz_id){
-    //    console.log(quizzesToClasses[i])
-      return client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
-     }
-    
-
-  
-
-  useEffect(
-    () => {
-      console.log(quizzesToClasses);
-    },
-    [quizzesToClasses]
-  );
-
   return (
     <Layout>
       <Text>Send Email</Text>
 
       <Text>Add a Student</Text>
 
-      <AddStudent class={id} />
-    
-      <Query query={ALL_STUDENTS_QUERY}>
+      <AddStudent class_id={id} />
+
+      <Query query={ALL_STUDENTS_QUERY} variables={{class_id: id}}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
           if (loading) return <p>...loading</p>;
           if (data) {
-            console.log(data);
             return (
               <>
                 <SectionContainer>
@@ -132,7 +68,6 @@ console.log(quizzesToClasses)
                       <QuizElement
                         key={q.id}
                         quiz={q}
-                        addQuizToClass={addQuizToClass}
                       />
                     ))}
                   </QuizBox>
@@ -140,9 +75,8 @@ console.log(quizzesToClasses)
                     {data.class[0].quizzes.map(quizzes => (
                     <ClassQuizzes
                      quizzes={quizzes}
-                    //  quizzes={quizzesToClasses}
                       />
-                       ))} 
+                       ))}
                   </QuizzesAvaliable>
                 </SectionContainer>
               </>
@@ -153,8 +87,5 @@ console.log(quizzesToClasses)
     </Layout>
   );
 };
-ClassPage.getInitialProps = async function(context) {
-  const { id } = context.query;
-  return { id };
-};
+
 export default securePage(ClassPage);
