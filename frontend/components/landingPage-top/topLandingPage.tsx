@@ -10,11 +10,12 @@ import {
   HeaderInfoText,
   HowItWorksSection,
   InfoBox,
+  InfoBoxTwo,
+  InfoBoxThree,
   InfoSection,
   InfoSectionImage,
   InfoSectionRight,
   InfoTextBox,
-  InfoTextBoxRight,
   BgBlock
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
@@ -29,17 +30,21 @@ const TopLanding = () => {
       <CallToActionSection>
         <HeaderObj />
         <HeaderText>QuizTime</HeaderText>
-        <HeaderInfoText>Quiz creating made simple.</HeaderInfoText>
+        <HeaderInfoText>
+          "Quickly assess understanding of content,
+          while giving each student a unique, adaptive learning experience.."
+          </HeaderInfoText>
       </CallToActionSection>
       <HowItWorksSection>
           <InfoSection>
+            <InfoTextBox />
               <InfoBox />
               <InfoTextBox />
             </InfoSection>
             <InfoSectionRight>
-            <InfoBox />
-              <InfoTextBoxRight />
-            <InfoBox />
+            <InfoBoxTwo />
+              <InfoTextBox />
+            <InfoBoxThree />
             </InfoSectionRight>
       </HowItWorksSection>
     </div>

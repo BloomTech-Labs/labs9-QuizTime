@@ -120,6 +120,7 @@ export const HeaderText = props => (
 );
 export const HeaderInfoText = props => (
   <T
+  width={1/3}
   p={3}
   fontSize={4}
   fontWeight={1}
@@ -128,7 +129,7 @@ export const HeaderInfoText = props => (
   m={5}
   css={{
     position:"absolute",
-    right:"220px",
+    right:"100px",
     top:"150px"
   }}
   {...props}
@@ -156,7 +157,6 @@ export const HowItWorksSection = props =>(
   mb={1}
   css={{
     height:"auto",
-    border:"1px solid black"
   }}
   {...props}
   />
@@ -180,7 +180,6 @@ export const InfoSection = props => (
   mb={3}
   css={{
     height:"auto",
-    border:"1px solid blue",
   }}
     {...props}
   />
@@ -196,43 +195,56 @@ export const InfoSectionRight = props => (
   mb={3}
   css={{
     height:"auto",
-    border:"1px solid blue",
   }}
     {...props}
   />
 )
 
 export const InfoBox = props => (
-  <B
-  width={[1/2]}
-  bg="green.0"
+  <I
+  width="400px"
+  src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
   m={3}
   css={{
     height:"350px",
+    filter:"grayscale(100%)"
   }}
   {...props}
   />
 );
 
-export const InfoTextBox = props =>(
-  <B
-  width={[1/2]}
-  bg="blue.1"
+export const InfoBoxTwo = props => (
+  <I
+  width="400px"
+  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+  m={3}
   css={{
-    height:"250px"
+    height:"350px",
+    filter:"grayscale(100%)"
   }}
   {...props}
   />
-)
+);
 
-export const InfoTextBoxRight = props =>(
-  <B
-  width="200px"
-  bg="blue.1"
+export const InfoBoxThree = props => (
+  <I
+  width="550px"
+  src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+  m={3}
   css={{
-    height:"250px",
-    position:"absolute", 
-    right:"100px"
+    height:"350px",
+    filter:"grayscale(100%)"
+  }}
+  {...props}
+  />
+);
+export const InfoTextBox = props =>(
+  <B
+  width="350px"
+  bg="blue.1"
+  m={3}
+  css={{
+    height:"200px",
   }}
   {...props}
   />
