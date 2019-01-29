@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { useState, useEffect } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import {
@@ -12,31 +12,29 @@ import {
 } from "../design-system";
 import { Box, Flex } from "@rebass/emotion";
 
-class AddQuiz extends Component {
-  state = {
-    name: "",
-    majorQuestions: [
-      {
-        id: 1,
-        prompt: "",
-        answers: [
-          { id: 1, response: "", correct: false },
-          { id: 2, response: "", correct: false },
-          { id: 3, response: "", correct: false },
-          { id: 4, response: "", correct: false }
-        ],
-        minorQuestions: []
-      }
-    ]
-  };
+function AddQuiz() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [majorQuestions, setMajorQuestions] = useState([
+    {
+      id: 1,
+      prompt: "",
+      answers: [
+        { id: 1, response: "", correct: false },
+        { id: 2, response: "", correct: false },
+        { id: 3, response: "", correct: false },
+        { id: 4, response: "", correct: false }
+      ],
+      minorQuestions: []
+    }
+  ]);
 
-  handleChange = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    console.log("TARGET: ", name, value);
   };
 
-  handleMajorAnswerChange = (e, id) => {
-    const { majorQuestions } = this.state;
+  const handleMajorAnswerChange = (e, id) => {
     const newQuestions = majorQuestions.map(q => {
       if (q.id == id) {
         if (e.target.type == "radio") {
@@ -58,50 +56,41 @@ class AddQuiz extends Component {
 
     console.log(e.target.type);
     console.log("MAJOR ANSWER CHANGE:", e.target.value);
-    this.setState(
-      s => ({ ...s, majorQuestions: newQuestions }),
-      () => console.log(this.state)
-    );
+    setMajorQuestions(newQuestions);
   };
 
-  addMajorQuestion = e => {
+  const addMajorQuestion = e => {
     e.preventDefault();
-    this.setState(s => ({
-      ...s,
-      majorQuestions: [
-        ...s.majorQuestions,
-        {
-          id: s.majorQuestions[s.majorQuestions.length - 1]["id"] + 1,
-          prompt: "",
-          answers: [{ response: "", correct: false }],
-          minorQuestions: []
-        }
-      ]
-    }));
+    setMajorQuestions([
+      ...majorQuestions,
+      {
+        id: majorQuestions[majorQuestions.length - 1]["id"] + 1,
+        prompt: "",
+        answers: [{ response: "", correct: false }],
+        minorQuestions: []
+      }
+    ]);
   };
 
-  updateMajorQuestion = (id, e) => {
+  const updateMajorQuestion = (id, e) => {
     console.log(`id ${id}:`, e.target.value);
     const { value } = e.target;
-    const { majorQuestions } = this.state;
     const updatedQuestions = majorQuestions.map(q => {
       if (q.id == id) q.prompt = value;
       return q;
     });
-    this.setState(s => ({ ...s, majorQuestions: updatedQuestions }));
+    setMajorQuestions(updatedQuestions);
   };
 
-  deleteMajorQuestion = id => {
-    const { majorQuestions } = this.state;
+  const deleteMajorQuestion = id => {
     const updatedQuestions = majorQuestions.filter(q => {
       if (q.id != id || q.id == 1) return q;
     });
-    this.setState(s => ({ ...s, majorQuestions: updatedQuestions }));
+    setMajorQuestions(updatedQuestions);
   };
 
-  addMinorQuestion = (e, majorQID) => {
+  const addMinorQuestion = (e, majorQID) => {
     e.preventDefault();
-    const { majorQuestions } = this.state;
     const newQuestions = majorQuestions.map(majorQuestion => {
       if (majorQuestion.id == majorQID) {
         if (majorQuestion.minorQuestions.length == 0) {
@@ -136,16 +125,16 @@ class AddQuiz extends Component {
       }
       return majorQuestion;
     });
-    this.setState(s => ({ ...s, majorQuestions: newQuestions }));
+    setMajorQuestions(newQuestions);
   };
 
-  generateMutation = () => {
+  const generateMutation = () => {
     return gql`
       mutation insert_quiz {
           insert_quiz(
           objects:[
                   {
-                    name: "${this.state.name}"
+                    name: "${name}"
                   }
               ]
               ){
@@ -157,172 +146,182 @@ class AddQuiz extends Component {
   `;
   };
 
-  render() {
-    const { majorQuestions } = this.state;
-    return (
-      <Mutation mutation={this.generateMutation()}>
-        {(insert_quiz, { error, loading, data }) => (
-          <>
-            <Form
-              onSubmit={async e => {
-                // Stop the form from submitting
-                e.preventDefault();
-                // call the mutation
-                const res = await insert_quiz();
-                console.log(res);
-              }}
-            >
-              <Text>Add a Quiz</Text>
+  return (
+    <Mutation mutation={generateMutation()}>
+      {(insert_quiz, { error, loading, data }) => (
+        <>
+          <Form
+            onSubmit={async e => {
+              // Stop the form from submitting
+              e.preventDefault();
+              // call the mutation
+              const res = await insert_quiz();
+              console.log(res);
+            }}
+          >
+            <Text>Add a Quiz</Text>
 
-              <Label htmlFor="name">
-                Quiz Title
-                <Input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Quiz Title"
-                  required
-                  value={this.state.name}
-                  onChange={this.handleChange}
+            <Label htmlFor="name">
+              Quiz Title
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Quiz Title"
+                required
+                value={name}
+                onChange={handleChange}
+              />
+            </Label>
+
+            <Label htmlFor="name">
+              Description
+              <TextArea
+                type="text"
+                id="description"
+                name="description"
+                required
+                value={description}
+                onChange={handleChange}
+                css={{ height: "100px" }}
+              />
+            </Label>
+            {majorQuestions.map(q => (
+              <Box key={q.id} my={4}>
+                <Flex justifyContent="space-around">
+                  <Label htmlFor={`major-question-${q.id}`}>
+                    Major Question {q.id}
+                  </Label>
+                  <Button
+                    variant="error"
+                    p={0}
+                    fontSize={0}
+                    onClick={e => deleteMajorQuestion(q.id)}
+                  >
+                    Delete
+                  </Button>
+                </Flex>
+                <TextArea
+                  id={`major-question-${q.id}`}
+                  onChange={e => updateMajorQuestion(q.id, e)}
                 />
-              </Label>
-              {majorQuestions.map(q => (
-                <Box key={q.id} my={4}>
-                  <Flex justifyContent="space-around">
-                    <Label htmlFor={`major-question-${q.id}`}>
-                      Major Question {q.id}
-                    </Label>
-                    <Button
-                      variant="error"
-                      p={0}
-                      fontSize={0}
-                      onClick={e => this.deleteMajorQuestion(q.id)}
-                    >
-                      Delete
-                    </Button>
-                  </Flex>
-                  <TextArea
-                    id={`major-question-${q.id}`}
-                    onChange={e => this.updateMajorQuestion(q.id, e)}
-                  />
-                  <Box>
-                    <Label>Answer 1</Label>
-                    <Flex>
-                      <Input
-                        my={3}
-                        width={1 / 2}
-                        name="major-answer-1"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                      <Input
-                        type="radio"
-                        name={`major-question-${q.id}-major-answer`}
-                        value="1"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                    </Flex>
-                  </Box>
-                  <Box>
-                    <Label>Answer 2</Label>
-                    <Flex>
-                      <Input
-                        my={3}
-                        width={1 / 2}
-                        name="major-answer-2"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                      <Input
-                        type="radio"
-                        name={`major-question-${q.id}-major-answer`}
-                        value="2"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                    </Flex>
-                  </Box>
-                  <Box>
-                    <Label>Answer 3</Label>
-                    <Flex>
-                      <Input
-                        my={3}
-                        width={1 / 2}
-                        name="major-answer-3"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                      <Input
-                        type="radio"
-                        name={`major-question-${q.id}-major-answer`}
-                        value="3"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                    </Flex>
-                  </Box>
-                  <Box>
-                    <Label>Answer 4</Label>
-                    <Flex>
-                      <Input
-                        my={3}
-                        width={1 / 2}
-                        name="major-answer-4"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                      <Input
-                        type="radio"
-                        name={`major-question-${q.id}-major-answer`}
-                        value="4"
-                        onChange={e => this.handleMajorAnswerChange(e, q.id)}
-                      />
-                    </Flex>
-                  </Box>
-                  <Container width={3 / 4}>
-                    {q.minorQuestions.map(minorQ => (
-                      <Box>
-                        <Text>{minorQ.id}</Text>
-                        <TextArea />
-                        <Label>Answer 1</Label>
-                        <Input />
-                        <Label>Answer 2</Label>
-                        <Input />
-                        <Label>Answer 3</Label>
-                        <Input />
-                        <Label>Answer 4</Label>
-                        <Input />
-                      </Box>
-                    ))}
-                  </Container>
-                  <Flex justifyContent="center">
-                    <Button variant="success" onClick={this.addMajorQuestion}>
-                      Add Major Question
-                    </Button>
-                    <Button
-                      variant="primary"
-                      onClick={e => {
-                        this.addMinorQuestion(e, q.id);
-                      }}
-                    >
-                      Add Minor Question
-                    </Button>
+                <Box>
+                  <Label>Answer 1</Label>
+                  <Flex>
+                    <Input
+                      my={3}
+                      width={1 / 2}
+                      name="major-answer-1"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                    <Input
+                      type="radio"
+                      name={`major-question-${q.id}-major-answer`}
+                      value="1"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
                   </Flex>
                 </Box>
-              ))}
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-            {/* render errors, loading, or data */}
-            {error && <p> {error.message} </p>}
-            {loading && <p> ...loading </p>}
-            {data && (
-              <p>
-                {" "}
-                successfully created quiz with id of{" "}
-                {data.insert_quiz.returning[0].id}
-              </p>
-            )}
-          </>
-        )}
-      </Mutation>
-    );
-  }
+                <Box>
+                  <Label>Answer 2</Label>
+                  <Flex>
+                    <Input
+                      my={3}
+                      width={1 / 2}
+                      name="major-answer-2"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                    <Input
+                      type="radio"
+                      name={`major-question-${q.id}-major-answer`}
+                      value="2"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                  </Flex>
+                </Box>
+                <Box>
+                  <Label>Answer 3</Label>
+                  <Flex>
+                    <Input
+                      my={3}
+                      width={1 / 2}
+                      name="major-answer-3"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                    <Input
+                      type="radio"
+                      name={`major-question-${q.id}-major-answer`}
+                      value="3"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                  </Flex>
+                </Box>
+                <Box>
+                  <Label>Answer 4</Label>
+                  <Flex>
+                    <Input
+                      my={3}
+                      width={1 / 2}
+                      name="major-answer-4"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                    <Input
+                      type="radio"
+                      name={`major-question-${q.id}-major-answer`}
+                      value="4"
+                      onChange={e => handleMajorAnswerChange(e, q.id)}
+                    />
+                  </Flex>
+                </Box>
+                <Container width={3 / 4}>
+                  {q.minorQuestions.map(minorQ => (
+                    <Box>
+                      <Text>{minorQ.id}</Text>
+                      <TextArea />
+                      <Label>Answer 1</Label>
+                      <Input />
+                      <Label>Answer 2</Label>
+                      <Input />
+                      <Label>Answer 3</Label>
+                      <Input />
+                      <Label>Answer 4</Label>
+                      <Input />
+                    </Box>
+                  ))}
+                </Container>
+                <Flex justifyContent="center">
+                  <Button variant="success" onClick={addMajorQuestion}>
+                    Add Major Question
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={e => {
+                      addMinorQuestion(e, q.id);
+                    }}
+                  >
+                    Add Minor Question
+                  </Button>
+                </Flex>
+              </Box>
+            ))}
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+          {/* render errors, loading, or data */}
+          {error && <p> {error.message} </p>}
+          {loading && <p> ...loading </p>}
+          {data && (
+            <p>
+              {" "}
+              successfully created quiz with id of{" "}
+              {data.insert_quiz.returning[0].id}
+            </p>
+          )}
+        </>
+      )}
+    </Mutation>
+  );
 }
 
 export default AddQuiz;
