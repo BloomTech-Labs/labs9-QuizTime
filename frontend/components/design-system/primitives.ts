@@ -28,7 +28,7 @@ export const Text = system{
 */
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
-  <F justifyContent="flex-end" alignItems="center" bg="red.1" {...props} />
+  <F justifyContent="flex-end" alignItems="center" bg="green.1" {...props} />
 );
 export const Line = props => (
   <B
@@ -98,7 +98,7 @@ export const HeaderObj = props => (
   bg="green.1"
   css={{
     height:"500px",
-    clipPath:"polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
+    clipPath:"polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)",
   }}
   {...props}
   />
@@ -238,6 +238,7 @@ export const InfoBoxThree = props => (
   {...props}
   />
 );
+
 export const InfoTextBox = props =>(
   <B
   width="350px"
@@ -253,7 +254,7 @@ export const InfoTextBox = props =>(
 export const SideBarHolder = props => (
   <F
     width="100px"
-    bg="blue.2"
+    bg="blue.1"
     flexDirection="column"
     css={{ minHeight: "100vh" }}
     {...props}
