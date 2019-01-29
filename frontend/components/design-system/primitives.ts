@@ -203,6 +203,21 @@ export const InfoSection = props => (
   />
 );
 
+export const FlexColumns = props => (
+  <F
+  justifyContent="center"
+  flexDirection="row"
+  alignItems="top"
+  mt={3}
+  mb={3}
+  css={{
+    height: "auto"
+  }}
+  {...props}
+/>
+
+)
+
 export const InfoSectionRight = props => (
   <F
     width={[1 / 2]}

@@ -12,6 +12,7 @@ import {
     InfoTextBox,
     LrgText,
     HeaderInfoText,
+    FlexColumns,
     LandingText,
     TestimonialStudentImage,
     TestimonialTeacherImage,
@@ -24,9 +25,8 @@ const Testimonials = (props) => {
         <>
             <Box my={4}>
             <LandingText fontSize = {5} css={{textAlign: "center"}}>Testimonials</LandingText>
-            <InfoSection css={{
-                display: "flex",
-                flexWrap: "wrap",
+            <FlexColumns     
+                css={{    
                 border: "1px solid white"   
             }}>
                 <Box m={3} p={3} width="400px">
@@ -44,13 +44,8 @@ const Testimonials = (props) => {
                 <Box m={3} p={3} width="550px">
                     <TestimonialTeacherImage />
                 </Box>
-            </InfoSection>
-            <InfoSection
-                css={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    border: "1px solid white" 
-                }}>
+            </FlexColumns>
+            <FlexColumns>
                 <Box m={3} p={3} width="550px">
                     <TestimonialStudentImage />
                 </Box>
@@ -67,7 +62,7 @@ const Testimonials = (props) => {
                     </LandingText>
                 </Box>
  
-                </InfoSection>
+                </FlexColumns>
             </Box>
         </>
     )

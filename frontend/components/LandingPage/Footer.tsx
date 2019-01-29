@@ -11,19 +11,14 @@ import {
     UpperCase,
     InfoSection,
     LandingText,
+    FlexColumns,
     BoxText } from '../../components/design-system';
 
 const Footer = (props) => {
     return(
         <>
             <Box bg="gray.0" p={3}>
-            <InfoSection my={4}
-            css={{
-                display: "flex",
-                flexWrap: "wrap",
-                border: "3px solid white"   
-            }}
-            >
+            <FlexColumns my={4}>
                 <Box m={4} p={3} width="280px">
                     <Text>
                         <UpperCase fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
@@ -54,7 +49,7 @@ const Footer = (props) => {
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </LandingText>
                 </Box>
-                </InfoSection>
+                </FlexColumns>
             </Box>
         </>
     )
