@@ -207,7 +207,8 @@ export const InfoSection = props => (
     mt={3}
     mb={3}
     css={{
-      height: "auto"
+      height: "auto",
+      position:"relative"
     }}
     {...props}
   />
@@ -236,7 +237,8 @@ export const InfoSectionRight = props => (
     mt={3}
     mb={3}
     css={{
-      height: "auto"
+      height: "auto",
+      position:"relative"
     }}
     {...props}
   />
@@ -248,8 +250,7 @@ export const InfoBox = props => (
     src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
     m={3}
     css={{
-      height: "350px",
-      filter: "grayscale(100%)"
+            filter: "grayscale(100%)"
     }}
     {...props}
   />
@@ -261,7 +262,6 @@ export const InfoBoxTwo = props => (
     src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
     m={3}
     css={{
-      height: "350px",
       filter: "grayscale(100%)"
     }}
     {...props}
@@ -274,7 +274,6 @@ export const InfoBoxThree = props => (
     src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     m={3}
     css={{
-      height: "350px",
       filter: "grayscale(100%)"
     }}
     {...props}
@@ -283,7 +282,7 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width="350px"
+    width={[1,1,3/5]}
     bg="blue.0"
     m={3}
     css={{
@@ -295,15 +294,15 @@ export const InfoTextBox = props => (
 
 export const InfoText = props => (
   <T
-    width={[1/4]}
+    width={[5/6,5/6,1/2]}
     fontFamily="sans"
-    fontSize={5}
+    fontSize={[3,3,5]}
     fontWeight={2}
     color="#2d2d2d"
     css={{
       position:"absolute",
-      top:"620px",
-      left:"250px"
+      top:"80px",
+      right:"20px"
     }}
     {...props}
   />
@@ -311,14 +310,15 @@ export const InfoText = props => (
 
 export const InfoTextTwo = props => (
   <T
-    width={[1/4]}
+    width={[5/6]}
     fontFamily="sans"
-    fontSize={5}
+    fontSize={[3,3,5]}
     fontWeight={2}
     color="#2d2d2d"
     css={{
       position:"absolute",
-      right:"200px"
+      top:"350px",
+      right:"40px"
     }}
     {...props}
   />
@@ -326,15 +326,15 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[1/4]}
+    width={[5/6]}
     fontFamily="sans"
-    fontSize={5}
+    fontSize={[ 3,3,5]}
     fontWeight={2}
     color="#2d2d2d"
     css={{
       position:"absolute",
-      top:"1310px",
-      left:"250px",
+      bottom:"100px",
+      right: "50px",
     }}
     {...props}
   />

@@ -17,10 +17,9 @@ import {
   InfoTextBox,
   InfoText,
   InfoTextTwo,
-  InfoTextThree,
+  InfoTextThree
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
-
 
 const TopLanding = () => {
   return (
@@ -32,11 +31,13 @@ const TopLanding = () => {
       <CallToActionSection>
         <HeaderObj />
         <HeaderText>QuizTime</HeaderText>
-        <BlueLine   css={{
-          position:"absolute",
-          right:"550px",
-          top:"215px"
-          }}/>
+        <BlueLine
+          css={{
+            position: "absolute",
+            right: "550px",
+            top: "215px"
+          }}
+        />
         <HeaderInfoText>
           "Quickly assess understanding of content, while giving each student a
           unique, adaptive learning experience.."
@@ -44,40 +45,27 @@ const TopLanding = () => {
       </CallToActionSection>
       <HowItWorksSection>
         <InfoSection>
-         <InfoTextBox />
-          <InfoText>QuizTime enables teachers to create Quizzes for their students.
-              </InfoText>
+          <InfoTextBox />
+          <InfoText>
+            QuizTime enables teachers to create Quizzes for their students.
+          </InfoText>
           <InfoBox />
           <InfoTextBox />
-          <InfoTextTwo>When a quiz has been finalized, the teacher can distribute 
-            that quiz to all students with one click.</InfoTextTwo>
+          <InfoTextThree>
+            Because of QuizTime’s seamless integration, teachers are able to
+            view quick summaries of student performances of their students.
+          </InfoTextThree>
         </InfoSection>
         <InfoSectionRight>
           <InfoBoxTwo />
           <InfoTextBox />
-          <InfoTextThree>Because of QuizTime’s seamless integration, teachers are able
-            to view quick summaries of student performances of their students.</InfoTextThree>
+          <InfoTextTwo>
+            When a quiz has been finalized, the teacher can distribute that quiz
+            to all students with one click.
+          </InfoTextTwo>
           <InfoBoxThree />
         </InfoSectionRight>
       </HowItWorksSection>
-      <GreenLine css={{
-        height:"200px",
-        position:"absolute",
-        top:"750px",
-        left:"655px"
-      }}/>
-        <GreenLine css={{
-        height:"200px",
-        position:"absolute",
-        top:"1050px",
-        left:"615px"
-      }}/>
-      <GreenLine  css={{
-        height:"220px",
-        position:"absolute",
-        top:"1400px",
-        left:"655px"
-      }}/>
     </div>
   );
 };
