@@ -60,7 +60,7 @@ export const LandingBar = props => (
     width={[1]}
     justifyContent="flex-end"
     alignItems="center"
-    bg="green.1"
+    bg="blue.1"
     css={{
       height: "50px"
     }}
@@ -537,6 +537,8 @@ export const UpperCase = props => (
 
 export const Button = props => <Butt variant="primary" {...props} />;
 
+export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
+
 export const Avatar = props => (
   <F
     justifyContent="center"
@@ -578,22 +580,15 @@ export const StyledLabel = styled.label`
   ${fontSize}
   ${fontWeight}
 `;
+export const Form = props => <StyledForm width="80%" m="auto" {...props} />;
 
-export const Form = props => (
-  <StyledForm
-    display="flex"
-    flexDirection="row"
-    justifyContent="spaceEvenly"
-    bg="white"
-    {...props}
-  />
-);
 export const Input = props => (
   <StyledInput
     p={2}
     my={2}
     border="none"
     borderBottom="1px solid red"
+    css={{ display: "block" }}
     {...props}
   />
 );
@@ -642,8 +637,9 @@ export const ListItem = props => (
   />
 );
 
-
-
+export const TextArea = props => (
+  <StyledTextArea width={1} css={{ height: "200px" }} {...props} />
+);
 
 //* IMAGE TAGS
 export const AvatarImg = props => (

@@ -1,31 +1,33 @@
-import jwtDecode from 'jwt-decode'
-import Cookie from 'js-cookie'
+import jwtDecode from 'jwt-decode';
+import Cookie from 'js-cookie';
 
 const getQueryParams = () => {
-  const params = {}
-  window.location.href.replace(/([^(?|#)=&]+)(=([^&]*))?/g, ($0, $1, $2, $3) => {
-    params[$1] = $3
-  })
-  return params
-}
+  const params = {};
+  window.location.href.replace(
+    /([^(?|#)=&]+)(=([^&]*))?/g,
+    ($0, $1, $2, $3) => {
+      params[$1] = $3;
+    }
+  );
+  return params;
+};
 
 export const setToken = (idToken, accessToken) => {
-  if(!process.browser) {
-    return
+  if (!process.browser) {
+    return;
   }
-  Cookie.set('user', jwtDecode(idToken))
-  Cookie.set('idToken', idToken)
-  Cookie.set('accessToken', accessToken)
-}
+  Cookie.set('user', jwtDecode(idToken));
+  Cookie.set('idToken', idToken);
+  Cookie.set('accessToken', accessToken);
+};
 
-export const setStudentToken = (token) => {
-  console.log(token);
-  if(!process.browser) {
-    return
+export const setStudentToken = token => {
+  if (!process.browser) {
+    return;
   }
   // Cookie.set('student', jwtDecode(token))
-  Cookie.set('studentToken', token)
-}
+  Cookie.set('studentToken', token);
+};
 
 // export const setToken = new Promise((resolve, reject) => {
 //   if(!process.browser) {
@@ -38,41 +40,43 @@ export const setStudentToken = (token) => {
 // })
 
 export const unsetToken = () => {
-  if(!process.browser) {
-    return
+  if (!process.browser) {
+    return;
   }
-  Cookie.remove('idToken')
-  Cookie.remove('accessToken')
-  Cookie.remove('user')
+  Cookie.remove('idToken');
+  Cookie.remove('accessToken');
+  Cookie.remove('user');
 
   // to support logging out from all windows
-  window.localStorage.setItem('logout', Date.now())
-}
+  window.localStorage.setItem('logout', Date.now());
+};
 
-export const getUserFromServerCookie = (req) => {
-  if(!req.headers.cookie) {
-    return undefined
+export const getUserFromServerCookie = req => {
+  if (!req.headers.cookie) {
+    return undefined;
   }
-  const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('idToken='))
-  if(!jwtCookie) {
-    return undefined
+  const jwtCookie = req.headers.cookie
+    .split(';')
+    .find(c => c.trim().startsWith('idToken='));
+  if (!jwtCookie) {
+    return undefined;
   }
-  const jwt = jwtCookie.split('=')[1]
-  return jwtDecode(jwt)
-}
+  const jwt = jwtCookie.split('=')[1];
+  return jwtDecode(jwt);
+};
 
 export const getUserFromLocalCookie = () => {
-  return Cookie.getJSON('user')
-}
+  return Cookie.getJSON('user');
+};
 
 export const getAccessToken = () => {
-  return Cookie.get('accessToken')
-}
+  return Cookie.get('accessToken');
+};
 
 export const getIdToken = () => {
-    return Cookie.get('idToken')
-}
+  return Cookie.get('idToken');
+};
 
 export const getStudentToken = () => {
-  return Cookie.get('studentToken')
-}
+  return Cookie.get('studentToken');
+};

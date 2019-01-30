@@ -4,6 +4,7 @@ import Testimonials from '../components/LandingPage/Testimonials';
 import GetStarted from '../components/LandingPage/GetStarted';
 import Footer from '../components/LandingPage/Footer';
 import Meta from "../components/Meta";
+import unsecurePage from '../hocs/unsecurePage';
 
 const Index = () => (
   <FullScreenContainer>
@@ -14,4 +15,6 @@ const Index = () => (
     <Footer />
   </FullScreenContainer>
 );
-export default Index;
+
+
+export default unsecurePage(Index);

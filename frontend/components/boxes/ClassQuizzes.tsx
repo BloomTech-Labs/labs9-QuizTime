@@ -1,8 +1,8 @@
-import {QuizBar, Text} from "../design-system/primitives"; 
+import {QuizBar, Text} from "../design-system/primitives";
 
-const ClassQuizzes = ({quizzes}) => (
+const ClassQuizzes = ({quiz}) => (
     <>
-   <Text>{quizzes.quiz_name}</Text>
+      <Text>{quiz.name}</Text>
     </>
 )
 export default ClassQuizzes
