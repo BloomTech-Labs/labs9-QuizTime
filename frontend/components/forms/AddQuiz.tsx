@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Mutation } from "react-apollo";
+import Reveal from "react-reveal/Reveal";
 import gql from "graphql-tag";
 import {
   Form,
@@ -29,9 +30,16 @@ function AddQuiz() {
     }
   ]);
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    console.log("TARGET: ", name, value);
+  const handleNameChange = e => {
+    const { value } = e.target;
+    setName(value);
+    console.log("Quiz Name: ", name);
+  };
+
+  const handleDescriptionChange = e => {
+    const { value } = e.target;
+    setDescription(value);
+    console.log("Quiz Description: ", description);
   };
 
   const handleMajorAnswerChange = (e, id) => {
@@ -57,6 +65,7 @@ function AddQuiz() {
     console.log(e.target.type);
     console.log("MAJOR ANSWER CHANGE:", e.target.value);
     setMajorQuestions(newQuestions);
+    console.log("Major Questions: ", majorQuestions);
   };
 
   const addMajorQuestion = e => {
@@ -70,6 +79,7 @@ function AddQuiz() {
         minorQuestions: []
       }
     ]);
+    console.log("Major Questions: ", majorQuestions);
   };
 
   const updateMajorQuestion = (id, e) => {
@@ -80,6 +90,7 @@ function AddQuiz() {
       return q;
     });
     setMajorQuestions(updatedQuestions);
+    console.log("Major Questions: ", majorQuestions);
   };
 
   const deleteMajorQuestion = id => {
@@ -87,6 +98,7 @@ function AddQuiz() {
       if (q.id != id || q.id == 1) return q;
     });
     setMajorQuestions(updatedQuestions);
+    console.log("Major Questions: ", majorQuestions);
   };
 
   const addMinorQuestion = (e, majorQID) => {
@@ -126,6 +138,7 @@ function AddQuiz() {
       return majorQuestion;
     });
     setMajorQuestions(newQuestions);
+    console.log("Major Questions: ", majorQuestions);
   };
 
   const generateMutation = () => {
@@ -170,7 +183,7 @@ function AddQuiz() {
                 placeholder="Quiz Title"
                 required
                 value={name}
-                onChange={handleChange}
+                onChange={handleNameChange}
               />
             </Label>
 
@@ -182,127 +195,131 @@ function AddQuiz() {
                 name="description"
                 required
                 value={description}
-                onChange={handleChange}
+                onChange={handleDescriptionChange}
                 css={{ height: "100px" }}
               />
             </Label>
             {majorQuestions.map(q => (
-              <Box key={q.id} my={4}>
-                <Flex justifyContent="space-around">
-                  <Label htmlFor={`major-question-${q.id}`}>
-                    Major Question {q.id}
-                  </Label>
-                  <Button
-                    variant="error"
-                    p={0}
-                    fontSize={0}
-                    onClick={e => deleteMajorQuestion(q.id)}
-                  >
-                    Delete
-                  </Button>
-                </Flex>
-                <TextArea
-                  id={`major-question-${q.id}`}
-                  onChange={e => updateMajorQuestion(q.id, e)}
-                />
-                <Box>
-                  <Label>Answer 1</Label>
-                  <Flex>
-                    <Input
-                      my={3}
-                      width={1 / 2}
-                      name="major-answer-1"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                    <Input
-                      type="radio"
-                      name={`major-question-${q.id}-major-answer`}
-                      value="1"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
+              <Reveal effectIn="fadeInClear" effectOut="fadeOutClear">
+                <Box key={q.id} my={4}>
+                  <Flex justifyContent="space-around">
+                    <Label htmlFor={`major-question-${q.id}`}>
+                      Major Question {q.id}
+                    </Label>
+                    <Button
+                      variant="error"
+                      p={0}
+                      fontSize={0}
+                      onClick={e => deleteMajorQuestion(q.id)}
+                    >
+                      Delete
+                    </Button>
+                  </Flex>
+                  <TextArea
+                    id={`major-question-${q.id}`}
+                    onChange={e => updateMajorQuestion(q.id, e)}
+                  />
+                  <Box>
+                    <Label>Answer 1</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-1"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="1"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Box>
+                    <Label>Answer 2</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-2"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="2"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Box>
+                    <Label>Answer 3</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-3"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="3"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Box>
+                    <Label>Answer 4</Label>
+                    <Flex>
+                      <Input
+                        my={3}
+                        width={1 / 2}
+                        name="major-answer-4"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                      <Input
+                        type="radio"
+                        name={`major-question-${q.id}-major-answer`}
+                        value="4"
+                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                      />
+                    </Flex>
+                  </Box>
+                  <Container width={3 / 4}>
+                    {q.minorQuestions.map(minorQ => (
+                      <Reveal effectIn="fadeInClear" effectOut="fadeOutClear">
+                        <Box>
+                          <Text>{minorQ.id}</Text>
+                          <TextArea />
+                          <Label>Answer 1</Label>
+                          <Input />
+                          <Label>Answer 2</Label>
+                          <Input />
+                          <Label>Answer 3</Label>
+                          <Input />
+                          <Label>Answer 4</Label>
+                          <Input />
+                        </Box>
+                      </Reveal>
+                    ))}
+                  </Container>
+                  <Flex justifyContent="center">
+                    <Button variant="success" onClick={addMajorQuestion}>
+                      Add Major Question
+                    </Button>
+                    <Button
+                      variant="primary"
+                      onClick={e => {
+                        addMinorQuestion(e, q.id);
+                      }}
+                    >
+                      Add Minor Question
+                    </Button>
                   </Flex>
                 </Box>
-                <Box>
-                  <Label>Answer 2</Label>
-                  <Flex>
-                    <Input
-                      my={3}
-                      width={1 / 2}
-                      name="major-answer-2"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                    <Input
-                      type="radio"
-                      name={`major-question-${q.id}-major-answer`}
-                      value="2"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                  </Flex>
-                </Box>
-                <Box>
-                  <Label>Answer 3</Label>
-                  <Flex>
-                    <Input
-                      my={3}
-                      width={1 / 2}
-                      name="major-answer-3"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                    <Input
-                      type="radio"
-                      name={`major-question-${q.id}-major-answer`}
-                      value="3"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                  </Flex>
-                </Box>
-                <Box>
-                  <Label>Answer 4</Label>
-                  <Flex>
-                    <Input
-                      my={3}
-                      width={1 / 2}
-                      name="major-answer-4"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                    <Input
-                      type="radio"
-                      name={`major-question-${q.id}-major-answer`}
-                      value="4"
-                      onChange={e => handleMajorAnswerChange(e, q.id)}
-                    />
-                  </Flex>
-                </Box>
-                <Container width={3 / 4}>
-                  {q.minorQuestions.map(minorQ => (
-                    <Box>
-                      <Text>{minorQ.id}</Text>
-                      <TextArea />
-                      <Label>Answer 1</Label>
-                      <Input />
-                      <Label>Answer 2</Label>
-                      <Input />
-                      <Label>Answer 3</Label>
-                      <Input />
-                      <Label>Answer 4</Label>
-                      <Input />
-                    </Box>
-                  ))}
-                </Container>
-                <Flex justifyContent="center">
-                  <Button variant="success" onClick={addMajorQuestion}>
-                    Add Major Question
-                  </Button>
-                  <Button
-                    variant="primary"
-                    onClick={e => {
-                      addMinorQuestion(e, q.id);
-                    }}
-                  >
-                    Add Minor Question
-                  </Button>
-                </Flex>
-              </Box>
+              </Reveal>
             ))}
             <Button variant="primary" type="submit">
               Submit
