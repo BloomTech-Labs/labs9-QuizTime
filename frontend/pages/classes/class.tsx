@@ -9,6 +9,7 @@ import { getIdToken } from "../../utils/auth";
 import { GraphQLClient } from "graphql-request";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
+import { Container } from "../../components/design-system";
 
 import {
   StudentHolder,
@@ -23,7 +24,7 @@ const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
 const ClassPage = ({ query: { id } }) => {
   const [quizzesToClasses, setQuizzesToClasses] = useState([]);
-console.log(quizzesToClasses)
+console.log('Quizzes to Classes', quizzesToClasses)
   //similar to componentDidMount
   const client = new GraphQLClient(endpoint, {
     headers: {
@@ -90,9 +91,6 @@ console.log(quizzesToClasses)
     //    console.log(quizzesToClasses[i])
       return client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
      }
-    
-
-  
 
   useEffect(
     () => {
@@ -103,10 +101,6 @@ console.log(quizzesToClasses)
 
   return (
     <Layout>
-      <Text>Send Email</Text>
-
-      <Text>Add a Student</Text>
-
       <AddStudent class={id} />
     
       <Query query={ALL_STUDENTS_QUERY}>

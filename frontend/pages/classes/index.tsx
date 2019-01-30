@@ -1,10 +1,13 @@
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
+import Link from "next/link";
+import { Box, Flex } from "@rebass/emotion";
 import ClassBox from "../../components/boxes/classBox/classBox";
 import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
+import { Button, Text, UpperCase, Container } from "../../components/design-system";
 
 const ALL_CLASSES_QUERY = gql`
   query ALL_CLASSES_QUERY {
@@ -14,32 +17,29 @@ const ALL_CLASSES_QUERY = gql`
     }
   }
 `;
+
 const CardHolder = styled.div`
   display: flex;
   flexWrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 const Holder = styled.div`
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px 2%;
+  justify-content: flex-start;
+  margin: 20px 0;
 `;
 
-const FormHolder = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`
 
 const Classes = () => (
   <Layout>
-      <FormHolder>
+    <Container mx={4}>
+      <Holder>
           <AddClass />
-      </FormHolder>
+      </Holder>
     <CardHolder>
-
       <Holder>
         <Query query={ALL_CLASSES_QUERY}>
           {({ loading, error, data }) => {
@@ -52,6 +52,7 @@ const Classes = () => (
         </Query>
       </Holder>
     </CardHolder>
+    </Container>
   </Layout>
 );
 

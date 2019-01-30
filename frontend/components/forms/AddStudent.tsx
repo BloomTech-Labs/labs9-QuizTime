@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Form, Input, Button, Label, Text } from "../design-system";
+import { Form, Input, Button, Label, Text, HeaderText} from "../design-system";
 
 class AddStudent extends Component {
 
@@ -45,7 +45,8 @@ class AddStudent extends Component {
       <Mutation mutation={this.generateMutation()}>
         {(insert_student, { error, loading, data }) => (
         <>
-          <Form
+        <HeaderText>Add a New Student to Class</HeaderText>
+          <Form p={4}
             onSubmit={async e => {
               // Stop the form from submitting
               e.preventDefault();

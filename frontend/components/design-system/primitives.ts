@@ -32,9 +32,11 @@ export const NavBarHolder = props => (
 
 export const SideBarHolder = props => (
   <F
-    width="100px"
+    width="180px"
+    p={2}
     bg="blue.2"
     flexDirection="column"
+    fontSize={3}
     css={{ minHeight: "100vh" }}
     {...props}
   />
@@ -210,6 +212,17 @@ export const BoldText = props => (
 
 export const BillingText = props => <BoldText m={3} fontSize={3} {...props} />;
 
+export const HeaderText = props => (
+  <T
+    fontFamily="sans"
+    p={3}
+    fontWeight={3}
+    fontSize={4}
+    css={{ textTransform: "uppercase" }}
+    {...props}
+  />
+);
+
 export const UpperCase = props => (
   <T
     fontSize={1}
@@ -265,12 +278,12 @@ export const StyledLabel = styled.label`
   ${fontSize}
   ${fontWeight}
 `;
-export const Form = props => <StyledForm m={4} {...props} />;
+export const Form = props => <StyledForm {...props} />;
 
 export const Input = props => (
   <StyledInput
     p={3}
-    m={3}
+    my={3}
     fontSize={4}
     width="220px"
     border="none"
@@ -283,7 +296,7 @@ export const Input = props => (
 export const Label = props => (
   <StyledLabel
     fontFamily="sans"
-    p={3}
+    py={3}
     fontWeight={6}
     fontSize={3}
     css={{ textTransform: "uppercase" }}
