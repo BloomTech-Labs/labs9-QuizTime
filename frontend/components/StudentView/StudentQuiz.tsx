@@ -53,13 +53,13 @@ class StudentQuiz extends Component {
   }
 
   componentDidUpdate() {
-    document.getElementById('focusMe').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('focusMe') && document.getElementById('focusMe').scrollIntoView({ behavior: 'smooth' });
   }
 
   nextQuestion = (e, q) => {
     this.keepScore();
     this.submitAnswer();
-    //* Display next Major Question, next Minor Question or Done?
+    //* Display next Major Question, or next Minor Question or Done?
     this.majorMinorOrDone();
   };
 
