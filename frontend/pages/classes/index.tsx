@@ -16,6 +16,7 @@ const ALL_CLASSES_QUERY = gql`
 `;
 const CardHolder = styled.div`
   display: flex;
+  flexWrap: wrap;
   justify-content: flex-end;
 `;
 
@@ -23,13 +24,16 @@ const Holder = styled.div`
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
+  padding: 20px 2%;
 `;
 
 const Classes = () => (
   <Layout>
-    <AddClass />
     <CardHolder>
+      <Holder>
+        <AddClass />
+      </Holder>
       <Holder>
         <Query query={ALL_CLASSES_QUERY}>
           {({ loading, error, data }) => {

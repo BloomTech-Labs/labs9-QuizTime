@@ -47,10 +47,8 @@ class AddClass extends Component {
               console.log(res);
             }}
           >
-          <Text>Add a Class</Text>
-            <fieldset>
               <Label htmlFor="name">
-                Class Title
+                Add a Class
                 <Input
                   type="text"
                   id="name"
@@ -62,8 +60,7 @@ class AddClass extends Component {
                 />
               </Label>
 
-              <Button variant = "primary" type="submit">Submit</Button>
-            </fieldset>
+              <Button variant = "primary" type="submit" p={3}>Submit</Button>
           </Form>
             {/* render errors, loading, or data */}
             {error && (<p> {error.message} </p>) }
