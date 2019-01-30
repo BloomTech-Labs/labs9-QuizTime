@@ -33,20 +33,20 @@ function AddQuiz() {
   const handleNameChange = e => {
     const { value } = e.target;
     setName(value);
-    console.log("Quiz Name: ", name);
+    // console.log("Quiz Name: ", name);
   };
 
   const handleDescriptionChange = e => {
     const { value } = e.target;
     setDescription(value);
-    console.log("Quiz Description: ", description);
+    // console.log("Quiz Description: ", description);
   };
 
-  const handleMajorAnswerChange = (e, id) => {
+  const handleMajorAnswerChange = (e, id, inputID=null) => {
     const newQuestions = majorQuestions.map(q => {
-      if (q.id == id) {
-        if (e.target.type == "radio") {
-          console.log("type is radio, mapping over answers");
+      if (q.id === id) {
+        if (e.target.type === "radio") {
+          // console.log("type is radio, mapping over answers");
           q.answers = q.answers.map(a => {
             if (a.id == e.target.value) {
               a.correct = true;
@@ -56,14 +56,19 @@ function AddQuiz() {
             return a;
           });
         } else {
-          q.answers = q.answers.map(a => {});
+          q.answers = q.answers.map(a => {
+            if(a.id == inputID){
+              a.response = e.target.value
+            }
+            return a
+          });
         }
       }
       return q;
     });
 
     console.log(e.target.type);
-    console.log("MAJOR ANSWER CHANGE:", e.target.value);
+    // console.log("MAJOR ANSWER CHANGE:", e.target.value);
     setMajorQuestions(newQuestions);
     console.log("Major Questions: ", majorQuestions);
   };
@@ -90,7 +95,7 @@ function AddQuiz() {
       return q;
     });
     setMajorQuestions(updatedQuestions);
-    console.log("Major Questions: ", majorQuestions);
+    // console.log("Major Questions: ", majorQuestions);
   };
 
   const deleteMajorQuestion = id => {
@@ -98,7 +103,7 @@ function AddQuiz() {
       if (q.id != id || q.id == 1) return q;
     });
     setMajorQuestions(updatedQuestions);
-    console.log("Major Questions: ", majorQuestions);
+    // console.log("Major Questions: ", majorQuestions);
   };
 
   const addMinorQuestion = (e, majorQID) => {
@@ -226,7 +231,7 @@ function AddQuiz() {
                         my={3}
                         width={1 / 2}
                         name="major-answer-1"
-                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                        onChange={e => handleMajorAnswerChange(e, q.id, 1)}
                       />
                       <Input
                         type="radio"
@@ -243,7 +248,7 @@ function AddQuiz() {
                         my={3}
                         width={1 / 2}
                         name="major-answer-2"
-                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                        onChange={e => handleMajorAnswerChange(e, q.id, 2)}
                       />
                       <Input
                         type="radio"
@@ -260,7 +265,7 @@ function AddQuiz() {
                         my={3}
                         width={1 / 2}
                         name="major-answer-3"
-                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                        onChange={e => handleMajorAnswerChange(e, q.id, 3)}
                       />
                       <Input
                         type="radio"
@@ -277,7 +282,7 @@ function AddQuiz() {
                         my={3}
                         width={1 / 2}
                         name="major-answer-4"
-                        onChange={e => handleMajorAnswerChange(e, q.id)}
+                        onChange={e => handleMajorAnswerChange(e, q.id, 4)}
                       />
                       <Input
                         type="radio"
