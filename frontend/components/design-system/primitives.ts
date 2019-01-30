@@ -34,23 +34,33 @@ export const LandingText = props => (
 export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="green.1" {...props} />
 );
-export const Line = props => (
+
+export const GreenLine = props => (
   <B
     css={{
-      height: "150px",
-      borderLeft: "3px solid #383838",
-      position: "absolute",
-      bottom: "100px",
-      left: "500px"
+      borderLeft: "10px solid #70e89d",
+      height:"100"
     }}
     {...props}
   />
 );
+
+export const BlueLine = props => (
+  <B
+  width="100px"
+    css={{
+      borderTop: "5px solid #323fcb",
+    }}
+    {...props}
+  />
+);
+
 export const LandingBar = props => (
   <F
     width={[1]}
     justifyContent="flex-end"
     alignItems="center"
+    bg="green.1"
     css={{
       height: "50px"
     }}
@@ -66,7 +76,7 @@ export const LandingBarItems = props => (
       cursor: "pointer",
       transition: "color .5s ease-out",
       "&:hover": {
-        color: "#70e89d"
+        color: "white"
       }
     }}
     {...props}
@@ -205,18 +215,17 @@ export const InfoSection = props => (
 
 export const FlexColumns = props => (
   <F
-  justifyContent="center"
-  flexDirection="row"
-  alignItems="top"
-  mt={3}
-  mb={3}
-  css={{
-    height: "auto"
-  }}
-  {...props}
-/>
-
-)
+    justifyContent="center"
+    flexDirection="row"
+    alignItems="top"
+    mt={3}
+    mb={3}
+    css={{
+      height: "auto"
+    }}
+    {...props}
+  />
+);
 
 export const InfoSectionRight = props => (
   <F
@@ -275,7 +284,7 @@ export const InfoBoxThree = props => (
 export const InfoTextBox = props => (
   <B
     width="350px"
-    bg="blue.1"
+    bg="blue.0"
     m={3}
     css={{
       height: "200px"
@@ -283,6 +292,53 @@ export const InfoTextBox = props => (
     {...props}
   />
 );
+
+export const InfoText = props => (
+  <T
+    width={[1/4]}
+    fontFamily="sans"
+    fontSize={5}
+    fontWeight={2}
+    color="#2d2d2d"
+    css={{
+      position:"absolute",
+      top:"620px",
+      left:"250px"
+    }}
+    {...props}
+  />
+)
+
+export const InfoTextTwo = props => (
+  <T
+    width={[1/4]}
+    fontFamily="sans"
+    fontSize={5}
+    fontWeight={2}
+    color="#2d2d2d"
+    css={{
+      position:"absolute",
+      right:"200px"
+    }}
+    {...props}
+  />
+)
+
+export const InfoTextThree = props => (
+  <T
+    width={[1/4]}
+    fontFamily="sans"
+    fontSize={5}
+    fontWeight={2}
+    color="#2d2d2d"
+    css={{
+      position:"absolute",
+      top:"1310px",
+      left:"250px",
+    }}
+    {...props}
+  />
+)
 
 export const SideBarHolder = props => (
   <F
@@ -309,17 +365,6 @@ export const BoxText = props => (
   />
 );
 
-export const BgBlock = props => (
-  <B
-    width="100vw"
-    bg="f4f4f4"
-    css={{
-      height: "400px",
-      postion: "relative"
-    }}
-    {...props}
-  />
-);
 /* CONTAINERS */
 
 export const Container = props => (
@@ -330,8 +375,9 @@ export const FullScreenContainer = props => (
   <F
     justifyContent="center"
     flexDirection="column"
+    bg="#f2f2f2"
     width="100%"
-    css={{ height: "auto" }}
+
     {...props}
   />
 );

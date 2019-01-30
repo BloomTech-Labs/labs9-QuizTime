@@ -17,7 +17,7 @@ import {
 const Footer = (props) => {
     return(
         <>
-            <Box bg="gray.0" p={3}>
+            <Box bg="green.1" p={3}>
             <FlexColumns my={4}>
                 <Box m={4} p={3} width="280px">
                     <Text>
