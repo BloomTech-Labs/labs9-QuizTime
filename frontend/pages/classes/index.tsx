@@ -7,7 +7,8 @@ import ClassBox from "../../components/boxes/classBox/classBox";
 import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
-import { ALL_CLASSES_QUERY } from '../../queries'
+import { ALL_CLASSES_QUERY } from '../../queries';
+import { Container } from '../../components/design-system'; 
 
 
 const CardHolder = styled.div`

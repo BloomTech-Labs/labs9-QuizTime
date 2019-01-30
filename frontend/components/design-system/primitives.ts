@@ -527,7 +527,7 @@ export const BoldText = props => (
 
 export const BillingText = props => <BoldText m={3} fontSize={3} {...props} />;
 
-export const HeaderText = props => (
+export const HeadText = props => (
   <T
     fontFamily="sans"
     p={3}
