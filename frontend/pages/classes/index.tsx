@@ -28,12 +28,18 @@ const Holder = styled.div`
   padding: 20px 2%;
 `;
 
+const FormHolder = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`
+
 const Classes = () => (
   <Layout>
+      <FormHolder>
+          <AddClass />
+      </FormHolder>
     <CardHolder>
-      <Holder>
-        <AddClass />
-      </Holder>
+
       <Holder>
         <Query query={ALL_CLASSES_QUERY}>
           {({ loading, error, data }) => {
