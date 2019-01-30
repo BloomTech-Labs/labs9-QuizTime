@@ -1,25 +1,31 @@
-const blue0 = "#4a9eda";
-const blue1 = "#0077cc";
+const blue0 = "#7981FF";
+const blue1 = "#323fcb";
+const blue2 = "#1F287F";
+const blue3 = "#3F4FFF";
+const blue4 = "#101440";
+const blue5 = "#3947E5";
 const red0 = "#ea969d";
 const red1 = "#e16973";
-const green0 = "#46da84";
-const green1 = "#00cc55";
+const green0 = "#B5FFD0";
+const green1 = "#70e89d";
+const gray0 = "#EDEDED";
 const grey0 = "#d3d3d3";
-const grey1 = "#a9a9a9";
+const grey2 = "#a9a9a9";
 
 export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
   fontWeights: [100, 200, 300, 400, 500, 600, 700],
   colors: {
-    blue: ["#4a9eda", "#0077cc", "#152338"],
+    blue: ["#7981FF", "#323fcb", "#1F287F","#3F4FFF", "#101440","#3947E5"],
     red: ["#ea969d", "#e16973"],
-    green: ["#46da84", "#00cc55"]
+    green: ["#B5FFD0", "#70e89d"],
+    gray: ["#EDEDED"]
   },
   borders: [0, "1px solid red"],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    sans: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-    mono: "Menlo, monospace"
+    sans: ["Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"],
+    mono: ["Menlo, monospace"]
   },
   shadows: {
     small: "0 0 4px rgba(0, 0, 0, .125)",
