@@ -56,31 +56,39 @@ function AddQuiz() {
         correct_answer: a.correct
       }));
 
-      const formattedMinor = question.minorQuestions.map(mq => ({
-        prompt: mq.prompt,
-        answers: {
-          data: [
-            ...mq.answers.map(a => ({
-              response: a.response,
-              correct_answer: a.correct
-            }))
-          ]
-        }
-      }));
+      if(question.minorQuestions.length > 0){
+        const formattedMinor = question.minorQuestions.map(mq => ({
+          prompt: mq.prompt,
+          answers: {
+            data: [
+              ...mq.answers.map(a => ({
+                response: a.response,
+                correct_answer: a.correct
+              }))
+            ]
+          }
+        }));
 
-      formatted.major_questions.data.push({
-        prompt: question.prompt,
-        answers: {
-          data: [...formattedAnswers]
-        },
-        minor_questions: {
-          data: [...formattedMinor]
-        }
-      });
-    });
-
+        formatted.major_questions.data.push({
+          prompt: question.prompt,
+          answers: {
+            data: [...formattedAnswers]
+          },
+          minor_questions: {
+            data: [...formattedMinor]
+          }
+        });
+      } else {
+        formatted.major_questions.data.push({
+          prompt: question.prompt,
+          answers: {
+            data: [...formattedAnswers]
+          }
+        });
+      }
+    })
     return formatted;
-  };
+  }
 
   const handleNameChange = e => {
     const { value } = e.target;
