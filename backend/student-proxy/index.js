@@ -11,6 +11,10 @@ const get_quiz_query = (student_id, quiz_id) => {
     quiz(where: {id: {_eq: ${parseInt(quiz_id, 10)}}}){
       id
       name
+      description
+      teacherByteacherId {
+        email
+      }
       major_questions{
         student_answers(where: {student_id: {_eq: ${parseInt(
     student_id,
