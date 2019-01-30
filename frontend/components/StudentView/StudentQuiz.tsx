@@ -19,7 +19,7 @@ import QuizHeading from './QuizHeading.tsx';
 import MajorQuestion from './MajorQuestion';
 import MinorQuestion from './MinorQuestion';
 
-// const url = 'http://localhost:51444/api/student-proxy';
+// const url = 'http://localhost:7000/api/student-proxy';
 const url = '/api/student-proxy';
 
 class StudentQuiz extends Component {

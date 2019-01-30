@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Form, Input, Button, Label, Text } from "../design-system";
+import { Form, FormInput, Button, Label, Text } from "../design-system";
 import { ALL_CLASSES_QUERY } from '../../queries'
 
 
@@ -60,7 +60,7 @@ class AddClass extends Component {
           >
               <Label htmlFor="name">
                 Add a Class
-                <Input
+                <FormInput
                   type="text"
                   id="name"
                   name="name"
