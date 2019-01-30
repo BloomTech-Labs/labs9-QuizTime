@@ -1,5 +1,9 @@
 const blue0 = "#7981FF";
 const blue1 = "#323fcb";
+const blue2 = "#1F287F";
+const blue3 = "#3F4FFF";
+const blue4 = "#101440";
+const blue5 = "#3947E5";
 const red0 = "#ea969d";
 const red1 = "#e16973";
 const green0 = "#B5FFD0";
@@ -10,7 +14,7 @@ export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
   fontWeights: [100, 200, 300, 400, 500, 600, 700],
   colors: {
-    blue: ["#7981FF", "#323fcb"],
+    blue: ["#7981FF", "#323fcb", "#1F287F","#3F4FFF", "#101440","#3947E5"],
     red: ["#ea969d", "#e16973"],
     green: ["#B5FFD0", "#70e89d"],
     gray: ["#EDEDED"]

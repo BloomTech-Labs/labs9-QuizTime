@@ -18,7 +18,7 @@ import {
 } from "styled-system";
 import styled from "@emotion/styled";
 import { isAbsolute } from "path";
-
+import { css } from '@emotion/core'
 /*
 export const Text = system{
     is: "p",
@@ -106,7 +106,7 @@ export const CallToActionSection = props => (
 export const HeaderObj = props => (
   <B
     width="100vw"
-    bg="green.1"
+    bg="blue.1"
     css={{
       height: "500px",
       clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
@@ -120,7 +120,7 @@ export const HeaderText = props => (
     fontSize={7}
     fontWeight={0}
     fontFamily="sans"
-    color="black"
+    color="white"
     m={5}
     css={{
       position: "absolute",
@@ -249,9 +249,12 @@ export const InfoBox = props => (
     width="400px"
     src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
     m={3}
-    css={{
-            filter: "grayscale(100%)"
-    }}
+    css={css`
+      filter: grayscale(100%);
+      @media(max-width: 550px){
+        visibility: hidden;
+      }
+    `}
     {...props}
   />
 );

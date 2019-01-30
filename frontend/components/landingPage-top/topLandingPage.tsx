@@ -31,7 +31,7 @@ const TopLanding = () => {
       <CallToActionSection>
         <HeaderObj />
         <HeaderText>QuizTime</HeaderText>
-        <BlueLine
+        <GreenLine
           css={{
             position: "absolute",
             right: "550px",
