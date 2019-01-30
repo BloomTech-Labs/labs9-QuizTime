@@ -1,7 +1,3 @@
-//carey
-
-//carey
-//carey
 import React from 'react';
 import {Box, Flex} from '@rebass/emotion';
 import { 
@@ -12,44 +8,61 @@ import {
     InfoSection,
     LandingText,
     FlexColumns,
+    List, 
+    ListItem,
     BoxText } from '../../components/design-system';
 
 const Footer = (props) => {
     return(
         <>
-            <Box bg="gray.0" p={3}>
-            <FlexColumns my={4}>
-                <Box m={4} p={3} width="280px">
+            <Box bg="gray.0" p={2}>
+            <FlexColumns my={3}>
+                <Box m={3} p={2} width="280px">
                     <Text>
-                        <UpperCase fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
-                            Share
+                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                            Follow Us
                         </UpperCase>
                     </Text>
-                    <LandingText fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+                    <List>
+                        <ListItem>Facebook</ListItem>
+                        <ListItem>Twitter</ListItem>
+                    </List>
+                </Box>
+                <Box m={3} p={2} width="280px">
+                    <Text>
+                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                        About Us
+                        </UpperCase>
+                    </Text>
+                    <LandingText fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                        Our team of educational consultants and developers works hard to deliver high quality academic software.
+                        Please contact us at any time with questions or comments. 
                     </LandingText>
                 </Box>
-                <Box m={4} p={3} width="280px">
-                    <BoxText>
-                        <UpperCase fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
-                        Development
+                <Box m={3} p={2} width="280px">
+                    <Text>
+                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                        Links
                         </UpperCase>
-                    </BoxText>
-                    <LandingText fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </LandingText>
-                </Box>
-                <Box m={4} p={3} width="280px">
-                    <BoxText>
-                        <UpperCase fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
-                        Contact
-                        </UpperCase>
-                    </BoxText>
-                    <LandingText fontWeight = {2} fontSize ={3} lineHeight = {1.5} p={3}>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </LandingText>
+                    </Text>
+                    <List>
+                        <ListItem>NCTM</ListItem>
+                        <ListItem>ISTE</ListItem>
+                        <ListItem>MassCUE</ListItem>
+                        <ListItem>Educators Technology</ListItem>
+                    </List>
                 </Box>
                 </FlexColumns>
+                <Flex
+                    flexDirection= "column"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                    <LandingText fontWeight={3} fontSize ={2} lineHeight = {1.5} p={3}>
+                        Copyright 2019, QuizTime Development Team
+                    </LandingText>
+                </Flex>
             </Box>
         </>
     )
