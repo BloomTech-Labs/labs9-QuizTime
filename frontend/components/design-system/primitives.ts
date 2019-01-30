@@ -73,11 +73,12 @@ export const LandingBarItems = props => (
     StyledText
     p={3}
     fontFamily="sans"
+    color="white"
     css={{
       cursor: "pointer",
       transition: "color .5s ease-out",
       "&:hover": {
-        color: "white"
+        color:"#70e89d"
       }
     }}
     {...props}
@@ -123,10 +124,13 @@ export const HeaderText = props => (
     fontFamily="sans"
     color="white"
     m={5}
-    css={{
-      position: "absolute",
-      right: "260px"
-    }}
+    css={css`
+      position: absolute;
+      right: 260px;
+      @media(max-width:680px){
+        right: 200px;
+      }
+    `}
     {...props}
   />
 );
@@ -203,6 +207,7 @@ export const TestimonialTeacherImage = props => (
     }}
   />
 );
+
 export const InfoSectionWrapper = props =>(
   <F
   width={[1]}
@@ -243,7 +248,7 @@ export const FlexColumns = props => (
   mt={3}
   mb={3}
   css={{
-    height: "auto"
+    height:"auto",
   }}
   {...props}
 />
@@ -332,7 +337,7 @@ export const InfoText = props => (
     color="#2d2d2d"
     css={css`
       position:absolute;
-      top:80px;
+      top:70px;
       right:20px;
       @media(max-width:830px){
         font-size:25px;
@@ -384,7 +389,7 @@ export const InfoTextThree = props => (
     css={css`
       position:absolute;
       bottom:70px;
-      left: -390px;
+      left: -500px;
       @media(max-width:830px){
         font-size:25px;
         bottom:80px;

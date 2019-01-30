@@ -1,5 +1,6 @@
 //carey
 import React from 'react';
+import { css } from '@emotion/core'
 import {Box, Flex} from '@rebass/emotion';
 import { 
     Container, 
@@ -16,6 +17,8 @@ import {
     LandingText,
     TestimonialStudentImage,
     TestimonialTeacherImage,
+    TestimonialTeacherImageMobile,
+
     BoxText } from '../../components/design-system';
 
 //import studentLaptop from '../../img/studentLaptop.jpg';
@@ -25,8 +28,16 @@ const Testimonials = (props) => {
         <>
             <Box my={4}>
             <LandingText fontSize = {5} css={{textAlign: "center"}}>Testimonials</LandingText>
-            <FlexColumns>
-                <Box m={3} p={3} width="400px">
+            <FlexColumns
+            css={css`
+            height: auto;
+            @media(max-width:1030px){
+              flex-direction: column-reverse;
+              align-items: center;
+            }
+          `}
+            >
+                  <Box m={3} p={3} width="400px">
                     <LandingText lineHeight = {1.5}>
                     "As a 12-year veteran teacher, I have seen a multitude of digital assessment technologies come and go.
                     From a practical standpoint, I like that QuizTime is easy and intuitive to use.
