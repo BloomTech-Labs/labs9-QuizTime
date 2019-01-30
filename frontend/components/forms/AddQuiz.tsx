@@ -13,6 +13,17 @@ import {
 } from "../design-system";
 import { Box, Flex } from "@rebass/emotion";
 
+const INSERT_QUIZ = gql`
+  mutation insert_quiz($objects: [quiz_insert_input!]!){
+    insert_quiz(objects: $objects) {
+      returning {
+        id
+        name
+      }
+    }
+  }
+`
+
 function AddQuiz() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -30,6 +41,47 @@ function AddQuiz() {
     }
   ]);
 
+  const formatQuiz = () => {
+    const formatted = {
+      name,
+      description,
+      major_questions: {
+        data: []
+      }
+    };
+
+    majorQuestions.forEach(question => {
+      const formattedAnswers = question.answers.map(a => ({
+        response: a.response,
+        correct_answer: a.correct
+      }));
+
+      const formattedMinor = question.minorQuestions.map(mq => ({
+        prompt: mq.prompt,
+        answers: {
+          data: [
+            ...mq.answers.map(a => ({
+              response: a.response,
+              correct_answer: a.correct
+            }))
+          ]
+        }
+      }));
+
+      formatted.major_questions.data.push({
+        prompt: question.prompt,
+        answers: {
+          data: [...formattedAnswers]
+        },
+        minor_questions: {
+          data: [...formattedMinor]
+        }
+      });
+    });
+
+    return formatted;
+  };
+
   const handleNameChange = e => {
     const { value } = e.target;
     setName(value);
@@ -42,7 +94,7 @@ function AddQuiz() {
     // console.log("Quiz Description: ", description);
   };
 
-  const handleMajorAnswerChange = (e, id, inputID=null) => {
+  const handleMajorAnswerChange = (e, id, inputID = null) => {
     const newQuestions = majorQuestions.map(q => {
       if (q.id === id) {
         if (e.target.type === "radio") {
@@ -57,10 +109,10 @@ function AddQuiz() {
           });
         } else {
           q.answers = q.answers.map(a => {
-            if(a.id == inputID){
-              a.response = e.target.value
+            if (a.id == inputID) {
+              a.response = e.target.value;
             }
-            return a
+            return a;
           });
         }
       }
@@ -72,37 +124,36 @@ function AddQuiz() {
     // console.log("Major Questions: ", majorQuestions);
   };
 
-    const handleMinorAnswerChange = (e, major_id, minor_id, inputID=null) => {
-      const newQuestions = majorQuestions.map(mq => {
-        if(mq.id == major_id) {
-          mq.minorQuestions = mq.minorQuestions.map(q => {
-            if (q.id === minor_id) {
-              if (e.target.type === "radio") {
-                // console.log("type is radio, mapping over answers");
-                q.answers = q.answers.map(a => {
-                  if (a.id == e.target.value) {
-                    a.correct = true;
-                  } else {
-                    a.correct = false;
-                  }
-                  return a;
-                });
-              } else {
-                q.answers = q.answers.map(a => {
-                  if(a.id == inputID){
-                    a.response = e.target.value
-                  }
-                  return a
-                });
-              }
+  const handleMinorAnswerChange = (e, major_id, minor_id, inputID = null) => {
+    const newQuestions = majorQuestions.map(mq => {
+      if (mq.id == major_id) {
+        mq.minorQuestions = mq.minorQuestions.map(q => {
+          if (q.id === minor_id) {
+            if (e.target.type === "radio") {
+              // console.log("type is radio, mapping over answers");
+              q.answers = q.answers.map(a => {
+                if (a.id == e.target.value) {
+                  a.correct = true;
+                } else {
+                  a.correct = false;
+                }
+                return a;
+              });
+            } else {
+              q.answers = q.answers.map(a => {
+                if (a.id == inputID) {
+                  a.response = e.target.value;
+                }
+                return a;
+              });
             }
-            return q;
-          });
-        }
+          }
+          return q;
+        });
+      }
 
-        return mq;
-      })
-
+      return mq;
+    });
 
     console.log(e.target.type);
     // console.log("MAJOR ANSWER CHANGE:", e.target.value);
@@ -118,10 +169,10 @@ function AddQuiz() {
         id: majorQuestions[majorQuestions.length - 1]["id"] + 1,
         prompt: "",
         answers: [
-          {id: 1, response: "", correct: false },
-          {id: 2, response: "", correct: false },
-          {id: 3, response: "", correct: false },
-          {id: 4, response: "", correct: false }
+          { id: 1, response: "", correct: false },
+          { id: 2, response: "", correct: false },
+          { id: 3, response: "", correct: false },
+          { id: 4, response: "", correct: false }
         ],
         minorQuestions: []
       }
@@ -142,14 +193,14 @@ function AddQuiz() {
   const updateMinorQuestion = (majorID, minorID, e) => {
     const { value } = e.target;
     const updatedQuestions = majorQuestions.map(mq => {
-      if(mq.id == majorID) {
+      if (mq.id == majorID) {
         mq.minorQuestions = mq.minorQuestions.map(q => {
-          if(q.id == minorID) q.prompt = value
+          if (q.id == minorID) q.prompt = value;
           return q;
         });
       }
-      return mq
-    })
+      return mq;
+    });
     setMajorQuestions(updatedQuestions);
     console.log("Major Questions: ", majorQuestions);
   };
@@ -164,12 +215,12 @@ function AddQuiz() {
 
   const deleteMinorQuestion = (majorID, minorID) => {
     const updatedQuestions = majorQuestions.map(mq => {
-      if(mq.id == majorID) {
+      if (mq.id == majorID) {
         mq.minorQuestions = mq.minorQuestions.filter(q => {
-          return q.id != minorID || q.id == 1
+          return q.id != minorID || q.id == 1;
         });
       }
-      return mq
+      return mq;
     });
     setMajorQuestions(updatedQuestions);
     console.log("Major Questions: ", majorQuestions);
@@ -215,26 +266,8 @@ function AddQuiz() {
     console.log("Major Questions: ", majorQuestions);
   };
 
-  const generateMutation = () => {
-    return gql`
-      mutation insert_quiz {
-          insert_quiz(
-          objects:[
-                  {
-                    name: "${name}"
-                  }
-              ]
-              ){
-              returning{
-                  id
-              }
-          }
-      }
-  `;
-  };
-
   return (
-    <Mutation mutation={generateMutation()}>
+    <Mutation mutation={INSERT_QUIZ}>
       {(insert_quiz, { error, loading, data }) => (
         <>
           <Form
@@ -242,7 +275,7 @@ function AddQuiz() {
               // Stop the form from submitting
               e.preventDefault();
               // call the mutation
-              const res = await insert_quiz();
+              const res = await insert_quiz({variables: { objects: [formatQuiz()]}});
               console.log(res);
             }}
           >
@@ -271,7 +304,7 @@ function AddQuiz() {
                 value={description}
                 onChange={handleDescriptionChange}
                 css={{ height: "100px" }}
-               />
+              />
             </Label>
 
             {majorQuestions.map(q => (
@@ -374,14 +407,18 @@ function AddQuiz() {
                               variant="error"
                               p={0}
                               fontSize={0}
-                              onClick={e => deleteMinorQuestion(q.id, minorQ.id)}
+                              onClick={e =>
+                                deleteMinorQuestion(q.id, minorQ.id)
+                              }
                             >
                               Delete
                             </Button>
                           </Flex>
                           <TextArea
                             id={`minor-question-${minorQ.id}`}
-                            onChange={e => updateMinorQuestion(q.id, minorQ.id, e)}
+                            onChange={e =>
+                              updateMinorQuestion(q.id, minorQ.id, e)
+                            }
                           />
                           <Box>
                             <Label>Answer 1</Label>
@@ -390,13 +427,19 @@ function AddQuiz() {
                                 my={3}
                                 width={1 / 2}
                                 name="minor-answer-1"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id, 1)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id, 1)
+                                }
                               />
                               <Input
                                 type="radio"
-                                name={`minor-question-${minorQ.id}-minor-answer`}
+                                name={`minor-question-${
+                                  minorQ.id
+                                }-minor-answer`}
                                 value="1"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id)
+                                }
                               />
                             </Flex>
                           </Box>
@@ -407,13 +450,19 @@ function AddQuiz() {
                                 my={3}
                                 width={1 / 2}
                                 name="minor-answer-2"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id, 2)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id, 2)
+                                }
                               />
                               <Input
                                 type="radio"
-                                name={`minor-question-${minorQ.id}-minor-answer`}
+                                name={`minor-question-${
+                                  minorQ.id
+                                }-minor-answer`}
                                 value="2"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id)
+                                }
                               />
                             </Flex>
                           </Box>
@@ -424,13 +473,19 @@ function AddQuiz() {
                                 my={3}
                                 width={1 / 2}
                                 name="minor-answer-3"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id, 3)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id, 3)
+                                }
                               />
                               <Input
                                 type="radio"
-                                name={`minor-question-${minorQ.id}-minor-answer`}
+                                name={`minor-question-${
+                                  minorQ.id
+                                }-minor-answer`}
                                 value="3"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id)
+                                }
                               />
                             </Flex>
                           </Box>
@@ -441,13 +496,19 @@ function AddQuiz() {
                                 my={3}
                                 width={1 / 2}
                                 name="minor-answer-4"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id, 4)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id, 4)
+                                }
                               />
                               <Input
                                 type="radio"
-                                name={`minor-question-${minorQ.id}-minor-answer`}
+                                name={`minor-question-${
+                                  minorQ.id
+                                }-minor-answer`}
                                 value="4"
-                                onChange={e => handleMinorAnswerChange(e, q.id, minorQ.id)}
+                                onChange={e =>
+                                  handleMinorAnswerChange(e, q.id, minorQ.id)
+                                }
                               />
                             </Flex>
                           </Box>
