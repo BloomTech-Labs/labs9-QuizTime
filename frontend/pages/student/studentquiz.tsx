@@ -1,12 +1,10 @@
 import Link from "next/link";
-
 import {
   ButtonLink,
   Container,
 } from "../../components/design-system";
-
+import {Flex} from '@rebass/emotion'
 import StudentQuiz from "../../components/StudentView/StudentQuiz";
-
 
 const TakeQuiz = props => (
   <Container>

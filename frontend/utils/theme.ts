@@ -4,6 +4,8 @@ const red0 = "#ea969d";
 const red1 = "#e16973";
 const green0 = "#46da84";
 const green1 = "#00cc55";
+const grey0 = "#d3d3d3";
+const grey1 = "#a9a9a9";
 
 export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
@@ -34,6 +36,10 @@ export default {
         backgroundColor: blue1
       }
     },
+    primaryNoHover: {
+      color: "#fff",
+      backgroundColor: blue0,
+    },
     ["primary-outline"]: {
       color: blue0,
       backgroundColor: "transparent",
@@ -54,7 +60,14 @@ export default {
       color: "#fff",
       backgroundColor: red0,
       "&:hover": {
-        backgroundColor: red1
+        backgroundColor: red1,
+      }
+    },
+    disabled: {
+      color: "#fff",
+      backgroundColor: grey0,
+      "&:hover": {
+        cursor: 'not-allowed'
       }
     }
   }
