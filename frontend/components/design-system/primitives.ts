@@ -208,6 +208,7 @@ export const FlexColumns = props => (
   justifyContent="center"
   flexDirection="row"
   alignItems="top"
+  flexWrap="wrap"
   mt={3}
   mb={3}
   css={{
@@ -557,7 +558,42 @@ export const Label = props => (
   />
 );
 
-/* Quotation Marks */
+/* Lists */
+export const StyledList = styled.ul`
+  ${space}
+  ${fontFamily}
+  ${fontSize}
+  ${fontWeight}
+`;
+
+export const List = props => (
+  <StyledList
+    listStyle="none"
+    {...props}
+  />
+);
+
+export const StyledListItem = styled.li`
+  ${space}
+  ${fontFamily}
+  ${fontSize}
+  ${fontWeight}
+`;
+
+export const ListItem = props => (
+  <StyledListItem
+    textDecoration="none"
+    fontFamily = "sans"
+    fontWeight = {3} 
+    fontSize ={3} 
+    lineHeight = {1.5} 
+    p={1.5}
+    {...props}
+  />
+);
+
+
+
 
 //* IMAGE TAGS
 export const AvatarImg = props => (
