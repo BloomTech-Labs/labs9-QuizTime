@@ -25,10 +25,7 @@ const Testimonials = (props) => {
         <>
             <Box my={4}>
             <LandingText fontSize = {5} css={{textAlign: "center"}}>Testimonials</LandingText>
-            <FlexColumns     
-                css={{    
-                border: "1px solid white"   
-            }}>
+            <FlexColumns>
                 <Box m={3} p={3} width="400px">
                     <LandingText lineHeight = {1.5}>
                     "As a 12-year veteran teacher, I have seen a multitude of digital assessment technologies come and go.

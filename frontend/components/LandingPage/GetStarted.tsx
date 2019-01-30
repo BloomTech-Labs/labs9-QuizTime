@@ -17,7 +17,7 @@ const GetStarted = (props) => {
             <Box my={5}>
             <LandingText color="blue.1" fontSize = {6} css={{textAlign: "center"}}>Getting Started</LandingText>
             <FlexColumns>
-                <Box my={3} mx={5} p={4} bg="green.0" width="360px" 
+                <Box my={3} mx={5} p={4} bg="green.1" width="360px" 
                 css={{
                      border: "1px solid white", 
                      borderRadius: "100%",
@@ -31,7 +31,7 @@ const GetStarted = (props) => {
                     <LandingText fontWeight = {3} fontSize ={4} color="blue.1" lineHeight = {1.5} p={4}>
                     Sign up now and make ten quizzes for free!</LandingText>
                 </Box>
-                <Box my={3} mx={5} p={4} bg="green.0" width="360px" 
+                <Box my={3} mx={5} p={4} bg="green.1" width="360px" 
                 css={{
                     border: "1px solid white", 
                     borderRadius: "100%",

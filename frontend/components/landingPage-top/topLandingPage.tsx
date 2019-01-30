@@ -1,10 +1,10 @@
 import {
   LandingBar,
-  Line,
+  GreenLine,
+  BlueLine,
   LandingBarItems,
   CallToActionSection,
   HeaderObj,
-  HeaderImage,
   LrgText,
   HeaderText,
   HeaderInfoText,
@@ -13,10 +13,11 @@ import {
   InfoBoxTwo,
   InfoBoxThree,
   InfoSection,
-  InfoSectionImage,
   InfoSectionRight,
   InfoTextBox,
-  BgBlock
+  InfoText,
+  InfoTextTwo,
+  InfoTextThree
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
 
@@ -30,6 +31,13 @@ const TopLanding = () => {
       <CallToActionSection>
         <HeaderObj />
         <HeaderText>QuizTime</HeaderText>
+        <GreenLine
+          css={{
+            position: "absolute",
+            right: "550px",
+            top: "215px"
+          }}
+        />
         <HeaderInfoText>
           "Quickly assess understanding of content, while giving each student a
           unique, adaptive learning experience.."
@@ -38,12 +46,23 @@ const TopLanding = () => {
       <HowItWorksSection>
         <InfoSection>
           <InfoTextBox />
+          <InfoText>
+            QuizTime enables teachers to create Quizzes for their students.
+          </InfoText>
           <InfoBox />
           <InfoTextBox />
+          <InfoTextThree>
+            Because of QuizTime’s seamless integration, teachers are able to
+            view quick summaries of student performances of their students.
+          </InfoTextThree>
         </InfoSection>
         <InfoSectionRight>
           <InfoBoxTwo />
           <InfoTextBox />
+          <InfoTextTwo>
+            When a quiz has been finalized, the teacher can distribute that quiz
+            to all students with one click.
+          </InfoTextTwo>
           <InfoBoxThree />
         </InfoSectionRight>
       </HowItWorksSection>

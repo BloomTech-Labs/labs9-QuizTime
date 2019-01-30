@@ -18,7 +18,7 @@ import {
 } from "styled-system";
 import styled from "@emotion/styled";
 import { isAbsolute } from "path";
-
+import { css } from '@emotion/core'
 /*
 export const Text = system{
     is: "p",
@@ -34,23 +34,33 @@ export const LandingText = props => (
 export const NavBarHolder = props => (
   <F justifyContent="flex-end" alignItems="center" bg="green.1" {...props} />
 );
-export const Line = props => (
+
+export const GreenLine = props => (
   <B
     css={{
-      height: "150px",
-      borderLeft: "3px solid #383838",
-      position: "absolute",
-      bottom: "100px",
-      left: "500px"
+      borderLeft: "10px solid #70e89d",
+      height:"100"
     }}
     {...props}
   />
 );
+
+export const BlueLine = props => (
+  <B
+  width="100px"
+    css={{
+      borderTop: "5px solid #323fcb",
+    }}
+    {...props}
+  />
+);
+
 export const LandingBar = props => (
   <F
     width={[1]}
     justifyContent="flex-end"
     alignItems="center"
+    bg="green.1"
     css={{
       height: "50px"
     }}
@@ -66,7 +76,7 @@ export const LandingBarItems = props => (
       cursor: "pointer",
       transition: "color .5s ease-out",
       "&:hover": {
-        color: "#70e89d"
+        color: "white"
       }
     }}
     {...props}
@@ -96,7 +106,7 @@ export const CallToActionSection = props => (
 export const HeaderObj = props => (
   <B
     width="100vw"
-    bg="green.1"
+    bg="blue.1"
     css={{
       height: "500px",
       clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
@@ -110,7 +120,7 @@ export const HeaderText = props => (
     fontSize={7}
     fontWeight={0}
     fontFamily="sans"
-    color="black"
+    color="white"
     m={5}
     css={{
       position: "absolute",
@@ -197,7 +207,8 @@ export const InfoSection = props => (
     mt={3}
     mb={3}
     css={{
-      height: "auto"
+      height: "auto",
+      position:"relative"
     }}
     {...props}
   />
@@ -228,7 +239,8 @@ export const InfoSectionRight = props => (
     mt={3}
     mb={3}
     css={{
-      height: "auto"
+      height: "auto",
+      position:"relative"
     }}
     {...props}
   />
@@ -239,10 +251,12 @@ export const InfoBox = props => (
     width="400px"
     src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
     m={3}
-    css={{
-      height: "350px",
-      filter: "grayscale(100%)"
-    }}
+    css={css`
+      filter: grayscale(100%);
+      @media(max-width: 550px){
+        visibility: hidden;
+      }
+    `}
     {...props}
   />
 );
@@ -253,7 +267,6 @@ export const InfoBoxTwo = props => (
     src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
     m={3}
     css={{
-      height: "350px",
       filter: "grayscale(100%)"
     }}
     {...props}
@@ -266,7 +279,6 @@ export const InfoBoxThree = props => (
     src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     m={3}
     css={{
-      height: "350px",
       filter: "grayscale(100%)"
     }}
     {...props}
@@ -275,8 +287,8 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width="350px"
-    bg="blue.1"
+    width={[1,1,3/5]}
+    bg="blue.0"
     m={3}
     css={{
       height: "200px"
@@ -284,6 +296,54 @@ export const InfoTextBox = props => (
     {...props}
   />
 );
+
+export const InfoText = props => (
+  <T
+    width={[5/6,5/6,1/2]}
+    fontFamily="sans"
+    fontSize={[3,3,5]}
+    fontWeight={2}
+    color="#2d2d2d"
+    css={{
+      position:"absolute",
+      top:"80px",
+      right:"20px"
+    }}
+    {...props}
+  />
+)
+
+export const InfoTextTwo = props => (
+  <T
+    width={[5/6]}
+    fontFamily="sans"
+    fontSize={[3,3,5]}
+    fontWeight={2}
+    color="#2d2d2d"
+    css={{
+      position:"absolute",
+      top:"350px",
+      right:"40px"
+    }}
+    {...props}
+  />
+)
+
+export const InfoTextThree = props => (
+  <T
+    width={[5/6]}
+    fontFamily="sans"
+    fontSize={[ 3,3,5]}
+    fontWeight={2}
+    color="#2d2d2d"
+    css={{
+      position:"absolute",
+      bottom:"100px",
+      right: "50px",
+    }}
+    {...props}
+  />
+)
 
 export const SideBarHolder = props => (
   <F
@@ -310,17 +370,6 @@ export const BoxText = props => (
   />
 );
 
-export const BgBlock = props => (
-  <B
-    width="100vw"
-    bg="f4f4f4"
-    css={{
-      height: "400px",
-      postion: "relative"
-    }}
-    {...props}
-  />
-);
 /* CONTAINERS */
 
 export const Container = props => (
@@ -331,8 +380,9 @@ export const FullScreenContainer = props => (
   <F
     justifyContent="center"
     flexDirection="column"
+    bg="#f2f2f2"
     width="100%"
-    css={{ height: "auto" }}
+
     {...props}
   />
 );
