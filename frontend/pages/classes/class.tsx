@@ -7,6 +7,7 @@ import AddStudent from "../../components/forms/AddStudent";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
 import { ALL_STUDENTS_QUERY } from "../../queries";
+import { Box } from "@rebass/emotion";
 
 import {
   StudentHolder,
@@ -19,12 +20,9 @@ import {
 const ClassPage = ({ query: { id } }) => {
   return (
     <Layout>
-      <Text>Send Email</Text>
-
-      <Text>Add a Student</Text>
-
-      <AddStudent class_id={id} />
-
+      <Box p={4}>
+        <AddStudent class_id={id} />
+      </Box>
       <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
