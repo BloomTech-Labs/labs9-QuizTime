@@ -1,60 +1,59 @@
-import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import { Form, Input, Button, Label, Text, HeaderText} from "../design-system";
+import React, { Component } from "react";
+import { Mutation } from "react-apollo";
+import { INSERT_STUDENT } from "../../mutations";
+import { ALL_STUDENTS_QUERY } from "../../queries";
+import { Form, Input, Button, Label, Text } from "../design-system";
 
 class AddStudent extends Component {
-
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    classId: this.props.class
+    class_id: this.props.class_id
   };
 
   handleChange = e => {
-    const { name, type, value } = e.target;
-    const val = type === 'number' ? parseInt(value) : value;
-    this.setState({ [name]: val });
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
-
-  generateMutation = () => {
-      return(
-        gql`
-        mutation insert_student {
-            insert_student(
-            objects:[
-                    {
-                      first_name: "${this.state.firstName}",
-                      last_name: "${this.state.lastName}",
-                      email: "${this.state.email}",
-                      class_id: ${this.state.classId}
-                    }
-                ]
-                ){
-                returning{
-                    id
-                }
-            }
-        }
-    `)
-}
 
   render() {
     return (
-      <Mutation mutation={this.generateMutation()}>
+      <Mutation
+        mutation={INSERT_STUDENT}
+        update={(cache, { data: insert_student }) => {
+          const c = cache.readQuery({
+            query: ALL_STUDENTS_QUERY,
+            variables: { class_id: this.state.class_id }
+          });
+
+          const newClass = c.class;
+          newClass[0].students = newClass[0].students.concat(insert_student.insert_student.returning)
+
+          cache.writeQuery({
+            query: ALL_STUDENTS_QUERY,
+            data: {
+              quiz: c.quiz,
+              class: newClass
+            }
+          });
+        }}
+      >
         {(insert_student, { error, loading, data }) => (
-        <>
-        <HeaderText>Add a New Student to Class</HeaderText>
-          <Form p={4}
-            onSubmit={async e => {
-              // Stop the form from submitting
-              e.preventDefault();
-              // call the mutation
-              const res = await insert_student();
-              console.log(res);
-            }}
-          >
+          <>
+            <Form
+              onSubmit={async e => {
+                // Stop the form from submitting
+                e.preventDefault();
+                // call the mutation
+                insert_student({ variables: { ...this.state } });
+                this.setState({
+                  firstName: "",
+                  lastName: "",
+                  email: ""
+                });
+              }}
+            >
               <Label htmlFor="firstName">
                 First Name
                 <Input
@@ -94,12 +93,13 @@ class AddStudent extends Component {
                 />
               </Label>
 
-              <Button variant="primary" type="submit">Submit</Button>
-          </Form>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
             {/* render errors, loading, or data */}
-            {error && (<p> {error.message} </p>) }
-            {loading && (<p> ...loading </p>) }
-            {data && (<p> successfully created student with id of {data.insert_student.returning[0].id}</p>)}
+            {error && <p> {error.message} </p>}
+            {loading && <p> ...loading </p>}
           </>
         )}
       </Mutation>

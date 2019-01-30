@@ -7,16 +7,8 @@ import ClassBox from "../../components/boxes/classBox/classBox";
 import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
-import { Button, Text, UpperCase, Container } from "../../components/design-system";
+import { ALL_CLASSES_QUERY } from '../../queries'
 
-const ALL_CLASSES_QUERY = gql`
-  query ALL_CLASSES_QUERY {
-    class {
-      id
-      name
-    }
-  }
-`;
 
 const CardHolder = styled.div`
   display: flex;
