@@ -6,7 +6,7 @@ import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
-import {ALL_STUDENTS_QUERY} from '../../queries';
+import { ALL_STUDENTS_QUERY } from "../../queries";
 
 import {
   StudentHolder,
@@ -16,28 +16,7 @@ import {
   QuizzesAvaliable
 } from "../../components/design-system/primitives";
 
-
 const ClassPage = ({ query: { id } }) => {
-
-  const generateMutation = (quiz_id, class_id) => {
-    return `
-    mutation add_quiz_to_class{
-      insert_class_quiz(
-        objects:[
-          {
-            class_id:${class_id},
-            quiz_id:${quiz_id}
-          }
-        ]
-      ){
-        returning{
-          id
-        }
-      }
-    }
-    `;
-  };
-
   return (
     <Layout>
       <Text>Send Email</Text>
@@ -46,7 +25,7 @@ const ClassPage = ({ query: { id } }) => {
 
       <AddStudent class_id={id} />
 
-      <Query query={ALL_STUDENTS_QUERY} variables={{class_id: id}}>
+      <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
           if (loading) return <p>...loading</p>;
@@ -64,19 +43,23 @@ const ClassPage = ({ query: { id } }) => {
                     ))}
                   </StudentHolder>
                   <QuizBox>
-                    {data.quiz.map(q => (
-                      <QuizElement
-                        key={q.id}
-                        quiz={q}
-                      />
-                    ))}
+                    {data.quiz
+                      .filter(
+                        qz =>
+                          !data.class[0].quizzes.find(qzz => qzz.quiz.id === qz.id)
+                      )
+                      .map(q => (
+                        <QuizElement
+                          key={q.id}
+                          quiz={q}
+                          class_id={id}
+                        />
+                      ))}
                   </QuizBox>
                   <QuizzesAvaliable>
-                    {data.class[0].quizzes.map(quizzes => (
-                    <ClassQuizzes
-                     quizzes={quizzes}
-                      />
-                       ))}
+                    {data.class[0].quizzes.map(q => (
+                      <ClassQuizzes key={q.id} quiz={q.quiz} />
+                    ))}
                   </QuizzesAvaliable>
                 </SectionContainer>
               </>

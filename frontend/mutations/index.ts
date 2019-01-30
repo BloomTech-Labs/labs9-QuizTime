@@ -22,3 +22,24 @@ export const INSERT_STUDENT = gql`
       }
   }
 `
+export const INSERT_CLASS_QUIZ = gql`
+  mutation insert_class_quiz($class_id: Int!, $quiz_id: Int!){
+    insert_class_quiz(
+      objects:[
+        {
+          class_id: $class_id,
+          quiz_id: $quiz_id
+        }
+      ]
+    ){
+      returning{
+        id
+        due_date
+        quiz {
+          id
+          name
+        }
+      }
+    }
+  }
+`
