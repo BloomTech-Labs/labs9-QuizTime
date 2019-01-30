@@ -132,18 +132,22 @@ export const HeaderText = props => (
 );
 export const HeaderInfoText = props => (
   <T
-    width={1 / 3}
+    width={1, 1, 1 / 3}
     p={3}
     fontSize={4}
     fontWeight={1}
     fontFamily="sans"
-    color="black"
+    color="white"
     m={5}
-    css={{
-      position: "absolute",
-      right: "100px",
-      top: "150px"
-    }}
+    css={css`
+      position: absolute;
+      right: 100px;
+      top: 150px;
+      @media(max-width:900px){
+        right:10px;
+        top:10px;
+      }
+    `}
     {...props}
   />
 );
@@ -199,18 +203,33 @@ export const TestimonialTeacherImage = props => (
     }}
   />
 );
+export const InfoSectionWrapper = props =>(
+  <F
+  width={[1]}
+  flexDirection="row"
+  css={css`
+    @media(max-width:680px){
+      flex-direction: column;
+    }
+  `}
+  {...props}
+  />
+);
 export const InfoSection = props => (
   <F
-    width={[1 / 2]}
+    width={[1,1,1 / 2]}
     justifyContent="center"
     flexDirection="column"
     alignItems="flex-end"
     mt={3}
     mb={3}
-    css={{
-      height: "auto",
-      position:"relative"
-    }}
+    css={css`
+      height: auto;
+      position:relative;
+      @media(max-width:680px){
+        
+      }
+    `}
     {...props}
   />
 );
@@ -233,7 +252,7 @@ export const FlexColumns = props => (
 
 export const InfoSectionRight = props => (
   <F
-    width={[1 / 2]}
+    width={[1,1,1 / 2]}
     justifyContent="center"
     flexDirection="column"
     alignItems="flex-start"
@@ -249,13 +268,12 @@ export const InfoSectionRight = props => (
 
 export const InfoBox = props => (
   <I
-    width="400px"
+    width={[1,1,400]}
     src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 550px){
-        visibility: hidden;
+      @media(max-width: 680px){
       }
     `}
     {...props}
@@ -264,27 +282,33 @@ export const InfoBox = props => (
 
 export const InfoBoxTwo = props => (
   <I
-    width="400px"
+    width={[1,1,400]}
     src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
     m={3}
-    css={{
-      filter: "grayscale(100%)"
-    }}
+    css={css`
+      filter: grayscale(100%);
+      @media(max-width: 680px){
+      }
+    `}
     {...props}
   />
 );
 
 export const InfoBoxThree = props => (
   <I
-    width="550px"
+    width={[1,1,500]}
     src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     m={3}
-    css={{
-      filter: "grayscale(100%)"
-    }}
+    css={css`
+      filter: grayscale(100%);
+      @media(max-width: 680px){
+
+      }
+    `}
     {...props}
   />
 );
+
 
 export const InfoTextBox = props => (
   <B
@@ -294,6 +318,7 @@ export const InfoTextBox = props => (
     css={{
       height: "200px"
     }}
+
     {...props}
   />
 );
@@ -305,11 +330,20 @@ export const InfoText = props => (
     fontSize={[3,3,5]}
     fontWeight={2}
     color="#2d2d2d"
-    css={{
-      position:"absolute",
-      top:"80px",
-      right:"20px"
-    }}
+    css={css`
+      position:absolute;
+      top:80px;
+      right:20px;
+      @media(max-width:830px){
+        font-size:25px;
+        top:120px;
+        right:40px;
+      }
+      @media(max-width:680px){
+        font-size:35px;
+        top:80px;
+      }
+    `}
     {...props}
   />
 )
@@ -321,11 +355,21 @@ export const InfoTextTwo = props => (
     fontSize={[3,3,5]}
     fontWeight={2}
     color="#2d2d2d"
-    css={{
-      position:"absolute",
-      top:"350px",
-      right:"40px"
-    }}
+    css={css`
+      position:absolute;
+      top:350px;
+      right:40px;
+      @media(max-width:830px){
+        font-size:25px;
+        right:5px;
+        top:330px;
+      }
+      @media(max-width:680px){
+        font-size:35px;
+        top:-200px;
+        right:60px;
+      }
+    `}
     {...props}
   />
 )
@@ -337,11 +381,21 @@ export const InfoTextThree = props => (
     fontSize={[ 3,3,5]}
     fontWeight={2}
     color="#2d2d2d"
-    css={{
-      position:"absolute",
-      bottom:"100px",
-      right: "50px",
-    }}
+    css={css`
+      position:absolute;
+      bottom:70px;
+      left: -390px;
+      @media(max-width:830px){
+        font-size:25px;
+        bottom:80px;
+        left:-350px;
+      }
+      @media(max-width:680px){
+        font-size:35px;
+        bottom:500px;
+        left:60px;
+      }
+    `}
     {...props}
   />
 )

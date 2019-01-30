@@ -17,7 +17,8 @@ import {
   InfoTextBox,
   InfoText,
   InfoTextTwo,
-  InfoTextThree
+  InfoTextThree,
+  InfoSectionWrapper
 } from "../design-system/primitives";
 import { authorize } from "../../utils/auth0";
 
@@ -44,6 +45,7 @@ const TopLanding = () => {
         </HeaderInfoText>
       </CallToActionSection>
       <HowItWorksSection>
+        <InfoSectionWrapper>
         <InfoSection>
           <InfoTextBox />
           <InfoText>
@@ -51,10 +53,6 @@ const TopLanding = () => {
           </InfoText>
           <InfoBox />
           <InfoTextBox />
-          <InfoTextThree>
-            Because of QuizTime’s seamless integration, teachers are able to
-            view quick summaries of student performances of their students.
-          </InfoTextThree>
         </InfoSection>
         <InfoSectionRight>
           <InfoBoxTwo />
@@ -64,7 +62,12 @@ const TopLanding = () => {
             to all students with one click.
           </InfoTextTwo>
           <InfoBoxThree />
+          <InfoTextThree>
+            Because of QuizTime’s seamless integration, teachers are able to
+            view quick summaries of student performances of their students.
+          </InfoTextThree>
         </InfoSectionRight>
+        </InfoSectionWrapper>
       </HowItWorksSection>
     </div>
   );
