@@ -16,7 +16,7 @@ export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
   fontWeights: [100, 200, 300, 400, 500, 600, 700],
   colors: {
-    blue: ["#7981FF", "#323fcb", "#1F287F","#3F4FFF", "#101440","#3947E5"],
+    blue: ["#7981FF", "#323fcb", "#1F287F", "#3F4FFF", "#101440", "#3947E5"],
     red: ["#ea969d", "#e16973"],
     green: ["#B5FFD0", "#70e89d"],
     gray: ["#EDEDED"]
@@ -24,7 +24,9 @@ export default {
   borders: [0, "1px solid red"],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    sans: ["Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"],
+    sans: [
+      "Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"
+    ],
     mono: ["Menlo, monospace"]
   },
   shadows: {
@@ -37,14 +39,17 @@ export default {
   buttons: {
     primary: {
       color: "#fff",
-      backgroundColor: blue0,
+      backgroundColor: blue1,
+      border: `2px solid ${blue1}`,
       "&:hover": {
-        backgroundColor: blue1
+        backgroundColor: blue2,
+        color: "#fff",
+        border: `2px solid ${blue2}`
       }
     },
     primaryNoHover: {
       color: "#fff",
-      backgroundColor: blue0,
+      backgroundColor: blue1
     },
     ["primary-outline"]: {
       color: blue0,
@@ -66,14 +71,14 @@ export default {
       color: "#fff",
       backgroundColor: red0,
       "&:hover": {
-        backgroundColor: red1,
+        backgroundColor: red1
       }
     },
     disabled: {
       color: "#fff",
       backgroundColor: grey0,
       "&:hover": {
-        cursor: 'not-allowed'
+        cursor: "not-allowed"
       }
     }
   }
