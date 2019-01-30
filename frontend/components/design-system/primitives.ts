@@ -263,22 +263,27 @@ export const InfoSectionRight = props => (
     alignItems="flex-start"
     mt={3}
     mb={3}
-    css={{
-      height: "auto",
-      position:"relative"
-    }}
+    css={css`
+      height:auto;
+      position:relative;
+      @media(max-width:680px){
+      }
+    `}
     {...props}
   />
 );
 
 export const InfoBox = props => (
   <I
-    width={[1,1,400]}
+    width={[1,1,500]}
     src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 680px){
+      @media(max-width: 1030px){
+        margin-left:0;
+        margin-right:0
+
       }
     `}
     {...props}
@@ -287,12 +292,14 @@ export const InfoBox = props => (
 
 export const InfoBoxTwo = props => (
   <I
-    width={[1,1,400]}
+    width={[1,1,500]}
     src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 680px){
+      @media(max-width: 1030px){
+        margin-left:0;
+        margin-right:0
       }
     `}
     {...props}
@@ -306,8 +313,8 @@ export const InfoBoxThree = props => (
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 680px){
-
+      @media(max-width: 1030px){
+        margin-left:0
       }
     `}
     {...props}
@@ -320,9 +327,13 @@ export const InfoTextBox = props => (
     width={[1,1,3/5]}
     bg="blue.0"
     m={3}
-    css={{
-      height: "200px"
-    }}
+    css={css`
+      height: 200px;
+      @media(max-width: 1030px){
+        margin-left:0;
+        margin-right:0
+      }
+    `}
 
     {...props}
   />
@@ -371,7 +382,7 @@ export const InfoTextTwo = props => (
       }
       @media(max-width:680px){
         font-size:35px;
-        top:-200px;
+        top:-220px;
         right:60px;
       }
     `}
@@ -392,7 +403,7 @@ export const InfoTextThree = props => (
       left: -500px;
       @media(max-width:830px){
         font-size:25px;
-        bottom:80px;
+        bottom:60px;
         left:-350px;
       }
       @media(max-width:680px){
