@@ -8,6 +8,7 @@ const red0 = "#ea969d";
 const red1 = "#e16973";
 const green0 = "#B5FFD0";
 const green1 = "#70e89d";
+const green2 = "#44c173";
 const gray0 = "#EDEDED";
 const grey0 = "#d3d3d3";
 const grey2 = "#a9a9a9";
@@ -62,9 +63,9 @@ export default {
     },
     success: {
       color: "#fff",
-      backgroundColor: green0,
+      backgroundColor: green1,
       "&:hover": {
-        backgroundColor: green1
+        backgroundColor: green2
       }
     },
     error: {
