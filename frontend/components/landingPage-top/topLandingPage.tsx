@@ -2,7 +2,6 @@ import {
   LandingBar,
   GreenLine,
   BlueLine,
-  LandingText,
   LandingBarItems,
   CallToActionSection,
   HeaderObj,

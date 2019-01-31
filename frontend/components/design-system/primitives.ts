@@ -309,8 +309,6 @@ export const InfoBox = props => (
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media (max-width: 550px) {
-        visibility: hidden;
       @media(max-width: 1030px){
         margin-left:0;
         margin-right:0
