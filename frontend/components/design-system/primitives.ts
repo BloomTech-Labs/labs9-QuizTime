@@ -138,9 +138,16 @@ export const HeaderSection = props => (
   flexDirection="column"
   alignItems="center"
   m={3}
-  css={{
-    height:"250px",
-  }}
+  css={css`
+      height:250px;
+  @media(max-width:763px){
+      position:absolute;
+      right:200px;
+    }
+    @media(max-width:500px){
+      right:50px;
+    }
+  `}
   {...props}
   />
 )
