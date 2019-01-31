@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import { Form, FormInput, Button, Label, Text } from "../design-system";
-import { ALL_CLASSES_QUERY } from '../../queries'
-
+import React, { Component } from "react";
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+import { Form, Input, Button, Label, Text } from "../design-system";
+import { ALL_CLASSES_QUERY } from "../../queries";
 
 class AddClass extends Component {
   state = {
-    name: ''
+    name: ""
   };
 
   handleChange = e => {
@@ -16,8 +15,7 @@ class AddClass extends Component {
   };
 
   generateMutation = () => {
-      return(
-        gql`
+    return gql`
         mutation insert_class {
             insert_class(
             objects:[
@@ -32,8 +30,8 @@ class AddClass extends Component {
                 }
             }
         }
-    `)
-}
+    `;
+  };
 
   render() {
     return (
@@ -41,26 +39,28 @@ class AddClass extends Component {
         mutation={this.generateMutation()}
         update={(cache, { data: insert_class }) => {
           //rename during destructure, class reserved keyword
-          const { class: classes } = cache.readQuery({ query: ALL_CLASSES_QUERY });
+          const { class: classes } = cache.readQuery({
+            query: ALL_CLASSES_QUERY
+          });
           cache.writeQuery({
             query: ALL_CLASSES_QUERY,
             data: { class: classes.concat(insert_class.insert_class.returning) }
-          })
+          });
         }}
       >
         {(insert_class, { error, loading, data }) => (
-        <>
-          <Form
-            onSubmit={async e => {
-              // Stop the form from submitting
-              e.preventDefault();
-              // call the mutation
-              const res = await insert_class();
-            }}
-          >
+          <>
+            <Form
+              onSubmit={async e => {
+                // Stop the form from submitting
+                e.preventDefault();
+                // call the mutation
+                const res = await insert_class();
+              }}
+            >
               <Label htmlFor="name">
                 Add a Class
-                <FormInput
+                <Input
                   type="text"
                   id="name"
                   name="name"
@@ -71,11 +71,13 @@ class AddClass extends Component {
                 />
               </Label>
 
-              <Button variant = "primary" type="submit" p={3}>Submit</Button>
-          </Form>
+              <Button variant="primary" type="submit" p={3}>
+                Submit
+              </Button>
+            </Form>
             {/* render errors, loading, or data */}
-            {error && (<p> {error.message} </p>) }
-            {loading && (<p> ...loading </p>) }
+            {error && <p> {error.message} </p>}
+            {loading && <p> ...loading </p>}
           </>
         )}
       </Mutation>

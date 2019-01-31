@@ -604,9 +604,19 @@ export const Input = props => (
   <StyledInput
     my={3}
     fontSize={4}
-    border="none"
-    borderBottom="1px solid black"
-    css={{ display: "block" }}
+    border="1px solid #dbdbdb"
+    css={{
+      borderRadius: "3px",
+      display: "block",
+      height: "3em",
+      lineHeight: "1.5",
+      padding: ".625em",
+      boxShadow: "inset 0 1px 2px rgba(10, 10, 10, .1)",
+      "&:active": {
+        borderColor: "#323fcb",
+        boxShadow: "0 0 0 0.125em rgba(65, 185, 19, .25)"
+      }
+    }}
     {...props}
   />
 );
