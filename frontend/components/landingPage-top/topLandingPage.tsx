@@ -2,6 +2,7 @@ import {
   LandingBar,
   GreenLine,
   BlueLine,
+  LandingText,
   LandingBarItems,
   CallToActionSection,
   HeaderObj,
@@ -17,10 +18,13 @@ import {
   InfoTextBox,
   InfoText,
   InfoTextTwo,
-  InfoTextThree
+  InfoTextThree,
+  InfoSectionWrapper,
+  HeaderSection,
+  GetStartedBtn
 } from "../design-system/primitives";
+import { css } from "@emotion/core";
 import { authorize } from "../../utils/auth0";
-
 const TopLanding = () => {
   return (
     <div>
@@ -29,42 +33,129 @@ const TopLanding = () => {
         <LandingBarItems onClick={authorize}>Sign Up</LandingBarItems>
       </LandingBar>
       <CallToActionSection>
-        <HeaderObj />
-        <HeaderText>QuizTime</HeaderText>
-        <GreenLine
-          css={{
-            position: "absolute",
-            right: "550px",
-            top: "215px"
-          }}
-        />
-        <HeaderInfoText>
-          "Quickly assess understanding of content, while giving each student a
-          unique, adaptive learning experience.."
-        </HeaderInfoText>
+        <HeaderObj>
+          <GreenLine
+            css={css`
+              width: 100px;
+              position: absolute;
+              top: 200px;
+              left: 250px;
+              border-bottom: 10px solid #70e89d;
+              @media(max-width:900px){
+                visibility:hidden;
+              }
+            `}
+          />
+          <HeaderInfoText>
+            "Quickly assess understanding of content, while giving each student
+            a unique, adaptive learning experience.."
+          </HeaderInfoText>
+          <HeaderSection>
+            <HeaderText>QuizTime</HeaderText>
+            <HeaderText
+              fontSize={5}
+              onClick={authorize}
+              bg="green.1"
+              color="blue.1"
+              css={{
+                cursor: "pointer"
+              }}
+            >
+              Get Started
+            </HeaderText>
+          </HeaderSection>
+        </HeaderObj>
       </CallToActionSection>
       <HowItWorksSection>
-        <InfoSection>
-          <InfoTextBox />
-          <InfoText>
-            QuizTime enables teachers to create Quizzes for their students.
-          </InfoText>
-          <InfoBox />
-          <InfoTextBox />
-          <InfoTextThree>
-            Because of QuizTime’s seamless integration, teachers are able to
-            view quick summaries of student performances of their students.
-          </InfoTextThree>
-        </InfoSection>
-        <InfoSectionRight>
-          <InfoBoxTwo />
-          <InfoTextBox />
-          <InfoTextTwo>
-            When a quiz has been finalized, the teacher can distribute that quiz
-            to all students with one click.
-          </InfoTextTwo>
-          <InfoBoxThree />
-        </InfoSectionRight>
+        <InfoSectionWrapper>
+          <InfoSection>
+            <InfoTextBox
+              css={css`
+                @media (max-width: 763px) {
+                  margin-right: 10px;
+                }
+                @media (max-width: 500px) {
+                  margin-right: 0;
+                }
+              `}
+            />
+            <GreenLine
+            css={css`
+              position: absolute;
+              height:850px;
+              width:500px;
+              top:16px;
+              right: -10px;
+              border-top: 10px solid #70e89d;
+              @media(max-width:900px){
+                visibility:hidden;
+              }
+            `}
+          />
+            <InfoText>
+              QuizTime enables teachers to create Quizzes for their students.
+            </InfoText>
+            <InfoBox
+              css={css`
+                @media (max-width: 763px) {
+                  margin-right: 10px;
+                }
+                @media (max-width: 500px) {
+                  margin-right: 0;
+                }
+              `}
+            />
+            <InfoTextBox
+              css={css`
+                @media (max-width: 763px) {
+                  margin-right: 10px;
+                }
+                @media (max-width: 500px) {
+                  margin-right: 0;
+                }
+              `}
+            />
+          </InfoSection>
+          <InfoSectionRight>
+            <InfoBoxTwo />
+            <InfoTextBox
+              css={css`
+                @media (max-width: 763px) {
+                  margin-left: 0px;
+                  margin-right: 0;
+                }
+              `}
+            />
+             <GreenLine
+            css={css`
+              position: absolute;
+              width:200px;
+              height:520px;
+              border-bottom:10px solid #70e89d; 
+              top:16px;
+              right: 469px;
+              @media(max-width: 900px){
+                visibility:hidden;
+              }
+            `}
+          />
+            <InfoTextTwo>
+              The teacher can distribute that quiz to all students with one
+              click.
+            </InfoTextTwo>
+            <InfoBoxThree
+              css={css`
+                @media (max-width: 763px) {
+                  margin-left: 0px;
+                  margin-right: 0;
+                }
+              `}
+            />
+            <InfoTextThree>
+              With QuizTime teachers are able to their student performances.
+            </InfoTextThree>
+          </InfoSectionRight>
+        </InfoSectionWrapper>
       </HowItWorksSection>
     </div>
   );

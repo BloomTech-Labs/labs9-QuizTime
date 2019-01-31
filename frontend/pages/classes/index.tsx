@@ -45,7 +45,7 @@ const Classes = () => (
                     width="100px"
                   />
                 );
-	      }
+              }
               if (data) {
                 return data.class.map(c => (
                   <ClassBox key={c.id} className={c} />
@@ -55,7 +55,8 @@ const Classes = () => (
           </Query>
         </Holder>
       </CardHolder>
- </Layout>
+    </Box>
+  </Layout>
 );
 
 export default securePage(Classes);

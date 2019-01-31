@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import AvatarPopup from "./AvatarPopup";
 
-// const NavBarHolder = styled(Box)`
 //   display: flex;
 //   justify-content: flex-end;
 //   align-items: center;
@@ -38,7 +37,6 @@ const NavBar: React.SFC = () => {
   const small = useMedia("(max-width: 639px)");
   const user = getUserFromLocalCookie();
   const [isNavPopup, setIsNavPopup] = useState(false);
-
   const Links = small ? (
     <Flex width={1}>
       <Box mx={3}>

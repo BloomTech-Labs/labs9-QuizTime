@@ -16,7 +16,7 @@ import {
 const Footer = (props) => {
     return(
         <>
-            <Box bg="gray.0" p={2}>
+            <Box bg="blue.1" p={2} color="white">
             <FlexColumns my={3}>
                 <Box m={3} p={2} width="280px">
                     <Text>
@@ -36,7 +36,7 @@ const Footer = (props) => {
                         About Us
                         </UpperCase>
                     </Text>
-                    <LandingText fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                    <LandingText color="white" fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
                         Our team of educational consultants and developers works hard to deliver high quality academic software.
                         Please contact us at any time with questions or comments. 
                     </LandingText>
@@ -60,7 +60,7 @@ const Footer = (props) => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <LandingText fontWeight={3} fontSize ={2} lineHeight = {1.5} p={3}>
+                    <LandingText color="white" fontWeight={3} fontSize ={2} lineHeight = {1.5} p={3}>
                         Copyright 2019, QuizTime Development Team
                     </LandingText>
                 </Flex>
