@@ -477,8 +477,8 @@ export const InfoTextThree = props => (
 export const SideBarHolder = props => (
   <F
     width={[0, 1 / 3, 1 / 5]}
-    py={4}
-    px={3}
+    py={[0, 4, 4]}
+    px={[0, 3, 3]}
     bg="blue.1"
     flexDirection="column"
     fontSize={4}
