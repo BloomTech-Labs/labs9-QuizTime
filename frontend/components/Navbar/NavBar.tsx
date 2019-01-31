@@ -7,6 +7,7 @@ import { logout } from "../../utils/auth0";
 import { useMedia } from "the-platform";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import AvatarPopup from "./AvatarPopup";
 
 // const NavBarHolder = styled(Box)`
 //   display: flex;
@@ -33,9 +34,10 @@ const NavBarItem = styled.a`
 //   align-items: center;
 // `;
 
-const user = getUserFromLocalCookie();
 const NavBar: React.SFC = () => {
   const small = useMedia("(max-width: 639px)");
+  const user = getUserFromLocalCookie();
+  const [isNavPopup, setIsNavPopup] = useState(false);
 
   const Links = small ? (
     <Flex width={1}>
@@ -53,12 +55,16 @@ const NavBar: React.SFC = () => {
   ) : null;
 
   return (
-    <NavBarHolder>
+    <NavBarHolder css={{ position: "relative" }}>
       {Links}
       <AvatarImg
-        src={user && user.picture ? user.picture : null}
+        mr={3}
+        onClick={() => setIsNavPopup(!isNavPopup)}
+        src={user && user.picture ? user.picture : ""}
         alt="profile"
       />
+
+      <AvatarPopup isNavPopup={isNavPopup} />
     </NavBarHolder>
   );
 };

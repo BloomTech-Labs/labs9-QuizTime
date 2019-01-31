@@ -27,7 +27,7 @@ const Holder = styled.div`
 
 const Classes = () => (
   <Layout>
-    <Container mx={4}>
+    <Box mx={5} py={3}>
       <Holder>
         <AddClass />
       </Holder>
@@ -36,7 +36,7 @@ const Classes = () => (
           <Query query={ALL_CLASSES_QUERY}>
             {({ loading, error, data }) => {
               if (error) return <p>{error.message}</p>;
-              if (loading)
+              if (loading) {
                 return (
                   <ReactLoading
                     type="spin"
@@ -45,6 +45,7 @@ const Classes = () => (
                     width="100px"
                   />
                 );
+	      }
               if (data) {
                 return data.class.map(c => (
                   <ClassBox key={c.id} className={c} />
@@ -54,8 +55,7 @@ const Classes = () => (
           </Query>
         </Holder>
       </CardHolder>
-    </Container>
-  </Layout>
+ </Layout>
 );
 
 export default securePage(Classes);
