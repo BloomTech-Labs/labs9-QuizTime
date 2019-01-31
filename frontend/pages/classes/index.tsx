@@ -7,13 +7,13 @@ import ClassBox from "../../components/boxes/classBox/classBox";
 import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
-import { ALL_CLASSES_QUERY } from '../../queries';
-import { Container } from '../../components/design-system'; 
-
+import { ALL_CLASSES_QUERY } from "../../queries";
+import { Container } from "../../components/design-system";
+import ReactLoading from "react-loading";
 
 const CardHolder = styled.div`
   display: flex;
-  flexWrap: wrap;
+  flexwrap: wrap;
   justify-content: flex-start;
 `;
 
@@ -25,26 +25,35 @@ const Holder = styled.div`
   margin: 20px 0;
 `;
 
-
 const Classes = () => (
   <Layout>
     <Container mx={4}>
       <Holder>
-          <AddClass />
+        <AddClass />
       </Holder>
-    <CardHolder>
-      <Holder>
-        <Query query={ALL_CLASSES_QUERY}>
-          {({ loading, error, data }) => {
-            if (error) return <p>{error.message}</p>;
-            if (loading) return <p>...loading</p>;
-            if (data) {
-              return data.class.map(c => <ClassBox key={c.id} className={c} />);
-            }
-          }}
-        </Query>
-      </Holder>
-    </CardHolder>
+      <CardHolder>
+        <Holder>
+          <Query query={ALL_CLASSES_QUERY}>
+            {({ loading, error, data }) => {
+              if (error) return <p>{error.message}</p>;
+              if (loading)
+                return (
+                  <ReactLoading
+                    type="spin"
+                    color="lightgray"
+                    height="100px"
+                    width="100px"
+                  />
+                );
+              if (data) {
+                return data.class.map(c => (
+                  <ClassBox key={c.id} className={c} />
+                ));
+              }
+            }}
+          </Query>
+        </Holder>
+      </CardHolder>
     </Container>
   </Layout>
 );
