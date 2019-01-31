@@ -27,9 +27,6 @@ const ClassPage = ({ query: { id } }) => {
           if (data) {
             return (
               <>
-              <Flex
-                flexDirection= "column"
-              >
               <Box py={3}>
               <Flex
                 flexDirection = "row"
@@ -39,9 +36,9 @@ const ClassPage = ({ query: { id } }) => {
                 <Box p={5}>
                 <AddStudent class_id={id} />
                 </Box>
-                  <StudentHolder p={3} m={5} width="100%" height="auto">
+                  <StudentHolder p={3} m={4}>
                     {data.class[0].students.map(student => (
-                      <StudentBar m={4}
+                      <StudentBar m={2}
                         id={student.id}
                         key={student.id}
                         student={student}
@@ -50,11 +47,6 @@ const ClassPage = ({ query: { id } }) => {
                   </StudentHolder>
                   </Flex>
                   </Box>
-                  <Box width="100%">
-                    <Flex
-                      justifyContent="center"
-                      alignItems="center"
-                    >
                   <QuizBox>
                     {data.quiz
                       .filter(
@@ -74,9 +66,6 @@ const ClassPage = ({ query: { id } }) => {
                       <ClassQuizzes key={q.id} quiz={q.quiz} />
                     ))}
                   </QuizzesAvaliable>
-                  </Flex>
-                  </Box>
-                  </Flex>
               </>
             );
           }
