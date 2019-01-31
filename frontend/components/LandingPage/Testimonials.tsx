@@ -49,8 +49,16 @@ const Testimonials = (props) => {
                         ~ Mrs. Schaffer, Atlanta, GA
                     </LandingText>
                     </Box>
-                <Box m={3} p={3} width="550px">
-                    <TestimonialTeacherImage />
+                <Box m={3} p={3} width="400px"
+                 css={css`
+                 @media(max-width:763px){
+                     margin-right:0;
+                     padding-right:0;
+                 }
+                 `}
+                 
+                >
+                    <TestimonialTeacherImage/>
                 </Box>
             </FlexColumns>
             <FlexColumns>

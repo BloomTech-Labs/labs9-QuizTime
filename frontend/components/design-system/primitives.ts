@@ -127,8 +127,12 @@ export const HeaderText = props => (
     css={css`
       position: absolute;
       right: 260px;
-      @media(max-width:680px){
+      @media(max-width:763px){
         right: 200px;
+      }
+      @media(max-width:500px){
+        font-size:65px;
+        right:1px;
       }
     `}
     {...props}
@@ -150,6 +154,9 @@ export const HeaderInfoText = props => (
       @media(max-width:900px){
         right:10px;
         top:10px;
+      }
+      @media(max-width:763px){
+        visibility: hidden;
       }
     `}
     {...props}
@@ -213,7 +220,7 @@ export const InfoSectionWrapper = props =>(
   width={[1]}
   flexDirection="row"
   css={css`
-    @media(max-width:479px){
+    @media(max-width:500px){
       flex-direction: column;
     }
   `}
@@ -231,8 +238,9 @@ export const InfoSection = props => (
     css={css`
       height: auto;
       position:relative;
-      @media(max-width:680px){
-        
+      @media(max-width:500px){
+        margin-top:0px;
+        margin-bottom:0px
       }
     `}
     {...props}
@@ -266,7 +274,9 @@ export const InfoSectionRight = props => (
     css={css`
       height:auto;
       position:relative;
-      @media(max-width:680px){
+      @media(max-width:500px){
+        margin-top:0px;
+        margin-bottom:0px
       }
     `}
     {...props}
@@ -283,7 +293,10 @@ export const InfoBox = props => (
       @media(max-width: 1030px){
         margin-left:0;
         margin-right:0
-
+      }
+      @media(max-width: 500px){
+        margin-top:0px;
+        margin-bottom:0px
       }
     `}
     {...props}
@@ -301,6 +314,10 @@ export const InfoBoxTwo = props => (
         margin-left:0;
         margin-right:0
       }
+      @media(max-width: 500px){
+        margin-top:0px;
+        margin-bottom:0px
+      }
     `}
     {...props}
   />
@@ -316,6 +333,10 @@ export const InfoBoxThree = props => (
       @media(max-width: 1030px){
         margin-left:0
       }
+      @media(max-width: 500px){
+        margin-top:0px;
+        margin-bottom:0px
+      }
     `}
     {...props}
   />
@@ -329,8 +350,10 @@ export const InfoTextBox = props => (
     m={3}
     css={css`
       height: 200px;
-      @media(max-width: 767px){
-
+      @media(max-width: 500px){
+        margin-top:0px;
+        margin-bottom:0px;
+        height:250px
       }
     `}
 
@@ -340,7 +363,7 @@ export const InfoTextBox = props => (
 
 export const InfoText = props => (
   <T
-    width={[1,3/4,1/2]}
+    width={[5/6,3/4,1/2]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -352,10 +375,10 @@ export const InfoText = props => (
       @media(max-width:767px){
         line-height:30px;
         font-size:25px;
-        top:120px;
+        top:80px;
         right:40px;
       }
-      @media(max-width:479px){
+      @media(max-width:500px){
         line-height:35px;
         top:80px;
         left:15px;
@@ -367,7 +390,7 @@ export const InfoText = props => (
 
 export const InfoTextTwo = props => (
   <T
-    width={[1,1,7/8]}
+    width={[5/6,3/4,7/8]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -380,9 +403,9 @@ export const InfoTextTwo = props => (
         font-size:25px;
         line-height:30px;
         right:20px;
-        top:330px;
+        top:220px;
       }
-      @media(max-width:479px){
+      @media(max-width:500px){
         line-height:35px;
         top:-210px;
         left:10px
@@ -413,10 +436,10 @@ export const InfoTextThree = props => (
         bottom:70px;
         left:-320px;
       }
-      @media(max-width:479px){
+      @media(max-width:500px){
         line-height:35px;
-        bottom:380px;
-        left:40px;
+        bottom:330px;
+        left:60px;
       }
     `}
     {...props}
