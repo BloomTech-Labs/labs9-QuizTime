@@ -393,7 +393,7 @@ export const FullScreenContainer = props => (
 export const BoxHolder = props => (
   <F
     width="200px"
-    m={1}
+    m={3}
     justifyContent="space-around"
     alignItems="center"
     flexDirection="column"
@@ -401,7 +401,8 @@ export const BoxHolder = props => (
     css={{
       height: "200px",
       borderBottom: "10px solid red.1",
-      borderRadius: "2px"
+      borderRadius: "4px",
+      boxShadow: "0px 3px 15px rgba(0,0,0,0.2)",
     }}
     {...props}
   />
@@ -549,7 +550,10 @@ export const UpperCase = props => (
   />
 );
 
-export const Button = props => <Butt variant="primary" {...props} />;
+export const Button = props => <Butt 
+variant="primary" 
+css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"}}
+{...props} />;
 
 export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
 

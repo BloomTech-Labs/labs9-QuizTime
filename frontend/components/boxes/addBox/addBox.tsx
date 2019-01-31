@@ -13,6 +13,7 @@ const AddBoxHolder = styled(Box)`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin: 16px;
 `;
 const AddBtn = styled(Box)`
   width: 50px;
@@ -23,7 +24,7 @@ const AddBtn = styled(Box)`
   justify-content: center;
   align-items: center; 
   color: #f4f4f4;
-  font-size: 30px
+  font-size: 30px;
 `;
 
 const BoxText = props => <Text {...props} fontFamily="sans" color="#f4f4f4" fontSize="30px"/>;

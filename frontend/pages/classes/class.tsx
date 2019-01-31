@@ -7,7 +7,7 @@ import AddStudent from "../../components/forms/AddStudent";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
 import { ALL_STUDENTS_QUERY } from "../../queries";
-import { Box } from "@rebass/emotion";
+import { Box, Flex } from "@rebass/emotion";
 
 import {
   StudentHolder,
@@ -20,9 +20,6 @@ import {
 const ClassPage = ({ query: { id } }) => {
   return (
     <Layout>
-      <Box p={4}>
-        <AddStudent class_id={id} />
-      </Box>
       <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
@@ -30,16 +27,34 @@ const ClassPage = ({ query: { id } }) => {
           if (data) {
             return (
               <>
-                <SectionContainer>
-                  <StudentHolder>
+              <Flex
+                flexDirection= "column"
+              >
+              <Box py={3}>
+              <Flex
+                flexDirection = "row"
+                alignItems="center"
+                justifyContent="left"
+              >
+                <Box p={5}>
+                <AddStudent class_id={id} />
+                </Box>
+                  <StudentHolder p={3} m={5} width="100%" height="auto">
                     {data.class[0].students.map(student => (
-                      <StudentBar
+                      <StudentBar m={4}
                         id={student.id}
                         key={student.id}
                         student={student}
                       />
                     ))}
                   </StudentHolder>
+                  </Flex>
+                  </Box>
+                  <Box width="100%">
+                    <Flex
+                      justifyContent="center"
+                      alignItems="center"
+                    >
                   <QuizBox>
                     {data.quiz
                       .filter(
@@ -59,7 +74,9 @@ const ClassPage = ({ query: { id } }) => {
                       <ClassQuizzes key={q.id} quiz={q.quiz} />
                     ))}
                   </QuizzesAvaliable>
-                </SectionContainer>
+                  </Flex>
+                  </Box>
+                  </Flex>
               </>
             );
           }

@@ -41,7 +41,6 @@ class AddStudent extends Component {
       >
         {(insert_student, { error, loading, data }) => (
           <>
-            <HeadText>Add a New Student</HeadText>
             <Form
               onSubmit={async e => {
                 // Stop the form from submitting
