@@ -145,7 +145,7 @@ export const HeaderSection = props => (
     css={css`
       height: 250px;
       position:absolute;
-      left: 350px;
+      left: 330px;
       @media (max-width: 763px) {
         right: 200px;
       }
@@ -364,11 +364,12 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1, 1, 7 / 8]}
-    bg="blue.0"
+    width={[1, 1, 5 / 8]}
+    bg="blue.4"
     m={3}
     css={css`
       height: 250px;
+      opacity: 0.3;
       @media (max-width: 500px) {
         margin-top: 0px;
         margin-bottom: 0px;
