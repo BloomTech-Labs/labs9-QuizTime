@@ -11,7 +11,6 @@ class NavBar extends Component {
       isNavPopup: false,
     };
   }
-
   render() {
     const { user, isNavPopup } = this.state;
 
