@@ -147,10 +147,10 @@ export const HeaderSection = props => (
       position:absolute;
       left: 330px;
       @media (max-width: 763px) {
-        right: 400px;
+        left: 100px;
       }
       @media (max-width: 500px) {
-        left: 150px;
+        left: 20px;
       }
     `}
     {...props}
@@ -391,18 +391,17 @@ export const InfoText = props => (
       position: absolute;
       top: 50px;
       right: 60px;
+      line-height:1.5;
       @media (max-width: 900px) {
         top: 100px;
         right: 10px;
       }
       @media (max-width: 767px) {
-        line-height: 30px;
         font-size: 25px;
         top: 80px;
         right: 20px;
       }
       @media (max-width: 500px) {
-        line-height: 35px;
         top: 80px;
         left: 15px;
       }
@@ -422,19 +421,17 @@ export const InfoTextTwo = props => (
       position: absolute;
       top: 430px;
       right: 40px;
+      line-height:1.5;
       @media (max-width: 900px) {
-        line-height: 30px;
         top: 400px;
         right: 10px;
       }
       @media (max-width: 767px) {
         font-size: 25px;
-        line-height: 30px;
         right: 20px;
         top: 320px;
       }
       @media (max-width: 500px) {
-        line-height: 35px;
         top: -210px;
         left: 10px;
       }
@@ -454,18 +451,17 @@ export const InfoTextThree = props => (
       position: absolute;
       bottom: 50px;
       left: -450px;
+      line-height:1.5;
       @media (max-width: 900px) {
         bottom: 40px;
         left: -300px;
       }
       @media (max-width: 767px) {
-        line-height: 30px;
         font-size: 25px;
         bottom: 80px;
         left: -240px;
       }
       @media (max-width: 500px) {
-        line-height: 35px;
         bottom: 330px;
         left: 60px;
       }
