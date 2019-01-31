@@ -18,7 +18,7 @@ import {
 } from "styled-system";
 import styled from "@emotion/styled";
 import { isAbsolute } from "path";
-import { css } from '@emotion/core'
+import { css } from "@emotion/core";
 /*
 export const Text = system{
     is: "p",
@@ -39,7 +39,7 @@ export const GreenLine = props => (
   <B
     css={{
       borderLeft: "10px solid #70e89d",
-      height:"100"
+      height: "100"
     }}
     {...props}
   />
@@ -47,14 +47,13 @@ export const GreenLine = props => (
 
 export const BlueLine = props => (
   <B
-  width="100px"
+    width="100px"
     css={{
-      borderTop: "5px solid #323fcb",
+      borderTop: "5px solid #323fcb"
     }}
     {...props}
   />
 );
-
 
 export const LandingBar = props => (
   <F
@@ -209,7 +208,7 @@ export const InfoSection = props => (
     mb={3}
     css={{
       height: "auto",
-      position:"relative"
+      position: "relative"
     }}
     {...props}
   />
@@ -217,19 +216,18 @@ export const InfoSection = props => (
 
 export const FlexColumns = props => (
   <F
-  justifyContent="center"
-  flexDirection="row"
-  alignItems="top"
-  flexWrap="wrap"
-  mt={3}
-  mb={3}
-  css={{
-    height: "auto"
-  }}
-  {...props}
-/>
-
-)
+    justifyContent="center"
+    flexDirection="row"
+    alignItems="top"
+    flexWrap="wrap"
+    mt={3}
+    mb={3}
+    css={{
+      height: "auto"
+    }}
+    {...props}
+  />
+);
 
 export const InfoSectionRight = props => (
   <F
@@ -241,7 +239,7 @@ export const InfoSectionRight = props => (
     mb={3}
     css={{
       height: "auto",
-      position:"relative"
+      position: "relative"
     }}
     {...props}
   />
@@ -254,7 +252,7 @@ export const InfoBox = props => (
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 550px){
+      @media (max-width: 550px) {
         visibility: hidden;
       }
     `}
@@ -288,7 +286,7 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1,1,3/5]}
+    width={[1, 1, 3 / 5]}
     bg="blue.0"
     m={3}
     css={{
@@ -300,55 +298,55 @@ export const InfoTextBox = props => (
 
 export const InfoText = props => (
   <T
-    width={[5/6,5/6,1/2]}
+    width={[5 / 6, 5 / 6, 1 / 2]}
     fontFamily="sans"
-    fontSize={[3,3,5]}
+    fontSize={[3, 3, 5]}
     fontWeight={2}
     color="#2d2d2d"
     css={{
-      position:"absolute",
-      top:"80px",
-      right:"20px"
+      position: "absolute",
+      top: "80px",
+      right: "20px"
     }}
     {...props}
   />
-)
+);
 
 export const InfoTextTwo = props => (
   <T
-    width={[5/6]}
+    width={[5 / 6]}
     fontFamily="sans"
-    fontSize={[3,3,5]}
+    fontSize={[3, 3, 5]}
     fontWeight={2}
     color="#2d2d2d"
     css={{
-      position:"absolute",
-      top:"350px",
-      right:"40px"
+      position: "absolute",
+      top: "350px",
+      right: "40px"
     }}
     {...props}
   />
-)
+);
 
 export const InfoTextThree = props => (
   <T
-    width={[5/6]}
+    width={[5 / 6]}
     fontFamily="sans"
-    fontSize={[ 3,3,5]}
+    fontSize={[3, 3, 5]}
     fontWeight={2}
     color="#2d2d2d"
     css={{
-      position:"absolute",
-      bottom:"100px",
-      right: "50px",
+      position: "absolute",
+      bottom: "100px",
+      right: "50px"
     }}
     {...props}
   />
-)
+);
 
 export const SideBarHolder = props => (
   <F
-    width="150px"
+    width={[0, 1 / 3, 1 / 5]}
     py={4}
     bg="blue.1"
     flexDirection="column"
@@ -385,7 +383,6 @@ export const FullScreenContainer = props => (
     flexDirection="column"
     bg="#f2f2f2"
     width="100%"
-
     {...props}
   />
 );
@@ -551,7 +548,9 @@ export const UpperCase = props => (
 
 export const Button = props => <Butt variant="primary" {...props} />;
 
-export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
+export const ButtonLink = props => (
+  <Button css={{ cursor: "pointer" }} {...props} />
+);
 
 export const Avatar = props => (
   <F
@@ -638,12 +637,7 @@ export const StyledList = styled.ul`
   ${fontWeight}
 `;
 
-export const List = props => (
-  <StyledList
-    listStyle="none"
-    {...props}
-  />
-);
+export const List = props => <StyledList listStyle="none" {...props} />;
 
 export const StyledListItem = styled.li`
   ${space}
@@ -655,17 +649,23 @@ export const StyledListItem = styled.li`
 export const ListItem = props => (
   <StyledListItem
     textDecoration="none"
-    fontFamily = "sans"
-    fontWeight = {3} 
-    fontSize ={3} 
-    lineHeight = {1.5} 
+    fontFamily="sans"
+    fontWeight={3}
+    fontSize={3}
+    lineHeight={1.5}
     p={1.5}
     {...props}
   />
 );
 
 export const TextArea = props => (
-  <StyledTextArea width={[1]} fontSize={3} p={3} css={{ height: "200px" }} {...props} />
+  <StyledTextArea
+    width={[1]}
+    fontSize={3}
+    p={3}
+    css={{ height: "200px" }}
+    {...props}
+  />
 );
 
 //* IMAGE TAGS

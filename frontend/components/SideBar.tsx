@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { Box } from "@rebass/emotion";
-import { SideBarHolder } from "./design-system/primitives";
+import { SideBarHolder, UpperCase } from "./design-system/primitives";
 
 const BoxText = styled.a`
   font-family: "system-ui";
@@ -23,19 +23,10 @@ const SideBar: React.SFC = () => {
         <BoxText>QuizTime</BoxText>
       </Link>
       <Link href="/quizzes" prefetch>
-        <BoxText>quizzes</BoxText>
+        <UpperCase color="white">quizzes</UpperCase>
       </Link>
       <Link href="/classes" prefetch>
-        <BoxText>classes</BoxText>
-      </Link>
-      <Link href="/billing" prefetch>
-        <BoxText>billing</BoxText>
-      </Link>
-      <Link href="/settings" prefetch>
-        <BoxText>settings</BoxText>
-      </Link>
-      <Link href="/student?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtZWppYUBnbWFpbC5jb20iLCJxdWl6X2lkIjoiMTIiLCJzdHVkZW50X2lkIjoiNDUiLCJpYXQiOjE1NDg3MTQ4MjEsImV4cCI6MTU0ODk3NDAyMSwianRpIjoiMTIzNCJ9.GvICFpf2EZ4ODnKoHl_DuqwhjadyXfjPZ-HfB5v8Xls" prefetch>
-        <BoxText>student</BoxText>
+        <UpperCase color="white">classes</UpperCase>
       </Link>
     </SideBarHolder>
   );
