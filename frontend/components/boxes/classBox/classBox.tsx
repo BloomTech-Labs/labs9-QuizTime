@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import {BoxHolder, Emblem, BoxText} from "../../design-system/primitives";
+import {BoxHolder, Emblem, BoxText, UpperCase} from "../../design-system/primitives";
 
 // const BoxHolder = styled(Box)`
 //   border-bottom: 10px solid #ffe88c; 
@@ -38,19 +38,17 @@ import {BoxHolder, Emblem, BoxText} from "../../design-system/primitives";
 const ClassBox: React.SFC<{ className: object }> = ({className }) => {
   return (
     <>
-      <BoxHolder>
+    <Link href={`/classes/class?id=${className.id}`}>
+      <BoxHolder p={2}>
         {/* what we will want is for the title of the class and also the 
                 number of students in the class, the average grade of the class
                 and the number of quizzes the class has and will take */}
           <Emblem />
-          <Link href={`/classes/class?id=${className.id}`}>
-          <BoxText>{className.name}</BoxText>
-          </Link>
-          <BoxText>Students: </BoxText>
-          <BoxText>Average: </BoxText>
-          <BoxText>Quizzes: </BoxText>
-
+          <UpperCase fontSize={3}>{className.name}</UpperCase>
+          <BoxText>Students: 14</BoxText>
+          <BoxText>Quizzes: 2</BoxText>
       </BoxHolder>
+      </Link>
     </>
   );
 };

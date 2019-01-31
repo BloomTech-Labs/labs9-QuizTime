@@ -348,8 +348,9 @@ export const InfoTextThree = props => (
 
 export const SideBarHolder = props => (
   <F
-    width="150px"
+    width="160px"
     py={4}
+    px={3}
     bg="blue.1"
     flexDirection="column"
     fontSize={4}
@@ -393,7 +394,7 @@ export const FullScreenContainer = props => (
 export const BoxHolder = props => (
   <F
     width="200px"
-    m={1}
+    m={3}
     justifyContent="space-around"
     alignItems="center"
     flexDirection="column"
@@ -401,7 +402,8 @@ export const BoxHolder = props => (
     css={{
       height: "200px",
       borderBottom: "10px solid red.1",
-      borderRadius: "2px"
+      borderRadius: "4px",
+      boxShadow: "0px 3px 15px rgba(0,0,0,0.2)",
     }}
     {...props}
   />
@@ -409,12 +411,12 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    m={1}
+    my={3}
     width={[1]}
     flexDirection="row"
     justifyContent="space-between"
     alignItems="center"
-    p={3}
+    p={2}
     bg="white"
     {...props}
   />
@@ -549,7 +551,9 @@ export const UpperCase = props => (
   />
 );
 
-export const Button = props => <Butt variant="primary" {...props} />;
+export const Button = props => <Butt 
+variant="primary" 
+{...props} />;
 
 export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
 
@@ -601,7 +605,7 @@ export const Input = props => (
     my={3}
     fontSize={4}
     border="none"
-    borderBottom="1px solid black"
+    border="1px solid white"
     css={{ display: "block" }}
     {...props}
   />
@@ -611,9 +615,9 @@ export const FormInput = props => (
   <StyledInput
     my={3}
     p={3}
-    fontSize={4}
-    border="none"
-    borderBottom="1px solid black"
+    fontSize={3}
+    border="1px solid white"
+    borderRadius="6px"
     css={{ display: "block" }}
     {...props}
   />

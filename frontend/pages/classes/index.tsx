@@ -28,9 +28,11 @@ const Holder = styled.div`
 
 const Classes = () => (
   <Layout>
-    <Container mx={4}>
+    <Box mx={5} py={3}>
       <Holder>
+        <Box mx={2}>
           <AddClass />
+        </Box>
       </Holder>
     <CardHolder>
       <Holder>
@@ -45,7 +47,7 @@ const Classes = () => (
         </Query>
       </Holder>
     </CardHolder>
-    </Container>
+    </Box>
   </Layout>
 );
 
