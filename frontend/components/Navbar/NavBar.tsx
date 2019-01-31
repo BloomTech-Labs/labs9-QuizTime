@@ -3,29 +3,6 @@ import { NavBarHolder, AvatarImg } from '../design-system/primitives';
 import { getUserFromLocalCookie } from '../../utils/auth';
 import AvatarPopup from './AvatarPopup'
 
-<<<<<<< HEAD
-const user = getUserFromLocalCookie();
-const NavBar: React.SFC = () => {
-  return (
-    <NavBarHolder>
-      <Button
-        onClick={event => {
-          event.preventDefault();
-          unsetToken();
-          logout();
-        }}
-        variant='primary'
-      >
-        Sign Out
-      </Button>
-      <AvatarImg
-        src={user && user.picture ? user.picture : null}
-        alt='profile'
-      />
-    </NavBarHolder>
-  );
-};
-=======
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +11,6 @@ class NavBar extends Component {
       isNavPopup: false,
     };
   }
-
   render() {
     const { user, isNavPopup } = this.state;
 
@@ -52,5 +28,4 @@ class NavBar extends Component {
   }
 }
 
->>>>>>> 7d79bc3de4951e34a8119cebfa5fbc1f2995083a
 export default NavBar;
