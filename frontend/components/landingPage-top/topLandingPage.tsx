@@ -53,7 +53,6 @@ const TopLanding = () => {
           <HeaderSection
           css={css`
           @media(max-width:763px){
-              position:absolute;
               right:200px;
             }
             @media(max-width:500px){
