@@ -411,12 +411,12 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    m={1}
+    my={3}
     width={[1]}
     flexDirection="row"
     justifyContent="space-between"
     alignItems="center"
-    p={3}
+    p={2}
     bg="white"
     {...props}
   />
@@ -553,7 +553,6 @@ export const UpperCase = props => (
 
 export const Button = props => <Butt 
 variant="primary" 
-css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"}}
 {...props} />;
 
 export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
@@ -606,7 +605,7 @@ export const Input = props => (
     my={3}
     fontSize={4}
     border="none"
-    borderBottom="1px solid black"
+    border="1px solid white"
     css={{ display: "block" }}
     {...props}
   />
@@ -616,9 +615,9 @@ export const FormInput = props => (
   <StyledInput
     my={3}
     p={3}
-    fontSize={4}
-    border="none"
-    borderBottom="1px solid black"
+    fontSize={3}
+    border="1px solid white"
+    borderRadius="6px"
     css={{ display: "block" }}
     {...props}
   />
