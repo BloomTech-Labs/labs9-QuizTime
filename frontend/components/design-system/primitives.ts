@@ -39,7 +39,7 @@ export const GreenLine = props => (
   <B
     css={{
       borderLeft: "10px solid #70e89d",
-      height:"100"
+      height:"100px"
     }}
     {...props}
   />
@@ -84,6 +84,20 @@ export const LandingBarItems = props => (
     {...props}
   />
 );
+
+export const GetStartedBtn = props => (
+  <F
+  justifyContent="center"
+  alignItems="center"
+  width="150px"
+  bg="green.0"
+  color="blue.1"
+  css={{
+    height:"25px",
+    border:"1px solid white"
+  }}
+  />
+)
 export const HeaderImage = props => (
   <I
     width="500px"
@@ -106,35 +120,37 @@ export const CallToActionSection = props => (
   />
 );
 export const HeaderObj = props => (
-  <B
+  <F
+    justifyContent="center"
     width="100vw"
     bg="blue.1"
     css={{
-      height: "500px",
-      clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)"
+      height: "600px",
+      clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)",
+      position:"relative"
     }}
     {...props}
   />
 );
+export const HeaderSection = props => (
+  <F
+  width="auto"
+  flexDirection="column"
+  alignItems="center"
+  m={3}
+  css={{
+    height:"250px",
+  }}
+  {...props}
+  />
+)
 export const HeaderText = props => (
   <T
-    p={4}
+    p={3}
     fontSize={7}
     fontWeight={0}
     fontFamily="sans"
     color="white"
-    m={5}
-    css={css`
-      position: absolute;
-      right: 260px;
-      @media(max-width:763px){
-        right: 200px;
-      }
-      @media(max-width:500px){
-        font-size:65px;
-        right:1px;
-      }
-    `}
     {...props}
   />
 );
@@ -148,13 +164,6 @@ export const HeaderInfoText = props => (
     color="white"
     m={5}
     css={css`
-      position: absolute;
-      right: 100px;
-      top: 150px;
-      @media(max-width:900px){
-        right:10px;
-        top:10px;
-      }
       @media(max-width:763px){
         visibility: hidden;
       }
@@ -345,11 +354,11 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1,1,3/4]}
+    width={[1,1,7/8]}
     bg="blue.0"
     m={3}
     css={css`
-      height: 200px;
+      height: 250px;
       @media(max-width: 500px){
         margin-top:0px;
         margin-bottom:0px;
@@ -363,20 +372,24 @@ export const InfoTextBox = props => (
 
 export const InfoText = props => (
   <T
-    width={[5/6,3/4,1/2]}
+    width={[5/6,3/4,3/5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
       position:absolute;
-      top:70px;
-      right:20px;
+      top:50px;
+      right:60px;
+      @media(max-width:900px){
+        top:100px;
+        right:10px;
+      }
       @media(max-width:767px){
         line-height:30px;
         font-size:25px;
         top:80px;
-        right:40px;
+        right:20px;
       }
       @media(max-width:500px){
         line-height:35px;
@@ -397,13 +410,18 @@ export const InfoTextTwo = props => (
     color="#2d2d2d"
     css={css`
       position:absolute;
-      top:400px;
+      top:430px;
       right:40px;
+      @media(max-width:900px){
+        line-height:30px;
+        top:400px;
+        right:10px;
+      }
       @media(max-width:767px){
         font-size:25px;
         line-height:30px;
         right:20px;
-        top:220px;
+        top:320px;
       }
       @media(max-width:500px){
         line-height:35px;
@@ -417,24 +435,24 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[5/6,1,4/6]}
+    width={[5/6,4/6]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
       position:absolute;
-      bottom:70px;
-      left: -500px;
-      @media(max-width:1070px){
+      bottom:50px;
+      left: -450px;
+      @media(max-width:900px){
         bottom:40px;
-        left:-385px;
+        left:-300px;
       }
       @media(max-width:767px){
         line-height:30px;
         font-size:25px;
-        bottom:70px;
-        left:-320px;
+        bottom:80px;
+        left:-240px;
       }
       @media(max-width:500px){
         line-height:35px;
