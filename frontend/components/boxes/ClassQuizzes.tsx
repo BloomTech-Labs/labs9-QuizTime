@@ -1,8 +1,11 @@
-import {QuizBar, Text} from "../design-system/primitives"; 
+import {QuizBar, Text} from "../design-system/primitives";
+import {Box, Flex} from "@rebass/emotion";
 
-const ClassQuizzes = ({quizzes}) => (
+const ClassQuizzes = ({quiz}) => (
     <>
-    {quizzes.map(quiz => <Text>{quiz.quiz_name}</Text>)}
+      <Box>
+        <Text my={2}>{quiz.name}</Text>
+      </Box>
     </>
 )
 export default ClassQuizzes

@@ -4,7 +4,7 @@ import SideBar from "./SideBar/SideBar";
 import Meta from "../components/Meta";
 
 const Page = styled.div`
-  background: #f4f4f4;
+  background: #edeeef;
   width: 100%;
   min-height: 100vh;
   display: flex;
