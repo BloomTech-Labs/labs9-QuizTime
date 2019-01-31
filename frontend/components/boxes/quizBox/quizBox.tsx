@@ -37,6 +37,10 @@ import { BoxHolder, Emblem, BoxText } from "../../design-system/primitives";
 // 	padding: 15px;
 // `;
 
+const ATag = styled.a`
+  text-decoration: none;
+`;
+
 //to get the quizzes to map through all you need is the
 //quiz prop from the app page.
 const QuizBox: React.SFC<{ quiz: object }> = ({ quiz }) => {
@@ -45,9 +49,9 @@ const QuizBox: React.SFC<{ quiz: object }> = ({ quiz }) => {
       <BoxHolder>
         <Emblem />
         <Link href={`/quizzes/quiz?title=${quiz.id}`}>
-          <a>
+          <ATag>
             <BoxText>{quiz.name}</BoxText>
-          </a>
+          </ATag>
         </Link>
       </BoxHolder>
     </>

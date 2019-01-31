@@ -28,17 +28,18 @@ const Holder = styled.div`
   padding: 20px;
 `;
 
-const ATag = styled.div`
+const ATag = styled.a`
   text-decoration: none;
 `;
+
 const Quizzes = () => (
   <Layout>
     <CardHolder>
       <Holder>
         <Link href="/quizzes/add-quiz">
-          <a>
+          <ATag>
             <AddBox />
-          </a>
+          </ATag>
         </Link>
         <Query query={ALL_QUIZZES_QUERY}>
           {({ loading, error, data }) => {
