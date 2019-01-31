@@ -18,7 +18,7 @@ import {
 } from "styled-system";
 import styled from "@emotion/styled";
 import { isAbsolute } from "path";
-import { css } from '@emotion/core'
+import { css } from "@emotion/core";
 /*
 export const Text = system{
     is: "p",
@@ -32,14 +32,19 @@ export const LandingText = props => (
 );
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
-  <F justifyContent="flex-end" alignItems="center" bg="green.1" {...props} />
+  <F
+    justifyContent="flex-end"
+    alignItems="center"
+    bg={["blue.1", "green.1", "green.1"]}
+    {...props}
+  />
 );
 
 export const GreenLine = props => (
   <B
     css={{
       borderLeft: "10px solid #70e89d",
-      height:"100px"
+      height: "100px"
     }}
     {...props}
   />
@@ -47,14 +52,13 @@ export const GreenLine = props => (
 
 export const BlueLine = props => (
   <B
-  width="100px"
+    width="100px"
     css={{
-      borderTop: "5px solid #323fcb",
+      borderTop: "5px solid #323fcb"
     }}
     {...props}
   />
 );
-
 
 export const LandingBar = props => (
   <F
@@ -78,7 +82,7 @@ export const LandingBarItems = props => (
       cursor: "pointer",
       transition: "color .5s ease-out",
       "&:hover": {
-        color:"#70e89d"
+        color: "#70e89d"
       }
     }}
     {...props}
@@ -87,17 +91,17 @@ export const LandingBarItems = props => (
 
 export const GetStartedBtn = props => (
   <F
-  justifyContent="center"
-  alignItems="center"
-  width="150px"
-  bg="green.0"
-  color="blue.1"
-  css={{
-    height:"25px",
-    border:"1px solid white"
-  }}
+    justifyContent="center"
+    alignItems="center"
+    width="150px"
+    bg="green.0"
+    color="blue.1"
+    css={{
+      height: "25px",
+      border: "1px solid white"
+    }}
   />
-)
+);
 export const HeaderImage = props => (
   <I
     width="500px"
@@ -127,30 +131,30 @@ export const HeaderObj = props => (
     css={{
       height: "600px",
       clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)",
-      position:"relative"
+      position: "relative"
     }}
     {...props}
   />
 );
 export const HeaderSection = props => (
   <F
-  width="auto"
-  flexDirection="column"
-  alignItems="center"
-  m={3}
-  css={css`
-      height:250px;
-  @media(max-width:763px){
-      position:absolute;
-      right:200px;
-    }
-    @media(max-width:500px){
-      right:50px;
-    }
-  `}
-  {...props}
+    width="auto"
+    flexDirection="column"
+    alignItems="center"
+    m={3}
+    css={css`
+      height: 250px;
+      @media (max-width: 763px) {
+        position: absolute;
+        right: 200px;
+      }
+      @media (max-width: 500px) {
+        right: 50px;
+      }
+    `}
+    {...props}
   />
-)
+);
 export const HeaderText = props => (
   <T
     p={3}
@@ -163,7 +167,7 @@ export const HeaderText = props => (
 );
 export const HeaderInfoText = props => (
   <T
-    width={1, 1, 1 / 3}
+    width={[1, 1, 1 / 3]}
     p={3}
     fontSize={5}
     fontWeight={1}
@@ -171,7 +175,7 @@ export const HeaderInfoText = props => (
     color="white"
     m={5}
     css={css`
-      @media(max-width:763px){
+      @media (max-width: 763px) {
         visibility: hidden;
       }
     `}
@@ -231,21 +235,21 @@ export const TestimonialTeacherImage = props => (
   />
 );
 
-export const InfoSectionWrapper = props =>(
+export const InfoSectionWrapper = props => (
   <F
-  width={[1]}
-  flexDirection="row"
-  css={css`
-    @media(max-width:500px){
-      flex-direction: column;
-    }
-  `}
-  {...props}
+    width={[1]}
+    flexDirection="row"
+    css={css`
+      @media (max-width: 500px) {
+        flex-direction: column;
+      }
+    `}
+    {...props}
   />
 );
 export const InfoSection = props => (
   <F
-    width={[1,1,1 / 2]}
+    width={[1, 1, 1 / 2]}
     justifyContent="center"
     flexDirection="column"
     alignItems="flex-end"
@@ -253,10 +257,10 @@ export const InfoSection = props => (
     mb={3}
     css={css`
       height: auto;
-      position:relative;
-      @media(max-width:500px){
-        margin-top:0px;
-        margin-bottom:0px
+      position: relative;
+      @media (max-width: 500px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
       }
     `}
     {...props}
@@ -265,34 +269,33 @@ export const InfoSection = props => (
 
 export const FlexColumns = props => (
   <F
-  justifyContent="center"
-  flexDirection="row"
-  alignItems="top"
-  flexWrap="wrap"
-  mt={3}
-  mb={3}
-  css={{
-    height:"auto",
-  }}
-  {...props}
-/>
-
-)
+    justifyContent="center"
+    flexDirection="row"
+    alignItems="top"
+    flexWrap="wrap"
+    mt={3}
+    mb={3}
+    css={{
+      height: "auto"
+    }}
+    {...props}
+  />
+);
 
 export const InfoSectionRight = props => (
   <F
-    width={[1,1,1 / 2]}
+    width={[1, 1, 1 / 2]}
     justifyContent="center"
     flexDirection="column"
     alignItems="flex-start"
     mt={3}
     mb={3}
     css={css`
-      height:auto;
-      position:relative;
-      @media(max-width:500px){
-        margin-top:0px;
-        margin-bottom:0px
+      height: auto;
+      position: relative;
+      @media (max-width: 500px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
       }
     `}
     {...props}
@@ -301,11 +304,13 @@ export const InfoSectionRight = props => (
 
 export const InfoBox = props => (
   <I
-    width={[1,1,500]}
+    width={[1, 1, 500]}
     src="https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
     m={3}
     css={css`
       filter: grayscale(100%);
+      @media (max-width: 550px) {
+        visibility: hidden;
       @media(max-width: 1030px){
         margin-left:0;
         margin-right:0
@@ -321,18 +326,18 @@ export const InfoBox = props => (
 
 export const InfoBoxTwo = props => (
   <I
-    width={[1,1,500]}
+    width={[1, 1, 500]}
     src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 1030px){
-        margin-left:0;
-        margin-right:0
+      @media (max-width: 1030px) {
+        margin-left: 0;
+        margin-right: 0;
       }
-      @media(max-width: 500px){
-        margin-top:0px;
-        margin-bottom:0px
+      @media (max-width: 500px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
       }
     `}
     {...props}
@@ -341,139 +346,137 @@ export const InfoBoxTwo = props => (
 
 export const InfoBoxThree = props => (
   <I
-    width={[1,1,500]}
+    width={[1, 1, 500]}
     src="https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 1030px){
-        margin-left:0
+      @media (max-width: 1030px) {
+        margin-left: 0;
       }
-      @media(max-width: 500px){
-        margin-top:0px;
-        margin-bottom:0px
+      @media (max-width: 500px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
       }
     `}
     {...props}
   />
 );
 
-
 export const InfoTextBox = props => (
   <B
-    width={[1,1,7/8]}
+    width={[1, 1, 7 / 8]}
     bg="blue.0"
     m={3}
     css={css`
       height: 250px;
-      @media(max-width: 500px){
-        margin-top:0px;
-        margin-bottom:0px;
-        height:250px
+      @media (max-width: 500px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 250px;
       }
     `}
-
     {...props}
   />
 );
 
 export const InfoText = props => (
   <T
-    width={[5/6,3/4,3/5]}
+    width={[5 / 6, 3 / 4, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
-      position:absolute;
-      top:50px;
-      right:60px;
-      @media(max-width:900px){
-        top:100px;
-        right:10px;
+      position: absolute;
+      top: 50px;
+      right: 60px;
+      @media (max-width: 900px) {
+        top: 100px;
+        right: 10px;
       }
-      @media(max-width:767px){
-        line-height:30px;
-        font-size:25px;
-        top:80px;
-        right:20px;
+      @media (max-width: 767px) {
+        line-height: 30px;
+        font-size: 25px;
+        top: 80px;
+        right: 20px;
       }
-      @media(max-width:500px){
-        line-height:35px;
-        top:80px;
-        left:15px;
+      @media (max-width: 500px) {
+        line-height: 35px;
+        top: 80px;
+        left: 15px;
       }
     `}
     {...props}
   />
-)
+);
 
 export const InfoTextTwo = props => (
   <T
-    width={[5/6,3/4,7/8]}
+    width={[5 / 6, 3 / 4, 7 / 8]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
-      position:absolute;
-      top:430px;
-      right:40px;
-      @media(max-width:900px){
-        line-height:30px;
-        top:400px;
-        right:10px;
+      position: absolute;
+      top: 430px;
+      right: 40px;
+      @media (max-width: 900px) {
+        line-height: 30px;
+        top: 400px;
+        right: 10px;
       }
-      @media(max-width:767px){
-        font-size:25px;
-        line-height:30px;
-        right:20px;
-        top:320px;
+      @media (max-width: 767px) {
+        font-size: 25px;
+        line-height: 30px;
+        right: 20px;
+        top: 320px;
       }
-      @media(max-width:500px){
-        line-height:35px;
-        top:-210px;
-        left:10px
+      @media (max-width: 500px) {
+        line-height: 35px;
+        top: -210px;
+        left: 10px;
       }
     `}
     {...props}
   />
-)
+);
 
 export const InfoTextThree = props => (
   <T
-    width={[5/6,4/6]}
+    width={[5 / 6, 4 / 6]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
-      position:absolute;
-      bottom:50px;
+      position: absolute;
+      bottom: 50px;
       left: -450px;
-      @media(max-width:900px){
-        bottom:40px;
-        left:-300px;
+      @media (max-width: 900px) {
+        bottom: 40px;
+        left: -300px;
       }
-      @media(max-width:767px){
-        line-height:30px;
-        font-size:25px;
-        bottom:80px;
-        left:-240px;
+      @media (max-width: 767px) {
+        line-height: 30px;
+        font-size: 25px;
+        bottom: 80px;
+        left: -240px;
       }
-      @media(max-width:500px){
-        line-height:35px;
-        bottom:330px;
-        left:60px;
+      @media (max-width: 500px) {
+        line-height: 35px;
+        bottom: 330px;
+        left: 60px;
       }
     `}
     {...props}
   />
-)
+);
 
 export const SideBarHolder = props => (
   <F
-    width="160px"
+    width={[0, 1 / 3, 1 / 5]}
     py={4}
     px={3}
     bg="blue.1"
@@ -511,7 +514,6 @@ export const FullScreenContainer = props => (
     flexDirection="column"
     bg="#f2f2f2"
     width="100%"
-
     {...props}
   />
 );
@@ -528,7 +530,7 @@ export const BoxHolder = props => (
       height: "200px",
       borderBottom: "10px solid red.1",
       borderRadius: "4px",
-      boxShadow: "0px 3px 15px rgba(0,0,0,0.2)",
+      boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"
     }}
     {...props}
   />
@@ -676,11 +678,11 @@ export const UpperCase = props => (
   />
 );
 
-export const Button = props => <Butt 
-variant="primary" 
-{...props} />;
+export const Button = props => <Butt variant="primary" {...props} />;
 
-export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
+export const ButtonLink = props => (
+  <Button css={{ cursor: "pointer" }} {...props} />
+);
 
 export const Avatar = props => (
   <F
@@ -729,9 +731,19 @@ export const Input = props => (
   <StyledInput
     my={3}
     fontSize={4}
-    border="none"
-    border="1px solid white"
-    css={{ display: "block" }}
+    border="1px solid #dbdbdb"
+    css={{
+      borderRadius: "3px",
+      display: "block",
+      height: "3em",
+      lineHeight: "1.5",
+      padding: ".625em",
+      boxShadow: "inset 0 1px 2px rgba(10, 10, 10, .1)",
+      "&:active": {
+        borderColor: "#323fcb",
+        boxShadow: "0 0 0 0.125em rgba(65, 185, 19, .25)"
+      }
+    }}
     {...props}
   />
 );
@@ -767,12 +779,7 @@ export const StyledList = styled.ul`
   ${fontWeight}
 `;
 
-export const List = props => (
-  <StyledList
-    listStyle="none"
-    {...props}
-  />
-);
+export const List = props => <StyledList listStyle="none" {...props} />;
 
 export const StyledListItem = styled.li`
   ${space}
@@ -784,17 +791,23 @@ export const StyledListItem = styled.li`
 export const ListItem = props => (
   <StyledListItem
     textDecoration="none"
-    fontFamily = "sans"
-    fontWeight = {3} 
-    fontSize ={3} 
-    lineHeight = {1.5} 
+    fontFamily="sans"
+    fontWeight={3}
+    fontSize={3}
+    lineHeight={1.5}
     p={1.5}
     {...props}
   />
 );
 
 export const TextArea = props => (
-  <StyledTextArea width={[1]} fontSize={3} p={3} css={{ height: "200px" }} {...props} />
+  <StyledTextArea
+    width={[1]}
+    fontSize={3}
+    p={3}
+    css={{ height: "200px" }}
+    {...props}
+  />
 );
 
 //* IMAGE TAGS
