@@ -490,6 +490,11 @@ const StyledText = styled.a`
   ${fontSize}
 `;
 
+export const StudentViewNav = props => (
+  <F  
+    justifyContent="flex-end" {...props} />
+);
+
 export const BoxText = props => (
   <T
     StyledText
@@ -729,10 +734,10 @@ export const Form = props => <StyledForm {...props} />;
 
 export const Input = props => (
   <StyledInput
-    my={3}
     fontSize={4}
     border="1px solid #dbdbdb"
     css={{
+      fontSize: "16px",
       borderRadius: "3px",
       display: "block",
       height: "3em",

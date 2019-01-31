@@ -3,7 +3,6 @@ import Layout from "../../components/Layout";
 
 const AddQuiz = props => (
   <Layout>
-    <h1>add-quiz</h1>
     <AddQuizForm />
   </Layout>
 );
