@@ -158,7 +158,7 @@ export const HeaderInfoText = props => (
   <T
     width={1, 1, 1 / 3}
     p={3}
-    fontSize={4}
+    fontSize={5}
     fontWeight={1}
     fontFamily="sans"
     color="white"

@@ -38,7 +38,7 @@ const TopLanding = () => {
             css={css`
               width: 100px;
               position: absolute;
-              top: 120px;
+              top: 200px;
               left: 250px;
               border-bottom: 10px solid #70e89d;
               @media(max-width:900px){
