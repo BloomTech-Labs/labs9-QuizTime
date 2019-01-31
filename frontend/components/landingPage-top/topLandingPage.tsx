@@ -50,7 +50,17 @@ const TopLanding = () => {
             "Quickly assess understanding of content, while giving each student
             a unique, adaptive learning experience.."
           </HeaderInfoText>
-          <HeaderSection>
+          <HeaderSection
+          css={css`
+          @media(max-width:763px){
+              position:absolute;
+              right:200px;
+            }
+            @media(max-width:500px){
+              right:50px;
+            }
+          `}
+          >
             <HeaderText>QuizTime</HeaderText>
             <HeaderText
               fontSize={5}
