@@ -93,6 +93,12 @@ const GetStarted = props => {
               `}
             >
               Get unlimited quizzes for a low monthly fee of $9.95.
+              <Box css={{
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  boxShadow: '0px 5px 20px rgba(0,0,0,0.50)'
+                }
+              }}>
               <HeaderText
                 fontSize={5}
                 onClick={authorize}
@@ -111,6 +117,7 @@ const GetStarted = props => {
               >
                 Get Started
               </HeaderText>
+              </Box>
             </LandingText>
           </Box>
         </FlexColumns>
