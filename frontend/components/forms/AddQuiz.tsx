@@ -8,6 +8,7 @@ import {
   Button,
   Label,
   Text,
+  UpperCase,
   TextArea,
   Container
 } from "../design-system";
@@ -278,7 +279,7 @@ function AddQuiz() {
     <Mutation mutation={INSERT_QUIZ}>
       {(insert_quiz, { error, loading, data }) => (
         <Box mx={5} my={4}>
-        <Box p={5} css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"}}>
+        <Box p={5} css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)", background: "white"}}>
           <Form
             onSubmit={async e => {
               // Stop the form from submitting
@@ -288,8 +289,14 @@ function AddQuiz() {
               console.log(res);
             }}
           >
+          <Flex
+            justifyContent="space-between"
+            flexWrap="wrap"
+          >
+            <Box my={4}>
             <Label htmlFor="name">
               Add a Quiz 
+              <Box py={3}>
               <Input
                 type="text"
                 id="name"
@@ -299,10 +306,24 @@ function AddQuiz() {
                 value={name}
                 onChange={handleNameChange}
               />
+              </Box>
             </Label>
+            </Box>
+              <Box p={4} width={[3/4]}>
+                <UpperCase fontSize={3} fontWeight={3} py={2}>Creating Questions</UpperCase>
+                <Text lineHeight={1.5} py={2} fontSize={2}>Use "Major Questions" to assess overall student understanding of a concept.</Text>
+                <Text lineHeight = {1.5} py={2} fontSize={2}>Use "Minor questions" to break down the concept into smaller pieces (optional).</Text>
+                  <Flex
+                    justifyContent="flex-end"
+                  >
+                  <Button mx={6} my={2} width="100px">Example</Button>
+                  </Flex>
+              </Box>
+            </Flex>  
 
             <Label htmlFor="desc">
               Description
+              <Box py={3}> 
               <TextArea
                 type="text"
                 id="desc"
@@ -312,8 +333,9 @@ function AddQuiz() {
                 onChange={handleDescriptionChange}
                 css={{ height: "100px" }}
               />
+               </Box>
             </Label>
-
+           
             {majorQuestions.map(q => (
               <Reveal effectIn="fadeInClear" effectOut="fadeOutClear">
                 <Box key={q.id} my={4}>
