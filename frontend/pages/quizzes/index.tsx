@@ -17,16 +17,20 @@ const ALL_QUIZZES_QUERY = gql`
 `;
 const CardHolder = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 const Holder = styled.div`
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
 `;
 
+const ATag = styled.div`
+  text-decoration: none;
+`;
 const Quizzes = () => (
   <Layout>
     <CardHolder>

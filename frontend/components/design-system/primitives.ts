@@ -473,9 +473,12 @@ export const InfoTextThree = props => (
 
 export const SideBarHolder = props => (
   <F
-    width="100px"
+    width="160px"
+    py={4}
+    px={3}
     bg="blue.1"
     flexDirection="column"
+    fontSize={4}
     css={{ minHeight: "100vh" }}
     {...props}
   />
@@ -516,7 +519,7 @@ export const FullScreenContainer = props => (
 export const BoxHolder = props => (
   <F
     width="200px"
-    m={1}
+    m={3}
     justifyContent="space-around"
     alignItems="center"
     flexDirection="column"
@@ -524,7 +527,8 @@ export const BoxHolder = props => (
     css={{
       height: "200px",
       borderBottom: "10px solid red.1",
-      borderRadius: "2px"
+      borderRadius: "4px",
+      boxShadow: "0px 3px 15px rgba(0,0,0,0.2)",
     }}
     {...props}
   />
@@ -532,12 +536,12 @@ export const BoxHolder = props => (
 
 export const StudentElement = props => (
   <F
-    m={1}
+    my={3}
     width={[1]}
     flexDirection="row"
     justifyContent="space-between"
     alignItems="center"
-    p={3}
+    p={2}
     bg="white"
     {...props}
   />
@@ -651,6 +655,17 @@ export const BoldText = props => (
 
 export const BillingText = props => <BoldText m={3} fontSize={3} {...props} />;
 
+export const HeadText = props => (
+  <T
+    fontFamily="sans"
+    py={3}
+    fontWeight={2}
+    fontSize={4}
+    css={{ textTransform: "uppercase" }}
+    {...props}
+  />
+);
+
 export const UpperCase = props => (
   <T
     fontSize={1}
@@ -661,7 +676,9 @@ export const UpperCase = props => (
   />
 );
 
-export const Button = props => <Butt variant="primary" {...props} />;
+export const Button = props => <Butt 
+variant="primary" 
+{...props} />;
 
 export const ButtonLink = props => <Button css={{cursor: "pointer"}} {...props}/>;
 
@@ -706,14 +723,26 @@ export const StyledLabel = styled.label`
   ${fontSize}
   ${fontWeight}
 `;
-export const Form = props => <StyledForm width="80%" m="auto" {...props} />;
+export const Form = props => <StyledForm {...props} />;
 
 export const Input = props => (
   <StyledInput
-    p={2}
-    my={2}
+    my={3}
+    fontSize={4}
     border="none"
-    borderBottom="1px solid red"
+    border="1px solid white"
+    css={{ display: "block" }}
+    {...props}
+  />
+);
+
+export const FormInput = props => (
+  <StyledInput
+    my={3}
+    p={3}
+    fontSize={3}
+    border="1px solid white"
+    borderRadius="6px"
     css={{ display: "block" }}
     {...props}
   />
@@ -722,8 +751,9 @@ export const Input = props => (
 export const Label = props => (
   <StyledLabel
     fontFamily="sans"
+    py={3}
     fontWeight={6}
-    fontSize={0}
+    fontSize={3}
     css={{ textTransform: "uppercase" }}
     {...props}
   />
@@ -764,7 +794,7 @@ export const ListItem = props => (
 );
 
 export const TextArea = props => (
-  <StyledTextArea width={1} css={{ height: "200px" }} {...props} />
+  <StyledTextArea width={[1]} fontSize={3} p={3} css={{ height: "200px" }} {...props} />
 );
 
 //* IMAGE TAGS
