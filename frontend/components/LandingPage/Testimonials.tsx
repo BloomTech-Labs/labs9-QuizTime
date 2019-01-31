@@ -13,6 +13,7 @@ import {
   InfoTextBox,
   LrgText,
   HeaderInfoText,
+  GreenLine,
   FlexColumns,
   LandingText,
   TestimonialStudentImage,
@@ -59,6 +60,7 @@ const Testimonials = props => {
             p={3}
             width="500px"
             css={css`
+            border-bottom: 5px solid #70e89d;
               @media (max-width: 763px) {
                 margin-right: 0;
                 padding-right: 0;
@@ -70,7 +72,14 @@ const Testimonials = props => {
           </Box>
         </FlexColumns>
         <FlexColumns>
-          <Box m={3} p={3} width="550px">
+          <Box
+           m={3} 
+           p={3} 
+           width="550px"
+           css={css`
+            border-bottom: 5px solid #70e89d;
+            `}
+           >
             <TestimonialStudentImage />
           </Box>
           <Box m={3} p={3} width="400px">

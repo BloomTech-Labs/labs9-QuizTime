@@ -41,6 +41,9 @@ const TopLanding = () => {
               top: 120px;
               left: 250px;
               border-bottom: 10px solid #70e89d;
+              @media(max-width:900px){
+                visibility:hidden;
+              }
             `}
           />
           <HeaderInfoText>
@@ -84,7 +87,9 @@ const TopLanding = () => {
               top:16px;
               right: -10px;
               border-top: 10px solid #70e89d;
-
+              @media(max-width:900px){
+                visibility:hidden;
+              }
             `}
           />
             <InfoText>
@@ -129,6 +134,9 @@ const TopLanding = () => {
               border-bottom:10px solid #70e89d; 
               top:16px;
               right: 469px;
+              @media(max-width: 900px){
+                visibility:hidden;
+              }
             `}
           />
             <InfoTextTwo>
