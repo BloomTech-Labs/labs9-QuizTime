@@ -277,7 +277,8 @@ function AddQuiz() {
   return (
     <Mutation mutation={INSERT_QUIZ}>
       {(insert_quiz, { error, loading, data }) => (
-        <>
+        <Box mx={5} my={4}>
+        <Box p={5} css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"}}>
           <Form
             onSubmit={async e => {
               // Stop the form from submitting
@@ -287,10 +288,8 @@ function AddQuiz() {
               console.log(res);
             }}
           >
-            <Text>Add a Quiz</Text>
-
             <Label htmlFor="name">
-              Quiz Title
+              Add a Quiz 
               <Input
                 type="text"
                 id="name"
@@ -318,11 +317,12 @@ function AddQuiz() {
             {majorQuestions.map(q => (
               <Reveal effectIn="fadeInClear" effectOut="fadeOutClear">
                 <Box key={q.id} my={4}>
-                  <Flex justifyContent="space-around">
+                  <Flex justifyContent="space-between">
                     <Label htmlFor={`major-question-${q.id}`}>
                       Major Question {q.id}
                     </Label>
                     <Button
+                      m={3}
                       variant="error"
                       p={0}
                       fontSize={0}
@@ -335,6 +335,7 @@ function AddQuiz() {
                     id={`major-question-${q.id}`}
                     onChange={e => updateMajorQuestion(q.id, e)}
                   />
+                  <Box m={3}>
                   <Box>
                     <Label>Answer 1</Label>
                     <Flex>
@@ -403,15 +404,17 @@ function AddQuiz() {
                       />
                     </Flex>
                   </Box>
+                  </Box>
                   <Container width={3 / 4}>
                     {q.minorQuestions.map(minorQ => (
                       <Reveal effectIn="fadeInClear" effectOut="fadeOutClear">
                         <Box key={minorQ.id} my={4}>
-                          <Flex justifyContent="space-around">
+                          <Flex justifyContent="space-between">
                             <Label htmlFor={`minor-question-${minorQ.id}`}>
                               Minor Question {minorQ.id}
                             </Label>
                             <Button
+                              m={3}
                               variant="error"
                               p={0}
                               fontSize={0}
@@ -525,10 +528,14 @@ function AddQuiz() {
                     ))}
                   </Container>
                   <Flex justifyContent="center">
-                    <Button variant="success" onClick={addMajorQuestion}>
+                    <Button 
+                      mx={3}
+                      variant="success" 
+                      onClick={addMajorQuestion}>
                       Add Major Question
                     </Button>
                     <Button
+                      mx={3}
                       variant="primary"
                       onClick={e => {
                         addMinorQuestion(e, q.id);
@@ -540,7 +547,7 @@ function AddQuiz() {
                 </Box>
               </Reveal>
             ))}
-            <Button variant="primary" type="submit">
+            <Button my={3} variant="primary" type="submit">
               Submit
             </Button>
           </Form>
@@ -554,7 +561,8 @@ function AddQuiz() {
               {data.insert_quiz.returning[0].id}
             </p>
           )}
-        </>
+          </Box>
+        </Box>
       )}
     </Mutation>
   );
