@@ -52,7 +52,7 @@ const GetStarted = props => {
             </Box>
             <Box
               css={{
-                width: '100%',
+                width: '80%',
                 '&:hover': {
                   transform: 'scale(1.05)',
                   boxShadow: '0px 5px 20px rgba(0,0,0,0.50)',
@@ -115,7 +115,7 @@ const GetStarted = props => {
             </Box>
             <Box
               css={{
-                width: '100%',
+                width: '80%',
                 '&:hover': {
                   transform: 'scale(1.05)',
                   boxShadow: '0px 5px 20px rgba(0,0,0,0.50)',
