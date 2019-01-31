@@ -47,12 +47,12 @@ const TopLanding = () => {
       <HowItWorksSection>
         <InfoSectionWrapper>
         <InfoSection>
-          <InfoTextBox />
+          <InfoTextBox/>
           <InfoText>
             QuizTime enables teachers to create Quizzes for their students.
           </InfoText>
           <InfoBox />
-          <InfoTextBox />
+          <InfoTextBox/>
         </InfoSection>
         <InfoSectionRight>
           <InfoBoxTwo />
@@ -63,7 +63,7 @@ const TopLanding = () => {
           </InfoTextTwo>
           <InfoBoxThree />
           <InfoTextThree>
-            Because of QuizTime’s seamless integration, teachers are able to
+            With QuizTime teachers are able to
             view quick summaries of student performances of their students.
           </InfoTextThree>
         </InfoSectionRight>

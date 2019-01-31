@@ -213,7 +213,7 @@ export const InfoSectionWrapper = props =>(
   width={[1]}
   flexDirection="row"
   css={css`
-    @media(max-width:680px){
+    @media(max-width:479px){
       flex-direction: column;
     }
   `}
@@ -324,14 +324,13 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1,1,3/5]}
+    width={[1,1,3/4]}
     bg="blue.0"
     m={3}
     css={css`
       height: 200px;
-      @media(max-width: 1030px){
-        margin-left:0;
-        margin-right:0
+      @media(max-width: 767px){
+
       }
     `}
 
@@ -341,23 +340,25 @@ export const InfoTextBox = props => (
 
 export const InfoText = props => (
   <T
-    width={[5/6,5/6,1/2]}
+    width={[1,3/4,1/2]}
     fontFamily="sans"
-    fontSize={[3,3,5]}
+    fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
       position:absolute;
       top:70px;
       right:20px;
-      @media(max-width:830px){
+      @media(max-width:767px){
+        line-height:30px;
         font-size:25px;
         top:120px;
         right:40px;
       }
-      @media(max-width:680px){
-        font-size:35px;
+      @media(max-width:479px){
+        line-height:35px;
         top:80px;
+        left:15px;
       }
     `}
     {...props}
@@ -366,24 +367,25 @@ export const InfoText = props => (
 
 export const InfoTextTwo = props => (
   <T
-    width={[5/6]}
+    width={[1,1,7/8]}
     fontFamily="sans"
-    fontSize={[3,3,5]}
+    fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
       position:absolute;
-      top:350px;
+      top:400px;
       right:40px;
-      @media(max-width:830px){
+      @media(max-width:767px){
         font-size:25px;
-        right:5px;
+        line-height:30px;
+        right:20px;
         top:330px;
       }
-      @media(max-width:680px){
-        font-size:35px;
-        top:-220px;
-        right:60px;
+      @media(max-width:479px){
+        line-height:35px;
+        top:-210px;
+        left:10px
       }
     `}
     {...props}
@@ -392,24 +394,29 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[5/6]}
+    width={[5/6,1,4/6]}
     fontFamily="sans"
-    fontSize={[ 3,3,5]}
+    fontSize={[5]}
     fontWeight={2}
     color="#2d2d2d"
     css={css`
       position:absolute;
       bottom:70px;
       left: -500px;
-      @media(max-width:830px){
-        font-size:25px;
-        bottom:60px;
-        left:-350px;
+      @media(max-width:1070px){
+        bottom:40px;
+        left:-385px;
       }
-      @media(max-width:680px){
-        font-size:35px;
-        bottom:500px;
-        left:60px;
+      @media(max-width:767px){
+        line-height:30px;
+        font-size:25px;
+        bottom:70px;
+        left:-320px;
+      }
+      @media(max-width:479px){
+        line-height:35px;
+        bottom:380px;
+        left:40px;
       }
     `}
     {...props}
