@@ -76,6 +76,17 @@ const TopLanding = () => {
                 }
               `}
             />
+            <GreenLine
+            css={css`
+              position: absolute;
+              height:850px;
+              width:500px;
+              top:16px;
+              right: -10px;
+              border-top: 10px solid #70e89d;
+
+            `}
+          />
             <InfoText>
               QuizTime enables teachers to create Quizzes for their students.
             </InfoText>
@@ -110,6 +121,16 @@ const TopLanding = () => {
                 }
               `}
             />
+             <GreenLine
+            css={css`
+              position: absolute;
+              width:200px;
+              height:520px;
+              border-bottom:10px solid #70e89d; 
+              top:16px;
+              right: 469px;
+            `}
+          />
             <InfoTextTwo>
               The teacher can distribute that quiz to all students with one
               click.
