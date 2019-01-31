@@ -70,8 +70,8 @@ const TopLanding = () => {
             <GreenLine
             css={css`
               position: absolute;
-              height:850px;
-              width:500px;
+              height:90%;
+              width:75%;
               top:16px;
               right: -10px;
               border-top: 10px solid #70e89d;
@@ -117,12 +117,12 @@ const TopLanding = () => {
              <GreenLine
             css={css`
               position: absolute;
-              width:200px;
-              height:520px;
+              width:29%;
+              height:45%;
               border-bottom:10px solid #70e89d; 
               top:16px;
               right: 469px;
-              @media(max-width: 900px){
+              @media(max-width: 1030px){
                 visibility:hidden;
               }
             `}

@@ -129,7 +129,7 @@ export const HeaderObj = props => (
     width="100vw"
     bg="blue.1"
     css={{
-      height: "600px",
+      height: "700px",
       clipPath: "polygon(100% 0, 100% 38%, 36% 61%, 0 38%, 0 0)",
       position: "relative"
     }}
@@ -147,10 +147,10 @@ export const HeaderSection = props => (
       position:absolute;
       left: 330px;
       @media (max-width: 763px) {
-        right: 200px;
+        right: 400px;
       }
       @media (max-width: 500px) {
-        right: 50px;
+        left: 150px;
       }
     `}
     {...props}
@@ -413,7 +413,7 @@ export const InfoText = props => (
 
 export const InfoTextTwo = props => (
   <T
-    width={[5 / 6, 3 / 4, 7 / 8]}
+    width={[5 / 6, 3 / 4, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -445,7 +445,7 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[5 / 6, 4 / 6]}
+    width={[5 / 6, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
