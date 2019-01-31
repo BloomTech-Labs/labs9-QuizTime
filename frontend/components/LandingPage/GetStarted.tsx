@@ -65,7 +65,18 @@ const GetStarted = props => {
               alignItems: "center"
             }}
           >
-            <LandingText fontWeight={3} color="white" fontSize={5} p={2}>
+            <LandingText
+            fontWeight={3}
+            color="white" 
+            fontSize={5}
+            p={2}
+              css={css`
+                @media(max-width:500px){
+                  position:relative;
+                  bottom:-50px;
+                }
+              `}
+            >
               Pro Plan
             </LandingText>
             <LandingText
@@ -74,6 +85,12 @@ const GetStarted = props => {
               color="white"
               lineHeight={1.5}
               p={4}
+              css={css`
+                @media(max-width:500px){
+                  position:relative;
+                  bottom:-15px;
+                }
+              `}
             >
               Get unlimited quizzes for a low monthly fee of $9.95.
               <HeaderText
@@ -86,6 +103,10 @@ const GetStarted = props => {
                   display: flex;
                   justify-content:center;
                   align-items:center;
+                  @media(max-width:500px){
+                    position:relative;
+                    bottom:-45px;
+                  }
                 `}
               >
                 Get Started
