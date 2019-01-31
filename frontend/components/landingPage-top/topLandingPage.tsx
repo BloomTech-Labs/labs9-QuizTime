@@ -33,22 +33,6 @@ const TopLanding = () => {
       </LandingBar>
       <CallToActionSection>
         <HeaderObj>
-          <GreenLine
-            css={css`
-              width: 100px;
-              position: absolute;
-              top: 200px;
-              left: 250px;
-              border-bottom: 10px solid #70e89d;
-              @media(max-width:900px){
-                visibility:hidden;
-              }
-            `}
-          />
-          <HeaderInfoText>
-            "Quickly assess understanding of content, while giving each student
-            a unique, adaptive learning experience.."
-          </HeaderInfoText>
           <HeaderSection>
             <HeaderText>QuizTime</HeaderText>
             <HeaderText

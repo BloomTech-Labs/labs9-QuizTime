@@ -81,7 +81,7 @@ const Testimonials = props => {
            css={css`
             border-bottom: 10px solid #70e89d;
             border-left: 10px solid #70e89d;
-            @media(max-width:500px){
+            @media(max-width:763px){
               border:none;
             }
             `}

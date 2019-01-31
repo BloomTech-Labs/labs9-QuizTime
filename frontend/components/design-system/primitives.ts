@@ -130,7 +130,7 @@ export const HeaderObj = props => (
     bg="blue.1"
     css={{
       height: "600px",
-      clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)",
+      clipPath: "polygon(100% 0, 100% 38%, 36% 61%, 0 38%, 0 0)",
       position: "relative"
     }}
     {...props}
@@ -144,8 +144,9 @@ export const HeaderSection = props => (
     m={3}
     css={css`
       height: 250px;
+      positon:absolute;
+      right:400px;
       @media (max-width: 763px) {
-        position: absolute;
         right: 200px;
       }
       @media (max-width: 500px) {
