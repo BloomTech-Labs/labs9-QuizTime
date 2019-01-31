@@ -3,7 +3,7 @@ import { StripeProvider } from "react-stripe-elements";
 import Checkout from "../components/Billing/Checkout";
 import securePage from "../hocs/securePage";
 import Layout from "../components/Layout";
-import { getUserFromLocalCookie } from '../utils/auth.js'
+import { getUserFromLocalCookie } from '../utils/auth'
 
 class Stripe extends Component {
   constructor(props) {

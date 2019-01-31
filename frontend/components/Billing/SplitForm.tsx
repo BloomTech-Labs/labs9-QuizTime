@@ -7,7 +7,7 @@ import {
   injectStripe,
 } from 'react-stripe-elements';
 import { Flex, Box } from '@rebass/emotion';
-import { BillingText, ButtonLink, BoldText } from '../design-system';
+import { BillingText, ButtonLink, BoldText, UpperCase } from '../design-system';
 
 class SplitForm extends React.Component {
   state = {
@@ -174,10 +174,10 @@ class SplitForm extends React.Component {
               </ButtonLink>
             </Flex>
           </Box>
-          <Box css={{height: 30, textAlign: 'center'}}>
-            <BoldText color='red' mt={3} fontSize={16}>
+          <Box css={{height: 30, textAlign: 'left'}}>
+            <UpperCase color='red' mt={3} fontSize={16} fontWeight={4} lineHeight={1.5}>
               {this.state.error || ' '}
-            </BoldText>
+            </UpperCase>
           </Box>
         </form>
       </>
