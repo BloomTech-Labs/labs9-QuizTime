@@ -144,8 +144,8 @@ export const HeaderSection = props => (
     m={3}
     css={css`
       height: 250px;
-      positon:absolute;
-      right:400px;
+      position:absolute;
+      left: 350px;
       @media (max-width: 763px) {
         right: 200px;
       }

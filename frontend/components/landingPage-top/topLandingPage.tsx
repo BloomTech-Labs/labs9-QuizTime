@@ -40,6 +40,7 @@ const TopLanding = () => {
               onClick={authorize}
               bg="green.1"
               color="blue.1"
+              mt={4}
               css={{
                 cursor: "pointer",
                 '&:hover': {
