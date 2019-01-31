@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { Box } from "@rebass/emotion";
-import { SideBarHolder } from "../design-system/primitives";
+import { SideBarHolder } from "./design-system/primitives";
 
 const BoxText = styled.a`
   font-family: "system-ui";
