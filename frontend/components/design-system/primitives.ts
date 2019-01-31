@@ -170,12 +170,15 @@ export const HeaderInfoText = props => (
   <T
     width={[1, 1, 1 / 3]}
     p={3}
-    fontSize={5}
+    fontSize={4}
     fontWeight={1}
     fontFamily="sans"
     color="white"
     m={5}
     css={css`
+      line-height:1.5;
+      position:relative;
+      left:220px;
       @media (max-width: 763px) {
         visibility: hidden;
       }
@@ -369,7 +372,7 @@ export const InfoTextBox = props => (
     m={3}
     css={css`
       height: 250px;
-      opacity: 0.3;
+      opacity: 0.1;
       @media (max-width: 500px) {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -782,7 +785,7 @@ export const StyledList = styled.ul`
 
 export const List = props => <StyledList listStyle="none" {...props} />;
 
-export const StyledListItem = styled.li`
+export const StyledListItem = styled.p`
   ${space}
   ${fontFamily}
   ${fontSize}

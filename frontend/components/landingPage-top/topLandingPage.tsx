@@ -52,6 +52,10 @@ const TopLanding = () => {
               Get Started
             </HeaderText>
           </HeaderSection>
+          <HeaderInfoText>
+              Web-based software allowing fully customizable quizzes, seamless
+              learning management, and easy distribution to students.
+            </HeaderInfoText>
         </HeaderObj>
       </CallToActionSection>
       <HowItWorksSection>
@@ -140,7 +144,7 @@ const TopLanding = () => {
               `}
             />
             <InfoTextThree>
-              With QuizTime teachers are able to their student performances.
+              With QuizTime teachers are able to view their student performance.
             </InfoTextThree>
           </InfoSectionRight>
         </InfoSectionWrapper>
