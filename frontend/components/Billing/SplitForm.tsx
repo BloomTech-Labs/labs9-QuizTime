@@ -97,14 +97,14 @@ class SplitForm extends React.Component {
 
     const styledPostal = {
       maxWidth: '100%',
-      padding: '10px 20px 11px',
+      padding: '10px 10px 11px 20px',
       border: '2px solid #70e89d',
       borderRadius: '20px',
     };
 
     const styledCVC = {
-      maxWidth: '75%',
-      padding: '10px 20px 11px',
+      maxWidth: '80%',
+      padding: '10px 10px 11px 20px',
       border: '2px solid #70e89d',
       borderRadius: '20px',
     };
@@ -114,12 +114,12 @@ class SplitForm extends React.Component {
       <>
         <form
           onSubmit={handleSubmit}
-          style={{ maxWidth: '350px', padding: 10 }}
+          style={{ margin: '40px 5%', maxWidth: '350px', padding: 10, boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"}}
         >
-          <BoldText fontSize={[4, 28]} m={3} ml={1}>
+          <BoldText fontSize={[3, 4, 28]} m={3} ml={1}>
             Add Subscription
           </BoldText>
-          <BillingText mb={2} fontSize={[2, 3]}>
+          <BillingText mb={2} fontSize={[1, 2, 3]}>
             Card Number
           </BillingText>
           <CardNumberElement
@@ -128,7 +128,7 @@ class SplitForm extends React.Component {
             onChange={handleChange}
             {...createOptions(this.props.fontSize)}
           />
-          <BillingText mb={2} fontSize={[2, 3]}>
+          <BillingText mb={2} fontSize={[1, 2, 3]}>
             Expiration Date
           </BillingText>
           <CardExpiryElement
@@ -138,7 +138,7 @@ class SplitForm extends React.Component {
           />
           <Flex justifyContent='space-between'>
             <div style={{ width: '50%' }}>
-              <BillingText mb={2} fontSize={[2, 3]}>
+              <BillingText mb={2} fontSize={[1, 2, 3]}>
                 CVC
               </BillingText>
               <CardCVCElement
@@ -147,8 +147,8 @@ class SplitForm extends React.Component {
                 {...createOptions(this.props.fontSize)}
               />
             </div>
-            <div>
-              <BillingText mb={2} fontSize={[2, 3]}>
+            <div style={{ width: '50%' }}>
+              <BillingText mb={2} fontSize={[1, 2, 3]}>
                 Zip Code
               </BillingText>
               <PostalCodeElement
@@ -166,8 +166,10 @@ class SplitForm extends React.Component {
                 css={{
                   cursor: !ready2Submit ? 'not-allowed' : null,
                   width: '80%',
-                  padding: '10px 20px 11px',
+                  padding: '0px 20px',
+                  marginTop: '35px',
                   lineHeight: 1.5,
+                  height: '60px'
                 }}
               >
                 Go Premium ($9.95/month)
