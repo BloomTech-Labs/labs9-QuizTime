@@ -32,7 +32,12 @@ export const LandingText = props => (
 );
 /* NAVIGATION COMPONENTS*/
 export const NavBarHolder = props => (
-  <F justifyContent="flex-end" alignItems="center" bg="green.1" {...props} />
+  <F
+    justifyContent="flex-end"
+    alignItems="center"
+    bg={["blue.1", "green.1", "green.1"]}
+    {...props}
+  />
 );
 
 export const GreenLine = props => (
