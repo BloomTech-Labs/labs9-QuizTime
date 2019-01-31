@@ -60,11 +60,13 @@ const Testimonials = props => {
             p={3}
             width="500px"
             css={css`
-            border-bottom: 5px solid #70e89d;
+            border-right: 10px solid #70e89d;
+            border-top: 10px solid #70e89d;
               @media (max-width: 763px) {
                 margin-right: 0;
                 padding-right: 0;
-                width:400px;
+                width:350px;
+                border:none
               }
             `}
           >
@@ -77,7 +79,11 @@ const Testimonials = props => {
            p={3} 
            width="550px"
            css={css`
-            border-bottom: 5px solid #70e89d;
+            border-bottom: 10px solid #70e89d;
+            border-left: 10px solid #70e89d;
+            @media(max-width:500px){
+              border:none;
+            }
             `}
            >
             <TestimonialStudentImage />
