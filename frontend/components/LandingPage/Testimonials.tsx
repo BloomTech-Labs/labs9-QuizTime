@@ -28,7 +28,7 @@ const Testimonials = props => {
   return (
     <>
       <Box my={4}>
-        <LandingText fontSize={5} css={{ textAlign: "center" }}>
+        <LandingText fontSize={7} css={{ textAlign: "center" }}>
           Testimonials
         </LandingText>
         <FlexColumns
@@ -81,7 +81,7 @@ const Testimonials = props => {
            css={css`
             border-bottom: 10px solid #70e89d;
             border-left: 10px solid #70e89d;
-            @media(max-width:500px){
+            @media(max-width:763px){
               border:none;
             }
             `}

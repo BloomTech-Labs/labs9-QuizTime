@@ -129,8 +129,8 @@ export const HeaderObj = props => (
     width="100vw"
     bg="blue.1"
     css={{
-      height: "600px",
-      clipPath: "polygon(0 0, 100% 0, 100% 51%, 77% 75%, 0 53%)",
+      height: "700px",
+      clipPath: "polygon(100% 0, 100% 38%, 36% 61%, 0 38%, 0 0)",
       position: "relative"
     }}
     {...props}
@@ -144,12 +144,13 @@ export const HeaderSection = props => (
     m={3}
     css={css`
       height: 250px;
+      position:absolute;
+      left: 330px;
       @media (max-width: 763px) {
-        position: absolute;
-        right: 200px;
+        left: 100px;
       }
       @media (max-width: 500px) {
-        right: 50px;
+        left: 20px;
       }
     `}
     {...props}
@@ -169,12 +170,15 @@ export const HeaderInfoText = props => (
   <T
     width={[1, 1, 1 / 3]}
     p={3}
-    fontSize={5}
+    fontSize={4}
     fontWeight={1}
     fontFamily="sans"
     color="white"
     m={5}
     css={css`
+      line-height:1.5;
+      position:relative;
+      left:220px;
       @media (max-width: 763px) {
         visibility: hidden;
       }
@@ -309,8 +313,6 @@ export const InfoBox = props => (
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media (max-width: 550px) {
-        visibility: hidden;
       @media(max-width: 1030px){
         margin-left:0;
         margin-right:0
@@ -365,11 +367,12 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1, 1, 7 / 8]}
-    bg="blue.0"
+    width={[1, 1, 5 / 8]}
+    bg="blue.4"
     m={3}
     css={css`
       height: 250px;
+      opacity: 0.1;
       @media (max-width: 500px) {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -391,18 +394,17 @@ export const InfoText = props => (
       position: absolute;
       top: 50px;
       right: 60px;
+      line-height:1.5;
       @media (max-width: 900px) {
         top: 100px;
         right: 10px;
       }
       @media (max-width: 767px) {
-        line-height: 30px;
         font-size: 25px;
         top: 80px;
         right: 20px;
       }
       @media (max-width: 500px) {
-        line-height: 35px;
         top: 80px;
         left: 15px;
       }
@@ -413,7 +415,7 @@ export const InfoText = props => (
 
 export const InfoTextTwo = props => (
   <T
-    width={[5 / 6, 3 / 4, 7 / 8]}
+    width={[5 / 6, 3 / 4, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -422,19 +424,17 @@ export const InfoTextTwo = props => (
       position: absolute;
       top: 430px;
       right: 40px;
+      line-height:1.5;
       @media (max-width: 900px) {
-        line-height: 30px;
         top: 400px;
         right: 10px;
       }
       @media (max-width: 767px) {
         font-size: 25px;
-        line-height: 30px;
         right: 20px;
         top: 320px;
       }
       @media (max-width: 500px) {
-        line-height: 35px;
         top: -210px;
         left: 10px;
       }
@@ -445,7 +445,7 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[5 / 6, 4 / 6]}
+    width={[5 / 6, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -454,18 +454,17 @@ export const InfoTextThree = props => (
       position: absolute;
       bottom: 50px;
       left: -450px;
+      line-height:1.5;
       @media (max-width: 900px) {
         bottom: 40px;
         left: -300px;
       }
       @media (max-width: 767px) {
-        line-height: 30px;
         font-size: 25px;
         bottom: 80px;
         left: -240px;
       }
       @media (max-width: 500px) {
-        line-height: 35px;
         bottom: 330px;
         left: 60px;
       }
@@ -786,7 +785,7 @@ export const StyledList = styled.ul`
 
 export const List = props => <StyledList listStyle="none" {...props} />;
 
-export const StyledListItem = styled.li`
+export const StyledListItem = styled.p`
   ${space}
   ${fontFamily}
   ${fontSize}

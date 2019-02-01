@@ -1,5 +1,6 @@
 import React from 'react';
 import {Box, Flex} from '@rebass/emotion';
+import { css } from "@emotion/core";
 import { 
     Container, 
     Text,
@@ -16,7 +17,7 @@ import {
 const Footer = (props) => {
     return(
         <>
-            <Box bg="blue.1" p={2} color="white">
+            <Box bg="blue.2" p={2} color="white">
             <FlexColumns my={3}>
                 <Box m={3} p={2} width="280px">
                     <Text>

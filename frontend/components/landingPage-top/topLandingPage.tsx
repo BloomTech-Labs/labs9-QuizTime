@@ -2,7 +2,6 @@ import {
   LandingBar,
   GreenLine,
   BlueLine,
-  LandingText,
   LandingBarItems,
   CallToActionSection,
   HeaderObj,
@@ -23,6 +22,7 @@ import {
   HeaderSection,
   GetStartedBtn
 } from "../design-system/primitives";
+
 import { css } from "@emotion/core";
 import { authorize } from "../../utils/auth0";
 const TopLanding = () => {
@@ -34,22 +34,6 @@ const TopLanding = () => {
       </LandingBar>
       <CallToActionSection>
         <HeaderObj>
-          <GreenLine
-            css={css`
-              width: 100px;
-              position: absolute;
-              top: 200px;
-              left: 250px;
-              border-bottom: 10px solid #70e89d;
-              @media(max-width:900px){
-                visibility:hidden;
-              }
-            `}
-          />
-          <HeaderInfoText>
-            "Quickly assess understanding of content, while giving each student
-            a unique, adaptive learning experience.."
-          </HeaderInfoText>
           <HeaderSection>
             <HeaderText>QuizTime</HeaderText>
             <HeaderText
@@ -57,6 +41,7 @@ const TopLanding = () => {
               onClick={authorize}
               bg="green.1"
               color="blue.1"
+              mt={4}
               css={{
                 cursor: "pointer",
                 '&:hover': {
@@ -68,6 +53,10 @@ const TopLanding = () => {
               Get Started
             </HeaderText>
           </HeaderSection>
+          <HeaderInfoText>
+              Web-based software allowing fully customizable quizzes, seamless
+              learning management, and easy distribution to students.
+            </HeaderInfoText>
         </HeaderObj>
       </CallToActionSection>
       <HowItWorksSection>
@@ -86,8 +75,8 @@ const TopLanding = () => {
             <GreenLine
             css={css`
               position: absolute;
-              height:850px;
-              width:500px;
+              height:90%;
+              width:75%;
               top:16px;
               right: -10px;
               border-top: 10px solid #70e89d;
@@ -133,12 +122,12 @@ const TopLanding = () => {
              <GreenLine
             css={css`
               position: absolute;
-              width:200px;
-              height:520px;
+              width:29%;
+              height:45%;
               border-bottom:10px solid #70e89d; 
               top:16px;
               right: 469px;
-              @media(max-width: 900px){
+              @media(max-width: 1030px){
                 visibility:hidden;
               }
             `}
@@ -156,7 +145,7 @@ const TopLanding = () => {
               `}
             />
             <InfoTextThree>
-              With QuizTime teachers are able to their student performances.
+              With QuizTime teachers are able to view their student performance.
             </InfoTextThree>
           </InfoSectionRight>
         </InfoSectionWrapper>
