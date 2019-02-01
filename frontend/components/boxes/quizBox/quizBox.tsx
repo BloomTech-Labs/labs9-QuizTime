@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import {BoxHolder, Emblem, BoxText} from "../../design-system/primitives";
+import { BoxHolder, Emblem, BoxText } from "../../design-system/primitives";
 
 // const BoxHolder = styled(Box)`
 // 	border-bottom: 10px solid #ea969d;
@@ -37,18 +37,24 @@ import {BoxHolder, Emblem, BoxText} from "../../design-system/primitives";
 // 	padding: 15px;
 // `;
 
+const ATag = styled.a`
+  text-decoration: none;
+`;
+
 //to get the quizzes to map through all you need is the
 //quiz prop from the app page.
 const QuizBox: React.SFC<{ quiz: object }> = ({ quiz }) => {
-	return (
-		<>
-			<BoxHolder>
-				<Emblem />
-				<Link href={`/quizzes/quiz?title=${quiz.id}`}>
-				<BoxText>{quiz.name}</BoxText>
-				</Link>
-			</BoxHolder>
-		</>
-	);
+  return (
+    <>
+      <BoxHolder>
+        <Emblem />
+        <Link href={`/quizzes/quiz?title=${quiz.id}`}>
+          <ATag>
+            <BoxText>{quiz.name}</BoxText>
+          </ATag>
+        </Link>
+      </BoxHolder>
+    </>
+  );
 };
 export default QuizBox;

@@ -1,11 +1,22 @@
-import { Container, BoldText, Button, FullScreenContainer } from "../components/design-system";
-import { authorize } from "../utils/auth0";
+import { FullScreenContainer } from "../components/design-system";
+import TopLanding from "../components/landingPage-top/topLandingPage";
+import Testimonials from '../components/LandingPage/Testimonials';
+import GetStarted from '../components/LandingPage/GetStarted';
+import Footer from '../components/LandingPage/Footer';
+import Meta from "../components/Meta";
+import unsecurePage from '../hocs/unsecurePage';
+import {GreenLine} from "../components/design-system/primitives";
+import { css } from '@emotion/core'
 
 const Index = () => (
   <FullScreenContainer>
-    <BoldText>Hello, Welcome to QuizTime! Login Below</BoldText>
-    <Button onClick={authorize}>Login</Button>
+        <Meta />
+    <TopLanding />
+    <Testimonials />
+    <GetStarted />
+    <Footer />
   </FullScreenContainer>
 );
 
-export default Index;
+
+export default unsecurePage(Index);

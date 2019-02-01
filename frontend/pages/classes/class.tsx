@@ -1,134 +1,91 @@
 import { Query } from "react-apollo";
-import { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
 import securePage from "../../hocs/securePage";
 import Layout from "../../components/Layout";
 import AddStudent from "../../components/forms/AddStudent";
-import { getIdToken } from "../../utils/auth";
-import { GraphQLClient } from "graphql-request";
 import QuizElement from "../../components/boxes/QuizElement";
 import ClassQuizzes from "../../components/boxes/ClassQuizzes";
-import { Mutation } from "react-apollo";
+import { ALL_STUDENTS_QUERY } from "../../queries";
+import { Box, Flex } from "@rebass/emotion";
 
 import {
   StudentHolder,
   SectionContainer,
   Text,
-  QuizHolder,
   QuizBox,
-  QuizzesAvaliable
+  QuizzesAvaliable,
+  UpperCase,
+  Label
 } from "../../components/design-system/primitives";
-import { Component } from "../../node_modules/@types/react";
-
-const endpoint = `https://quiztime-hasura.herokuapp.com/v1alpha1/graphql`;
 
 const ClassPage = ({ query: { id } }) => {
-  const [quizzesToClasses, setQuizzesToClasses] = useState([]);
-
-  //similar to componentDidMount
-  const client = new GraphQLClient(endpoint, {
-    headers: {
-      Authorization: `Bearer ${getIdToken()}`
-    }
-  });
-
-  const ALL_STUDENTS_QUERY = gql`
-  query ALL_STUDENTS_QUERY {
-    class (where: {id: {_eq: ${id}}}){
-      id
-      students {
-        id
-        class_id
-        last_name
-        first_name
-        email
-      }
-    }
-    quiz{
-      id
-      name
-    }
-  }
-`;
-
-
-  const generateMutation = (quiz_id, class_id) => {
-    return `
-    mutation add_quiz_to_class{
-      insert_class_quiz(
-        objects:[
-          {
-            class_id:${class_id},
-            quiz_id:${quiz_id}
-          }
-        ]
-      ){
-        returning{
-          id
-        }
-      }
-    }
-    `;
-  };
-
-  function addQuizToClass(quiz_id, quiz_name) {
-    setQuizzesToClasses([
-      ...quizzesToClasses,
-      { quiz_name: quiz_name, quiz_id: quiz_id, class_id: id }
-    ]);
-    client.request(generateMutation(quiz_id, id)).then((response) => console.log(response));
-  }
-
-  useEffect(
-    () => {
-      console.log(quizzesToClasses);
-    },
-    [quizzesToClasses]
-  );
-
   return (
     <Layout>
-      <Text>Send Email</Text>
-
-      <Text>Add a Student</Text>
-
-      <AddStudent class={id} />
-    
-      <Query query={ALL_STUDENTS_QUERY}>
+      <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
         {({ loading, error, data }) => {
           if (error) return <p>{error.message}</p>;
           if (loading) return <p>...loading</p>;
           if (data) {
-            console.log(data);
             return (
-              <>
-                <SectionContainer>
-                  <StudentHolder>
-                    {data.class[0].students.map(student => (
-                      <StudentBar
-                        id={student.id}
-                        key={student.id}
-                        student={student}
-                      />
-                    ))}
-                  </StudentHolder>
-                </SectionContainer>
-                <SectionContainer>
-                  <QuizBox>
-                    {data.quiz.map(q => (
-                      <QuizElement
-                        key={q.id}
-                        quiz={q}
-                        addQuizToClass={addQuizToClass}
-                      />
-                    ))}
-                  </QuizBox>
-                  <QuizzesAvaliable>
-                    <ClassQuizzes quizzes={quizzesToClasses} />
-                  </QuizzesAvaliable>
-                </SectionContainer>
-              </>
+              // page content containers
+              <Box p={3} m={3}>
+              <Flex>
+                <Box p={3} m={3} css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)" }}>
+                  <AddStudent class_id={id} />
+                </Box>
+              {/* container for right side */}
+              <Box p={2} m={3} width={[1,1,1]} css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)" }}> 
+                <Flex
+                    flexDirection="column"
+                  >
+                    <Box p={2}>
+                      <Label m={2} >Class List</Label>
+
+                      {data.class[0].students.map(student => (
+                        <StudentBar
+                          id={student.id}
+                          key={student.id}
+                          student={student}
+                        />
+                      ))}
+                    </Box>
+                    {/* container for quiz information */}
+                      <Box>
+                        <Flex>
+                          {/*quizzes you can use*/}
+                          <Box p={3} m={3} width={[1/2]} 
+                          css={{ background: "white", height:"200px"}}>
+                            <UpperCase fontSize={2} fontWeight={4}>Select a quiz to add</UpperCase>
+                            {data.quiz
+                              .filter(
+                                qz =>
+                                  !data.class[0].quizzes.find(qzz => qzz.quiz.id === qz.id)
+                              )
+                              .map(q => (
+                                <QuizElement
+                                  key={q.id}
+                                  quiz={q}
+                                  class_id={id}
+                                />
+                              ))}
+                          </Box>
+                          {/* quizzes added */}
+                          <Box p={3} m={3} width={[1/2]} 
+                          css={{ background: "white", height:"200px"}}>
+                          <UpperCase fontSize={2} fontWeight={4}>Quizzes in class</UpperCase>
+                            <Box py={3}>
+                              {data.class[0].quizzes.map(q => (
+                                <ClassQuizzes key={q.id} quiz={q.quiz} />
+                              ))}
+                              </Box>
+                          </Box>
+                        </Flex>
+                      </Box>
+                    </Flex>
+                  </Box>
+                </Flex>
+              </Box>
             );
           }
         }}
@@ -136,8 +93,5 @@ const ClassPage = ({ query: { id } }) => {
     </Layout>
   );
 };
-ClassPage.getInitialProps = async function(context) {
-  const { id } = context.query;
-  return { id };
-};
+
 export default securePage(ClassPage);
