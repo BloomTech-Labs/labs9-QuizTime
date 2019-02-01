@@ -22,6 +22,7 @@ import {
   HeaderSection,
   GetStartedBtn
 } from "../design-system/primitives";
+
 import { css } from "@emotion/core";
 import { authorize } from "../../utils/auth0";
 const TopLanding = () => {
