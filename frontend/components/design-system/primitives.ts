@@ -179,7 +179,7 @@ export const HeaderInfoText = props => (
       line-height:1.5;
       position:relative;
       left:220px;
-      @media (max-width: 763px) {
+      @media (max-width: 1090px) {
         visibility: hidden;
       }
     `}
