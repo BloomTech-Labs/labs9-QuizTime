@@ -12,8 +12,8 @@ const MinorQuestion = ({ q, index, idx, majorIndex, minorIndex, handleMinorChang
       <BoxText ml={10} my={1} fontSize={3} fontWeight={3}>{q.prompt}</BoxText>
       {q.answers.map((a, indx) => (
         <Box width={0.95} key={a.id} ml={25} my={1}>
-          <Flex>
-            <Input
+          <Flex  alignItems='center'>
+            <input 
               onChange={
                 idx === majorIndex && minorIndex[majorIndex] - 1 === index
                   ? e => handleMinorChange(e, q, a)
@@ -22,6 +22,7 @@ const MinorQuestion = ({ q, index, idx, majorIndex, minorIndex, handleMinorChang
               type='radio'
               name={`mini-question-${q.id}-mini-answer`}
               value={index + 1}
+
             />
             <BoxText ml={10}>{a.response}</BoxText>
           </Flex>

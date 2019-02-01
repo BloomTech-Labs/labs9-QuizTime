@@ -77,7 +77,7 @@ class StudentQuiz extends Component {
     return (
       <>
         <Meta />
-        <Container>
+        <Container css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)", padding: '20px'}}>
           {quiz ? (
             <>
               <QuizHeading quiz={quiz} />
