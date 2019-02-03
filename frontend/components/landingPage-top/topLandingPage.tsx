@@ -84,7 +84,7 @@ const TopLanding = () => {
               border-top: 10px solid #70e89d;
               visibility:visible;
             }
-              @media(max-width:900px){
+              @media(max-width:1030px){
                 visibility:hidden;
               }
             `}
@@ -118,8 +118,8 @@ const TopLanding = () => {
             <InfoTextBox
               css={css`
                 @media (max-width: 763px) {
-                  margin-left: 0px;
                   margin-right: 0;
+                  margin-left:0;
                 }
               `}
             />

@@ -355,6 +355,8 @@ export const InfoBoxThree = props => (
       filter: grayscale(100%);
       @media (max-width: 1030px) {
         margin-left: 0;
+        margin-right: 0;
+
       }
       @media (max-width: 500px) {
         margin-top: 0px;
@@ -367,7 +369,7 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1, 1, 5 / 8]}
+    width={[1, 5 / 8]}
     bg="blue.4"
     m={3}
     css={css`
@@ -445,7 +447,7 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[5 / 6, 3 / 5]}
+    width={[5 / 6, 3 / 4, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -519,6 +521,11 @@ export const FullScreenContainer = props => (
     bg="#f2f2f2"
     width="100%"
     {...props}
+    css={css`
+      @media(max-width:831px){
+        overflow-x:hidden;
+      }
+    `}
   />
 );
 
