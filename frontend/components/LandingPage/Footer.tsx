@@ -44,7 +44,7 @@ const Footer = (props) => {
                 </Box>
                 <Box m={3} p={2} width="280px">
                     <Text>
-                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2} css={css `border-bottom: 5px solid #70e89d `}>
                         Links
                         </UpperCase>
                     </Text>

@@ -408,7 +408,7 @@ export const InfoText = props => (
       }
       @media (max-width: 500px) {
         top: 80px;
-        left: 15px;
+        left: 30px;
       }
     `}
     {...props}
@@ -437,8 +437,8 @@ export const InfoTextTwo = props => (
         top: 320px;
       }
       @media (max-width: 500px) {
-        top: -210px;
-        left: 10px;
+        top: -200px;
+        left: 30px;
       }
     `}
     {...props}
@@ -468,7 +468,7 @@ export const InfoTextThree = props => (
       }
       @media (max-width: 500px) {
         bottom: 330px;
-        left: 60px;
+        left: 40px;
       }
     `}
     {...props}
