@@ -34,7 +34,7 @@ const Testimonials = props => {
         <FlexColumns
           css={css`
             height: auto;
-            @media (max-width: 1030px) {
+            @media (max-width: 1029px) {
               flex-direction: column-reverse;
               align-items: center;
             }

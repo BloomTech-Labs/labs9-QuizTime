@@ -76,7 +76,7 @@ const TopLanding = () => {
             css={css`
             position: absolute;
             visibility:hidden;
-            @media(max-width:1355px){
+            @media(max-width:1354px){
               height:90%;
               width:75%;
               top:16px;
