@@ -464,6 +464,11 @@ export const InfoTextThree = props => (
       @media (max-width: 767px) {
         font-size: 25px;
         bottom: 80px;
+        left: -270px;
+      }
+      @media (max-width: 560px) {
+        font-size: 25px;
+        bottom: 80px;
         left: -240px;
       }
       @media (max-width: 500px) {
