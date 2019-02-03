@@ -12,8 +12,8 @@ const MajorQuestion = ({ q, majorIndex, idx, isMajor, handleMajorChange }) => {
       <BoxText ml={10} my={1} fontSize={3}> {q.prompt}</BoxText>
       {q.answers.map((a, index) => (
         <Box key={a.id} ml={25}>
-          <Flex>
-            <Input
+          <Flex alignItems='center'>
+            <input
               onChange={idx === majorIndex && isMajor ? e => handleMajorChange(e, q, a) : null}
               type='radio'
               name={`major-question-${q.id}-major-answer`}
