@@ -6,7 +6,7 @@ import { QuizBar, Text } from "../design-system/primitives";
 import { Button } from "@rebass/emotion";
 
 export default ({ quiz, class_id }) => (
-  <QuizBar>
+  <Box>
     <Text>{quiz.name}</Text>
     <Mutation
       mutation={INSERT_CLASS_QUIZ}
@@ -43,5 +43,5 @@ export default ({ quiz, class_id }) => (
         </Button>
       )}
     </Mutation>
-  </QuizBar>
+  </Box>
 );
