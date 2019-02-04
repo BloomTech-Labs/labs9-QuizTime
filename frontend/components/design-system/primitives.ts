@@ -837,5 +837,6 @@ export const UniButton = props =>(
   width="auto"
   fontWeight={[1]}
   color="white"
+  {...props}
   />
 )

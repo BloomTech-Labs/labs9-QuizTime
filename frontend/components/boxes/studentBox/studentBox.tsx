@@ -18,9 +18,23 @@ const StudentBox = ({ id, student }) => {
       <BoxHolder
       css={css`
       border-bottom:5px solid #70e89d;
+      position:relative;
+      transform-style: preserve-3d;
+      transition: all 600ms;
+      &:hover{
+        transform:rotateX(180deg);
+      }
+
       `}
       >
-          <Box>
+      <div
+      css={css`
+      position:relative;
+      backface-visibility:hidden;
+      `}>
+          <Box
+           m={1}
+           >
             <Flex
             flexDirection="row"
             justifyContent="space-between"
@@ -29,7 +43,7 @@ const StudentBox = ({ id, student }) => {
               {" "}
               {student.first_name} {student.last_name}
             </BoxText>
-            <UniButton>Delete</UniButton>
+            <UniButton fontSize={0} bg="blue.2">Delete</UniButton>
             </Flex>
             </Box>
             <Box
@@ -50,9 +64,21 @@ const StudentBox = ({ id, student }) => {
             border-top:1px solid #B5FFD0;
             `}
             >
-            <UniButton>Edit</UniButton>
-            <UniButton>View Results</UniButton>
+            <UniButton bg="green.1" fontSize={0}>Edit</UniButton>
+            <UniButton bg="blue.5" fontSize={0}>View Results</UniButton>
             </Flex>
+          </Box>
+          </div>
+          <Box
+          bg="blue.0"
+          css={css`
+          transform: rotateX(180deg);
+          backface-visibility:hidden;
+          `}
+          >
+            <BoxText>Back</BoxText>
+            <BoxText>Back</BoxText>
+
           </Box>
       </BoxHolder>
     </>
