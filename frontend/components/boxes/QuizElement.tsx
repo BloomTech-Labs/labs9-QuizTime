@@ -3,7 +3,7 @@ import { INSERT_CLASS_QUIZ } from "../../mutations";
 import { ALL_STUDENTS_QUERY } from "../../queries";
 
 import { QuizBar, Text } from "../design-system/primitives";
-import { Button } from "@rebass/emotion";
+import { Button, Box } from "@rebass/emotion";
 
 export default ({ quiz, class_id }) => (
   <Box>

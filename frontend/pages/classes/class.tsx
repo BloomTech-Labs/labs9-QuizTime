@@ -87,7 +87,7 @@ const ClassPage = ({ query: { id } }) => {
                             <AddBox />
                           </ATag>
                           {data.class[0].students.map(student => (
-                            <StudentBox 
+                            <StudentBox
                               id={student.id}
                               key={student.id}
                               student={student}

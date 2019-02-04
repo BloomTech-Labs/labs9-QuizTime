@@ -8,13 +8,15 @@ import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
 import { ALL_CLASSES_QUERY } from "../../queries";
-import { Container } from "../../components/design-system";
+import { Container, Label } from "../../components/design-system";
+import AddBox from '../../components/boxes/addBox/addBox';
 import ReactLoading from "react-loading";
 
 const CardHolder = styled.div`
   display: flex;
   flexwrap: wrap;
   justify-content: flex-start;
+  margin-top: 15px;
 `;
 
 const Holder = styled.div`
@@ -22,17 +24,21 @@ const Holder = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 20px 0;
+`;
+
+const ATag = styled.a`
+  text-decoration: none;
 `;
 
 const Classes = () => (
   <Layout>
-    <Box mx={5} py={3}>
-      <Holder>
-        <AddClass />
-      </Holder>
+    <Box my={3} mx={5} py={3}>
+      <Label m={3} >Your Classes</Label>
       <CardHolder>
         <Holder>
+          <ATag>
+            <AddBox />
+          </ATag>
           <Query query={ALL_CLASSES_QUERY}>
             {({ loading, error, data }) => {
               if (error) return <p>{error.message}</p>;
