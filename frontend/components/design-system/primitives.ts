@@ -179,7 +179,7 @@ export const HeaderInfoText = props => (
       line-height:1.5;
       position:relative;
       left:220px;
-      @media (max-width: 763px) {
+      @media (max-width: 1090px) {
         visibility: hidden;
       }
     `}
@@ -355,6 +355,8 @@ export const InfoBoxThree = props => (
       filter: grayscale(100%);
       @media (max-width: 1030px) {
         margin-left: 0;
+        margin-right: 0;
+
       }
       @media (max-width: 500px) {
         margin-top: 0px;
@@ -367,7 +369,7 @@ export const InfoBoxThree = props => (
 
 export const InfoTextBox = props => (
   <B
-    width={[1, 1, 5 / 8]}
+    width={[1, 5 / 8]}
     bg="blue.4"
     m={3}
     css={css`
@@ -406,7 +408,7 @@ export const InfoText = props => (
       }
       @media (max-width: 500px) {
         top: 80px;
-        left: 15px;
+        left: 30px;
       }
     `}
     {...props}
@@ -435,8 +437,8 @@ export const InfoTextTwo = props => (
         top: 320px;
       }
       @media (max-width: 500px) {
-        top: -210px;
-        left: 10px;
+        top: -200px;
+        left: 30px;
       }
     `}
     {...props}
@@ -445,7 +447,7 @@ export const InfoTextTwo = props => (
 
 export const InfoTextThree = props => (
   <T
-    width={[5 / 6, 3 / 5]}
+    width={[5 / 6, 3 / 4, 3 / 5]}
     fontFamily="sans"
     fontSize={[5]}
     fontWeight={2}
@@ -462,11 +464,16 @@ export const InfoTextThree = props => (
       @media (max-width: 767px) {
         font-size: 25px;
         bottom: 80px;
+        left: -270px;
+      }
+      @media (max-width: 560px) {
+        font-size: 25px;
+        bottom: 80px;
         left: -240px;
       }
       @media (max-width: 500px) {
         bottom: 330px;
-        left: 60px;
+        left: 40px;
       }
     `}
     {...props}
@@ -519,6 +526,11 @@ export const FullScreenContainer = props => (
     bg="#f2f2f2"
     width="100%"
     {...props}
+    css={css`
+      @media(max-width:831px){
+        overflow-x:hidden;
+      }
+    `}
   />
 );
 
