@@ -9,7 +9,7 @@ import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
 import { ALL_CLASSES_QUERY } from "../../queries";
-import { Container, Label } from "../../components/design-system";
+import { Container, Label, Button } from "../../components/design-system";
 import AddBox from '../../components/boxes/addBox/addBox';
 import Modal from '../../components/Modal/index';
 import ReactLoading from "react-loading";
@@ -33,18 +33,40 @@ const ATag = styled.a`
 `;
 
 class Classes extends Component {
-  render() {
+  state = {
+    isHidden: true
+  }
 
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
+
+  render() {
     return (
       <>
         <Layout>
           <Box my={3} mx={5} py={3}>
-            <Modal />
+              <Box>
+                <Button onClick={this.toggleHidden.bind(this)}>
+                  open
+                </Button>
+                {!this.state.isHidden && 
+                <Modal>
+                  <Box> 
+                    <Button onClick={this.toggleHidden.bind(this)}>x</Button>
+                    <AddClass />
+                    </Box>
+                  </Modal>}
+              </Box>
             <Label m={3} >Your Classes</Label>
             <CardHolder>
               <Holder>
                 <ATag>
-                  <AddBox onClick={e => { this.showModal() }} />
+                  <AddBox>
+                  </AddBox>
                 </ATag>
                 <Query query={ALL_CLASSES_QUERY}>
                   {({ loading, error, data }) => {
