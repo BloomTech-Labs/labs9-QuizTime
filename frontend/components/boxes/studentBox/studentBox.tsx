@@ -5,37 +5,55 @@ import {
   BoxHolder,
   Emblem,
   BoxText,
-  Button
+  UniButton
 } from "../../design-system/primitives";
 import { Flex, Box } from "@rebass/emotion";
-
-const ATag = styled.a`
-  text-decoration: none;
-`;
+import { css } from "@emotion/core";
 
 //to get the quizzes to map through all you need is the
 //quiz prop from the app page.
 const StudentBox = ({ id, student }) => {
   return (
     <>
-      <BoxHolder>
-        <Flex flexDirection="row" alignItems="top">
+      <BoxHolder
+      css={css`
+      border-bottom:5px solid #70e89d;
+      `}
+      >
           <Box>
-            <BoxText>
+            <Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            >
+            <BoxText fontWeight={1}>
               {" "}
               {student.first_name} {student.last_name}
             </BoxText>
-            <BoxText>{student.email}</BoxText>
-            <BoxText>Average: </BoxText>
-          </Box>
-          <Box>
-            <Flex justifyContent="flex-end">
-              <Button m={2} variant="error">
-                X
-              </Button>
+            <UniButton>Delete</UniButton>
+            </Flex>
+            </Box>
+            <Box
+            p={1}
+            css={css`
+            border-top:1px solid #B5FFD0;
+            `}
+            >
+            <BoxText fontWeight={1}>
+            {student.email}
+            </BoxText>
+            <Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            mt={1}
+            p={1}
+            css={css`
+            border-top:1px solid #B5FFD0;
+            `}
+            >
+            <UniButton>Edit</UniButton>
+            <UniButton>View Results</UniButton>
             </Flex>
           </Box>
-        </Flex>
       </BoxHolder>
     </>
   );
