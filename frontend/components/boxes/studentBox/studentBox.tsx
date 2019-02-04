@@ -62,9 +62,6 @@ const StudentBox = ({ id, student }) => {
               <UniButton bg="green.1" fontSize={0}>
                 Edit
               </UniButton>
-              <UniButton bg="blue.5" fontSize={0}>
-                View Results
-              </UniButton>
             </Flex>
           </Box>
         </div>
@@ -74,8 +71,10 @@ const StudentBox = ({ id, student }) => {
             backface-visibility: hidden;
           `}
         >
-          <Box justifyContent="flex-start">
+          <Box p={1}>
+            <Flex flexDirection="row" justifyContent="space-between">
             <BoxText fontWeight={1}>Quiz Results</BoxText>
+              </Flex>
           </Box>
           <Box
           p={1}
