@@ -19,7 +19,7 @@ export default {
   colors: {
     blue: ["#7981FF", "#323fcb", "#1F287F", "#3F4FFF", "#101440", "#3947E5"],
     red: ["#ea969d", "#e16973"],
-    green: ["#B5FFD0", "#70e89d"],
+    green: ["#B5FFD0", "#70e89d", "#44c173"],
     gray: ["#EDEDED"]
   },
   borders: [0, "1px solid red"],
