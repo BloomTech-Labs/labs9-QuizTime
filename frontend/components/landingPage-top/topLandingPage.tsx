@@ -44,9 +44,9 @@ const TopLanding = () => {
               mt={4}
               css={{
                 cursor: "pointer",
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  boxShadow: '0px 5px 20px rgba(0,0,0,0.50)'
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0px 5px 20px rgba(0,0,0,0.50)"
                 }
               }}
             >
@@ -54,9 +54,9 @@ const TopLanding = () => {
             </HeaderText>
           </HeaderSection>
           <HeaderInfoText>
-              Web-based software allowing fully customizable quizzes, seamless
-              learning management, and easy distribution to students.
-            </HeaderInfoText>
+            Web-based software allowing fully customizable quizzes, seamless
+            learning management, and easy distribution to students.
+          </HeaderInfoText>
         </HeaderObj>
       </CallToActionSection>
       <HowItWorksSection>
@@ -73,22 +73,22 @@ const TopLanding = () => {
               `}
             />
             <GreenLine
-            css={css`
-            position: absolute;
-            visibility:hidden;
-            @media(max-width:1354px){
-              height:90%;
-              width:75%;
-              top:16px;
-              right: -10px;
-              border-top: 10px solid #70e89d;
-              visibility:visible;
-            }
-              @media(max-width:1030px){
-                visibility:hidden;
-              }
-            `}
-          />
+              css={css`
+                position: absolute;
+                visibility: hidden;
+                @media (max-width: 1354px) {
+                  height: 90%;
+                  width: 75%;
+                  top: 16px;
+                  right: -10px;
+                  border-top: 10px solid #70e89d;
+                  visibility: visible;
+                }
+                @media (max-width: 1030px) {
+                  visibility: hidden;
+                }
+              `}
+            />
             <InfoText>
               QuizTime enables teachers to create Quizzes for their students.
             </InfoText>
@@ -119,27 +119,27 @@ const TopLanding = () => {
               css={css`
                 @media (max-width: 763px) {
                   margin-right: 0;
-                  margin-left:0;
+                  margin-left: 0;
                 }
               `}
             />
-             <GreenLine
-            css={css`
-            position: absolute;
-            visibility:hidden;
-            @media(max-width:1354px){
-              width:29%;
-              height:45%;
-              border-bottom:10px solid #70e89d; 
-              top:16px;
-              right: 469px;
-              visibility:visible;
-            }
-              @media(max-width: 1030px){
-                visibility:hidden;
-              }
-            `}
-          />
+            <GreenLine
+              css={css`
+                position: absolute;
+                visibility: hidden;
+                @media (max-width: 1354px) {
+                  width: 29%;
+                  height: 45%;
+                  border-bottom: 10px solid #70e89d;
+                  top: 16px;
+                  right: 469px;
+                  visibility: visible;
+                }
+                @media (max-width: 1030px) {
+                  visibility: hidden;
+                }
+              `}
+            />
             <InfoTextTwo>
               The teacher can distribute that quiz to all students with one
               click.
