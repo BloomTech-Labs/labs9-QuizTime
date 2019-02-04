@@ -16,14 +16,15 @@ import { css } from "@emotion/core";
 const StudentBox = ({ id, student }) => {
   return (
     <>
-    <Input type="checkbox" />
+      <Input type="checkbox" css={{ display: "none" }} />
       <BoxHolder
         css={css`
           border-bottom: 5px solid #70e89d;
           position: relative;
           transform-style: preserve-3d;
           transition: all 600ms;
-          ${Input}:checked {
+          cursor: pointer;
+          &:hover {
             transform: rotateX(180deg);
           }
         `}
@@ -34,12 +35,7 @@ const StudentBox = ({ id, student }) => {
             backface-visibility: hidden;
           `}
         >
-          <Box
-          m={1}
-          css={css`
-          
-          `}
-          >
+          <Box m={1} css={css``}>
             <Flex flexDirection="row" justifyContent="space-between">
               <BoxText fontWeight={1}>
                 {" "}
@@ -80,17 +76,22 @@ const StudentBox = ({ id, student }) => {
         >
           <Box p={1}>
             <Flex flexDirection="row" justifyContent="space-between">
-            <BoxText fontWeight={1}>Quiz Results</BoxText>
-              </Flex>
+              <BoxText fontWeight={1}>Quiz Results</BoxText>
+            </Flex>
           </Box>
           <Box
-          p={1}
+            p={1}
             css={css`
               border-top: 1px solid #b5ffd0;
             `}
           >
-          <Flex flexDirection="column" css={css`border-bottom:1px solid #b5ffd0;`}>
-            <BoxText fontWeight={1}>Alg Quiz: 11/14</BoxText>
+            <Flex
+              flexDirection="column"
+              css={css`
+                border-bottom: 1px solid #b5ffd0;
+              `}
+            >
+              <BoxText fontWeight={1}>Alg Quiz: 11/14</BoxText>
             </Flex>
           </Box>
         </div>
