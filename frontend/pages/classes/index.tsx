@@ -37,7 +37,7 @@ class Classes extends Component {
     isHidden: true
   }
 
-  toggleHidden () {
+  toggleHidden() {
     this.setState({
       isHidden: !this.state.isHidden
     })
@@ -49,25 +49,22 @@ class Classes extends Component {
       <>
         <Layout>
           <Box my={3} mx={5} py={3}>
-              <Box>
-                <Button onClick={this.toggleHidden.bind(this)}>
-                  open
-                </Button>
-                {!this.state.isHidden && 
-                <Modal>
-                  <Box> 
-                    <Button onClick={this.toggleHidden.bind(this)}>x</Button>
-                    <AddClass />
-                    </Box>
-                  </Modal>}
-              </Box>
+
             <Label m={3} >Your Classes</Label>
             <CardHolder>
               <Holder>
-                <ATag>
-                  <AddBox>
-                  </AddBox>
-                </ATag>
+                <Box onClick={this.toggleHidden.bind(this)}>
+                  <ATag>
+                    <AddBox />
+                  </ATag>
+                </Box>
+                {!this.state.isHidden &&
+                  <Modal>
+                    <Box>
+                      <Button onClick={this.toggleHidden.bind(this)}>x</Button>
+                      <AddClass />
+                    </Box>
+                  </Modal>}
                 <Query query={ALL_CLASSES_QUERY}>
                   {({ loading, error, data }) => {
                     if (error) return <p>{error.message}</p>;
