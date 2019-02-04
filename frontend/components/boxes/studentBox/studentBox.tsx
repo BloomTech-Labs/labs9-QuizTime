@@ -5,7 +5,8 @@ import {
   BoxHolder,
   Emblem,
   BoxText,
-  UniButton
+  UniButton,
+  Input
 } from "../../design-system/primitives";
 import { Flex, Box } from "@rebass/emotion";
 import { css } from "@emotion/core";
@@ -15,13 +16,14 @@ import { css } from "@emotion/core";
 const StudentBox = ({ id, student }) => {
   return (
     <>
+    <Input type="checkbox" />
       <BoxHolder
         css={css`
           border-bottom: 5px solid #70e89d;
           position: relative;
           transform-style: preserve-3d;
           transition: all 600ms;
-          &:hover {
+          ${Input}:checked {
             transform: rotateX(180deg);
           }
         `}
@@ -32,7 +34,12 @@ const StudentBox = ({ id, student }) => {
             backface-visibility: hidden;
           `}
         >
-          <Box m={1}>
+          <Box
+          m={1}
+          css={css`
+          
+          `}
+          >
             <Flex flexDirection="row" justifyContent="space-between">
               <BoxText fontWeight={1}>
                 {" "}
