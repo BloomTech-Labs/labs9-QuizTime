@@ -55,8 +55,9 @@ class AddStudent extends Component {
                 });
               }}
             >
-              <Label m={2} htmlFor="firstName">
-                First Name
+
+              <Label m={2}> Add a New Student</Label>
+
                 <Input
                   type="text"
                   id="firstName"
@@ -67,10 +68,7 @@ class AddStudent extends Component {
                   onChange={this.handleChange}
                   m={2}
                 />
-              </Label>
 
-              <Label m={2} htmlFor="lastName">
-                Last Name
                 <Input
                   type="text"
                   id="lastName"
@@ -81,10 +79,7 @@ class AddStudent extends Component {
                   onChange={this.handleChange}
                   m={2}
                 />
-              </Label>
 
-              <Label m={2} htmlFor="email">
-                Email
                 <Input
                   type="text"
                   id="email"
@@ -95,7 +90,7 @@ class AddStudent extends Component {
                   onChange={this.handleChange}
                   m={2}
                 />
-              </Label>
+
 
               <Flex
                 justifyContent="flex-end"
