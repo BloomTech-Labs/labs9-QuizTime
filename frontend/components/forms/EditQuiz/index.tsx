@@ -45,7 +45,7 @@ export default ({ title }) => {
               </Box>
 
               {quiz.major_questions.map((major_question, major_pos) => (
-                <MajorQuestionForm {...major_question} key={major_pos} pos={major_pos} />
+                <MajorQuestionForm {...major_question} key={major_pos} pos={major_pos} quiz_id={title} />
               ))}
 
               {showNewMajor || (<Button
@@ -56,7 +56,7 @@ export default ({ title }) => {
                 Add Major Question
               </Button>)}
               {showNewMajor && (
-                <NewMajorQuestionForm quiz_id={title} />
+                <NewMajorQuestionForm quiz_id={title} show={setShowNewMajor} />
               )}
             </Box>
           )
