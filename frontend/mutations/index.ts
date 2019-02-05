@@ -43,3 +43,7 @@ export const INSERT_CLASS_QUIZ = gql`
     }
   }
 `
+
+// export const UPDATE_CLASS_QUIZ_DUE_DATE = gql`
+//   mutation 
+// `
