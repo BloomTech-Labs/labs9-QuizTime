@@ -80,7 +80,7 @@ const ClassPage = ({ query: { id } }) => {
                             {!isHidden &&
                               <Modal>
                                 <Flex>
-                                  <AddStudent />
+                                  <AddStudent class_id={id} />
                                 <Box>
                                   <UpperCase
                                     color="blue.1"
