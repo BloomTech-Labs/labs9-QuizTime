@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { INSERT_STUDENT } from "../../mutations";
 import { ALL_STUDENTS_QUERY } from "../../queries";
-import { Form, FormInput, Button, Label, Text, HeadText } from "../design-system";
+import { Form, Input, Button, Label, Text, HeadText } from "../design-system";
 
 class AddStudent extends Component {
   state = {
@@ -56,7 +56,7 @@ class AddStudent extends Component {
             >
               <Label htmlFor="firstName">
                 First Name
-                <FormInput
+                <Input
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -69,7 +69,7 @@ class AddStudent extends Component {
 
               <Label htmlFor="lastName">
                 Last Name
-                <FormInput
+                <Input
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -82,7 +82,7 @@ class AddStudent extends Component {
 
               <Label htmlFor="email">
                 Email
-                <FormInput
+                <Input
                   type="text"
                   id="email"
                   name="email"

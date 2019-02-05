@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
@@ -13,6 +14,7 @@ import styled from "@emotion/styled";
 import { Box, Flex } from "@rebass/emotion";
 import AddBox from '../../components/boxes/addBox/addBox';
 import ReactLoading from "react-loading";
+import Modal from '../../components/Modal/index';
 
 import {
   StudentHolder,
@@ -28,16 +30,19 @@ const ATag = styled.a`
   text-decoration: none;
 `;
 
-const ClassPage = ({ query: { id } }) => {  
+const ClassPage = ({ query: { id } }) => {
 
-  
+  const [isHidden, setIsHidden] = useState(true);
+
+  const toggleHidden = () => {
+    setIsHidden(!isHidden)
+  }
+
   return (
     <Layout>
       <Box>
         <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
           {({ loading, error, data }) => {
-            {console.log('class', data.class[0].id)}
-            {console.log('id', id)}
             if (error) return <p>{error.message}</p>;
             if (loading) {
               return (
@@ -65,9 +70,28 @@ const ClassPage = ({ query: { id } }) => {
                         <Box p={2}>
                           <Label mx={2} my={3} >Class Management</Label>
                           <Flex flexWrap="wrap">
-                            <ATag>
-                              <AddBox />
-                            </ATag>
+                            <Box onClick={toggleHidden}>
+                              <ATag>
+                                <AddBox />
+                              </ATag>
+                            </Box>
+                            {!isHidden &&
+                              <Modal>
+                                <Flex>
+                                  <AddStudent />
+                                <Box>
+                                  <UpperCase
+                                    color="blue.1"
+                                    fontWeight={6}
+                                    fontSize={2}
+                                    css={{ cursor: "pointer" }}
+                                    onClick={toggleHidden}
+                                  >x
+                                </UpperCase>
+                                </Box>
+                              </Flex>
+                              </Modal>
+                            }
                             {data.class[0].students.map(student => (
                               <StudentBox
                                 id={student.id}
@@ -79,7 +103,7 @@ const ClassPage = ({ query: { id } }) => {
                         </Box>
                       </Flex>
                     </Box>
-                    <Box py={3} m={3} width={[1, 1, 1/4]}>
+                    <Box py={3} m={3} width={[1, 1, 1 / 4]}>
                       <Label mx={2} my={3} >Quiz Management</Label>
                       <Flex
                         flexDirection="column"
@@ -122,7 +146,7 @@ const ClassPage = ({ query: { id } }) => {
       </Box>
     </Layout>
   )
-//};
+  //};
 };
 
 export default securePage(ClassPage);
