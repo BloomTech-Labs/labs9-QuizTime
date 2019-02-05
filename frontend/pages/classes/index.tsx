@@ -43,13 +43,11 @@ class Classes extends Component {
     })
   }
 
-
   render() {
     return (
       <>
         <Layout>
           <Box my={3} mx={5} py={3}>
-
             <Label m={3} >Your Classes</Label>
             <CardHolder>
               <Holder>
@@ -60,18 +58,18 @@ class Classes extends Component {
                 </Box>
                 {!this.state.isHidden &&
                   <Modal>
-                    <Box p={2}> 
+                    <Box p={2}>
                       <Flex
                         flexDirection="row"
                       >
                         <AddClass />
                         <Box>
-                          <UpperCase 
-                          color="blue.1" 
-                          fontWeight={6} 
-                          fontSize = {2}  
-                          css={{cursor: "pointer"}} 
-                          onClick={this.toggleHidden.bind(this)}
+                          <UpperCase
+                            color="blue.1"
+                            fontWeight={6}
+                            fontSize={2}
+                            css={{ cursor: "pointer" }}
+                            onClick={this.toggleHidden.bind(this)}
                           >x
                           </UpperCase>
                         </Box>
