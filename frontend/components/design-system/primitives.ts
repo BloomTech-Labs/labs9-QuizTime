@@ -2,7 +2,7 @@ import {
   Box as B,
   Text as T,
   Flex as F,
-  Button as Butt,
+  Button as Btn,
   Image as I
 } from "@rebass/emotion";
 
@@ -538,8 +538,7 @@ export const BoxHolder = props => (
   <F
     width="200px"
     m={3}
-    justifyContent="space-around"
-    alignItems="center"
+    justifyContent="space-between"
     flexDirection="column"
     bg="white"
     css={{
@@ -694,7 +693,7 @@ export const UpperCase = props => (
   />
 );
 
-export const Button = props => <Butt variant="primary" {...props} />;
+export const Button = props => <Btn variant="primary" {...props} />;
 
 export const ButtonLink = props => (
   <Button css={{ cursor: "pointer" }} {...props} />
@@ -830,3 +829,14 @@ export const TextArea = props => (
 export const AvatarImg = props => (
   <I width="45px" height="45px" borderRadius="50%" m={2} {...props} />
 );
+
+//* BUTTONS 
+
+export const UniButton = props =>(
+  <Btn
+  width="auto"
+  fontWeight={[1]}
+  color="white"
+  {...props}
+  />
+)
