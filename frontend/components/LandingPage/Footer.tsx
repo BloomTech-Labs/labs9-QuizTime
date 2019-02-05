@@ -23,7 +23,8 @@ const Footer = (props) => {
              css={css`
              @media(max-width:680px){
                  flex-direction: column;
-                 align-items:center;
+                 align-items:flex-start;
+                 margin-left: 15px;
              }
              `}>
                 <Box 
@@ -108,7 +109,7 @@ const Footer = (props) => {
                     justifyContent="center"
                 >
                     <LandingText color="white" fontWeight={0} fontSize ={2} lineHeight = {1.5} p={3}>
-                        Copyright 2019, QuizTime Development Team
+                        Copyright 2019, QuizTime
                     </LandingText>
                 </Flex>
             </Box>
