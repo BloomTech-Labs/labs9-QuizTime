@@ -34,7 +34,7 @@ const AvatarPopup = ({isNavPopup}) => {
           }}
           onClick={() => {
             Router.push(
-              '/student?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtZWppYUBnbWFpbC5jb20iLCJxdWl6X2lkIjoiMTIiLCJzdHVkZW50X2lkIjoiNDUiLCJpYXQiOjE1NDg5ODAzNTksImV4cCI6MTU0OTIzOTU1OSwianRpIjoiMTIzNCJ9.lO65CJ_Uzlg_zg-qegpa5uSh5-cvdBepY0j4tKzqCZQ'
+              '/student?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtZWppYUBnbWFpbC5jb20iLCJxdWl6X2lkIjoiMTIiLCJzdHVkZW50X2lkIjoiMTEwIiwiaWF0IjoxNTQ5Mzg2OTU2LCJleHAiOjE1NDk2NDYxNTYsImp0aSI6IjEyMzQifQ.Tv2-L43Mfb2WXxZvGf9H82HKYf9FIpaoQ0OeoUyKKQE'
             );
           }}
         >

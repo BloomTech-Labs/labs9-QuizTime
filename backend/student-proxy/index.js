@@ -104,6 +104,27 @@ const insert_student_minor_answer_mutation = (
   `
 }
 
+const insert_score = (quiz_id, student_id, {score}) => {
+  return `
+   mutation insert_score {
+     insert_score(
+       objects: [{
+        quiz_id: ${quiz_id}
+        student_id: ${student_id}
+        score: ${score}
+       }]
+     ) {
+      returning {
+        id
+        quiz_id
+        student_id
+        score
+      }
+     }
+   }
+  `
+}
+
 const craftPost = (type, dcToken, data) => {
   switch (type) {
     case 'get_quiz_query':
@@ -127,6 +148,10 @@ const craftPost = (type, dcToken, data) => {
         )}`
       }
       break
+      case 'insert_score': 
+      return {
+        query: `${insert_score(dcToken.quiz_id, dcToken.student_id, data)}`
+      }
     case 'get_quiz_results_query':
       // add query to retrieve all the answers, either precalcing them
       // or collating them for easy calc on front end
@@ -150,14 +175,16 @@ const handler = async (req, res) => {
     major_question_id,
     correct,
     student_answer,
-    minor_question_id
+    minor_question_id,
+    score
   } = await json(req)
 
   const data = {
     major_question_id,
     correct,
     student_answer,
-    minor_question_id
+    minor_question_id,
+    score
   }
 
   // if (req.headers.authorization) {
