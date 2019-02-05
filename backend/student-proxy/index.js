@@ -152,6 +152,7 @@ const craftPost = (type, dcToken, data) => {
       return {
         query: `${insert_score(dcToken.quiz_id, dcToken.student_id, data)}`
       }
+      break
     case 'get_quiz_results_query':
       // add query to retrieve all the answers, either precalcing them
       // or collating them for easy calc on front end
