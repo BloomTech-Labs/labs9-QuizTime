@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { BoxHolder, Emblem, BoxText } from "../../design-system/primitives";
+import { Flex, Box } from "@rebass/emotion";
+import { BoxHolder, Emblem, BoxText, UpperCase } from "../../design-system/primitives";
 import { css } from "@emotion/core";
 
 
@@ -14,13 +15,29 @@ const ATag = styled.a`
 const QuizBox: React.SFC<{ quiz: object }> = ({ quiz }) => {
   return (
     <>
-      <BoxHolder>
-        <Link href={`/quizzes/quiz?title=${quiz.id}`}>
+    <Link href={`/quizzes/quiz?title=${quiz.id}`}>
+      <BoxHolder
+      css={css`
+      border-bottom: 5px solid #70e89d;
+      cursor: pointer;
+      `}
+      >
+      <Flex
+      p={3}
+      css={css`
+      border-bottom:1px solid #b5ffd0;
+      transition: background-color 1s ease-out;
+          &:hover {
+            background-color:  #b5ffd0;
+          }
+      `}
+      >
           <ATag>
-            <BoxText>{quiz.name}</BoxText>
+            <UpperCase fontSize={3}>{quiz.name}</UpperCase>
           </ATag>
-        </Link>
+      </Flex>
       </BoxHolder>
+    </Link>
     </>
   );
 };
