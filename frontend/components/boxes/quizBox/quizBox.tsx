@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Flex, Box } from "@rebass/emotion";
 import {
   BoxHolder,
-  UpperCase
+  UpperCase,
+  UniButton
 } from "../../design-system/primitives";
 import { css } from "@emotion/core";
 
@@ -17,29 +18,33 @@ const ATag = styled.a`
 const QuizBox: React.SFC<{ quiz: object }> = ({ quiz }) => {
   return (
     <>
-      <Link href={`/quizzes/quiz?title=${quiz.id}`}>
-        <BoxHolder
-          css={css`
+      <BoxHolder
+        css={css`
             border-bottom: 5px solid #70e89d;
             cursor: pointer;
           `}
-        >
-          <Flex
-            p={3}
-            css={css`
+      >
+        <Flex
+          p={3}
+          css={css`
               border-bottom: 1px solid #b5ffd0;
               transition: background-color 1s ease-out;
               &:hover {
                 background-color: #b5ffd0;
               }
             `}
-          >
-            <ATag>
-              <UpperCase fontSize={3}>{quiz.name}</UpperCase>
-            </ATag>
-          </Flex>
-        </BoxHolder>
-      </Link>
+        >
+          <ATag>
+            <UpperCase fontSize={3}>{quiz.name}</UpperCase>
+          </ATag>
+        </Flex>
+        <Link href={`/quizzes/quiz?title=${quiz.id}`}>
+            <Box m={2}>
+              <UniButton bg="blue.2" fontSize={0}>View / Edit</UniButton>
+            </Box>
+        </Link>
+      </BoxHolder>
+
     </>
   );
 };

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-
+import * as React from "react";
+import { useState } from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
@@ -14,6 +14,7 @@ import styled from "@emotion/styled";
 import { Box, Flex } from "@rebass/emotion";
 import AddBox from '../../components/boxes/addBox/addBox';
 import ReactLoading from "react-loading";
+import Modal from '../../components/Modal/index';
 
 import {
   StudentHolder,
@@ -31,9 +32,11 @@ const ATag = styled.a`
 
 const ClassPage = ({ query: { id } }) => {
 
-// class ClassPage extends Component {
+  const [isHidden, setIsHidden] = useState(true);
 
-//   render() {
+  const toggleHidden = () => {
+    setIsHidden(!isHidden)
+  }
 
   return (
     <Layout>
@@ -67,9 +70,28 @@ const ClassPage = ({ query: { id } }) => {
                         <Box p={2}>
                           <Label mx={2} my={3} >Class Management</Label>
                           <Flex flexWrap="wrap">
-                            <ATag>
-                              <AddBox />
-                            </ATag>
+                            <Box onClick={toggleHidden}>
+                              <ATag>
+                                <AddBox />
+                              </ATag>
+                            </Box>
+                            {!isHidden &&
+                              <Modal>
+                                <Flex>
+                                  <AddStudent />
+                                <Box>
+                                  <UpperCase
+                                    color="blue.1"
+                                    fontWeight={6}
+                                    fontSize={2}
+                                    css={{ cursor: "pointer" }}
+                                    onClick={toggleHidden}
+                                  >x
+                                </UpperCase>
+                                </Box>
+                              </Flex>
+                              </Modal>
+                            }
                             {data.class[0].students.map(student => (
                               <StudentBox
                                 id={student.id}
@@ -124,7 +146,7 @@ const ClassPage = ({ query: { id } }) => {
       </Box>
     </Layout>
   )
-//};
+  //};
 };
 
 export default securePage(ClassPage);

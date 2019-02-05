@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Box, Button, Flex } from "@rebass/emotion";
-import { NavBarHolder, AvatarImg, BoldText } from "../design-system/primitives";
+import { NavBarHolder, AvatarImg, BoldText, Text } from "../design-system/primitives";
 import { unsetToken, getUserFromLocalCookie } from "../../utils/auth";
 import { logout } from "../../utils/auth0";
 import { useMedia } from "the-platform";
@@ -41,12 +41,12 @@ const NavBar: React.SFC = () => {
     <Flex width={1}>
       <Box mx={3}>
         <Link href="/classes">
-          <BoldText color="white">classes</BoldText>
+          <Text fontSize = {3} color="white">classes</Text>
         </Link>
       </Box>
       <Box mx={3}>
         <Link href="/quizzes">
-          <BoldText color="white">quizzes</BoldText>
+          <Text fontSize={3} color="white">quizzes</Text>
         </Link>
       </Box>
     </Flex>
@@ -56,7 +56,7 @@ const NavBar: React.SFC = () => {
     <NavBarHolder css={{ position: "relative" }}>
       {Links}
       <AvatarImg
-        mr={3}
+        mr={4}
         onClick={() => setIsNavPopup(!isNavPopup)}
         src={user && user.picture ? user.picture : ""}
         alt="profile"

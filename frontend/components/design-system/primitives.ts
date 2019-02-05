@@ -35,7 +35,9 @@ export const NavBarHolder = props => (
   <F
     justifyContent="flex-end"
     alignItems="center"
-    bg={["blue.1", "green.1", "green.1"]}
+    p={2}
+    bg={["blue.1", "white", "white"]}
+    css={{borderBottom: "2px solid #323fcb"}}
     {...props}
   />
 );

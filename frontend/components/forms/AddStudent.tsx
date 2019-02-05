@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { INSERT_STUDENT } from "../../mutations";
 import { ALL_STUDENTS_QUERY } from "../../queries";
-import { Form, FormInput, Button, Label, Text, HeadText } from "../design-system";
+import { Box, Flex } from '@rebass/emotion';
+import { Form, Input, Button, Label, Text, HeadText } from "../design-system";
 
 class AddStudent extends Component {
   state = {
@@ -40,7 +41,7 @@ class AddStudent extends Component {
         }}
       >
         {(insert_student, { error, loading, data }) => (
-          <>
+          <Box m={2}>
             <Form
               onSubmit={async e => {
                 // Stop the form from submitting
@@ -54,9 +55,10 @@ class AddStudent extends Component {
                 });
               }}
             >
-              <Label htmlFor="firstName">
-                First Name
-                <FormInput
+
+              <Label m={2}> Add a New Student</Label>
+
+                <Input
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -64,12 +66,10 @@ class AddStudent extends Component {
                   required
                   value={this.state.firstName}
                   onChange={this.handleChange}
+                  m={2}
                 />
-              </Label>
 
-              <Label htmlFor="lastName">
-                Last Name
-                <FormInput
+                <Input
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -77,12 +77,10 @@ class AddStudent extends Component {
                   required
                   value={this.state.lastName}
                   onChange={this.handleChange}
+                  m={2}
                 />
-              </Label>
 
-              <Label htmlFor="email">
-                Email
-                <FormInput
+                <Input
                   type="text"
                   id="email"
                   name="email"
@@ -90,17 +88,22 @@ class AddStudent extends Component {
                   required
                   value={this.state.email}
                   onChange={this.handleChange}
+                  m={2}
                 />
-              </Label>
 
-              <Button variant="primary" type="submit">
-                Submit
+
+              <Flex
+                justifyContent="flex-end"
+              >
+                <Button my={3} variant="primary" type="submit" p={3}>
+                  Submit
               </Button>
+              </Flex>
             </Form>
             {/* render errors, loading, or data */}
             {error && <p> {error.message} </p>}
             {loading && <p> ...loading </p>}
-          </>
+          </Box>
         )}
       </Mutation>
     );
