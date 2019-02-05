@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-
+import * as React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
@@ -29,17 +28,16 @@ const ATag = styled.a`
   text-decoration: none;
 `;
 
-const ClassPage = ({ query: { id } }) => {
+const ClassPage = ({ query: { id } }) => {  
 
-// class ClassPage extends Component {
-
-//   render() {
-
+  
   return (
     <Layout>
       <Box>
         <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
           {({ loading, error, data }) => {
+            {console.log('class', data.class[0].id)}
+            {console.log('id', id)}
             if (error) return <p>{error.message}</p>;
             if (loading) {
               return (
@@ -81,7 +79,7 @@ const ClassPage = ({ query: { id } }) => {
                         </Box>
                       </Flex>
                     </Box>
-                    <Box py={3} m={3} width={[1, 1, 1 / 4]}>
+                    <Box py={3} m={3} width={[1, 1, 1/4]}>
                       <Label mx={2} my={3} >Quiz Management</Label>
                       <Flex
                         flexDirection="column"
