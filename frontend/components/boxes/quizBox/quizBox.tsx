@@ -4,8 +4,6 @@ import Link from "next/link";
 import { Flex, Box } from "@rebass/emotion";
 import {
   BoxHolder,
-  Emblem,
-  BoxText,
   UpperCase
 } from "../../design-system/primitives";
 import { css } from "@emotion/core";
