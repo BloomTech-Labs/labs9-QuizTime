@@ -4,7 +4,7 @@ import {
   BoxHolder,
   Emblem,
   BoxText,
-  UniButton,
+  UniButton
 } from "../../design-system/primitives";
 import { Flex, Box } from "@rebass/emotion";
 import { css } from "@emotion/core";
@@ -19,35 +19,35 @@ const StudentBox = ({ id, student }) => {
           border-bottom: 5px solid #70e89d;
         `}
       >
-          <Box m={1} css={css``}>
-            <Flex flexDirection="row" justifyContent="space-between">
-              <BoxText fontWeight={1}>
-                {" "}
-                {student.first_name} {student.last_name}
-              </BoxText>
-            </Flex>
-          </Box>
-          <Box
+        <Box m={1} css={css``}>
+          <Flex flexDirection="row" justifyContent="space-between">
+            <BoxText fontWeight={1}>
+              {" "}
+              {student.first_name} {student.last_name}
+            </BoxText>
+          </Flex>
+        </Box>
+        <Box
+          p={1}
+          css={css`
+            border-top: 1px solid #b5ffd0;
+          `}
+        >
+          <BoxText fontWeight={1}>{student.email}</BoxText>
+          <Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            mt={1}
             p={1}
             css={css`
               border-top: 1px solid #b5ffd0;
             `}
           >
-            <BoxText fontWeight={1}>{student.email}</BoxText>
-            <Flex
-              flexDirection="row"
-              justifyContent="space-between"
-              mt={1}
-              p={1}
-              css={css`
-                border-top: 1px solid #b5ffd0;
-              `}
-            >
-              <UniButton bg="blue.2" fontSize={0}>
-                View Results
-              </UniButton>
-            </Flex>
-          </Box>
+            <UniButton bg="blue.2" fontSize={0}>
+              View Results
+            </UniButton>
+          </Flex>
+        </Box>
       </BoxHolder>
     </>
   );
