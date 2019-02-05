@@ -18,8 +18,28 @@ const Footer = (props) => {
     return(
         <>
             <Box bg="blue.2" p={2} color="white">
-            <FlexColumns my={3}>
-                <Box m={3} p={2} width="280px">
+            <FlexColumns
+             my={3}
+             css={css`
+             @media(max-width:680px){
+                 flex-direction: column;
+                 align-items:center;
+             }
+             `}>
+                <Box 
+                m={3} 
+                p={2} 
+                width="180px"
+                css={css`
+                @media(max-width:763px){
+                    margin:0px;
+                    padding:0px
+                }
+                @media(max-width:680px){
+                    padding:5px;
+                    margin:5px
+                }
+                `}>
                     <Text>
                         <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
                             Follow Us
@@ -31,7 +51,20 @@ const Footer = (props) => {
                         <ListItem>Twitter</ListItem>
                     </List>
                 </Box>
-                <Box m={3} p={2} width="280px">
+                <Box 
+                m={3} 
+                p={2} 
+                width="280px"
+                css={css`
+                @media(max-width:763px){
+                    margin:0px;
+                    padding:0px
+                }
+                @media(max-width:680px){
+                    padding:5px;
+                    margin:5px
+                }
+                `}>
                     <Text>
                         <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
                         About Us
@@ -42,7 +75,20 @@ const Footer = (props) => {
                         Please contact us at any time with questions or comments. 
                     </LandingText>
                 </Box>
-                <Box m={3} p={2} width="280px">
+                <Box 
+                m={3} 
+                p={2} 
+                width="180px"
+                css={css`
+                @media(max-width:763px){
+                    margin:0px;
+                    padding:0px
+                }
+                @media(max-width:680px){
+                    padding:5px;
+                    margin:5px
+                }
+                `}>
                     <Text>
                         <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2} css={css `border-bottom: 5px solid #70e89d `}>
                         Links
