@@ -9,7 +9,7 @@ import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import AddClass from "../../components/forms/AddClass";
 import { ALL_CLASSES_QUERY } from "../../queries";
-import { Container, Label, Button } from "../../components/design-system";
+import { Container, Label, Button, UpperCase } from "../../components/design-system";
 import AddBox from '../../components/boxes/addBox/addBox';
 import Modal from '../../components/Modal/index';
 import ReactLoading from "react-loading";
@@ -60,9 +60,22 @@ class Classes extends Component {
                 </Box>
                 {!this.state.isHidden &&
                   <Modal>
-                    <Box>
-                      <Button onClick={this.toggleHidden.bind(this)}>x</Button>
-                      <AddClass />
+                    <Box p={2}> 
+                      <Flex
+                        flexDirection="row"
+                      >
+                        <AddClass />
+                        <Box>
+                          <UpperCase 
+                          color="blue.1" 
+                          fontWeight={6} 
+                          fontSize = {2}  
+                          css={{cursor: "pointer"}} 
+                          onClick={this.toggleHidden.bind(this)}
+                          >x
+                          </UpperCase>
+                        </Box>
+                      </Flex>
                     </Box>
                   </Modal>}
                 <Query query={ALL_CLASSES_QUERY}>

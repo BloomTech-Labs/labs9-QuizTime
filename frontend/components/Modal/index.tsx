@@ -18,7 +18,7 @@ const ModalContainer = styled.div`
 const ModalBox = styled.div`
     position: absolute;
     background: white;
-    padding: 50px 10%;
+    padding: 15px 2%;
 `;
 
 class Modal extends Component {
