@@ -54,7 +54,7 @@ const ClassPage = ({ query: { id } }) => {
             if (data) {
               return (
                 // page content containers
-                <Box p={3} mx={3} css={{border: "1px solid red"}}>
+                <Box p={3} mx={3}>
                   <Flex
                   flexDirection="row"
                   flexWrap="wrap"
