@@ -54,17 +54,21 @@ const ClassPage = ({ query: { id } }) => {
             if (data) {
               return (
                 // page content containers
-                <Box p={3} mx={3} >
-                  <Flex>
+                <Box p={3} mx={3} css={{border: "1px solid red"}}>
+                  <Flex
+                  flexDirection="row"
+                  flexWrap="wrap"
+                  >
                     {/* container for left side */}
-                    <Box p={2} m={3} width={[1, 1, 3 / 4]}>
+                    <Box p={2} m={3}>
                       <Flex
-                        flexDirection="column"
+                        flexDirection="row"
+                        flexWrap="wrap"
                       >
                         {/* <Box p={3} m={3}>
                         <AddStudent class_id={id} />
                       </Box> */}
-                        <Box p={2}>
+                        <Box p={2} width={[1]}>
                           <Label mx={2} my={3} >Class Management</Label>
                           <Flex flexWrap="wrap">
                             <ATag>
@@ -81,7 +85,7 @@ const ClassPage = ({ query: { id } }) => {
                         </Box>
                       </Flex>
                     </Box>
-                    <Box py={3} m={3} width={[1, 1, 1 / 4]}>
+                    <Box p={3} m={4} >
                       <Label mx={2} my={3} >Quiz Management</Label>
                       <Flex
                         flexDirection="column"
