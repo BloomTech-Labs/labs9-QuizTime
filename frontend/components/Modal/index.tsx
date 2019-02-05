@@ -19,6 +19,9 @@ const ModalBox = styled.div`
     position: absolute;
     background: white;
     padding: 15px 2%;
+    border: 1px solid #323fcb;
+    border-radius: 6px;
+    border-bottom: 5px solid #323fcb;
 `;
 
 class Modal extends Component {

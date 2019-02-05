@@ -6,6 +6,7 @@ import { SideBarHolder } from "../design-system/primitives";
 
 const BoxText = styled.a`
   font-family: "system-ui";
+  font-size:  "16px"
   padding: 14px;
   cursor: pointer;
   color: #f4f4f4;
