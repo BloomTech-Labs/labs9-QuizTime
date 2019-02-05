@@ -54,7 +54,8 @@ class StudentQuiz extends Component {
   }
 
   componentDidUpdate() {
-    document.getElementById('focusMe') && document.getElementById('focusMe').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('focusMe') &&
+      document.getElementById('focusMe').scrollIntoView({ behavior: 'smooth' });
   }
 
   nextQuestion = (e, q) => {
@@ -72,12 +73,14 @@ class StudentQuiz extends Component {
       majorCorrect,
       minorIndex,
       isMajor,
-      isDone
+      isDone,
     } = this.state;
     return (
       <>
         <Meta />
-        <Container css={{boxShadow: "0px 3px 15px rgba(0,0,0,0.2)", padding: '20px'}}>
+        <Container
+          css={{ boxShadow: '0px 3px 15px rgba(0,0,0,0.2)', padding: '20px' }}
+        >
           {quiz ? (
             <>
               <QuizHeading quiz={quiz} />
@@ -111,7 +114,8 @@ class StudentQuiz extends Component {
                         css={majorIndex !== idx && { display: 'none' }}
                         variant='primaryNoHover'
                       >
-                        Score: {this.state.score}/{this.state.maxScore}
+                        Score: {this.state.score}/
+                        {this.state.quiz.major_questions.length * 10}
                       </Button>
                       <ButtonLink
                         disabled={!isAnswered}
@@ -187,7 +191,7 @@ class StudentQuiz extends Component {
       //* Is the current Major Question the last Major Question?
       //* Yes => calculate score.
       if (majorIndex === quiz.major_questions.length - 1) {
-        this.setState({isDone: true})
+        this.setState({ isDone: true }, () => this.submitScore());
         return;
       }
       //* Current Major Question was correct, so don't render Minor Questions
@@ -208,7 +212,7 @@ class StudentQuiz extends Component {
       //* If yes, move on to next Major Question and reset minorIndex (if there is one. otherwise display score).
       minorIndex.push(0);
       if (majorIndex === quiz.major_questions.length - 1) {
-        this.setState({isDone: true})
+        this.setState({ isDone: true }, () => this.submitScore());
         return;
       } else {
         this.setState(s => ({
@@ -257,6 +261,20 @@ class StudentQuiz extends Component {
       .catch(error => console.log(error));
   };
 
+  submitScore = () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        type: 'insert_score',
+        token: getStudentToken(),
+        score: this.state.score,
+      }),
+    };
+    fetch(url, options)
+      .then(res => res.json())
+      .then(({ data }) => console.log('score', data))
+      .catch(error => console.log(error));
+  };
   submitMinorAnswer = () => {
     const options = {
       method: 'POST',
