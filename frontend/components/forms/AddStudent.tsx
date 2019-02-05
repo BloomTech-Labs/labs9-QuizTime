@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { INSERT_STUDENT } from "../../mutations";
 import { ALL_STUDENTS_QUERY } from "../../queries";
+import { Box, Flex } from '@rebass/emotion';
 import { Form, Input, Button, Label, Text, HeadText } from "../design-system";
 
 class AddStudent extends Component {
@@ -40,7 +41,7 @@ class AddStudent extends Component {
         }}
       >
         {(insert_student, { error, loading, data }) => (
-          <>
+          <Box m={2}>
             <Form
               onSubmit={async e => {
                 // Stop the form from submitting
@@ -54,7 +55,7 @@ class AddStudent extends Component {
                 });
               }}
             >
-              <Label htmlFor="firstName">
+              <Label m={2} htmlFor="firstName">
                 First Name
                 <Input
                   type="text"
@@ -64,10 +65,11 @@ class AddStudent extends Component {
                   required
                   value={this.state.firstName}
                   onChange={this.handleChange}
+                  m={2}
                 />
               </Label>
 
-              <Label htmlFor="lastName">
+              <Label m={2} htmlFor="lastName">
                 Last Name
                 <Input
                   type="text"
@@ -77,10 +79,11 @@ class AddStudent extends Component {
                   required
                   value={this.state.lastName}
                   onChange={this.handleChange}
+                  m={2}
                 />
               </Label>
 
-              <Label htmlFor="email">
+              <Label m={2} htmlFor="email">
                 Email
                 <Input
                   type="text"
@@ -90,17 +93,22 @@ class AddStudent extends Component {
                   required
                   value={this.state.email}
                   onChange={this.handleChange}
+                  m={2}
                 />
               </Label>
 
-              <Button variant="primary" type="submit">
-                Submit
+              <Flex
+                justifyContent="flex-end"
+              >
+                <Button my={3} variant="primary" type="submit" p={3}>
+                  Submit
               </Button>
+              </Flex>
             </Form>
             {/* render errors, loading, or data */}
             {error && <p> {error.message} </p>}
             {loading && <p> ...loading </p>}
-          </>
+          </Box>
         )}
       </Mutation>
     );
