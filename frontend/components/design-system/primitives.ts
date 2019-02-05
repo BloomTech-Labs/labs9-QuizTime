@@ -35,7 +35,10 @@ export const NavBarHolder = props => (
   <F
     justifyContent="flex-end"
     alignItems="center"
-    bg={["blue.1", "green.1", "green.1"]}
+    bg={["white"]}
+    css={css`
+    border-bottom:5px solid #70e89d;
+    `}
     {...props}
   />
 );
@@ -483,12 +486,14 @@ export const InfoTextThree = props => (
 export const SideBarHolder = props => (
   <F
     width={[0, 1 / 3, 1 / 5]}
-    py={[0, 4, 4]}
-    px={[0, 3, 3]}
-    bg="blue.1"
+    py={[3]}
+    bg="blue.4"
     flexDirection="column"
+    justifyContent="flex-start"
     fontSize={4}
-    css={{ minHeight: "100vh" }}
+    css={{ 
+      minHeight: "100vh",
+    }}
     {...props}
   />
 );

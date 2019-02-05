@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Box, Flex } from "@rebass/emotion";
 import { SideBarHolder, UpperCase } from "./design-system/primitives";
 import { useMedia } from "the-platform";
+import { css } from "@emotion/core";
 
 const BoxText = styled.a`
   font-family: "system-ui";
@@ -22,20 +23,20 @@ const SideBar: React.SFC = () => {
   return (
     <SideBarHolder>
       {large && (
-        <Flex width={1} flexDirection="column" alignItems="center">
+        <Flex width={1} flexDirection="column" alignItems="flex-start">
           <Box mb={4}>
             <Link href="/" prefetch>
               <BoxText>QuizTime</BoxText>
             </Link>
           </Box>
-          <Box my={3}>
+          <Box m={3} my={3}>
             <Link href="/quizzes" prefetch>
-              <UpperCase color="white">quizzes</UpperCase>
+              <UpperCase fontSize={2} color="white">quizzes</UpperCase>
             </Link>
           </Box>
-          <Box my={3}>
+          <Box m={3} my={3}>
             <Link href="/classes" prefetch>
-              <UpperCase color="white">classes</UpperCase>
+              <UpperCase fontSize={2} color="white">classes</UpperCase>
             </Link>
           </Box>
         </Flex>
