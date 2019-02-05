@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
+import Router from 'next/router'
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import Link from "next/link";
@@ -48,16 +49,6 @@ class Classes extends Component {
     return (
       <>
         <Layout>
-        <Flex
-        flexDirection="row"
-        css={css`
-          width: auto;
-        `}
-      >
-        <Label fontSize={1} fontWeight={0}>
-          Classes
-        </Label>
-      </Flex>
           <Box my={3} mx={5} py={3}>
             <Label m={3} >Your Classes</Label>
             <CardHolder>

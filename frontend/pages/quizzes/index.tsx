@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+import Router from 'next/router'
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import QuizBox from "../../components/boxes/quizBox/quizBox";
@@ -38,16 +39,6 @@ const ATag = styled.a`
 
 const Quizzes = () => (
   <Layout>
-          <Flex
-        flexDirection="row"
-        css={css`
-          width: auto;
-        `}
-      >
-        <Label fontSize={1} fontWeight={0}>
-          Quizzes
-        </Label>
-      </Flex>
     <Box my={3} mx={5} py={3}>
       <Label m={3} >Your Quizzes</Label>
       <CardHolder>

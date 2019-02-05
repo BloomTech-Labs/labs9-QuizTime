@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
@@ -37,19 +36,6 @@ const ClassPage = ({ query: { id } }) => {
 
   return (
     <Layout>
-      <Flex
-        flexDirection="row"
-        css={css`
-          width: auto;
-        `}
-      >
-        <Label fontSize={1} fontWeight={0}>
-          Classes
-        </Label>
-        <Label fontSize={1} fontWeight={0}>
-          / Class:{}
-        </Label>
-      </Flex>
       <Box>
         <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
           {({ loading, error, data }) => {
