@@ -71,9 +71,8 @@ const Footer = (props) => {
                         </UpperCase>
                     </Text>
                     <LandingText color="white" fontWeight = {0} fontSize ={3} lineHeight = {1.5} p={2}>
-                        QuizTime enables educators to create engaging quizzes with ease. Our simple quiz creator gives educators the ability to 
-                        send finished quizzes out to there students from the individual class. We want to save educators time on this at sometimes tedious 
-                        process.
+                    QuizTime enables educators to quickly and easily create engaging, adaptive quizzes.
+                     With one click, educators can send quizzes out to each student in the class and view results in real time.
                     </LandingText>
                 </Box>
                 <Box 
