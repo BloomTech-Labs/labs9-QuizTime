@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-=======
 import * as React from "react";
 import { useState } from 'react';
->>>>>>> 7ab582fe536f7f551c33b93e05be553dbfed72f5
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
@@ -18,11 +14,8 @@ import styled from "@emotion/styled";
 import { Box, Flex } from "@rebass/emotion";
 import AddBox from "../../components/boxes/addBox/addBox";
 import ReactLoading from "react-loading";
-<<<<<<< HEAD
 import { css } from "@emotion/core";
-=======
 import Modal from '../../components/Modal/index';
->>>>>>> 7ab582fe536f7f551c33b93e05be553dbfed72f5
 
 import {
   StudentHolder,
@@ -41,15 +34,11 @@ const ATag = styled.a`
 const ClassPage = ({ query: { id } }) => {
   // class ClassPage extends Component {
 
-<<<<<<< HEAD
-  //   render() {
-=======
   const [isHidden, setIsHidden] = useState(true);
 
   const toggleHidden = () => {
     setIsHidden(!isHidden)
   }
->>>>>>> 7ab582fe536f7f551c33b93e05be553dbfed72f5
 
   return (
     <Layout>
@@ -172,11 +161,7 @@ const ClassPage = ({ query: { id } }) => {
         </Query>
       </Box>
     </Layout>
-<<<<<<< HEAD
-  );
-=======
   )
->>>>>>> 7ab582fe536f7f551c33b93e05be553dbfed72f5
   //};
 };
 
