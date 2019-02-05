@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import NameForm from './NameForm';
 import DescriptionForm from './DescriptionForm';
 import MajorQuestionForm from './MajorQuestionForm';
+import NewMajorQuestionForm from './NewMajorQuestionForm';
 
 import { GET_QUIZ_QUERY } from '../../../queries';
 
@@ -46,6 +47,17 @@ export default ({ title }) => {
               {quiz.major_questions.map((major_question, major_pos) => (
                 <MajorQuestionForm {...major_question} key={major_pos} pos={major_pos} />
               ))}
+
+              {showNewMajor || (<Button
+                mx={3}
+                variant="success"
+                onClick={() => setShowNewMajor(true)}
+              >
+                Add Major Question
+              </Button>)}
+              {showNewMajor && (
+                <NewMajorQuestionForm quiz_id={title} />
+              )}
             </Box>
           )
         }

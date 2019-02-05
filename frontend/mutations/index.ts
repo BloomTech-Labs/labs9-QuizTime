@@ -175,3 +175,47 @@ export const UPDATE_MINOR_ANSWERS = gql`
     }
   }
 `
+
+export const INSERT_MAJOR_QUESTION = gql`
+  mutation insert_class_quiz($class_id: Int!, $quiz_id: Int!){
+    insert_class_quiz(
+      objects:[
+        {
+          class_id: $class_id,
+          quiz_id: $quiz_id
+        }
+      ]
+    ){
+      returning{
+        id
+        due_date
+        quiz {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+export const INSERT_MINOR_QUESTION = gql`
+  mutation insert_class_quiz($class_id: Int!, $quiz_id: Int!){
+    insert_class_quiz(
+      objects:[
+        {
+          class_id: $class_id,
+          quiz_id: $quiz_id
+        }
+      ]
+    ){
+      returning{
+        id
+        due_date
+        quiz {
+          id
+          name
+        }
+      }
+    }
+  }
+`
