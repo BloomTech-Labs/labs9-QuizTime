@@ -41,12 +41,12 @@ const NavBar: React.SFC = () => {
     <Flex width={1}>
       <Box mx={3}>
         <Link href="/classes">
-          <BoldText color="#101440">classes</BoldText>
+          <BoldText fontSize={2} color="#101440" css={{cursor: "pointer"}}>classes</BoldText>
         </Link>
       </Box>
       <Box mx={3}>
         <Link href="/quizzes">
-          <BoldText color="#101440">quizzes</BoldText>
+          <BoldText fontSize={2} color="#101440" css={{cursor: "pointer"}}>quizzes</BoldText>
         </Link>
       </Box>
     </Flex>
