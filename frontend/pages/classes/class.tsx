@@ -47,7 +47,7 @@ const ClassPage = ({ query: { id } }) => {
           Classes
         </Label>
         <Label fontSize={1} fontWeight={0}>
-          / Class:
+          / Class:{}
         </Label>
       </Flex>
       <Box>
