@@ -1,7 +1,10 @@
 import * as React from "react";
-import styled from "@emotion/styled";
 import { Box, Button, Flex } from "@rebass/emotion";
+<<<<<<< HEAD
 import { NavBarHolder, AvatarImg, BoldText, Label } from "../design-system/primitives";
+=======
+import { NavBarHolder, AvatarImg, BoldText, Text } from "../design-system/primitives";
+>>>>>>> 7ab582fe536f7f551c33b93e05be553dbfed72f5
 import { unsetToken, getUserFromLocalCookie } from "../../utils/auth";
 import { logout } from "../../utils/auth0";
 import { useMedia } from "the-platform";
@@ -11,6 +14,7 @@ import AvatarPopup from "./AvatarPopup";
 import Router from "next/router";
 import { css } from "@emotion/core";
 
+<<<<<<< HEAD
 //   display: flex;
 //   justify-content: flex-end;
 //   align-items: center;
@@ -48,6 +52,8 @@ css={css`
 // </Label>
 // </Flex> */}
 
+=======
+>>>>>>> 7ab582fe536f7f551c33b93e05be553dbfed72f5
 const NavBar: React.SFC = () => {
   const small = useMedia("(max-width: 639px)");
   const user = getUserFromLocalCookie();
@@ -56,16 +62,12 @@ const NavBar: React.SFC = () => {
     <Flex width={1}>
       <Box mx={3}>
         <Link href="/classes">
-          <BoldText fontSize={2} color="#101440" css={{ cursor: "pointer" }}>
-            classes
-          </BoldText>
+          <Text fontSize = {3} color="white">classes</Text>
         </Link>
       </Box>
       <Box mx={3}>
         <Link href="/quizzes">
-          <BoldText fontSize={2} color="#101440" css={{ cursor: "pointer" }}>
-            quizzes
-          </BoldText>
+          <Text fontSize={3} color="white">quizzes</Text>
         </Link>
       </Box>
     </Flex>
@@ -85,7 +87,7 @@ const NavBar: React.SFC = () => {
         </Label>
       </Flex>
       <AvatarImg
-        mr={3}
+        mr={4}
         onClick={() => setIsNavPopup(!isNavPopup)}
         src={user && user.picture ? user.picture : ""}
         alt="profile"
