@@ -10,33 +10,33 @@ const UPDATE_CLASS_QUIZ = gql`
   mutation update_class_quiz(
     $class_id: Int!
     $quiz_id: Int!
-    $date: Timestamp!
+    $due_date: date!
   ) {
     update_class_quiz(
       where: {
         _and: [{ class_id: { _eq: $class_id } }, { quiz_id: { _eq: $quiz_id } }]
       },
-      _set: { date: $date }
+      _set: { due_date: $due_date }
     ) {
       returning {
         id
         class_id
         quiz_id
-        date
+        due_date
       }
     }
   }
 `;
 
-const ClassQuizzes: React.SFC = ({ quiz, classId }) => {
-  const [quizDate, setQuizDate] = useState(null);
+const ClassQuizzes: React.SFC = ({ quiz, classId, dueDate }) => {
+  const [quizDate, setQuizDate] = useState(dueDate);
 
   const handleQuizDate = (date, id, update) => {
     const selectedDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-    console.log('selectedDate', date, quiz.id, classId);
+    console.log('selectedDate', selectedDate, quiz.id, classId);
     update({
       variables: {
-        date: date,
+        due_date: selectedDate,
         quiz_id: quiz.id,
         class_id: classId,
       },

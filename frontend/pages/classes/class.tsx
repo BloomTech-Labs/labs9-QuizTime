@@ -109,7 +109,7 @@ const ClassPage = ({ query: { id } }) => {
                           <UpperCase fontSize={2} fontWeight={4}>Quizzes in class</UpperCase>
                           <Box py={3}>
                             {data.class[0].quizzes.map(q => (
-                              <ClassQuizzes key={q.id} quiz={q.quiz} classId={Number(id)} />
+                              <ClassQuizzes key={q.id} quiz={q.quiz} classId={Number(id)} dueDate={q.due_date} />
                             ))}
                           </Box>
                         </Box>
