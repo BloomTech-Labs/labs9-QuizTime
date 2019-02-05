@@ -30,6 +30,7 @@
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
   top: 0;
   margin-top: -8px;
+  left: 150px;
 }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
@@ -47,6 +48,7 @@
 .react-datepicker__month-year-read-view--down-arrow {
   bottom: 0;
   margin-bottom: -8px;
+  left: 150px
 }
 
 .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
@@ -66,7 +68,7 @@
 }
 
 .react-datepicker-wrapper {
-  display: inline-block;
+  display: block;
 }
 
 .react-datepicker {
@@ -107,10 +109,13 @@
 
 .react-datepicker-popper[data-placement^="bottom"] {
   margin-top: 10px;
+  left: -250px;
 }
 
 .react-datepicker-popper[data-placement^="top"] {
   margin-bottom: 10px;
+  left: -250px;
+
 }
 
 .react-datepicker-popper[data-placement^="right"] {
@@ -427,7 +432,7 @@
 
 .react-datepicker__input-container {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .react-datepicker__year-read-view,
