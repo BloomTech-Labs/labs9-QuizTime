@@ -7,7 +7,8 @@ import Link from "next/link";
 import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import { Label } from "../../components/design-system";
-import { Box } from "@rebass/emotion";
+import { Box, Flex } from "@rebass/emotion";
+import { css } from "@emotion/core";
 
 const ALL_QUIZZES_QUERY = gql`
   query ALL_QUIZZES_QUERY {
@@ -37,6 +38,16 @@ const ATag = styled.a`
 
 const Quizzes = () => (
   <Layout>
+          <Flex
+        flexDirection="row"
+        css={css`
+          width: auto;
+        `}
+      >
+        <Label fontSize={1} fontWeight={0}>
+          Quizzes
+        </Label>
+      </Flex>
     <Box my={3} mx={5} py={3}>
       <Label m={3} >Your Quizzes</Label>
       <CardHolder>
