@@ -41,14 +41,14 @@ const Footer = (props) => {
                 }
                 `}>
                     <Text>
-                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                        <UpperCase fontWeight = {0} fontSize ={3} lineHeight = {1.5} p={2}>
                             Follow Us
                         </UpperCase>
                     </Text>
 
                     <List>
-                        <ListItem>Facebook</ListItem>
-                        <ListItem>Twitter</ListItem>
+                        <ListItem fontWeight={0}>Facebook</ListItem>
+                        <ListItem fontWeight={0}>Twitter</ListItem>
                     </List>
                 </Box>
                 <Box 
@@ -66,13 +66,14 @@ const Footer = (props) => {
                 }
                 `}>
                     <Text>
-                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
+                        <UpperCase fontWeight = {0} fontSize ={3} lineHeight = {1.5} p={2}>
                         About Us
                         </UpperCase>
                     </Text>
-                    <LandingText color="white" fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2}>
-                        Our team of educational consultants and developers works hard to deliver high quality academic software.
-                        Please contact us at any time with questions or comments. 
+                    <LandingText color="white" fontWeight = {0} fontSize ={3} lineHeight = {1.5} p={2}>
+                        QuizTime enables educators to create engaging quizzes with ease. Our simple quiz creator gives educators the ability to 
+                        send finished quizzes out to there students from the individual class. We want to save educators time on this at sometimes tedious 
+                        process.
                     </LandingText>
                 </Box>
                 <Box 
@@ -90,15 +91,15 @@ const Footer = (props) => {
                 }
                 `}>
                     <Text>
-                        <UpperCase fontWeight = {3} fontSize ={3} lineHeight = {1.5} p={2} css={css `border-bottom: 5px solid #70e89d `}>
+                        <UpperCase fontWeight = {0} fontSize ={3} lineHeight = {1.5} p={2} css={css `border-bottom: 5px solid #70e89d `}>
                         Links
                         </UpperCase>
                     </Text>
                     <List>
-                        <ListItem>NCTM</ListItem>
-                        <ListItem>ISTE</ListItem>
-                        <ListItem>MassCUE</ListItem>
-                        <ListItem>Educators Technology</ListItem>
+                        <ListItem fontWeight={0}>NCTM</ListItem>
+                        <ListItem fontWeight={0}>ISTE</ListItem>
+                        <ListItem fontWeight={0}>MassCUE</ListItem>
+                        <ListItem fontWeight={0}>Educators Technology</ListItem>
                     </List>
                 </Box>
                 </FlexColumns>
@@ -107,7 +108,7 @@ const Footer = (props) => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <LandingText color="white" fontWeight={3} fontSize ={2} lineHeight = {1.5} p={3}>
+                    <LandingText color="white" fontWeight={0} fontSize ={2} lineHeight = {1.5} p={3}>
                         Copyright 2019, QuizTime Development Team
                     </LandingText>
                 </Flex>
