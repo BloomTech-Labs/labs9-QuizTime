@@ -18,8 +18,14 @@ import { css } from '@emotion/core';
 
 const NavBar: React.SFC = () => {
   const small = useMedia('(max-width: 639px)');
-  const user = getUserFromLocalCookie();
   const [isNavPopup, setIsNavPopup] = useState(false);
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const user = getUserFromLocalCookie()
+    setUser(user)
+  },[])
+
   const Links = small ? (
     <Flex width={1}>
       <Box mx={3}>

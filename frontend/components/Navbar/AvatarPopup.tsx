@@ -6,6 +6,8 @@ import { logout } from '../../utils/auth0';
 import { unsetToken } from '../../utils/auth';
 import { css } from '@emotion/core';
 import { useMedia } from 'the-platform';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
 const AvatarPopup: React.SFC = ({ isNavPopup }) => {
   const small = useMedia('(max-width: 639px)');
