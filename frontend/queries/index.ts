@@ -36,3 +36,25 @@ export const ALL_STUDENTS_QUERY = gql`
     }
   }
 `;
+
+export const GET_STUDENT_QUIZZES = gql`
+  query get_student_quizzes($student_id: Int!){
+    student(where: {id: {_eq: $student_id}}){
+      id
+      first_name
+      last_name
+      email
+      score{
+        score
+        quizByquizId{
+          id
+          name
+          description
+          major_questions{
+            id
+          }
+        }
+      }
+    }
+  }
+`
