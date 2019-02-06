@@ -7,7 +7,8 @@ import Link from "next/link";
 import Layout from "../../components/Layout";
 import securePage from "../../hocs/securePage";
 import { Label } from "../../components/design-system";
-import { Box } from "@rebass/emotion";
+import { Box, Flex } from "@rebass/emotion";
+import { css } from "@emotion/core";
 
 const ALL_QUIZZES_QUERY = gql`
   query ALL_QUIZZES_QUERY {

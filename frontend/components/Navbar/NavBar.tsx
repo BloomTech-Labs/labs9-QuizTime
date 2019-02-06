@@ -1,37 +1,20 @@
 import * as React from "react";
-import styled from "@emotion/styled";
 import { Box, Button, Flex } from "@rebass/emotion";
-import { NavBarHolder, AvatarImg, BoldText } from "../design-system/primitives";
+import {
+  NavBarHolder,
+  AvatarImg,
+  BoldText,
+  Text,
+  Label
+} from "../design-system/primitives";
 import { unsetToken, getUserFromLocalCookie } from "../../utils/auth";
 import { logout } from "../../utils/auth0";
 import { useMedia } from "the-platform";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import AvatarPopup from "./AvatarPopup";
-
-//   display: flex;
-//   justify-content: flex-end;
-//   align-items: center;
-//   background: #e16973;
-//   margin-bottom: 5px;
-//   border-bottom: 10px solid #ea969d;
-// `;
-const NavBarItem = styled.a`
-  padding: 20px;
-  cursor: pointer;
-  font-family: "system-ui";
-  color: white;
-`;
-// const Avatar = styled.div`
-//   margin: 15px;
-//   width: 30px;
-//   height: 30px;
-//   border-radius: 50%;
-//   background: #152338;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
+import Router from "next/router";
+import { css } from "@emotion/core";
 
 const NavBar: React.SFC = () => {
   const small = useMedia("(max-width: 639px)");
@@ -41,25 +24,55 @@ const NavBar: React.SFC = () => {
     <Flex width={1}>
       <Box mx={3}>
         <Link href="/classes">
-          <BoldText color="white">classes</BoldText>
+          <Text fontSize={3} color="blue.4">
+            classes
+          </Text>
         </Link>
       </Box>
       <Box mx={3}>
         <Link href="/quizzes">
-          <BoldText color="white">quizzes</BoldText>
+          <Text fontSize={3} color="blue.4">
+            quizzes
+          </Text>
         </Link>
       </Box>
     </Flex>
   ) : null;
 
   return (
-    <NavBarHolder css={{ position: "relative" }}>
+    <NavBarHolder
+      css={{
+        position: "relative",
+        justifyContent: "space-between"
+      }}
+    >
       {Links}
+      <Flex
+        flexDirection="row"
+        css={css`
+          width: auto;
+        `}
+      >
+        <Label fontSize={1} fontWeight={0}>
+          {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
+            /\"/g,
+            ""
+          )}
+        </Label>
+      </Flex>
       <AvatarImg
-        mr={3}
+        mr={4}
         onClick={() => setIsNavPopup(!isNavPopup)}
         src={user && user.picture ? user.picture : ""}
         alt="profile"
+        css={css`
+          cursor: pointer;
+          transition: 0.2s;
+          border: 2px solid transparent;
+          &:hover {
+            border: 2px solid #101440;
+          }
+        `}
       />
 
       <AvatarPopup isNavPopup={isNavPopup} />

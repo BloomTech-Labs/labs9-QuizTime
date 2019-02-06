@@ -1,17 +1,27 @@
 import * as React from "react";
+import { useState } from 'react';
 import Link from "next/link";
 import {
   BoxHolder,
   Emblem,
   BoxText,
-  UniButton
+  UniButton,
+  Text,
+  UpperCase
 } from "../../design-system/primitives";
 import { Flex, Box } from "@rebass/emotion";
 import { css } from "@emotion/core";
+import Modal from '../../Modal/index';
 
 //to get the quizzes to map through all you need is the
 //quiz prop from the app page.
 const StudentBox = ({ id, student }) => {
+  const [isHidden, setIsHidden] = useState(true);
+
+  const toggleHidden = () => {
+    setIsHidden(!isHidden)
+  }
+
   return (
     <>
       <BoxHolder
@@ -43,9 +53,27 @@ const StudentBox = ({ id, student }) => {
               border-top: 1px solid #b5ffd0;
             `}
           >
-            <UniButton bg="blue.2" fontSize={0}>
+            <UniButton onClick={toggleHidden} bg="blue.2" fontSize={0}>
               View Results
             </UniButton>
+            {!isHidden &&
+              <Modal>
+                <Flex>
+                  <Text>View Results</Text>
+                  <Box>
+                    <UpperCase
+                      px={2}
+                      color="blue.1"
+                      fontWeight={6}
+                      fontSize={2}
+                      css={{ cursor: "pointer" }}
+                      onClick={toggleHidden}
+                    >x
+                  </UpperCase>
+                  </Box>
+                </Flex>
+              </Modal>
+            }
           </Flex>
         </Box>
       </BoxHolder>
