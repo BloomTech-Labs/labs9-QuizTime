@@ -18,19 +18,22 @@ const NavBar: React.SFC = () => {
     <Flex width={1}>
       <Box mx={3}>
         <Link href="/classes">
-          <Text fontSize = {3} color="white">classes</Text>
+          <Text fontSize = {3} color="blue.4">classes</Text>
         </Link>
       </Box>
       <Box mx={3}>
         <Link href="/quizzes">
-          <Text fontSize={3} color="white">quizzes</Text>
+          <Text fontSize={3} color="blue.4">quizzes</Text>
         </Link>
       </Box>
     </Flex>
   ) : null;
 
   return (
-    <NavBarHolder css={{ position: "relative" }}>
+    <NavBarHolder css={{
+       position: "relative",
+       justifyContent:"space-between"
+       }}>
       {Links}
       <Flex
         flexDirection="row"

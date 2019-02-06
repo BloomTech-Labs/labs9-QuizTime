@@ -36,7 +36,7 @@ export const NavBarHolder = props => (
     justifyContent="flex-end"
     alignItems="center"
     p={2}
-    bg={["blue.1", "white", "white"]}
+    bg={["white"]}
     css={{borderBottom: "2px solid #323fcb"}}
     {...props}
   />
