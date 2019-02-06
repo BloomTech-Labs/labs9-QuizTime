@@ -481,6 +481,17 @@ export const InfoTextThree = props => (
   />
 );
 
+export const NavQuote = props => (
+  <B
+  css={css`
+    @media (max-width: 1080px){
+      display: none;
+    }
+  `}
+  {...props}
+  />
+)
+
 export const SideBarHolder = props => (
   <F
     width={[0, 1 / 3, 1 / 5]}

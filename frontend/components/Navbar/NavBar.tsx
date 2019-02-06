@@ -4,6 +4,7 @@ import {
   NavBarHolder,
   AvatarImg,
   BoldText,
+  NavQuote,
   Text,
   Label
 } from "../design-system/primitives";
@@ -53,13 +54,16 @@ const NavBar: React.SFC = () => {
           width: auto;
         `}
       >
-        <Label fontSize={1} fontWeight={0}>
+        <Label p={2} fontSize={1} fontWeight={0}>
           {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
             /\"/g,
             ""
           )}
         </Label>
       </Flex>
+      <NavQuote>  
+        <Text fontSize = {2} fontColor="blue.1" fontWeight={0}>"The beautiful thing about learning is that no one can take it away from you." - B.B. King</Text>  
+      </NavQuote>
       <AvatarImg
         mr={4}
         onClick={() => setIsNavPopup(!isNavPopup)}
