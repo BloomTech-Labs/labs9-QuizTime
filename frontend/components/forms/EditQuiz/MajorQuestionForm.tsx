@@ -26,7 +26,7 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
     >
       {(update_major_question, { error, loading, data }) => (
         <Box my={4}>
-          <Flex justifyContent="space-between">
+          <Flex flexDirection="column" justifyContent="space-between">
             <Form
               onSubmit={async e => {
                 e.preventDefault();
