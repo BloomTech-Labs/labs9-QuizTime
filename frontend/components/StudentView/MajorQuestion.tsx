@@ -12,15 +12,14 @@ const MajorQuestion = ({ q, majorIndex, idx, isMajor, handleMajorChange }) => {
     <Container mb={20}>
       <BoxText htmlFor={`major-question-${q.id}`}>
         <BoldText fontSize={4} fontWeight={4}>
-          Question {idx + 1}
+          Primary Question {idx + 1}
         </BoldText>
       </BoxText>
-      <BoxText ml={10} my={1} fontSize={3}>
-        {' '}
+      <BoxText fontSize={3}>
         {q.prompt}
       </BoxText>
       {q.answers.map((a, index) => (
-        <Box key={a.id} ml={25}>
+        <Box key={a.id} ml={15}>
           <Flex alignItems='center'>
             <input
               onChange={

@@ -36,7 +36,7 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
           css={css`
             color: white;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s ease;
             &:hover {
               color: #44c173;
             }
@@ -75,7 +75,7 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
           css={css`
           color: white;
           cursor: pointer;
-          transition: 0.2s;
+          transition: all 0.2s ease;
           &:hover {
             color: #44c173;
           }

@@ -81,15 +81,15 @@ class StudentQuiz extends Component {
     return (
       <>
         <Meta />
-        <Container
-          css={{ boxShadow: '0px 3px 15px rgba(0,0,0,0.2)', padding: '20px' }}
+        <Container p={[2, 3, 4]} m={3}
+          css={{ boxShadow: '0px 3px 15px rgba(0,0,0,0.2)' }}
         >
           {quiz ? (
             <>
               <QuizHeading quiz={quiz} student={student} />
               <div>
                 {quiz.major_questions.slice(0, majorIndex + 1).map((q, idx) => (
-                  <Box width={0.93} css={{ margin: '0 24px' }} key={q.id}>
+                  <Box key={q.id}>
                     <MajorQuestion
                       q={q}
                       idx={idx}

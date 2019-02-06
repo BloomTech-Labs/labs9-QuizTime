@@ -4,8 +4,8 @@ import { UpperCase, BoxText } from '../design-system';
 const QuizHeading = props => {
   const { quiz, student } = props;
   return (
-    <Box mx={2} my={3} width={0.95}>
-      <BoxText fontSize={5}>
+    <Box mb={3} >
+      <BoxText fontSize={[4, 5]} my={3} fontWeight={4}>
         {student &&
           `Welcome ${student.first_name[0]
             .toUpperCase()
@@ -15,10 +15,9 @@ const QuizHeading = props => {
             .toUpperCase()
             .concat(student.last_name.slice(1))}!`}
         <hr />
-        <br />
       </BoxText>
       <BoxText>
-        <UpperCase fontSize={5} fontWeight={4}>
+        <UpperCase fontSize={[4, 5]} fontWeight={4}>
           {quiz.name}
         </UpperCase>
       </BoxText>
