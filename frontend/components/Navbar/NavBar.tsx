@@ -1,6 +1,12 @@
 import * as React from "react";
 import { Box, Button, Flex } from "@rebass/emotion";
-import { NavBarHolder, AvatarImg, BoldText, Text, Label } from "../design-system/primitives";
+import {
+  NavBarHolder,
+  AvatarImg,
+  BoldText,
+  Text,
+  Label
+} from "../design-system/primitives";
 import { unsetToken, getUserFromLocalCookie } from "../../utils/auth";
 import { logout } from "../../utils/auth0";
 import { useMedia } from "the-platform";
@@ -18,22 +24,28 @@ const NavBar: React.SFC = () => {
     <Flex width={1}>
       <Box mx={3}>
         <Link href="/classes">
-          <Text fontSize = {3} color="blue.4">classes</Text>
+          <Text fontSize={3} color="blue.4">
+            classes
+          </Text>
         </Link>
       </Box>
       <Box mx={3}>
         <Link href="/quizzes">
-          <Text fontSize={3} color="blue.4">quizzes</Text>
+          <Text fontSize={3} color="blue.4">
+            quizzes
+          </Text>
         </Link>
       </Box>
     </Flex>
   ) : null;
 
   return (
-    <NavBarHolder css={{
-       position: "relative",
-       justifyContent:"space-between"
-       }}>
+    <NavBarHolder
+      css={{
+        position: "relative",
+        justifyContent: "space-between"
+      }}
+    >
       {Links}
       <Flex
         flexDirection="row"
@@ -42,7 +54,10 @@ const NavBar: React.SFC = () => {
         `}
       >
         <Label fontSize={1} fontWeight={0}>
-          {JSON.stringify(Router.pathname.split('/').join(' > ')).replace(/\"/g, "")}
+          {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
+            /\"/g,
+            ""
+          )}
         </Label>
       </Flex>
       <AvatarImg
@@ -51,15 +66,15 @@ const NavBar: React.SFC = () => {
         src={user && user.picture ? user.picture : ""}
         alt="profile"
         css={css`
-        cursor: pointer;
-        transition: 0.5s;
-        &:hover{
-          border: 3px solid #70e89d;
-        }
+          cursor: pointer;
+          transition: 0.5s;
+          &:hover {
+            border: 3px solid #70e89d;
+          }
         `}
       />
 
-      <AvatarPopup isNavPopup={isNavPopup}/>
+      <AvatarPopup isNavPopup={isNavPopup} />
     </NavBarHolder>
   );
 };
