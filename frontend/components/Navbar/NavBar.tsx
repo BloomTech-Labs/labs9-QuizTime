@@ -54,10 +54,7 @@ const NavBar: React.SFC = () => {
         `}
       >
         <Label fontSize={1} fontWeight={0}>
-          {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
-            /\"/g,
-            ""
-          )}
+          {/* {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(/\"/g,"")} */}
         </Label>
       </Flex>
       <AvatarImg
