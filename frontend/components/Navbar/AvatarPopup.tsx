@@ -11,7 +11,7 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
   const small = useMedia('(max-width: 639px)');
   return (
     <Box
-      bg={['blue.1', 'green.1', 'green.1']}
+      bg={'blue.4'}
       className='avatar-popup'
       style={{
         position: 'absolute',

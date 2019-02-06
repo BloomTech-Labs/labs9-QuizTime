@@ -67,9 +67,10 @@ const NavBar: React.SFC = () => {
         alt="profile"
         css={css`
           cursor: pointer;
-          transition: 0.5s;
+          transition: 0.2s;
+          border: 2px solid transparent;
           &:hover {
-            border: 3px solid #70e89d;
+            border: 2px solid #101440;
           }
         `}
       />

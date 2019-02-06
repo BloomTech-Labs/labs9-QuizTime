@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
-import Router from 'next/router'
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import Link from "next/link";

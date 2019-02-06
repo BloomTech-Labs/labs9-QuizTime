@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import Router from 'next/router'
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import QuizBox from "../../components/boxes/quizBox/quizBox";
