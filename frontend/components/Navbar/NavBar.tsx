@@ -20,10 +20,16 @@ const NavBar: React.SFC = () => {
   const small = useMedia('(max-width: 639px)');
   const [isNavPopup, setIsNavPopup] = useState(false);
   const [user, setUser] = useState(null)
-
+  const [breadCrumb, setBreadCrumb] = useState('')
+  
   useEffect(() => {
     const user = getUserFromLocalCookie()
+    const breadCrumb = JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
+      /\"/g,
+      ""
+    )
     setUser(user)
+    setBreadCrumb(breadCrumb)
   },[])
 
   const Links = small ? (
@@ -59,12 +65,9 @@ const NavBar: React.SFC = () => {
           width: auto;
         `}
       >
-        {/* <Label fontSize={1} fontWeight={0}>
-          {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
-            /\"/g,
-            ""
-          )}
-        </Label> */}
+        <Label fontSize={1} fontWeight={0}>
+          {breadCrumb}
+        </Label>
       </Flex>
       <Box p={1} pl={0}
         onMouseOver={() => setIsNavPopup(true)}
