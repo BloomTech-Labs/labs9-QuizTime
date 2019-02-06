@@ -268,6 +268,7 @@ class StudentQuiz extends Component {
         type: 'insert_score',
         token: getStudentToken(),
         score: this.state.score,
+        total: this.state.maxScore
       }),
     };
     fetch(url, options)
