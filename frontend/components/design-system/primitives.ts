@@ -36,8 +36,8 @@ export const NavBarHolder = props => (
     justifyContent="flex-end"
     alignItems="center"
     p={2}
-    bg={["blue.1", "white", "white"]}
-    css={{borderBottom: "2px solid #323fcb"}}
+    bg={["white"]}
+    css={{ borderBottom: "2px solid #323fcb" }}
     {...props}
   />
 );
@@ -146,7 +146,7 @@ export const HeaderSection = props => (
     m={3}
     css={css`
       height: 250px;
-      position:absolute;
+      position: absolute;
       left: 330px;
       @media (max-width: 763px) {
         left: 100px;
@@ -178,9 +178,9 @@ export const HeaderInfoText = props => (
     color="white"
     m={5}
     css={css`
-      line-height:1.5;
-      position:relative;
-      left:220px;
+      line-height: 1.5;
+      position: relative;
+      left: 220px;
       @media (max-width: 1090px) {
         visibility: hidden;
       }
@@ -315,13 +315,13 @@ export const InfoBox = props => (
     m={3}
     css={css`
       filter: grayscale(100%);
-      @media(max-width: 1030px){
-        margin-left:0;
-        margin-right:0
+      @media (max-width: 1030px) {
+        margin-left: 0;
+        margin-right: 0;
       }
-      @media(max-width: 500px){
-        margin-top:0px;
-        margin-bottom:0px
+      @media (max-width: 500px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
       }
     `}
     {...props}
@@ -358,7 +358,6 @@ export const InfoBoxThree = props => (
       @media (max-width: 1030px) {
         margin-left: 0;
         margin-right: 0;
-
       }
       @media (max-width: 500px) {
         margin-top: 0px;
@@ -398,7 +397,7 @@ export const InfoText = props => (
       position: absolute;
       top: 50px;
       right: 60px;
-      line-height:1.5;
+      line-height: 1.5;
       @media (max-width: 900px) {
         top: 100px;
         right: 10px;
@@ -428,7 +427,7 @@ export const InfoTextTwo = props => (
       position: absolute;
       top: 430px;
       right: 40px;
-      line-height:1.5;
+      line-height: 1.5;
       @media (max-width: 900px) {
         top: 400px;
         right: 10px;
@@ -458,7 +457,7 @@ export const InfoTextThree = props => (
       position: absolute;
       bottom: 50px;
       left: -450px;
-      line-height:1.5;
+      line-height: 1.5;
       @media (max-width: 900px) {
         bottom: 40px;
         left: -300px;
@@ -485,12 +484,14 @@ export const InfoTextThree = props => (
 export const SideBarHolder = props => (
   <F
     width={[0, 1 / 3, 1 / 5]}
-    py={[0, 4, 4]}
-    px={[0, 3, 3]}
-    bg="blue.1"
+    py={[3]}
+    bg="blue.4"
     flexDirection="column"
+    justifyContent="flex-start"
     fontSize={4}
-    css={{ minHeight: "100vh" }}
+    css={{
+      minHeight: "100vh"
+    }}
     {...props}
   />
 );
@@ -499,8 +500,7 @@ const StyledText = styled.a`
 `;
 
 export const StudentViewNav = props => (
-  <F  
-    justifyContent="flex-end" {...props} />
+  <F justifyContent="flex-end" {...props} />
 );
 
 export const BoxText = props => (
@@ -529,8 +529,8 @@ export const FullScreenContainer = props => (
     width="100%"
     {...props}
     css={css`
-      @media(max-width:831px){
-        overflow-x:hidden;
+      @media (max-width: 831px) {
+        overflow-x: hidden;
       }
     `}
   />
@@ -832,13 +832,8 @@ export const AvatarImg = props => (
   <I width="45px" height="45px" borderRadius="50%" m={2} {...props} />
 );
 
-//* BUTTONS 
+//* BUTTONS
 
-export const UniButton = props =>(
-  <Btn
-  width="auto"
-  fontWeight={[1]}
-  color="white"
-  {...props}
-  />
-)
+export const UniButton = props => (
+  <Btn width="auto" fontWeight={[1]} color="white" {...props} />
+);

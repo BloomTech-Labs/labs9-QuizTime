@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
+import Router from 'next/router'
 import { Query } from "react-apollo";
 import styled from "@emotion/styled";
 import Link from "next/link";
@@ -13,6 +14,7 @@ import { Container, Label, Button, UpperCase } from "../../components/design-sys
 import AddBox from '../../components/boxes/addBox/addBox';
 import Modal from '../../components/Modal/index';
 import ReactLoading from "react-loading";
+import { css } from "@emotion/core";
 
 const CardHolder = styled.div`
   display: flex;
