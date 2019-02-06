@@ -53,12 +53,12 @@ const NavBar: React.SFC = () => {
           width: auto;
         `}
       >
-        <Label fontSize={1} fontWeight={0}>
+        {/* <Label fontSize={1} fontWeight={0}>
           {JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
             /\"/g,
             ""
           )}
-        </Label>
+        </Label> */}
       </Flex>
       <AvatarImg
         mr={4}
