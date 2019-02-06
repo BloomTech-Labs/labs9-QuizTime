@@ -115,7 +115,7 @@ const insert_student_minor_answer_mutation = (
   `;
 };
 
-const insert_score = (quiz_id, student_id, { score }) => {
+const insert_score = (quiz_id, student_id, { score, total }) => {
   return `
    mutation insert_score {
      insert_score(
@@ -123,6 +123,7 @@ const insert_score = (quiz_id, student_id, { score }) => {
         quiz_id: ${quiz_id}
         student_id: ${student_id}
         score: ${score}
+        total: ${total}
        }]
      ) {
       returning {
@@ -143,11 +144,13 @@ const craftPost = (type, dcToken, data) => {
         query: `${get_quiz_query(dcToken.student_id, dcToken.quiz_id)}`,
       };
       break;
+
     case 'get_student_query':
       return {
         query: `${get_student_query(dcToken.student_id)}`,
       };
       break;
+
     case 'insert_student_major_answer':
       return {
         query: `${insert_student_major_answer_mutation(
@@ -194,6 +197,7 @@ const handler = async (req, res) => {
     student_answer,
     minor_question_id,
     score,
+    total,
   } = await json(req);
 
   const data = {
@@ -202,6 +206,7 @@ const handler = async (req, res) => {
     student_answer,
     minor_question_id,
     score,
+    total,
   };
 
   // if (req.headers.authorization) {
