@@ -54,7 +54,8 @@ const ClassQuizzes: React.SFC = ({ quiz, classId, dueDate }) => {
           <Box my={2} alignSelf='center'>
             <Mutation mutation={UPDATE_CLASS_QUIZ}>
               {(update_class_quiz, { error, loading, data }) => (
-                <DatePicker
+                <DatePicker 
+                style={{height: '50px', fontSize: '18px'}}
                   selected={quizDate}
                   placeholderText='Assign email date'
                   onChange={date =>

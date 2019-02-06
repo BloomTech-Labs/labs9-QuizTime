@@ -48,12 +48,15 @@ const ClassPage = ({ query: { id } }) => {
             if (error) return <p>{error.message}</p>;
             if (loading) {
               return (
+                <Flex justifyContent='center' alignItems='center' p={5} m={3}>
                 <ReactLoading
                   type="spin"
                   color="lightgray"
                   height="100px"
                   width="100px"
                 />
+                </Flex>
+
               );
             }
             if (data) {

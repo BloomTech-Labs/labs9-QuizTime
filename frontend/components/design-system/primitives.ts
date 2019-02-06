@@ -840,7 +840,7 @@ export const TextArea = props => (
 
 //* IMAGE TAGS
 export const AvatarImg = props => (
-  <I width="45px" height="45px" borderRadius="50%" m={2} {...props} />
+  <I width="60px" height="60px" borderRadius="50%"  {...props} />
 );
 
 //* BUTTONS

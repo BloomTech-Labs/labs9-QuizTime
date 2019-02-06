@@ -68,7 +68,7 @@
 }
 
 .react-datepicker-wrapper {
-  display: block;
+  width: 100%;
 }
 
 .react-datepicker {
@@ -432,7 +432,7 @@
 
 .react-datepicker__input-container {
   position: relative;
-  display: block;
+  width: inherit;
 }
 
 .react-datepicker__year-read-view,
