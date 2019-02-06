@@ -25,13 +25,13 @@ const SideBar: React.SFC = () => {
             </Link>
           </Box>
           <Box m={3} my={3}>
-            <Link href="/quizzes" prefetch>
-              <UpperCase fontSize={2} color="white" css={{cursor:"pointer"}}>quizzes</UpperCase>
+            <Link href="/classes" prefetch>
+              <UpperCase fontSize={2} color="white" css={{cursor:"pointer"}}>classes</UpperCase>
             </Link>
           </Box>
           <Box m={3} my={3}>
-            <Link href="/classes" prefetch>
-              <UpperCase fontSize={2} color="white" css={{cursor:"pointer"}}>classes</UpperCase>
+            <Link href="/quizzes" prefetch>
+              <UpperCase fontSize={2} color="white" css={{cursor:"pointer"}}>quizzes</UpperCase>
             </Link>
           </Box>
         </Flex>
