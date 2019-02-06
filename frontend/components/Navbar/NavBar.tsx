@@ -50,9 +50,16 @@ const NavBar: React.SFC = () => {
         onClick={() => setIsNavPopup(!isNavPopup)}
         src={user && user.picture ? user.picture : ""}
         alt="profile"
+        css={css`
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover{
+          border: 3px solid #70e89d;
+        }
+        `}
       />
 
-      <AvatarPopup isNavPopup={isNavPopup} />
+      <AvatarPopup isNavPopup={isNavPopup}/>
     </NavBarHolder>
   );
 };
