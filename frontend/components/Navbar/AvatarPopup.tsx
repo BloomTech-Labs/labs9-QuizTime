@@ -6,6 +6,8 @@ import { logout } from '../../utils/auth0';
 import { unsetToken } from '../../utils/auth';
 import { css } from '@emotion/core';
 import { useMedia } from 'the-platform';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
 const AvatarPopup: React.SFC = ({ isNavPopup }) => {
   const small = useMedia('(max-width: 639px)');
@@ -23,20 +25,24 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
       css={{
         transition: 'all .2s ease-out',
         opacity: isNavPopup ? 1 : 0,
-        top: isNavPopup ? 64 : 50,
+        top: isNavPopup ? 80 : 65,
         visibility: isNavPopup ? 'visible' : 'hidden',
       }}
     >
       <Flex flexDirection='column'>
         <BoldText
-          color='white'
           fontWeight={5}
           fontSize={1}
           ml={1}
           mb={20}
-          css={{
-            cursor: 'pointer',
-          }}
+          css={css`
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            &:hover {
+              color: #44c173;
+            }
+          `}
           onClick={() => {
             Router.push(
               '/student?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtZWppYUBnbWFpbC5jb20iLCJxdWl6X2lkIjoiMTIiLCJzdHVkZW50X2lkIjoiMTEwIiwiaWF0IjoxNTQ5Mzg2OTU2LCJleHAiOjE1NDk2NDYxNTYsImp0aSI6IjEyMzQifQ.Tv2-L43Mfb2WXxZvGf9H82HKYf9FIpaoQ0OeoUyKKQE'
@@ -46,7 +52,6 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
           STUDENT
         </BoldText>
         <BoldText
-          color='white'
           fontWeight={5}
           fontSize={1}
           onClick={() => {
@@ -54,16 +59,29 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
           }}
           ml={1}
           mb={20}
-          css={{ cursor: 'pointer' }}
+          css={css`
+          color: white;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          &:hover {
+            color: #44c173;
+          }
+        `}
         >
           SETTINGS
         </BoldText>
         <BoldText
           fontSize={1}
-          color='white'
           fontWeight={5}
           ml={1}
-          css={{ cursor: 'pointer' }}
+          css={css`
+          color: white;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          &:hover {
+            color: #44c173;
+          }
+        `}
           onClick={event => {
             event.preventDefault();
             unsetToken();

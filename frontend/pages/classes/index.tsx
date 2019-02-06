@@ -82,12 +82,14 @@ class Classes extends Component {
                     if (error) return <p>{error.message}</p>;
                     if (loading) {
                       return (
+                        <Flex justifyContent='center' alignItems='center' p={2} m={5}>
                         <ReactLoading
                           type="spin"
                           color="lightgray"
                           height="100px"
                           width="100px"
                         />
+                        </Flex>
                       );
                     }
                     if (data) {

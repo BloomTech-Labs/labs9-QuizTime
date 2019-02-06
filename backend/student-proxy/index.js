@@ -5,6 +5,17 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.TOKEN_SECRET;
 const CircularJSON = require('circular-json');
 
+const get_student_query = student_id => {
+  return `
+  query {
+    student(where: {id: {_eq: ${Number(student_id)}}}) {
+      first_name
+      last_name
+    }
+  }
+  `;
+};
+
 const get_quiz_query = (student_id, quiz_id) => {
   return `
     query {
@@ -133,6 +144,13 @@ const craftPost = (type, dcToken, data) => {
         query: `${get_quiz_query(dcToken.student_id, dcToken.quiz_id)}`,
       };
       break;
+
+    case 'get_student_query':
+      return {
+        query: `${get_student_query(dcToken.student_id)}`,
+      };
+      break;
+
     case 'insert_student_major_answer':
       return {
         query: `${insert_student_major_answer_mutation(

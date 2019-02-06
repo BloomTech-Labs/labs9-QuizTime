@@ -19,11 +19,12 @@ import QuizHeading from './QuizHeading.tsx';
 import MajorQuestion from './MajorQuestion';
 import MinorQuestion from './MinorQuestion';
 
-// const url = 'http://localhost:7000/api/student-proxy';
-const url = '/api/student-proxy';
+const url = 'http://localhost:7000/api/student-proxy';
+// const url = '/api/student-proxy';
 
 class StudentQuiz extends Component {
   state = {
+    student: null,
     quiz: null,
     majorIndex: 0,
     minorIndex: [0],
@@ -51,6 +52,7 @@ class StudentQuiz extends Component {
 
   componentDidMount() {
     this.getQuiz();
+    this.getStudent();
   }
 
   componentDidUpdate() {
@@ -69,6 +71,7 @@ class StudentQuiz extends Component {
     const {
       isAnswered,
       quiz,
+      student,
       majorIndex,
       majorCorrect,
       minorIndex,
@@ -78,15 +81,15 @@ class StudentQuiz extends Component {
     return (
       <>
         <Meta />
-        <Container
-          css={{ boxShadow: '0px 3px 15px rgba(0,0,0,0.2)', padding: '20px' }}
+        <Container p={[2, 3, 4]} m={3}
+          css={{ boxShadow: '0px 3px 15px rgba(0,0,0,0.2)' }}
         >
           {quiz ? (
             <>
-              <QuizHeading quiz={quiz} />
+              <QuizHeading quiz={quiz} student={student} />
               <div>
                 {quiz.major_questions.slice(0, majorIndex + 1).map((q, idx) => (
-                  <Box width={0.93} css={{ margin: '0 24px' }} key={q.id}>
+                  <Box key={q.id}>
                     <MajorQuestion
                       q={q}
                       idx={idx}
@@ -189,7 +192,7 @@ class StudentQuiz extends Component {
     //* No => next minor question (if exist)
     if (currentMajorQuestion.correct) {
       //* Is the current Major Question the last Major Question?
-      //* Yes => calculate score.
+      //* Yes => calculate score and submit to server
       if (majorIndex === quiz.major_questions.length - 1) {
         this.setState({ isDone: true }, () => this.submitScore());
         return;
@@ -209,7 +212,8 @@ class StudentQuiz extends Component {
       minorIndex[majorIndex] ===
       quiz.major_questions[majorIndex].minor_questions.length
     ) {
-      //* If yes, move on to next Major Question and reset minorIndex (if there is one. otherwise display score).
+      //* If yes, move on to next Major Question and reset minorIndex
+      //* Otherwise calculate score and send to server
       minorIndex.push(0);
       if (majorIndex === quiz.major_questions.length - 1) {
         this.setState({ isDone: true }, () => this.submitScore());
@@ -246,6 +250,20 @@ class StudentQuiz extends Component {
       .catch(error => console.log(error));
   };
 
+  getStudent = () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        type: 'get_student_query',
+        token: getStudentToken(),
+      }),
+    };
+
+    fetch(url, options)
+      .then(res => res.json())
+      .then(({ data }) => this.setState({student: data.student[0]}))
+      .catch(error => console.log(error));
+  };
   submitMajorAnswer = () => {
     const options = {
       method: 'POST',
