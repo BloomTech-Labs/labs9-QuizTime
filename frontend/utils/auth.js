@@ -25,19 +25,10 @@ export const setStudentToken = token => {
   if (!process.browser) {
     return;
   }
-  // Cookie.set('student', jwtDecode(token))
+
   Cookie.set('studentToken', token);
 };
 
-// export const setToken = new Promise((resolve, reject) => {
-//   if(!process.browser) {
-//     return
-//   }
-//   Cookie.set('user', jwtDecode(idToken))
-//   Cookie.set('idToken', idToken)
-//   Cookie.set('accessToken', accessToken)
-//   resolve(idToken);
-// })
 
 export const unsetToken = () => {
   if (!process.browser) {

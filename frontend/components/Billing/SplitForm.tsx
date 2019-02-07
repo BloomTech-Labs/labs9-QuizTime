@@ -24,7 +24,6 @@ class SplitForm extends React.Component {
   };
 
   handleChange = el => {
-    console.log(el);
     this.setState({
       [el.elementType]: el.complete,
     });

@@ -44,9 +44,7 @@ class AddStudent extends Component {
           <Box m={2}>
             <Form
               onSubmit={async e => {
-                // Stop the form from submitting
                 e.preventDefault();
-                // call the mutation
                 insert_student({ variables: { ...this.state } });
                 this.setState({
                   firstName: "",
