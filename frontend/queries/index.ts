@@ -74,14 +74,7 @@ export const GET_STUDENT_QUIZZES = gql`
       email
       score{
         score
-        quizByquizId{
-          id
-          name
-          description
-          major_questions{
-            id
-          }
-        }
+        total
       }
     }
   }

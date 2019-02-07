@@ -186,3 +186,25 @@ export const INSERT_MINOR_QUESTION = gql`
     }
   }
 `;
+
+export const UPDATE_CLASS_QUIZ = gql`
+  mutation update_class_quiz(
+    $class_id: Int!
+    $quiz_id: Int!
+    $due_date: date!
+  ) {
+    update_class_quiz(
+      where: {
+        _and: [{ class_id: { _eq: $class_id } }, { quiz_id: { _eq: $quiz_id } }]
+      },
+      _set: { due_date: $due_date }
+    ) {
+      returning {
+        id
+        class_id
+        quiz_id
+        due_date
+      }
+    }
+  }
+`;

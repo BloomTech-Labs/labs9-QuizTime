@@ -1,5 +1,6 @@
 import EditQuizForm from '../../components/forms/EditQuiz';
 import Layout from '../../components/Layout';
+import securePage from '../../hocs/securePage';
 
 const EditQuiz = ({ query: { title }}) => (
   <Layout>
@@ -7,4 +8,4 @@ const EditQuiz = ({ query: { title }}) => (
   </Layout>
 );
 
-export default EditQuiz;
+export default securePage(EditQuiz);

@@ -35,7 +35,6 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
       refetchQueries={() => [{ query: GET_QUIZ_QUERY, variables: { quiz_id } }]}
       onCompleted={() => {
         setToggleButton(false);
-        console.log('prompt and updatedPrompt***', prompt, updatedPrompt)
       }}
     >
       {(update_minor_question, { error, loading, data }) => (
