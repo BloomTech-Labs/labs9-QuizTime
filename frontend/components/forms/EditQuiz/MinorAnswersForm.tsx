@@ -4,7 +4,7 @@ import { Mutation } from "react-apollo";
 import { UPDATE_MINOR_ANSWERS } from "../../../mutations";
 import { GET_QUIZ_QUERY } from '../../../queries';
 
-import { Label, Input, Form } from "../../design-system";
+import { Label, Input, Form, Button } from "../../design-system";
 import { Box, Flex } from "@rebass/emotion";
 
 export default ({ answers, quiz_id }) => {

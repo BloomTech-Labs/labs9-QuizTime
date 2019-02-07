@@ -87,25 +87,25 @@ export const UPDATE_MAJOR_ANSWERS = gql`
     $correctC: Boolean!
     $correctD: Boolean!
   ) {
-    update_major_answer(
+    first: update_major_answer(
       where: {id: {_eq: $idA}},
       _set: {response: $resA, correct_answer: $correctA}
     ) {
       affected_rows
     }
-    update_major_answer(
+    second: update_major_answer(
       where: {id: {_eq: $idB}},
       _set: {response: $resB, correct_answer: $correctB}
     ) {
       affected_rows
     }
-    update_major_answer(
+    third: update_major_answer(
       where: {id: {_eq: $idC}},
       _set: {response: $resC, correct_answer: $correctC}
     ) {
       affected_rows
     }
-    update_major_answer(
+    fourth: update_major_answer(
       where: {id: {_eq: $idD}},
       _set: {response: $resD, correct_answer: $correctD}
     ) {
@@ -140,25 +140,25 @@ export const UPDATE_MINOR_ANSWERS = gql`
     $correctC: Boolean!
     $correctD: Boolean!
   ) {
-    update_minor_answer(
+    first: update_minor_answer(
       where: {id: {_eq: $idA}},
       _set: {response: $resA, correct_answer: $correctA}
     ) {
       affected_rows
     }
-    update_minor_answer(
+    second: update_minor_answer(
       where: {id: {_eq: $idB}},
       _set: {response: $resB, correct_answer: $correctB}
     ) {
       affected_rows
     }
-    update_minor_answer(
+    third: update_minor_answer(
       where: {id: {_eq: $idC}},
       _set: {response: $resC, correct_answer: $correctC}
     ) {
       affected_rows
     }
-    update_minor_answer(
+    fourth: update_minor_answer(
       where: {id: {_eq: $idD}},
       _set: {response: $resD, correct_answer: $correctD}
     ) {
