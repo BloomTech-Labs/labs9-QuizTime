@@ -26,12 +26,12 @@ To get the project up and running in your browser use ```$ npm run dev``` or ```
 
 ## Environment Variables
 
-TOKEN_SECRET:  512 character
-X_HASURA_ACCESS_KEY:  secret key for Hasura
-SENDGRID_USERNAME:  username for sendgrid
-SENDGRID_PASSWORD:  password for sendgrid
-STRIPE_SECRET_KEY:  secret key for stripe
-STRIPE_ALLOW_DOMAIN: deployed front end URL
+* TOKEN_SECRET:  512 character
+* X_HASURA_ACCESS_KEY:  secret key for Hasura
+* SENDGRID_USERNAME:  username for sendgrid
+* SENDGRID_PASSWORD:  password for sendgrid
+* STRIPE_SECRET_KEY:  secret key for stripe
+* STRIPE_ALLOW_DOMAIN: deployed front end URL
 
 ## Technical Stack
 
