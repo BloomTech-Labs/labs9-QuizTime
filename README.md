@@ -44,19 +44,21 @@ To get the project up and running in your browser ```$ npm run dev``` or ```$ ya
 
 ### Back End Dependencies
 
-* Hasura
-
+#### Hasura
 - Postgres - 
-
 - graphQL - 
 
-
-* Auth0
+#### Auth0
 - auth0 is used to register and authenticate users | [view dependency](https://auth0.com/)
 
-* Micro
-- external API’s are supported with Micro which allows compartmentalization of features.  https://github.com/zeit/micro
+#### Micro
+- external API’s are supported with Micro which allows compartmentalization of features.  | [view dependency](https://github.com/zeit/micro)
 
+#### Stripe
+- a powerful, simple, and seamless payment system that enables teachers to manage payments or upgrade to the pro plan. | [view dependency](https://stripe.com/docs/)
+
+#### Sendgrid
+- SendGrid supports the distribution of quizzes to students.  In combination with DatePicker, a teacher can select a date from a dropdown.  This triggers an email to students. | [view dependency](  https://sendgrid.com/docs/)
 
 
 
