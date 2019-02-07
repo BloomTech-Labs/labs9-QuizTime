@@ -1,21 +1,21 @@
-import * as React from "react";
-import { useState } from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import StudentBar from "../../components/Students/StudentBar";
-import securePage from "../../hocs/securePage";
-import Layout from "../../components/Layout";
-import AddStudent from "../../components/forms/AddStudent";
-import QuizElement from "../../components/boxes/QuizElement";
-import StudentBox from "../../components/boxes/studentBox/studentBox";
-import ClassQuizzes from "../../components/boxes/ClassQuizzes";
-import { ALL_STUDENTS_QUERY } from "../../queries";
-import styled from "@emotion/styled";
-import { Box, Flex } from "@rebass/emotion";
-import AddBox from "../../components/boxes/addBox/addBox";
-import ReactLoading from "react-loading";
-import { css } from "@emotion/core";
-import Modal from "../../components/Modal/index";
+import * as React from 'react';
+import { useState } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import StudentBar from '../../components/Students/StudentBar';
+import securePage from '../../hocs/securePage';
+import Layout from '../../components/Layout';
+import AddStudent from '../../components/forms/AddStudent';
+import QuizElement from '../../components/boxes/QuizElement';
+import StudentBox from '../../components/boxes/studentBox/studentBox';
+import ClassQuizzes from '../../components/boxes/ClassQuizzes';
+import { ALL_STUDENTS_QUERY } from '../../queries';
+import styled from '@emotion/styled';
+import { Box, Flex } from '@rebass/emotion';
+import AddBox from '../../components/boxes/addBox/addBox';
+import ReactLoading from 'react-loading';
+import { css } from '@emotion/core';
+import Modal from '../../components/Modal/index';
 
 import {
   StudentHolder,
@@ -26,8 +26,8 @@ import {
   FlexChange,
   FlexCenter,
   UpperCase,
-  Label
-} from "../../components/design-system/primitives";
+  Label,
+} from '../../components/design-system/primitives';
 
 const ATag = styled.a`
   text-decoration: none;
@@ -44,18 +44,18 @@ const ClassPage = ({ query: { id } }) => {
 
   return (
     <Layout>
-      <Box css={{ border: "1px solid red" }}>
+      <Box css={{ border: '1px solid red' }}>
         <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
           {({ loading, error, data }) => {
             if (error) return <p>{error.message}</p>;
             if (loading) {
               return (
-                <Flex justifyContent="center" alignItems="center" p={5} m={3}>
+                <Flex justifyContent='center' alignItems='center' p={5} m={3}>
                   <ReactLoading
-                    type="spin"
-                    color="lightgray"
-                    height="100px"
-                    width="100px"
+                    type='spin'
+                    color='lightgray'
+                    height='100px'
+                    width='100px'
                   />
                 </Flex>
               );
@@ -68,15 +68,13 @@ const ClassPage = ({ query: { id } }) => {
                     <FlexChange>
                       {/* container for left side */}
                       <Box>
-                        <Flex flexDirection="column">
+                        <Flex flexDirection='column'>
                           {/* <Box p={3} m={3}>
                         <AddStudent class_id={id} />
                       </Box> */}
                           <Box>
-                            <Label p={3}>
-                              Students
-                            </Label>
-                            <Flex flexWrap="wrap">
+                            <Label p={3}>Students</Label>
+                            <Flex flexWrap='wrap'>
                               <Box onClick={toggleHidden}>
                                 <ATag>
                                   <AddBox />
@@ -88,10 +86,10 @@ const ClassPage = ({ query: { id } }) => {
                                     <AddStudent class_id={id} />
                                     <Box>
                                       <UpperCase
-                                        color="blue.1"
+                                        color='blue.1'
                                         fontWeight={6}
                                         fontSize={2}
-                                        css={{ cursor: "pointer" }}
+                                        css={{ cursor: 'pointer' }}
                                         onClick={toggleHidden}
                                       >
                                         x
@@ -112,24 +110,23 @@ const ClassPage = ({ query: { id } }) => {
                         </Flex>
                       </Box>
                       <Box>
-                        <Label p={3}>
-                          Quizzes
-                        </Label>
-                        <Flex flexDirection="column">
+                        <Label p={3}>Quizzes</Label>
+                        <Flex flexDirection='column'>
                           {/*quizzes you can use*/}
                           <Box
                             m={3}
                             p={2}
                             css={{
-                              background: "white",
-                              boxShadow: "0px 3px 15px rgba(0,0,0,0.1)"
+                              background: 'white',
+                              boxShadow: '0px 3px 15px rgba(0,0,0,0.1)',
                             }}
                           >
-                            <Box>
+                            <Box mb={2}>
                               <UpperCase fontSize={2} fontWeight={4}>
                                 Add Quiz to Class
-                            </UpperCase>
+                              </UpperCase>
                             </Box>
+                            <hr/>
                             {data.quiz
                               .filter(
                                 qz =>
@@ -150,16 +147,17 @@ const ClassPage = ({ query: { id } }) => {
                             m={3}
                             p={2}
                             css={{
-                              background: "white",
-                              boxShadow: "0px 3px 15px rgba(0,0,0,0.1)"
+                              background: 'white',
+                              boxShadow: '0px 3px 15px rgba(0,0,0,0.1)',
                             }}
                           >
-                            <Box>
+                            <Box mb={2}>
                               <UpperCase fontSize={2} fontWeight={4}>
                                 Quizzes in class
-                            </UpperCase>
+                              </UpperCase>
                             </Box>
-                            <Box >
+                            <hr/>
+                            <Box>
                               {data.class[0].quizzes.map(q => (
                                 <ClassQuizzes
                                   key={q.id}

@@ -64,7 +64,7 @@ export const UPDATE_QUIZ_DESCRIPTION = gql`
 export const UPDATE_MAJOR_QUESTION = gql`
   mutation update_major_question($id: Int!, $prompt: String!) {
     update_major_question(
-      where: { id: { _eq: $major_question_id } }
+      where: { id: { _eq: $id } }
       _set: { prompt: $prompt }
     ){
       affected_rows
@@ -82,32 +82,32 @@ export const UPDATE_MAJOR_ANSWERS = gql`
     $resB: String!
     $resC: String!
     $resD: String!
-    $correctA: Bool!
-    $correctB: Bool!
-    $correctC: Bool!
-    $correctD: Bool!
+    $correctA: Boolean!
+    $correctB: Boolean!
+    $correctC: Boolean!
+    $correctD: Boolean!
   ) {
     update_major_answer(
       where: {id: {_eq: $idA}},
-      set: {response: resA, correct_answer: $correctA}
+      _set: {response: $resA, correct_answer: $correctA}
     ) {
       affected_rows
     }
     update_major_answer(
       where: {id: {_eq: $idB}},
-      set: {response: resB, correct_answer: $correctB}
+      _set: {response: $resB, correct_answer: $correctB}
     ) {
       affected_rows
     }
     update_major_answer(
       where: {id: {_eq: $idC}},
-      set: {response: resC, correct_answer: $correctC}
+      _set: {response: $resC, correct_answer: $correctC}
     ) {
       affected_rows
     }
     update_major_answer(
       where: {id: {_eq: $idD}},
-      set: {response: resD, correct_answer: $correctD}
+      _set: {response: $resD, correct_answer: $correctD}
     ) {
       affected_rows
     }
@@ -117,7 +117,7 @@ export const UPDATE_MAJOR_ANSWERS = gql`
 export const UPDATE_MINOR_QUESTION = gql`
   mutation update_minor_question($id: Int!, $prompt: String!) {
     update_minor_question(
-      where: { id: { _eq: $minor_question_id } }
+      where: { id: { _eq: $id } }
       _set: { prompt: $prompt }
     ){
       affected_rows
@@ -135,32 +135,32 @@ export const UPDATE_MINOR_ANSWERS = gql`
     $resB: String!
     $resC: String!
     $resD: String!
-    $correctA: Bool!
-    $correctB: Bool!
-    $correctC: Bool!
-    $correctD: Bool!
+    $correctA: Boolean!
+    $correctB: Boolean!
+    $correctC: Boolean!
+    $correctD: Boolean!
   ) {
     update_minor_answer(
       where: {id: {_eq: $idA}},
-      set: {response: resA, correct_answer: $correctA}
+      _set: {response: $resA, correct_answer: $correctA}
     ) {
       affected_rows
     }
     update_minor_answer(
       where: {id: {_eq: $idB}},
-      set: {response: resB, correct_answer: $correctB}
+      _set: {response: $resB, correct_answer: $correctB}
     ) {
       affected_rows
     }
     update_minor_answer(
       where: {id: {_eq: $idC}},
-      set: {response: resC, correct_answer: $correctC}
+      _set: {response: $resC, correct_answer: $correctC}
     ) {
       affected_rows
     }
     update_minor_answer(
       where: {id: {_eq: $idD}},
-      set: {response: resD, correct_answer: $correctD}
+      _set: {response: $resD, correct_answer: $correctD}
     ) {
       affected_rows
     }
