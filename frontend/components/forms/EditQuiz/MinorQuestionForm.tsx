@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { Mutation } from "react-apollo";
-import Reveal from "react-reveal/Reveal";
+import { useState, useEffect } from 'react';
+import { Mutation } from 'react-apollo';
+import Reveal from 'react-reveal/Reveal';
 
-import MinorAnswersForm from "./MinorAnswersForm";
+import MinorAnswersForm from './MinorAnswersForm';
 
-import { UPDATE_MINOR_QUESTION } from "../../../mutations";
-import { GET_QUIZ_QUERY } from "../../../queries";
+import { UPDATE_MINOR_QUESTION } from '../../../mutations';
+import { GET_QUIZ_QUERY } from '../../../queries';
 
-import { Label, TextArea, Form, Button } from "../../design-system";
-import { Box, Flex } from "@rebass/emotion";
+import { Label, TextArea, Form, Button } from '../../design-system';
+import { Box, Flex } from '@rebass/emotion';
 
 export default ({ id, prompt, answers, pos, quiz_id }) => {
   const [updatedPrompt, setUpdatedPrompt] = useState(prompt);
@@ -18,12 +18,7 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
     if (prompt !== updatedPrompt) {
       setToggleButton(true);
     }
-    console.log('prompt', prompt);
   }, [updatedPrompt]);
-
-  useEffect(() => {
-    console.log('toggle is', toggleButton);
-  }, [toggleButton]);
 
   const handlePromptChange = e => {
     setUpdatedPrompt(e.target.value);
@@ -35,7 +30,7 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
       refetchQueries={() => [{ query: GET_QUIZ_QUERY, variables: { quiz_id } }]}
       onCompleted={() => {
         setToggleButton(false);
-        console.log('prompt and updatedPrompt***', prompt, updatedPrompt)
+        console.log('prompt and updatedPrompt***', prompt, updatedPrompt);
       }}
     >
       {(update_minor_question, { error, loading, data }) => (
@@ -44,11 +39,11 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
             onSubmit={async e => {
               e.preventDefault();
               update_minor_question({
-                variables: { id, prompt: updatedPrompt }
+                variables: { id, prompt: updatedPrompt },
               });
             }}
           >
-            <Flex justifyContent="space-between">
+            <Flex justifyContent='space-between'>
               <Label htmlFor={`minor-question-${id}`}>
                 Minor Question {pos + 1}
               </Label>
@@ -59,7 +54,9 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
               value={updatedPrompt}
             />
             {toggleButton && (
-              <Button my={3} variant="primary" type="submit">Update Prompt</Button>
+              <Button my={3} variant='primary' type='submit'>
+                Update Prompt
+              </Button>
             )}
           </Form>
           <MinorAnswersForm answers={answers} quiz_id={quiz_id} />

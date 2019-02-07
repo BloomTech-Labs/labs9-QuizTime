@@ -20,12 +20,7 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
     if (prompt !== updatedPrompt) {
       setToggleButton(true);
     }
-    console.log('prompt', prompt);
   }, [updatedPrompt]);
-
-  useEffect(() => {
-    console.log('toggle is', toggleButton);
-  }, [toggleButton]);
 
   const handlePromptChange = e => {
     setUpdatedPrompt(e.target.value);
@@ -37,7 +32,7 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
       refetchQueries={() => [{ query: GET_QUIZ_QUERY, variables: { quiz_id } }]}
       onCompleted={() => {
         setToggleButton(false);
-        console.log('prompt and updatedPrompt***', prompt, updatedPrompt)
+        console.log('prompt and updatedPrompt***', prompt, updatedPrompt);
       }}
     >
       {(update_major_question, { error, loading, data }) => (
