@@ -22,7 +22,7 @@ Please feel free to contact us with questions about this project.
 
 ## Running
 
-After forking this repository, the user should run $ npm install or $ yarn install in order to gain access to the necessary dependencies
+After forking this repository, the user should run ```$ npm install``` or ```$ yarn install``` in order to gain access to the necessary dependencies
  
 ### Back End
 
@@ -30,6 +30,16 @@ After forking this repository, the user should run $ npm install or $ yarn insta
 ### Front End
 
 To get the project up and running in your browser ```$ npm run dev``` or ```$ yarn dev``` and go to localhost:3000.
+
+## Environment Variables
+
+* TOKEN_SECRET:  512 character
+* X_HASURA_ACCESS_KEY:  secret key for Hasura
+* SENDGRID_USERNAME:  username for sendgrid
+* SENDGRID_PASSWORD:  password for sendgrid
+* STRIPE_SECRET_KEY:  secret key for stripe
+* STRIPE_ALLOW_DOMAIN: deployed front end URL
+
 
 
 
