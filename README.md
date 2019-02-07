@@ -67,10 +67,8 @@ We essentially built our own reusable theme and styled components that were acce
 
 ### Back End Dependencies
 
-#### Hasura
-Postgres - 
-
-graphQL - 
+#### Hasura   
+Our application is powere by Hasura.  Hasura is an open-source engine with a realtime GraphQL API built on a Postgres database, with built-in support for stitching custom GraphQL APIs and triggering web hooks on database changes. | [view dependency](https://hasura.io/)
 
 #### Auth0
 auth0 is used to register and authenticate users | [view dependency](https://auth0.com/)
