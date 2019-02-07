@@ -1,8 +1,6 @@
 # QuizTime - Lambda-Labs 9
 
-Pleae click [here](https://quiztime.now.sh) to view the deployed application.
-
-Please click [here]() to view our video tutorial. 
+Pleae click [here](https://quiztime.now.sh) to view the deployed application.  Please click [here]() to view our video tutorial. 
 
 ![QuizTime](./frontend/img/QuizTime.jpg)
 
@@ -65,7 +63,7 @@ SendGrid supports the distribution of quizzes to students.  In combination with 
 ### Front End Dependencies
 
 #### React with Next.js 
-Next JS is a universal framework used to enable server side rendering and routing.   https://nextjs.org/
+Next JS is a universal framework used to enable server side rendering and routing.   [view dependency](https://nextjs.org/)
 
 Next.js will serve each file in /pages under a pathname matching the filename. For example, /pages/about.js is served at site.com/about.
 
@@ -80,14 +78,14 @@ export default () => (
 ```
 
 #### React apollo
-We used react-apollo to query the database using Apollo Client.  Apollo client is designed to help you quickly build a UI that fetches data with GraphQL, and can be used with any JavaScript front-end.  https://www.apollographql.com/docs/react/
+We used react-apollo to query the database using Apollo Client.  Apollo client is designed to help you quickly build a UI that fetches data with GraphQL, and can be used with any JavaScript front-end.  [view dependency](https://www.apollographql.com/docs/react/)
 
 #### Datepicker
-In order to select a date for quiz assignment, we used react-datepicker https://reactdatepicker.com/
+In order to select a date for quiz assignment, we used react-datepicker [view dependency](https://reactdatepicker.com/)
 
 #### Rebass/emotion 
-Rebass is a collection of pre-built, consistently styled components.  We relied partially on this system to style the application. https://rebassjs.org/  
+Rebass is a collection of pre-built, consistently styled components.  We relied partially on this system to style the application. [view dependency](https://rebassjs.org/)
 
 #### Styled-system/design-system
-We essentially built our own reusable theme and styled components that were accessible throughout the app.  You can read more about this paradigm here:  https://varun.ca/styled-system/ 
+We essentially built our own reusable theme and styled components that were accessible throughout the app.  You can read more about this paradigm here:  [view dependency](https://varun.ca/styled-system/) 
 
