@@ -49,14 +49,14 @@ const ClassQuizzes: React.SFC = ({ quiz, classId, dueDate }) => {
     <>
       <Box>
         <Flex justifyContent='space-between' alignItems='center' flexDirection='row'>
-          <Box my={2}>
-            <Text>{quiz.name}:</Text>
+          <Box mr={4} my={2}>
+            <Text>{quiz.name}: </Text>
           </Box>
-          <Box my={2}>
+          <Box >
             <Mutation mutation={UPDATE_CLASS_QUIZ}>
               {(update_class_quiz, { error, loading, data }) => (
                 <DatePicker 
-                customInput={<ExampleCustomInput/>}
+                customInput={<CustomInput/>}
                   selected={quizDate}
                   onChange={date =>
                     handleQuizDate(date, quiz.id, update_class_quiz)
@@ -79,16 +79,14 @@ const ClassQuizzes: React.SFC = ({ quiz, classId, dueDate }) => {
 };
 export default ClassQuizzes;
 
-class ExampleCustomInput extends React.Component {
+class CustomInput extends React.Component {
 
   render () {
     return (
       <ButtonLink
-        style={{height: 'auto', padding: '2px 5px'}}
+        style={{padding: '2px 5px'}}
         fontSize={'12px'}
         fontWeight={'600'}
-        p={0}
-        className="example-custom-input"
         onClick={this.props.onClick}>
         {this.props.value || 'Assign'}
       </ButtonLink>
