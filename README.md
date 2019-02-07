@@ -40,6 +40,23 @@ To get the project up and running in your browser ```$ npm run dev``` or ```$ ya
 * STRIPE_SECRET_KEY:  secret key for stripe
 * STRIPE_ALLOW_DOMAIN: deployed front end URL
 
+## Technical Stack
+
+### Back End Dependencies
+
+* Hasura
+
+- Postgres - 
+
+- graphQL - 
+
+
+* Auth0
+- auth0 is used to register and authenticate users | [view dependency](https://auth0.com/)
+
+* Micro
+- external API’s are supported with Micro which allows compartmentalization of features.  https://github.com/zeit/micro
+
 
 
 
