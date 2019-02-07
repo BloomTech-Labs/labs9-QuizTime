@@ -44,7 +44,7 @@ const ClassPage = ({ query: { id } }) => {
 
   return (
     <Layout>
-      <Box css={{ border: '1px solid red' }}>
+      <Box>
         <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
           {({ loading, error, data }) => {
             if (error) return <p>{error.message}</p>;

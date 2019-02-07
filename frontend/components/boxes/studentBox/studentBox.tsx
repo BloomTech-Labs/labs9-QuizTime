@@ -12,6 +12,7 @@ import {
 import { Flex, Box } from "@rebass/emotion";
 import { css } from "@emotion/core";
 import Modal from '../../Modal/index';
+import StudentResults from '../../StudentResults';
 
 //to get the quizzes to map through all you need is the
 //quiz prop from the app page.
@@ -59,7 +60,7 @@ const StudentBox = ({ id, student }) => {
             {!isHidden &&
               <Modal>
                 <Flex>
-                  <Text>View Results</Text>
+                  <StudentResults id={student.id} />
                   <Box>
                     <UpperCase
                       px={2}
