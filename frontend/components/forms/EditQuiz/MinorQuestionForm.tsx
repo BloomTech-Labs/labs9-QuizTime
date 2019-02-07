@@ -27,7 +27,7 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
           <Form
             onSubmit={async e => {
               e.preventDefault();
-              update_minor_questions({
+              update_minor_question({
                 variables: { id, prompt: updatedPrompt }
               });
             }}
