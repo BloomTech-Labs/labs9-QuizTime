@@ -5,6 +5,7 @@ import {
   AvatarImg,
   BoldText,
   Text,
+  ButtonLink,
   UpperCase,
   Label,
 } from '../design-system/primitives';
@@ -16,6 +17,16 @@ import Link from 'next/link';
 import AvatarPopup from './AvatarPopup';
 import Router from 'next/router';
 import { css } from '@emotion/core';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const GET_CREDITS_QUERY = gql`
+  query GET_CREDITS_QUERY($id: String!) {
+    teacher(where: { id: { _eq: $id } }) {
+      credits
+    }
+  }
+`;
 
 const NavBar: React.SFC = () => {
   const small = useMedia('(max-width: 639px)');
@@ -24,13 +35,17 @@ const NavBar: React.SFC = () => {
   const [breadCrumb, setBreadCrumb] = useState('');
 
   useEffect(() => {
-    const user = getUserFromLocalCookie();
+    const userFromCookie = getUserFromLocalCookie();
     const breadCrumb = JSON.stringify(
       Router.pathname.split('/').join(' > ')
     ).replace(/\"/g, '');
-    setUser(user);
     setBreadCrumb(breadCrumb);
+    setUser(userFromCookie);
   }, []);
+
+  useEffect(() => {
+    console.log('user is now', user);
+  }, [user]);
 
   const Links = small ? (
     <Flex width={1}>
@@ -52,43 +67,95 @@ const NavBar: React.SFC = () => {
   ) : null;
 
   return (
-    <NavBarHolder py={0} px={2} 
+    <NavBarHolder
+      py={0}
+      px={2}
       css={{
         position: 'relative',
         justifyContent: 'space-between',
       }}
     >
       {Links}
-      <Flex
-        flexDirection='row'
-        css={css`
-          width: auto;
-        `}
-      >
-        <UpperCase>
-          <BoldText fontSize={2}>{breadCrumb}</BoldText>
-        </UpperCase>
+      <Flex justifyContent='space-between' width='100%' alignItems='center'>
+        <Box>
+          <UpperCase>
+            <BoldText fontSize={2}>{!small ? breadCrumb : null}</BoldText>
+          </UpperCase>
+        </Box>
+        
+        <Flex
+          p={1}
+          alignItems='center'
+          pl={0}
+
+        >
+        <Query
+          query={GET_CREDITS_QUERY}
+          variables={user ? { id: user.sub } : { id: '' }}
+          pollInterval={10000}
+        >
+          {({ loading, error, data }) => {
+            if (loading)
+              return (
+                <Link href='/settings'>
+                  <ButtonLink
+                    fontSize={[0, 1]}
+                    px={['5px', '10px']}
+                    m={0}
+                    mr={'20px'}
+                  >
+                    Loading ...
+                  </ButtonLink>
+                </Link>
+              );
+            if (data.teacher.length > 0) {
+              return (
+                <Link href='/settings'>
+                  <ButtonLink
+                    fontSize={1}
+                    px={['5px', '10px']}
+                    m={0}
+                    mr={['10px', '20px']}
+                  >
+                    Credits: {data.teacher[0].credits}
+                  </ButtonLink>
+                </Link>
+              );
+            } else {
+              return (
+                <Link href='/settings'>
+                  <ButtonLink
+                    m={0}
+                    py={'10px'}
+                    fontSize={1}
+                    mr={['10px', '20px']}
+                  >
+                    Loading ...
+                  </ButtonLink>
+                </Link>
+              );
+            }
+          }}
+        </Query>
+        <Box           onMouseOver={() => setIsNavPopup(true)}
+          onMouseOut={() => setIsNavPopup(false)}>
+
+          <AvatarImg
+            mr={3}
+            src={user ? user.picture : ''}
+            alt='profile'
+            css={css`
+              cursor: pointer;
+              transition: all 0.2s ease;
+              border: ${isNavPopup
+                ? '3px solid #101440'
+                : '3px solid transparent'};
+            `}
+          />
+          <AvatarPopup isNavPopup={isNavPopup} />
+        </Box>
+        </Flex>
       </Flex>
-      <Box
-        p={1}
-        pl={0}
-        onMouseOver={() => setIsNavPopup(true)}
-        onMouseOut={() => setIsNavPopup(false)}
-      >
-        <AvatarImg
-          mr={4}
-          src={user && user.picture ? user.picture : ''}
-          alt='profile'
-          css={css`
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: ${isNavPopup
-              ? '3px solid #101440'
-              : '3px solid transparent'};
-          `}
-        />
-        <AvatarPopup isNavPopup={isNavPopup} />
-      </Box>
     </NavBarHolder>
   );
 };

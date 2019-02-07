@@ -67,7 +67,7 @@ class SplitForm extends React.Component {
         token.sub = this.props.loggedUser.sub;
       }
       // let response = await fetch('/api/add-credit', {
-      let response = await fetch('http://localhost:6000/api/add-credit', {
+      let response = await fetch('http://localhost:8888/add-credit', {
         method: 'POST',
         body: JSON.stringify(token),
       });
@@ -77,7 +77,6 @@ class SplitForm extends React.Component {
       teacher = teacher.update_teacher.returning[0];
       this.setState({ teacher });
     } else {
-      // console.log("Stripe.js hasn't loaded yet.");
     }
   };
 
@@ -121,8 +120,8 @@ class SplitForm extends React.Component {
             boxShadow: '0px 3px 15px rgba(0,0,0,0.2)',
           }}
         >
-          <BoldText fontSize={[3, 4, 28]} m={3} ml={1}>
-            Add Subscription
+          <BoldText fontSize={[3, 4, 28]} m={3} ml={1} color={'blue.1'}>
+            Add 500 Credits
           </BoldText>
           <BillingText mb={2} fontSize={[1, 2, 3]}>
             Card Number
@@ -177,7 +176,7 @@ class SplitForm extends React.Component {
                   height: '60px',
                 }}
               >
-                Go Premium ($9.95/month)
+                $1.00
               </ButtonLink>
             </Flex>
           </Box>
@@ -191,6 +190,15 @@ class SplitForm extends React.Component {
             >
               {this.state.error || ' '}
             </UpperCase>
+            <UpperCase
+              color='green'
+              mt={3}
+              fontSize={12}
+              fontWeight={4}
+              lineHeight={1.5}
+            >
+              {this.state.teacher && `Successfully purchased credits!` }
+              </UpperCase>
           </Box>
         </form>
       </>

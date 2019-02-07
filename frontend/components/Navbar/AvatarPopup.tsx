@@ -25,12 +25,12 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
       css={{
         transition: 'all .2s ease-out',
         opacity: isNavPopup ? 1 : 0,
-        top: isNavPopup ? 80 : 65,
+        top: isNavPopup ? 72 : 65,
         visibility: isNavPopup ? 'visible' : 'hidden',
       }}
     >
       <Flex flexDirection='column'>
-        <BoldText
+        {/* <BoldText
           fontWeight={5}
           fontSize={1}
           ml={1}
@@ -50,7 +50,7 @@ const AvatarPopup: React.SFC = ({ isNavPopup }) => {
           }}
         >
           STUDENT
-        </BoldText>
+        </BoldText> */}
         <BoldText
           fontWeight={5}
           fontSize={1}
