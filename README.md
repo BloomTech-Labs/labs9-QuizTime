@@ -5,6 +5,7 @@ Pleae click [here](https://quiztime.now.sh) to view the deployed application.  P
 ![QuizTime](./frontend/img/QuizTime.jpg)
 
 ## Team
+| Team Member | Github |
 |---|---|
 | Joseph Stossmeister | [Github](https://github.com/Jstoss)| 
 
