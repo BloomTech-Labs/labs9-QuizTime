@@ -45,20 +45,51 @@ To get the project up and running in your browser ```$ npm run dev``` or ```$ ya
 ### Back End Dependencies
 
 #### Hasura
-- Postgres - 
-- graphQL - 
+Postgres - 
+
+graphQL - 
 
 #### Auth0
-- auth0 is used to register and authenticate users | [view dependency](https://auth0.com/)
+auth0 is used to register and authenticate users | [view dependency](https://auth0.com/)
 
 #### Micro
-- external API’s are supported with Micro which allows compartmentalization of features.  | [view dependency](https://github.com/zeit/micro)
+external API’s are supported with Micro which allows compartmentalization of features.  | [view dependency](https://github.com/zeit/micro)
 
 #### Stripe
-- a powerful, simple, and seamless payment system that enables teachers to manage payments or upgrade to the pro plan. | [view dependency](https://stripe.com/docs/)
+a powerful, simple, and seamless payment system that enables teachers to manage payments or upgrade to the pro plan. | [view dependency](https://stripe.com/docs/)
 
 #### Sendgrid
-- SendGrid supports the distribution of quizzes to students.  In combination with DatePicker, a teacher can select a date from a dropdown.  This triggers an email to students. | [view dependency](  https://sendgrid.com/docs/)
+SendGrid supports the distribution of quizzes to students.  In combination with DatePicker, a teacher can select a date from a dropdown.  This triggers an email to students. | [view dependency](  https://sendgrid.com/docs/)
 
 
+### Front End Dependencies
+
+#### React with Next.js 
+Next JS is a universal framework used to enable server side rendering and routing.   https://nextjs.org/
+
+Next.js will serve each file in /pages under a pathname matching the filename. For example, /pages/about.js is served at site.com/about.
+
+```
+{
+import Link from 'next/link'
+export default () => (
+  <div>
+    <h1>Hello Next.js 👋</h1>
+    <Link href='/about'><a>About</a></Link>
+  </div>
+)
+}
+```
+
+#### React apollo
+We used react-apollo to query the database using Apollo Client.  Apollo client is designed to help you quickly build a UI that fetches data with GraphQL, and can be used with any JavaScript front-end.  https://www.apollographql.com/docs/react/
+
+#### Datepicker
+In order to select a date for quiz assignment, we used react-datepicker https://reactdatepicker.com/
+
+#### Rebass/emotion 
+Rebass is a collection of pre-built, consistently styled components.  We relied partially on this system to style the application. https://rebassjs.org/  
+
+#### Styled-system/design-system
+We essentially built our own reusable theme and styled components that were accessible throughout the app.  You can read more about this paradigm here:  https://varun.ca/styled-system/ 
 
