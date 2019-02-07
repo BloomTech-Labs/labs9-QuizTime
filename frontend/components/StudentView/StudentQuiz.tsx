@@ -46,6 +46,7 @@ class StudentQuiz extends Component {
     isAnswered: false,
     isMajor: true,
     score: 0,
+    feedback: null,
     maxScore: 0,
     isDone: false,
   };
@@ -77,11 +78,14 @@ class StudentQuiz extends Component {
       minorIndex,
       isMajor,
       isDone,
+      feedback,
     } = this.state;
     return (
       <>
         <Meta />
-        <Container p={[2, 3, 4]} m={3}
+        <Container
+          p={[2, 3, 4]}
+          m={3}
           css={{ boxShadow: '0px 3px 15px rgba(0,0,0,0.2)' }}
         >
           {quiz ? (
@@ -114,15 +118,17 @@ class StudentQuiz extends Component {
                     <Flex justifyContent='flex-end' alignItems='center'>
                       <Button
                         mx={2}
+                        my={3}
+                        style={{cursor: 'default'}}
                         css={majorIndex !== idx && { display: 'none' }}
-                        variant='primaryNoHover'
+                        variant={feedback === null ? 'disabled' : feedback ? 'successQ' : 'errorQ'}
                       >
                         Score: {this.state.score}/
                         {this.state.quiz.major_questions.length * 10}
                       </Button>
                       <ButtonLink
                         disabled={!isAnswered}
-                        variant={!isAnswered ? 'disabled' : 'success'}
+                        variant={!isAnswered ? 'disabled' : 'primary'}
                         css={majorIndex !== idx && { display: 'none' }}
                         my={3}
                         mx={2}
@@ -159,13 +165,17 @@ class StudentQuiz extends Component {
       this.setState(s => ({ minorQuestionCount: s.minorQuestionCount + 1 }));
     }
     if (currentMajorQuestion.correct) {
-      this.setState(s => ({ majorCorrectAnswers: s.majorCorrectAnswers + 1 }));
+      this.setState(s => ({
+        majorCorrectAnswers: s.majorCorrectAnswers + 1,
+        feedback: true,
+      }));
+    } else if (currentMinorQuestion.correct) {
+      this.setState(s => ({
+        minorCorrectAnswers: s.minorCorrectAnswers + 1,
+        feedback: true,
+      }));
     } else {
-      if (currentMinorQuestion.correct) {
-        this.setState(s => ({
-          minorCorrectAnswers: s.minorCorrectAnswers + 1,
-        }));
-      }
+      this.setState({feedback: false})
     }
     this.setState(s => ({
       score: s.majorCorrectAnswers * 10 + s.minorCorrectAnswers * 2,
@@ -261,7 +271,7 @@ class StudentQuiz extends Component {
 
     fetch(url, options)
       .then(res => res.json())
-      .then(({ data }) => this.setState({student: data.student[0]}))
+      .then(({ data }) => this.setState({ student: data.student[0] }))
       .catch(error => console.log(error));
   };
   submitMajorAnswer = () => {
@@ -286,12 +296,12 @@ class StudentQuiz extends Component {
         type: 'insert_score',
         token: getStudentToken(),
         score: this.state.score,
-        total: this.state.maxScore
+        total: this.state.maxScore,
       }),
     };
     fetch(url, options)
       .then(res => res.json())
-      .then(({ data }) => console.log('score', data))
+      .then(({ data }) => data)
       .catch(error => console.log(error));
   };
   submitMinorAnswer = () => {
@@ -329,13 +339,6 @@ class StudentQuiz extends Component {
       },
       isAnswered: true,
     }));
-  };
-
-  calculateScore = () => {
-    const { majorCorrectAnswers, minorCorrectAnswers } = this.state;
-    const score = majorCorrectAnswers * 10 + minorCorrectAnswers * 2;
-    this.setState({ score });
-    return score;
   };
 }
 

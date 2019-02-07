@@ -36,7 +36,7 @@ const MinorQuestion = ({
               }
               type='radio'
               name={`mini-question-${q.id}-mini-answer`}
-              value={index + 1}
+              value={a.id}
             />
             <BoxText ml={10}>{a.response}</BoxText>
           </Flex>

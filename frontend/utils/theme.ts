@@ -69,12 +69,20 @@ export default {
         backgroundColor: green2
       }
     },
+    successQ: {
+      color: "#fff",
+      backgroundColor: green2,
+    },
     error: {
       color: "#fff",
       backgroundColor: red0,
       "&:hover": {
         backgroundColor: red1
       }
+    },
+    errorQ: {
+      color: "#fff",
+      backgroundColor: red1,
     },
     disabled: {
       color: "#fff",
