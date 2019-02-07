@@ -204,3 +204,19 @@ Will query for a quiz where the id matches the passed in quiz_id. The returning 
 | DB Table A | DB Table B | Name | Relationship Type |
 |---|---|---|---|
 | teacher | class | classes | array |
+| teacher | student | students | array |
+| teacher | quiz | quizzes | array |
+| class | teacher | teacher | object |
+| class | class_quiz | quizzes | array |
+| class | student | students | array |
+| class_quiz | class | class | object |
+| class_quiz | quiz | quiz | object |
+| quiz | class_quiz | classes | array |
+| quiz | major_question | major_questions | array |
+| major_question | quiz | quiz | object |
+| major_question | teacher | teacher | object |
+| major_question | major_answer | answers | array |
+| major_question | minor_question | minor_questions | array |
+| major_question | student_major_answer | student_answers | array |
+| minor_question | major_question | major_question | object |
+| minor_question | minor_answer | answers | array |
