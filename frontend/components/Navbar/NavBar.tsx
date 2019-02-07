@@ -5,6 +5,7 @@ import {
   AvatarImg,
   BoldText,
   Text,
+  UpperCase,
   Label,
 } from '../design-system/primitives';
 import { unsetToken, getUserFromLocalCookie } from '../../utils/auth';
@@ -19,18 +20,17 @@ import { css } from '@emotion/core';
 const NavBar: React.SFC = () => {
   const small = useMedia('(max-width: 639px)');
   const [isNavPopup, setIsNavPopup] = useState(false);
-  const [user, setUser] = useState(null)
-  const [breadCrumb, setBreadCrumb] = useState('')
-  
+  const [user, setUser] = useState(null);
+  const [breadCrumb, setBreadCrumb] = useState('');
+
   useEffect(() => {
-    const user = getUserFromLocalCookie()
-    const breadCrumb = JSON.stringify(Router.pathname.split("/").join(" > ")).replace(
-      /\"/g,
-      ""
-    )
-    setUser(user)
-    setBreadCrumb(breadCrumb)
-  },[])
+    const user = getUserFromLocalCookie();
+    const breadCrumb = JSON.stringify(
+      Router.pathname.split('/').join(' > ')
+    ).replace(/\"/g, '');
+    setUser(user);
+    setBreadCrumb(breadCrumb);
+  }, []);
 
   const Links = small ? (
     <Flex width={1}>
@@ -52,7 +52,7 @@ const NavBar: React.SFC = () => {
   ) : null;
 
   return (
-    <NavBarHolder
+    <NavBarHolder py={0} px={2} 
       css={{
         position: 'relative',
         justifyContent: 'space-between',
@@ -65,11 +65,13 @@ const NavBar: React.SFC = () => {
           width: auto;
         `}
       >
-        <Label fontSize={1} fontWeight={0}>
-          {breadCrumb}
-        </Label>
+        <UpperCase>
+          <BoldText fontSize={2}>{breadCrumb}</BoldText>
+        </UpperCase>
       </Flex>
-      <Box p={1} pl={0}
+      <Box
+        p={1}
+        pl={0}
         onMouseOver={() => setIsNavPopup(true)}
         onMouseOut={() => setIsNavPopup(false)}
       >
@@ -80,7 +82,9 @@ const NavBar: React.SFC = () => {
           css={css`
             cursor: pointer;
             transition: all 0.2s ease;
-            border: ${isNavPopup ? '3px solid #101440' : '3px solid transparent'};
+            border: ${isNavPopup
+              ? '3px solid #101440'
+              : '3px solid transparent'};
           `}
         />
         <AvatarPopup isNavPopup={isNavPopup} />
