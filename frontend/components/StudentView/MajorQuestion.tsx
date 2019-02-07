@@ -9,13 +9,13 @@ import {
 
 const MajorQuestion = ({ q, majorIndex, idx, isMajor, handleMajorChange }) => {
   return (
-    <Container mb={20}>
-      <BoxText htmlFor={`major-question-${q.id}`}>
-        <BoldText fontSize={4} fontWeight={4}>
+    <Container mb={45}>
+      <BoxText style={{ cursor: 'default' }} htmlFor={`major-question-${q.id}`}>
+        <BoldText fontSize={4} fontWeight={5} color={'blue.1'}>
           Primary Question {idx + 1}
         </BoldText>
       </BoxText>
-      <BoxText fontSize={3}>
+      <BoxText style={{ cursor: 'default' }} fontSize={3} my={2}>
         {q.prompt}
       </BoxText>
       {q.answers.map((a, index) => (

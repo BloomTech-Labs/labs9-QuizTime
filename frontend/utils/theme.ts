@@ -6,6 +6,7 @@ const blue4 = "#101440";
 const blue5 = "#3947E5";
 const red0 = "#ea969d";
 const red1 = "#e16973";
+const red2 = "#7c0A02";
 const green0 = "#B5FFD0";
 const green1 = "#44c173";
 const green2 = "#006400";
@@ -18,8 +19,8 @@ export default {
   fontWeights: [100, 200, 300, 400, 500, 600, 700],
   colors: {
     blue: ["#7981FF", "#323fcb", "#1F287F", "#3F4FFF", "#101440", "#3947E5"],
-    red: ["#ea969d", "#e16973"],
-    green: ["#B5FFD0", "#70e89d", "#44c173"],
+    red: ["#ea969d", "#e16973", red2],
+    green: ["#B5FFD0", "#70e89d", "#44c173", green2],
     gray: ["#EDEDED"]
   },
   borders: [0, "1px solid red"],
