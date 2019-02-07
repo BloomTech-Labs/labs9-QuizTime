@@ -1,19 +1,31 @@
-import { useState } from "react";
-import { Mutation } from "react-apollo";
+import { useState, useEffect } from 'react';
+import { Mutation } from 'react-apollo';
 
-import MajorAnswersForm from "./MajorAnswersForm";
-import MinorQuestionForm from "./MinorQuestionForm";
-import NewMinorQuestionForm from "./NewMinorQuestionForm";
+import MajorAnswersForm from './MajorAnswersForm';
+import MinorQuestionForm from './MinorQuestionForm';
+import NewMinorQuestionForm from './NewMinorQuestionForm';
 
-import { UPDATE_MAJOR_QUESTION } from "../../../mutations";
-import { GET_QUIZ_QUERY } from "../../../queries";
+import { UPDATE_MAJOR_QUESTION } from '../../../mutations';
+import { GET_QUIZ_QUERY } from '../../../queries';
 
-import { Label, Container, TextArea, Form, Button } from "../../design-system";
-import { Box, Flex } from "@rebass/emotion";
+import { Label, Container, TextArea, Form, Button } from '../../design-system';
+import { Box, Flex } from '@rebass/emotion';
 
 export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
   const [updatedPrompt, setUpdatedPrompt] = useState(prompt);
   const [showNewMinor, setShowNewMinor] = useState(false);
+  const [toggleButton, setToggleButton] = useState(false);
+
+  useEffect(() => {
+    if (prompt !== updatedPrompt) {
+      setToggleButton(true);
+    }
+    console.log('prompt', prompt);
+  }, [updatedPrompt]);
+
+  useEffect(() => {
+    console.log('toggle is', toggleButton);
+  }, [toggleButton]);
 
   const handlePromptChange = e => {
     setUpdatedPrompt(e.target.value);
@@ -23,15 +35,19 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
     <Mutation
       mutation={UPDATE_MAJOR_QUESTION}
       refetchQueries={() => [{ query: GET_QUIZ_QUERY, variables: { quiz_id } }]}
+      onCompleted={() => {
+        setToggleButton(false);
+        console.log('prompt and updatedPrompt***', prompt, updatedPrompt)
+      }}
     >
       {(update_major_question, { error, loading, data }) => (
         <Box my={4}>
-          <Flex flexDirection="column" justifyContent="space-between">
+          <Flex flexDirection='column' justifyContent='space-between'>
             <Form
               onSubmit={async e => {
                 e.preventDefault();
                 update_major_question({
-                  variables: { id, prompt: updatedPrompt }
+                  variables: { id, prompt: updatedPrompt },
                 });
               }}
             >
@@ -43,8 +59,8 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
                 onChange={handlePromptChange}
                 value={updatedPrompt}
               />
-              {prompt !== updatedPrompt && (
-                <Button my={3} variant="primary" type="submit">
+              {toggleButton && (
+                <Button my={3} variant='primary' type='submit'>
                   Update Prompt
                 </Button>
               )}
@@ -65,7 +81,7 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
               {showNewMinor || (
                 <Button
                   mx={3}
-                  variant="success"
+                  variant='success'
                   onClick={() => setShowNewMinor(true)}
                 >
                   Add Minor Question
