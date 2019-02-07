@@ -34,7 +34,7 @@ class QuizPage extends Component {
 
   render() {
     return (
-      <Container>
+      <Container mt={3}>
         <Link href='/student' prefetch>
           <ButtonLink variant='primary' m={2}>
             Back to Profile
