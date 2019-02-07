@@ -9,10 +9,16 @@ Please click [here]() to view our video tutorial.
 ## Team
 
 Joseph Stossmeister | [Github](https://github.com/Jstoss)
+
 Allen Hai | [Github](https://github.com/coetry)
+
 Keith Kennegy | [Github](https://github.com/Kennedykid1995)
+
 Cesar Napoleon Mejia Leiva | [Github](https://github.com/cesarnml)
+
 Carey Baldwin | [Github](https://github.com/careybaldwin02)
+
+
 
 
 
