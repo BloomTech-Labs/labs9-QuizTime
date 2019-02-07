@@ -309,12 +309,12 @@ function AddQuiz() {
                     Creating Questions
                   </UpperCase>
                   <Text lineHeight={1.5} py={2} fontSize={2}>
-                    Use "Major Questions" to assess overall student
+                    Use "Primary Questions" to assess overall student
                     understanding of a concept.
                   </Text>
                   <Text lineHeight={1.5} py={2} fontSize={2}>
-                    Use "Minor questions" to break down the concept into smaller
-                    pieces (optional).
+                    Use "Follow-up questions" to break down the concept into smaller
+                    pieces or assess a student's knowledge of a topic more generally (optional).
                   </Text>
                   <Flex justifyContent="flex-end">
                     <Button mx={6} my={2} width="100px">
@@ -344,7 +344,7 @@ function AddQuiz() {
                   <Box my={4}>
                     <Flex justifyContent="space-between">
                       <Label htmlFor={`major-question-${q.id}`}>
-                        Major Question {q.id}
+                        Primary Question {q.id}
                       </Label>
                       <Button
                         m={3}
@@ -436,7 +436,7 @@ function AddQuiz() {
                           <Box my={4}>
                             <Flex justifyContent="space-between">
                               <Label htmlFor={`minor-question-${minorQ.id}`}>
-                                Minor Question {minorQ.id}
+                                Follow-up Question {minorQ.id}
                               </Label>
                               <Button
                                 m={3}
@@ -578,7 +578,7 @@ function AddQuiz() {
                         variant="success"
                         onClick={addMajorQuestion}
                       >
-                        Add Major Question
+                        Add Primary Question
                       </Button>
                       <Button
                         mx={3}
@@ -587,7 +587,7 @@ function AddQuiz() {
                           addMinorQuestion(e, q.id);
                         }}
                       >
-                        Add Minor Question
+                        Add Follow-up Question
                       </Button>
                     </Flex>
                   </Box>
