@@ -24,7 +24,7 @@ module.exports = (req, res) =>
         update_teacher(
           where: {id: {_eq: "${token.sub}"}},
           _inc: {
-            credits: 10,
+            credits: 500,
           })
         {
           returning {

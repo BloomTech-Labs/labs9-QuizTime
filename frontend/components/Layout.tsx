@@ -12,13 +12,13 @@ const Page = styled.div`
 const MainContent = styled.div`
   width: 100%;
 `;
-const Layout = ({ children }) => (
+const Layout = (props) => (
   <Page>
     <Meta />
     <SideBar />
     <MainContent>
       <NavBar />
-      {children}
+      {props.children}
     </MainContent>
   </Page>
 );
