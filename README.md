@@ -70,7 +70,6 @@ Next JS is a universal framework used to enable server side rendering and routin
 Next.js will serve each file in /pages under a pathname matching the filename. For example, /pages/about.js is served at site.com/about.
 
 ```
-{
 import Link from 'next/link'
 export default () => (
   <div>
@@ -78,7 +77,6 @@ export default () => (
     <Link href='/about'><a>About</a></Link>
   </div>
 )
-}
 ```
 
 #### React apollo
