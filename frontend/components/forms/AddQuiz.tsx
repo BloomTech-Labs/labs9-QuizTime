@@ -316,11 +316,6 @@ function AddQuiz() {
                     Use "Follow-up questions" to break down the concept into smaller
                     pieces or assess a student's knowledge of a topic more generally (optional).
                   </Text>
-                  <Flex justifyContent="flex-end">
-                    <Button mx={6} my={2} width="100px">
-                      Example
-                    </Button>
-                  </Flex>
                 </Box>
               </Flex>
 
