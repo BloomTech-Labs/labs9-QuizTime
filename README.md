@@ -198,5 +198,9 @@ Will query for a quiz where the id matches the passed in quiz_id. The returning 
         ]
     }
 }
-
 ```
+### Current Relationships and Corresponding Names
+
+| DB Table A | DB Table B | Name | Relationship Type |
+|---|---|---|---|
+| teacher | class | classes | array |
