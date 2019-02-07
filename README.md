@@ -29,4 +29,7 @@ After forking this repository, the user should run $ npm install or $ yarn insta
 
 ### Front End
 
+To get the project up and running in your browser ```$ npm run dev``` or ```$ yarn dev``` and go to localhost:3000.
+
+
 
