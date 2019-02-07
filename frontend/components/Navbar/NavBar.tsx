@@ -4,7 +4,6 @@ import {
   NavBarHolder,
   AvatarImg,
   BoldText,
-  NavQuote,
   Text,
   Label,
 } from '../design-system/primitives';
