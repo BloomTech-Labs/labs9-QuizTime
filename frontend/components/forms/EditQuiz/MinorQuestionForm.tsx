@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mutation } from "react-apollo";
 import Reveal from "react-reveal/Reveal";
 
@@ -12,6 +12,18 @@ import { Box, Flex } from "@rebass/emotion";
 
 export default ({ id, prompt, answers, pos, quiz_id }) => {
   const [updatedPrompt, setUpdatedPrompt] = useState(prompt);
+  const [toggleButton, setToggleButton] = useState(false);
+
+  useEffect(() => {
+    if (prompt !== updatedPrompt) {
+      setToggleButton(true);
+    }
+    console.log('prompt', prompt);
+  }, [updatedPrompt]);
+
+  useEffect(() => {
+    console.log('toggle is', toggleButton);
+  }, [toggleButton]);
 
   const handlePromptChange = e => {
     setUpdatedPrompt(e.target.value);
@@ -21,6 +33,10 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
     <Mutation
       mutation={UPDATE_MINOR_QUESTION}
       refetchQueries={() => [{ query: GET_QUIZ_QUERY, variables: { quiz_id } }]}
+      onCompleted={() => {
+        setToggleButton(false);
+        console.log('prompt and updatedPrompt***', prompt, updatedPrompt)
+      }}
     >
       {(update_minor_question, { error, loading, data }) => (
         <Box my={4}>
@@ -42,7 +58,7 @@ export default ({ id, prompt, answers, pos, quiz_id }) => {
               onChange={handlePromptChange}
               value={updatedPrompt}
             />
-            {prompt !== updatedPrompt && (
+            {toggleButton && (
               <Button my={3} variant="primary" type="submit">Update Prompt</Button>
             )}
           </Form>
