@@ -14,6 +14,10 @@ const AddBoxHolder = styled(Box)`
   align-items: center;
   cursor: pointer;
   margin: 16px;
+  transition: 0.5s;
+  &:hover{
+    background: #B5FFD0;
+  }
 `;
 const AddBtn = styled(Box)`
   width: 50px;
@@ -27,7 +31,7 @@ const AddBtn = styled(Box)`
   font-size: 30px;
 `;
 
-const BoxText = props => <Text {...props} fontFamily="sans" color="#f4f4f4" fontSize="30px"/>;
+const BoxText = props => <Text {...props} mb={1} fontFamily="sans" color="#f4f4f4" fontSize="30px"/>;
 
 const AddBox: React.SFC = () => {
   return (

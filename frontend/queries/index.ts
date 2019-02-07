@@ -52,6 +52,27 @@ export const GET_STUDENT_QUIZZES = gql`
           description
           major_questions{
             id
+export const GET_QUIZ_QUERY = gql`
+  query GET_QUIZ_QUERY($quiz_id: Int!) {
+    quiz(where: {id: {_eq: $quiz_id}}){
+      id
+      description
+      name
+      major_questions{
+        id
+        prompt
+        answers{
+          id
+          response
+          correct_answer
+        }
+        minor_questions{
+          id
+          prompt
+          answers{
+            id
+            response
+            correct_answer
           }
         }
       }

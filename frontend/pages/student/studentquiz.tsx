@@ -5,8 +5,8 @@ import { ButtonLink, Container } from '../../components/design-system';
 import { Flex } from '@rebass/emotion';
 import StudentQuiz from '../../components/StudentView/StudentQuiz';
 
-// const url = 'http://localhost:7000/api/student-proxy';
-const url = '/api/student-proxy';
+const url = 'http://localhost:7000/api/student-proxy';
+// const url = '/api/student-proxy';
 
 class QuizPage extends Component {
   state = {

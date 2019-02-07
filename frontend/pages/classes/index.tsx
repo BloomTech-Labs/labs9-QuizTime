@@ -13,6 +13,7 @@ import { Container, Label, Button, UpperCase } from "../../components/design-sys
 import AddBox from '../../components/boxes/addBox/addBox';
 import Modal from '../../components/Modal/index';
 import ReactLoading from "react-loading";
+import { css } from "@emotion/core";
 
 const CardHolder = styled.div`
   display: flex;
@@ -81,12 +82,14 @@ class Classes extends Component {
                     if (error) return <p>{error.message}</p>;
                     if (loading) {
                       return (
+                        <Flex justifyContent='center' alignItems='center' p={2} m={5}>
                         <ReactLoading
                           type="spin"
                           color="lightgray"
                           height="100px"
                           width="100px"
                         />
+                        </Flex>
                       );
                     }
                     if (data) {

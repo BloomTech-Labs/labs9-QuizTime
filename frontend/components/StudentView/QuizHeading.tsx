@@ -2,15 +2,28 @@ import { Box } from '@rebass/emotion';
 import { UpperCase, BoxText } from '../design-system';
 
 const QuizHeading = props => {
-  const {quiz} = props
+  const { quiz, student } = props;
   return (
-    <Box mx={2} my={3} width={0.95}>
+    <Box mb={3} >
+      <BoxText fontSize={[4, 5]} my={3} fontWeight={4}>
+        {student &&
+          `Welcome ${student.first_name[0]
+            .toUpperCase()
+            .concat(
+              student.first_name.slice(1)
+            )} ${student.last_name[0]
+            .toUpperCase()
+            .concat(student.last_name.slice(1))}!`}
+        <hr />
+      </BoxText>
       <BoxText>
-        <UpperCase fontSize={5} fontWeight={4}>
+        <UpperCase fontSize={[4, 5]} fontWeight={4}>
           {quiz.name}
         </UpperCase>
       </BoxText>
-      <BoxText fontSize={3} css={{lineHeight: 1.25}}>{quiz.description}</BoxText>
+      <BoxText fontSize={3} css={{ lineHeight: 1.25 }}>
+        {quiz.description}
+      </BoxText>
     </Box>
   );
 };
