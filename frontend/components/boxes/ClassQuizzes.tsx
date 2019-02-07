@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import React, {Component} from 'react'
 import { useState, useEffect } from 'react';
 import { QuizBar, Text, ButtonLink } from '../design-system/primitives';
