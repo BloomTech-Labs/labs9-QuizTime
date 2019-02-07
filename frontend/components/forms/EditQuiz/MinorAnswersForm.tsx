@@ -1,44 +1,41 @@
-import { useState, useEffect } from "react";
-import { Mutation } from "react-apollo";
+import { useState, useEffect } from 'react';
+import { Mutation } from 'react-apollo';
 
-import { UPDATE_MINOR_ANSWERS } from "../../../mutations";
+import { UPDATE_MINOR_ANSWERS } from '../../../mutations';
 import { GET_QUIZ_QUERY } from '../../../queries';
 
-import { Label, Input, Form, Button } from "../../design-system";
-import { Box, Flex } from "@rebass/emotion";
+import { Label, Input, Form, Button } from '../../design-system';
+import { Box, Flex } from '@rebass/emotion';
 
 export default ({ answers, quiz_id }) => {
   const [updatedAnswers, setUpdatedAnswers] = useState(answers);
-  const [showUpdateButton, setShowUpdateButton] = useState(null);
+  const [showUpdateButton, setShowUpdateButton] = useState(false);
 
-  //null is so that it's not setting true on mount
   useEffect(() => {
-    if(showUpdateButton === null){
-      setShowUpdateButton(false);
-    }else{
+    if (JSON.stringify(answers) !== JSON.stringify(updatedAnswers)) {
       setShowUpdateButton(true);
     }
-  }, [updatedAnswers])
+  }, [updatedAnswers]);
 
   const handleChange = (e, id) => {
     const newAnswers = updatedAnswers.map(answer => {
-      if (e.target.type === "radio") {
+      if (e.target.type === 'radio') {
         if (id === answer.id) {
           return {
             ...answer,
-            correct_answer: true
+            correct_answer: true,
           };
         } else {
           return {
             ...answer,
-            correct_answer: false
+            correct_answer: false,
           };
         }
       } else {
         if (id === answer.id) {
           return {
             ...answer,
-            response: e.target.value
+            response: e.target.value,
           };
         } else {
           return answer;
@@ -53,6 +50,9 @@ export default ({ answers, quiz_id }) => {
     <Mutation
       mutation={UPDATE_MINOR_ANSWERS}
       refetchQueries={() => [{ query: GET_QUIZ_QUERY, variables: { quiz_id } }]}
+      onCompleted={() => {
+        setShowUpdateButton(false);
+      }}
     >
       {(update_minor_answers, { error, loading, data }) => (
         <Form
@@ -72,7 +72,7 @@ export default ({ answers, quiz_id }) => {
                 idD: updatedAnswers[3].id,
                 resD: updatedAnswers[3].response,
                 correctD: updatedAnswers[3].correct_answer,
-              }
+              },
             });
           }}
         >
@@ -89,7 +89,7 @@ export default ({ answers, quiz_id }) => {
                     value={answer.response}
                   />
                   <Input
-                    type="radio"
+                    type='radio'
                     name={`${answer.id}`}
                     onChange={e => handleChange(e, answer.id)}
                     checked={answer.correct_answer}
@@ -99,7 +99,9 @@ export default ({ answers, quiz_id }) => {
             ))}
           </Box>
           {showUpdateButton && (
-            <Button my={3} variant="primary" type="submit">Update Answers</Button>
+            <Button my={3} variant='primary' type='submit'>
+              Update Answers
+            </Button>
           )}
         </Form>
       )}

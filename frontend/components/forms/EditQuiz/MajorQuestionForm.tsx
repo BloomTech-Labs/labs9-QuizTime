@@ -20,12 +20,7 @@ export default ({ id, prompt, answers, minor_questions, pos, quiz_id }) => {
     if (prompt !== updatedPrompt) {
       setToggleButton(true);
     }
-    console.log('prompt', prompt);
   }, [updatedPrompt]);
-
-  useEffect(() => {
-    console.log('toggle is', toggleButton);
-  }, [toggleButton]);
 
   const handlePromptChange = e => {
     setUpdatedPrompt(e.target.value);
