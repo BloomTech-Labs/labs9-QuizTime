@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from 'react';
+import { useState } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import StudentBar from "../../components/Students/StudentBar";
@@ -15,7 +15,7 @@ import { Box, Flex } from "@rebass/emotion";
 import AddBox from "../../components/boxes/addBox/addBox";
 import ReactLoading from "react-loading";
 import { css } from "@emotion/core";
-import Modal from '../../components/Modal/index';
+import Modal from "../../components/Modal/index";
 
 import {
   StudentHolder,
@@ -23,6 +23,8 @@ import {
   Text,
   QuizBox,
   QuizzesAvaliable,
+  FlexChange,
+  FlexCenter,
   UpperCase,
   Label
 } from "../../components/design-system/primitives";
@@ -37,125 +39,140 @@ const ClassPage = ({ query: { id } }) => {
   const [isHidden, setIsHidden] = useState(true);
 
   const toggleHidden = () => {
-    setIsHidden(!isHidden)
-  }
+    setIsHidden(!isHidden);
+  };
 
   return (
     <Layout>
-      <Box>
+      <Box css={{ border: "1px solid red" }}>
         <Query query={ALL_STUDENTS_QUERY} variables={{ class_id: id }}>
           {({ loading, error, data }) => {
             if (error) return <p>{error.message}</p>;
             if (loading) {
               return (
-                <Flex justifyContent='center' alignItems='center' p={5} m={3}>
-                <ReactLoading
-                  type="spin"
-                  color="lightgray"
-                  height="100px"
-                  width="100px"
-                />
+                <Flex justifyContent="center" alignItems="center" p={5} m={3}>
+                  <ReactLoading
+                    type="spin"
+                    color="lightgray"
+                    height="100px"
+                    width="100px"
+                  />
                 </Flex>
-
               );
             }
             if (data) {
               return (
                 // page content containers
-                <Box p={3} mx={3}>
+                <Box mx={5} my={4}>
                   <Flex>
-                    {/* container for left side */}
-                    <Box p={2} m={3} width={[1, 1, 3 / 4]}>
-                      <Flex flexDirection="column">
-                        {/* <Box p={3} m={3}>
+                    <FlexChange>
+                      {/* container for left side */}
+                      <Box>
+                        <Flex flexDirection="column">
+                          {/* <Box p={3} m={3}>
                         <AddStudent class_id={id} />
                       </Box> */}
-                        <Box p={2}>
-                          <Label mx={2} my={3}>
-                            Class Management
-                          </Label>
-                          <Flex flexWrap="wrap">
-                            <Box onClick={toggleHidden}>
-                              <ATag>
-                                <AddBox />
-                              </ATag>
-                            </Box>
-                            {!isHidden &&
-                              <Modal>
-                                <Flex>
-                                  <AddStudent class_id={id} />
-                                <Box>
-                                  <UpperCase
-                                    color="blue.1"
-                                    fontWeight={6}
-                                    fontSize={2}
-                                    css={{ cursor: "pointer" }}
-                                    onClick={toggleHidden}
-                                  >x
-                                </UpperCase>
-                                </Box>
-                              </Flex>
-                              </Modal>
-                            }
-                            {data.class[0].students.map(student => (
-                              <StudentBox
-                                id={student.id}
-                                key={student.id}
-                                student={student}
-                              />
-                            ))}
-                          </Flex>
-                        </Box>
-                      </Flex>
-                    </Box>
-                    <Box py={3} m={3} width={[1, 1, 1 / 4]}>
-                      <Label mx={2} my={3}>
-                        Quiz Management
-                      </Label>
-                      <Flex flexDirection="column">
-                        {/*quizzes you can use*/}
-                        <Box
-                          p={3}
-                          my={3}
-                          css={{
-                            background: "white",
-                            boxShadow: "0px 3px 15px rgba(0,0,0,0.1)"
-                          }}
-                        >
-                          <UpperCase fontSize={2} fontWeight={4}>
-                            Add Quiz to Class
-                          </UpperCase>
-                          {data.quiz
-                            .filter(
-                              qz =>
-                                !data.class[0].quizzes.find(
-                                  qzz => qzz.quiz.id === qz.id
-                                )
-                            )
-                            .map(q => (
-                              <QuizElement key={q.id} quiz={q} class_id={id} />
-                            ))}
-                        </Box>
-                        {/* quizzes added */}
-                        <Box
-                          p={3}
-                          my={3}
-                          css={{
-                            background: "white",
-                            boxShadow: "0px 3px 15px rgba(0,0,0,0.1)"
-                          }}
-                        >
-                          <UpperCase fontSize={2} fontWeight={4}>
-                            Quizzes in class
-                          </UpperCase>
-                          <Box py={3}>
-                            {data.class[0].quizzes.map(q => (
-                              <ClassQuizzes key={q.id} quiz={q.quiz} classId={Number(id)} dueDate={q.due_date} />
-                            ))}
+                          <Box>
+                            <Label p={3}>
+                              Students
+                            </Label>
+                            <Flex flexWrap="wrap">
+                              <Box onClick={toggleHidden}>
+                                <ATag>
+                                  <AddBox />
+                                </ATag>
+                              </Box>
+                              {!isHidden && (
+                                <Modal>
+                                  <Flex>
+                                    <AddStudent class_id={id} />
+                                    <Box>
+                                      <UpperCase
+                                        color="blue.1"
+                                        fontWeight={6}
+                                        fontSize={2}
+                                        css={{ cursor: "pointer" }}
+                                        onClick={toggleHidden}
+                                      >
+                                        x
+                                      </UpperCase>
+                                    </Box>
+                                  </Flex>
+                                </Modal>
+                              )}
+                              {data.class[0].students.map(student => (
+                                <StudentBox
+                                  id={student.id}
+                                  key={student.id}
+                                  student={student}
+                                />
+                              ))}
+                            </Flex>
                           </Box>
-                        </Box>
-                      </Flex>
-                    </Box>
+                        </Flex>
+                      </Box>
+                      <Box>
+                        <Label p={3}>
+                          Quizzes
+                        </Label>
+                        <Flex flexDirection="column">
+                          {/*quizzes you can use*/}
+                          <Box
+                            m={3}
+                            p={2}
+                            css={{
+                              background: "white",
+                              boxShadow: "0px 3px 15px rgba(0,0,0,0.1)"
+                            }}
+                          >
+                            <Box>
+                              <UpperCase fontSize={2} fontWeight={4}>
+                                Add Quiz to Class
+                            </UpperCase>
+                            </Box>
+                            {data.quiz
+                              .filter(
+                                qz =>
+                                  !data.class[0].quizzes.find(
+                                    qzz => qzz.quiz.id === qz.id
+                                  )
+                              )
+                              .map(q => (
+                                <QuizElement
+                                  key={q.id}
+                                  quiz={q}
+                                  class_id={id}
+                                />
+                              ))}
+                          </Box>
+                          {/* quizzes added */}
+                          <Box
+                            m={3}
+                            p={2}
+                            css={{
+                              background: "white",
+                              boxShadow: "0px 3px 15px rgba(0,0,0,0.1)"
+                            }}
+                          >
+                            <Box>
+                              <UpperCase fontSize={2} fontWeight={4}>
+                                Quizzes in class
+                            </UpperCase>
+                            </Box>
+                            <Box >
+                              {data.class[0].quizzes.map(q => (
+                                <ClassQuizzes
+                                  key={q.id}
+                                  quiz={q.quiz}
+                                  classId={Number(id)}
+                                  dueDate={q.due_date}
+                                />
+                              ))}
+                            </Box>
+                          </Box>
+                        </Flex>
+                      </Box>
+                    </FlexChange>
                   </Flex>
                 </Box>
               );
@@ -164,7 +181,7 @@ const ClassPage = ({ query: { id } }) => {
         </Query>
       </Box>
     </Layout>
-  )
+  );
   //};
 };
 

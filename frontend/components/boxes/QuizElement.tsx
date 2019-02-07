@@ -2,12 +2,17 @@ import { Mutation } from "react-apollo";
 import { INSERT_CLASS_QUIZ } from "../../mutations";
 import { ALL_STUDENTS_QUERY } from "../../queries";
 
-import { QuizBar, Text } from "../design-system/primitives";
-import { Button, Box } from "@rebass/emotion";
+import { QuizBar, Text, UniButton } from "../design-system/primitives";
+import { Button, Box, Flex } from "@rebass/emotion";
 
 export default ({ quiz, class_id }) => (
-  <Box>
-    <Text>{quiz.name}</Text>
+  <Box my={3} css={{borderBottom: "1px solid lightgray"}}>
+        <Flex
+        justifyContent="space-between"
+        alignItems="flex-end"
+      >
+
+    <Text m={2}>{quiz.name}</Text>
     <Mutation
       mutation={INSERT_CLASS_QUIZ}
       update={(cache, { data: insert_class_quiz }) => {
@@ -31,7 +36,7 @@ export default ({ quiz, class_id }) => (
       }}
     >
       {(insert_class_quiz, { error, loading, data }) => (
-        <Button
+        <UniButton m={2} bg="blue.1" fontSize={0}
           onClick={() =>
             insert_class_quiz({ variables: { quiz_id: quiz.id, class_id } })
           }
@@ -40,8 +45,9 @@ export default ({ quiz, class_id }) => (
           {loading && "loading..."}
           {error && "Try again"}
           {loading || error || "Add"}
-        </Button>
+        </UniButton>
       )}
     </Mutation>
+    </Flex>
   </Box>
 );

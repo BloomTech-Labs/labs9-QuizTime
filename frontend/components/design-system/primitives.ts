@@ -481,6 +481,31 @@ export const InfoTextThree = props => (
   />
 );
 
+//flex-wrap at specified breakpoint
+export const FlexChange = props => (
+  <F 
+  css={css`
+  @media (max-width: 639px){
+    flex-wrap: wrap;
+  }
+`}
+  {...props}
+  />
+)
+
+//center at a specfied breakpoint
+export const FlexCenter = props => (
+  <F 
+  css={css`
+  @media (max-width: 639px){
+    justifyContent: center;
+    alignItems: center;
+  }
+`}
+  {...props}
+  />
+)
+
 export const SideBarHolder = props => (
   <F
     width={[0, 1 / 3, 1 / 5]}
@@ -822,7 +847,10 @@ export const TextArea = props => (
     width={[1]}
     fontSize={3}
     p={3}
-    css={{ height: "200px" }}
+    css={{ 
+      height: "200px",
+      fontSize: "16px"
+   }}
     {...props}
   />
 );
