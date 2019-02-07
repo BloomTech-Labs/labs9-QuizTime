@@ -18,7 +18,15 @@ Cesar Napoleon Mejia Leiva | [Github](https://github.com/cesarnml)
 
 Carey Baldwin | [Github](https://github.com/careybaldwin02)
 
+Please feel free to contact us with questions about this project.
+
+## Running
+
+After forking this repository, the user should run $ npm install or $ yarn install in order to gain access to the necessary dependencies
+ 
+### Back End
 
 
+### Front End
 
 
