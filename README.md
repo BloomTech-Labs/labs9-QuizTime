@@ -5,16 +5,16 @@ Pleae click [here](https://quiztime.now.sh) to view the deployed application.  P
 ![QuizTime](./frontend/img/QuizTime.jpg)
 
 ## Team
+|---|---|
+| Joseph Stossmeister | [Github](https://github.com/Jstoss)| 
 
-Joseph Stossmeister | [Github](https://github.com/Jstoss)
+| Allen Hai | [Github](https://github.com/coetry) |
 
-Allen Hai | [Github](https://github.com/coetry)
+| Keith Kennegy | [Github](https://github.com/Kennedykid1995) |
 
-Keith Kennegy | [Github](https://github.com/Kennedykid1995)
+| Cesar Napoleon Mejia Leiva | [Github](https://github.com/cesarnml) |
 
-Cesar Napoleon Mejia Leiva | [Github](https://github.com/cesarnml)
-
-Carey Baldwin | [Github](https://github.com/careybaldwin02)
+| Carey Baldwin | [Github](https://github.com/careybaldwin02) |
 
 Please feel free to contact us with questions about this project.
 
@@ -68,7 +68,7 @@ We essentially built our own reusable theme and styled components that were acce
 ### Back End Dependencies
 
 #### Hasura   
-Our application is powere by Hasura.  Hasura is an open-source engine with a realtime GraphQL API built on a Postgres database, with built-in support for stitching custom GraphQL APIs and triggering web hooks on database changes. | [view dependency](https://hasura.io/)
+Our application is powered by Hasura.  Hasura is an open-source engine with a realtime GraphQL API built on a Postgres database, with built-in support for stitching custom GraphQL APIs and triggering web hooks on database changes. | [view dependency](https://hasura.io/)
 
 #### Auth0
 auth0 is used to register and authenticate users | [view dependency](https://auth0.com/)
@@ -220,3 +220,131 @@ Will query for a quiz where the id matches the passed in quiz_id. The returning 
 | major_question | student_major_answer | student_answers | array |
 | minor_question | major_question | major_question | object |
 | minor_question | minor_answer | answers | array |
+
+### Mutations
+
+#### Inserting
+
+Insertion follows the format of calling a mutation and the ```insert_<table_name>()```.
+
+Example: 
+ ```
+ mutation insert_student($objects: [student_insert_input!]! ) {
+  insert_student(objects: $objects) {
+    returning {
+      id
+      title
+    }
+  }
+}
+ ```
+
+where objects is a variables object sent with the request that looks like:
+```
+{
+    "objects": [
+        {
+            "first_name": "Student's First Name",
+            "last_name": "Student's Last Name",
+            "email": "Student's email",
+            "class_id": <id of student's class>
+        }
+    ]
+}
+```
+
+The teacher_id for the table will be automatically set via the user's token, and the returning field is a GraphQL query of what data you would like to receive back.
+
+It's possible to insert multiple related fields at one time, provided that the sub-inserts are properly wrapped in a data array.
+
+Example: 
+```
+mutation insert_major_question($objects: [major_question_insert_input!]!){
+    insert_major_question(objects: $objects) {
+        returning{
+            id
+            prompt
+        }
+    }
+}
+```
+where objects is:
+```
+{
+    "objects": [
+        {
+            "prompt": "Major Question Prompt",
+            "answers": {
+                "data": [
+                    {
+                        "response": "Major Question Answer Response",
+                        "correct_answer": <true/false>
+                    },
+                    {
+                        "response": "Major Question Answer Response",
+                        "correct_answer": <true/false>
+                    },
+                    {
+                        "response": "Major Question Answer Response",
+                        "correct_answer": <true/false>
+                    },
+                    {
+                        "response": "Major Question Answer Response",
+                        "correct_answer": <true/false>
+                    },
+                ]
+            }
+        }
+    ]
+}
+```
+
+This will insert a major question and four corresponding answers to the question, giving major question an id and setting the major_question_id foreign key on the new major_answer entries properly and teacher_id will be set on everything automatically using the provided JWT token.
+
+#### Updating
+
+Updating an entry is based on sending an update mutation with a corresponding ```update_<table_name>``` being passed a where object containing identification of the entries to update and a _set object containing key-value pairs where the key is the field to update and the value is the value to place in that column.
+
+Example:
+```
+mutation update_quiz($quiz_id: Int!, $changes: quiz_set_input){
+    update_quiz(
+        where: {id: {_eq: $quiz_id}},
+        _set: $changes
+    ) {
+        affected_rows
+        returning {
+            id
+        }
+    }
+}
+```
+where passed variables are:
+```
+{
+    "id": <quiz_id>,
+    "changes": {
+        "name": "New Quiz Name"
+    }
+}
+```
+will update the name of the quiz with the corresponding id to "New Quiz Name", and return the number of affected rows, and the id.
+
+#### Deleting
+
+Deleting an entry is based on sending a delete mutation with a corresponding ```delete_<table_name>``` being passed a where object containing identification of the entries to delete.
+
+Example:
+```
+mutation delete_quiz($quiz_id: Int!){
+    delete_quiz(
+        where: {id: {_eq: $quiz_id}}
+    ) {
+        affected_rows
+    }
+}
+```
+Which will delete a quiz where the quiz's id is equal to the quiz_id variable passed in and will return the number of affected rows.
+
+For more details and examples about interacting with Hasura, please check out the documentation found [here](https://hasura.io/)
+
