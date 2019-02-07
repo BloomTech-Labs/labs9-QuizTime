@@ -29,9 +29,11 @@ const MajorQuestion = ({ q, majorIndex, idx, isMajor, handleMajorChange }) => {
               }
               type='radio'
               name={`major-question-${q.id}-major-answer`}
-              value={index + 1}
+              value={a.id}
             />
-            <BoxText ml={10}>{a.response}</BoxText>
+            <BoxText ml={10}>
+              {a.response}
+            </BoxText>
           </Flex>
         </Box>
       ))}

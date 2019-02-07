@@ -36,7 +36,7 @@ module.exports = (req, res) =>
       `
       console.log('\n TOKEN ID', token.id)
       const charge = await stripe.charges.create({
-        amount: 1000, //* can be extracted from token
+        amount: 100, //* can be extracted from token
         source: token.id, //* pending transaction id
         currency: 'usd', //* can be extracted from token
         description: 'quiztime charge'
