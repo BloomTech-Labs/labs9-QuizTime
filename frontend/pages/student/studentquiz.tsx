@@ -1,12 +1,11 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import { getStudentToken } from '../../utils/auth';
 import Link from 'next/link';
 import { ButtonLink, Container } from '../../components/design-system';
 import { Flex } from '@rebass/emotion';
 import StudentQuiz from '../../components/StudentView/StudentQuiz';
 
-const url = 'http://localhost:7000/api/student-proxy';
-// const url = '/api/student-proxy';
+const url = '/api/student-proxy';
 
 class QuizPage extends Component {
   state = {

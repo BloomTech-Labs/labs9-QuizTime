@@ -67,7 +67,7 @@ class SplitForm extends React.Component {
         token.sub = this.props.loggedUser.sub;
       }
       // let response = await fetch('/api/add-credit', {
-      let response = await fetch('http://localhost:8888/add-credit', {
+      let response = await fetch('https://quiztime.now.sh/add-credit', {
         method: 'POST',
         body: JSON.stringify(token),
       });
