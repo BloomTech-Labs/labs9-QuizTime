@@ -43,7 +43,7 @@ const StudentResults = ({ id }) => (
                                 </Box> */}
                                 {data.student[0].score.map(sc => (
                                     <Box m={3} p={2} css={{ border: "1px solid lightgray" }}>
-                                        <Text p={2}> {sc.quizByquizId.name} </Text>
+                                        <Text p={2}> {sc.quiz.name} </Text>
                                         <Text p={2}> Points: {sc.score} / {sc.total} </Text>
                                         <Text p={2}> Score: {(sc.score/sc.total)*100}% </Text>
                                     </Box>

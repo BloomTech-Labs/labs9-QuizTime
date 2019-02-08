@@ -8,8 +8,12 @@ import { Mutation } from 'react-apollo';
 import { UPDATE_CLASS_QUIZ } from '../../mutations';
 
 const ClassQuizzes: React.SFC = ({ quiz, classId, dueDate }) => {
-  const dueDateOfTypeDate = new Date(dueDate)
-  const [quizDate, setQuizDate] = useState(dueDateOfTypeDate);
+  const [quizDate, setQuizDate] = useState(null);
+  useEffect(()=> {
+    if(dueDate){
+      setQuizDate(new Date(dueDate))
+    }
+  }, [])
 
   const handleQuizDate = (date, id, update) => {
     //* Weird ... month begins at 0 ... so + 1 ... hack

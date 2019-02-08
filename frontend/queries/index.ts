@@ -75,6 +75,9 @@ export const GET_STUDENT_QUIZZES = gql`
       score{
         score
         total
+        quiz{
+          name
+        }
       }
     }
   }
