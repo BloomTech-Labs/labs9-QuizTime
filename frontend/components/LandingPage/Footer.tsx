@@ -107,9 +107,6 @@ const Footer = props => {
                 fontSize={3}
                 lineHeight={1.5}
                 p={2}
-                css={css`
-                  border-bottom: 5px solid #70e89d;
-                `}
               >
                 Links
               </UpperCase>
