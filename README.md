@@ -1,6 +1,6 @@
 # QuizTime - Lambda-Labs 9
 
-Pleae click [here](https://quiztime.now.sh) to view the deployed application.  Please click [here](https://youtu.be/GXuhclNCShQ) to view our video walkthrough. 
+Pleae click [here](https://quiztime.now.sh) to view the deployed application.  Please click [here](https://youtu.be/qXUWcaWFj_o) to view our video walkthrough. 
 
 ![QuizTime](./frontend/img/QuizTime.jpg)
 
