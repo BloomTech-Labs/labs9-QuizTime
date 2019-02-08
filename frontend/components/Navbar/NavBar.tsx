@@ -159,5 +159,4 @@ const NavBar: React.SFC = () => {
     </NavBarHolder>
   );
 };
-
 export default NavBar;
