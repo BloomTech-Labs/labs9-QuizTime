@@ -34,13 +34,25 @@ const Testimonials = props => {
         <FlexColumns
           css={css`
             height: auto;
-            @media (max-width: 1030px) {
+            @media (max-width: 1029px) {
               flex-direction: column-reverse;
               align-items: center;
             }
           `}
         >
-          <Box m={3} p={3} width="400px">
+          <Box 
+          m={3} 
+          p={3} 
+          width="400px"
+          css={css`
+          @media(max-width:500px){
+            width:350px;
+            margin-right: 0;
+            padding-right: 0;
+            margin-left: 0px;
+            padding-left: 0px;
+          }
+          `}>
             <LandingText lineHeight={1.5}>
               "As a 12-year veteran teacher, I have seen a multitude of digital
               assessment technologies come and go. From a practical standpoint,

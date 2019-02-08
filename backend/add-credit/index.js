@@ -12,7 +12,7 @@ module.exports = (req, res) =>
         'https://quiztime-hasura.herokuapp.com/v1alpha1/graphql',
         {
           headers: {
-            'X-Hasura-Access-Key': 'lambdalabsquiztime',
+            'X-Hasura-Access-Key': process.env.X_HASURA_ACCESS_KEY,
             'X-Hasura-Role': 'user',
             'X-Hasura-User-Id': `${token.sub}`
           }
@@ -24,7 +24,7 @@ module.exports = (req, res) =>
         update_teacher(
           where: {id: {_eq: "${token.sub}"}},
           _inc: {
-            credits: 10,
+            credits: 500,
           })
         {
           returning {
@@ -36,7 +36,7 @@ module.exports = (req, res) =>
       `
       console.log('\n TOKEN ID', token.id)
       const charge = await stripe.charges.create({
-        amount: 1000, //* can be extracted from token
+        amount: 100, //* can be extracted from token
         source: token.id, //* pending transaction id
         currency: 'usd', //* can be extracted from token
         description: 'quiztime charge'

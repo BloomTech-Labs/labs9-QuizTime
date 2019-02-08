@@ -36,7 +36,6 @@ export default class SignedIn extends React.Component {
   componentDidMount() {
     parseHash((err, result) => {
       if (err) {
-        console.error("Something happened with the Sign In request");
         //look into redirecting them to an error page
         return;
       }
@@ -48,7 +47,6 @@ export default class SignedIn extends React.Component {
         }
       });
 
-      console.log(client);
       client.request(queryTeacherCheck).then(({ teacher }) => {
         if (teacher.length > 0) {
           Router.push("/classes");
@@ -61,13 +59,6 @@ export default class SignedIn extends React.Component {
         }
       });
     });
-
-    //make a query on teacher
-
-    //if results === 0
-    //insert a teacher
-
-    // Router.push('/home')
   }
   render() {
     return null;

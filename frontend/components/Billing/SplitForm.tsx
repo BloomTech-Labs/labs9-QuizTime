@@ -24,7 +24,6 @@ class SplitForm extends React.Component {
   };
 
   handleChange = el => {
-    console.log(el);
     this.setState({
       [el.elementType]: el.complete,
     });
@@ -41,7 +40,7 @@ class SplitForm extends React.Component {
         base: {
           fontSize,
           fontWeight: 600,
-          color: '#323fcb',
+          color: '#101440',
           letterSpacing: '0.06em',
           fontFamily: 'Menlo, monospace',
           fontSmoothing: 'antialiased',
@@ -67,10 +66,8 @@ class SplitForm extends React.Component {
       if (this.props.loggedUser) {
         token.sub = this.props.loggedUser.sub;
       }
-      console.log(token);
-
       // let response = await fetch('/api/add-credit', {
-      let response = await fetch('http://localhost:6000/api/add-credit', {
+      let response = await fetch('https://quiztime.now.sh/add-credit', {
         method: 'POST',
         body: JSON.stringify(token),
       });
@@ -78,10 +75,8 @@ class SplitForm extends React.Component {
       //* Micro-service returns updated teacher record to frontend (id & credits)
       let teacher = await response.json();
       teacher = teacher.update_teacher.returning[0];
-      console.log('teacher', teacher);
       this.setState({ teacher });
     } else {
-      console.log("Stripe.js hasn't loaded yet.");
     }
   };
 
@@ -90,23 +85,27 @@ class SplitForm extends React.Component {
     const { cardNumber, cardExpiry, cardCvc, postalCode, teacher } = this.state;
     const styledCardNumber = {
       width: '100%',
+      fontSize: '16px',
+      height: '3em',
+      lineHeight: '1.5',
+      padding: '.625em',
       padding: '10px 20px 11px',
-      border: '2px solid #70e89d',
-      borderRadius: '20px',
+      borderRadius: '3px',
+      boxShadow: 'inset 0 1px 2px rgba(10, 10, 10, .1)',
     };
 
     const styledPostal = {
       maxWidth: '100%',
       padding: '10px 10px 11px 20px',
-      border: '2px solid #70e89d',
-      borderRadius: '20px',
+      borderRadius: '3px',
+      boxShadow: 'inset 0 1px 2px rgba(10, 10, 10, .1)',
     };
 
     const styledCVC = {
       maxWidth: '80%',
       padding: '10px 10px 11px 20px',
-      border: '2px solid #70e89d',
-      borderRadius: '20px',
+      borderRadius: '3px',
+      boxShadow: 'inset 0 1px 2px rgba(10, 10, 10, .1)',
     };
 
     let ready2Submit = cardNumber && cardExpiry && cardCvc && postalCode;
@@ -114,10 +113,15 @@ class SplitForm extends React.Component {
       <>
         <form
           onSubmit={handleSubmit}
-          style={{ margin: '40px 5%', maxWidth: '350px', padding: 10, boxShadow: "0px 3px 15px rgba(0,0,0,0.2)"}}
+          style={{
+            margin: '50px 10%',
+            maxWidth: '350px',
+            padding: 10,
+            boxShadow: '0px 3px 15px rgba(0,0,0,0.2)',
+          }}
         >
-          <BoldText fontSize={[3, 4, 28]} m={3} ml={1}>
-            Add Subscription
+          <BoldText fontSize={[3, 4, 28]} m={3} ml={1} color={'blue.1'}>
+            Add 500 Credits
           </BoldText>
           <BillingText mb={2} fontSize={[1, 2, 3]}>
             Card Number
@@ -158,7 +162,7 @@ class SplitForm extends React.Component {
               />
             </div>
           </Flex>
-          <Box >
+          <Box>
             <Flex justifyContent='center'>
               <ButtonLink
                 mt={3}
@@ -169,17 +173,32 @@ class SplitForm extends React.Component {
                   padding: '0px 20px',
                   marginTop: '35px',
                   lineHeight: 1.5,
-                  height: '60px'
+                  height: '60px',
                 }}
               >
-                Go Premium ($9.95/month)
+                $1.00
               </ButtonLink>
             </Flex>
           </Box>
-          <Box css={{height: 30, textAlign: 'left'}}>
-            <UpperCase color='red' mt={3} fontSize={16} fontWeight={4} lineHeight={1.5}>
+          <Box css={{ height: 30, textAlign: 'center' }}>
+            <UpperCase
+              color='red'
+              mt={3}
+              fontSize={12}
+              fontWeight={4}
+              lineHeight={1.5}
+            >
               {this.state.error || ' '}
             </UpperCase>
+            <UpperCase
+              color='green'
+              mt={3}
+              fontSize={12}
+              fontWeight={4}
+              lineHeight={1.5}
+            >
+              {this.state.teacher && `Successfully purchased credits!` }
+              </UpperCase>
           </Box>
         </form>
       </>

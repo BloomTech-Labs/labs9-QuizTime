@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 import Meta from "../components/Meta";
 
 const Page = styled.div`
-  background: #edeeef;
+  background: #f4f4f5;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -12,13 +12,13 @@ const Page = styled.div`
 const MainContent = styled.div`
   width: 100%;
 `;
-const Layout = ({ children }) => (
+const Layout = (props) => (
   <Page>
     <Meta />
     <SideBar />
     <MainContent>
       <NavBar />
-      {children}
+      {props.children}
     </MainContent>
   </Page>
 );

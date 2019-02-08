@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import { Form, Input, Button, Label, Text } from "../design-system";
+import { Flex, Box } from "@rebass/emotion";
 import { ALL_CLASSES_QUERY } from "../../queries";
 
 class AddClass extends Component {
@@ -49,7 +50,7 @@ class AddClass extends Component {
         }}
       >
         {(insert_class, { error, loading, data }) => (
-          <>
+          <Box px={3}>
             <Form
               onSubmit={async e => {
                 // Stop the form from submitting
@@ -58,9 +59,10 @@ class AddClass extends Component {
                 const res = await insert_class();
               }}
             >
-              <Label htmlFor="name">
+              <Label my={3} htmlFor="name">
                 Add a Class
                 <Input
+                  my={3}
                   type="text"
                   id="name"
                   name="name"
@@ -70,15 +72,21 @@ class AddClass extends Component {
                   onChange={this.handleChange}
                 />
               </Label>
-
-              <Button variant="primary" type="submit" p={3}>
-                Submit
-              </Button>
+              <Flex justifyContent="flex-end">
+                <Button my={3} variant="primary" type="submit" p={3}>
+                  Submit
+                </Button>
+              </Flex>
             </Form>
             {/* render errors, loading, or data */}
-            {error && <p> {error.message} </p>}
+            {error && (
+              <p>
+                An error occurred attempting to add a class. Check that you have
+                enough credits (100 credits) and try again.
+              </p>
+            )}
             {loading && <p> ...loading </p>}
-          </>
+          </Box>
         )}
       </Mutation>
     );
