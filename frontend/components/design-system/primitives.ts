@@ -456,7 +456,7 @@ export const InfoTextThree = props => (
     css={css`
       position: absolute;
       bottom: 50px;
-      left: -450px;
+      left: -550px;
       line-height: 1.5;
       @media (max-width: 900px) {
         bottom: 40px;
@@ -861,6 +861,7 @@ export const AvatarImg = props => (
 );
 
 //* BUTTONS
+
 
 export const UniButton = props => (
   <Btn width="auto" fontWeight={[1]} color="white" {...props} />
