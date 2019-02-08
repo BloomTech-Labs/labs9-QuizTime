@@ -30,6 +30,11 @@ To get the project up and running in your browser use ```$ npm run dev``` or ```
 * STRIPE_SECRET_KEY:  secret key for stripe
 * STRIPE_ALLOW_DOMAIN: deployed front end URL
 
+## Media
+
+Our landing page uses five images which are all sourced from either Unsplash [licensing](https://unsplash.com/license) or Pexels [licensing](https://www.pexels.com/photo-license/).  We have reviewed and followed the lisencing requirements. 
+
+
 ## Technical Stack
 
 ### Front End Dependencies

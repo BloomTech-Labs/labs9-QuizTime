@@ -25,7 +25,7 @@ const StudentResults = ({ id }) => (
                         <>
                             <Box m={3}>
                                 <Text p={3}>{data.student[0].first_name} {data.student[0].last_name}'s Quiz Results</Text>
-                                {/* <Box  m={3} p={2} css={{ border: "1px solid lightgray" }}>
+                                <Box  m={3} p={2} css={{ border: "1px solid lightgray" }}>
                                     <Text p={2}>Atomic Theory</Text>
                                     <Text p={2}> Score: 18/20</Text>
                                 </Box>
@@ -40,7 +40,7 @@ const StudentResults = ({ id }) => (
                                 <Box  m={3} p={2} css={{ border: "1px solid lightgray" }}>
                                     <Text p={2}>Fashion Sense</Text>
                                     <Text p={2}> Score: 1/20</Text>
-                                </Box> */}
+                                </Box>
                                 {data.student[0].score.map(sc => (
                                     <Box m={3} p={2} css={{ border: "1px solid lightgray" }}>
                                         <Text p={2}> {sc.quizByquizId.name} </Text>
